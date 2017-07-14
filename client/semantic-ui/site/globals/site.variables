@@ -1,0 +1,17 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+/*-------------------
+      Grid
+--------------------*/
+@largeMonitorBreakpoint: 1100px;
+@columnCount: 12;
+
+/*-------------------
+     Fonts
+--------------------*/
+
+@headerFont: Arial, Helvetica, sans-serif;
+@pageFont: Arial, Helvetica, sans-serif;
+@importGoogleFonts: false;

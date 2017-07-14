@@ -8,3 +8,4 @@ webpack-stats.json
 webpack-stats-prod.json
 client/dist
 static
+.idea
