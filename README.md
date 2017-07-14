@@ -30,8 +30,22 @@ If it's your first use, run migrations to build the database:
 
 Development Use
 -------------
-To run a development environment run:
+To run a development environment first run:
+```bash
+npm start
+```
+to make and serve frontend bundles. Then run:
+
 ```bash
 ./manage.py runserver
 ```
-Then open your browser at `http://localhost:8000`
+to start Django server and open your browser at `http://localhost:8000`
+
+Production Use
+-------------
+To run a production build first run:
+```bash
+npm run build
+```
+to build frontend bundles. Then set `DEBUG` to `false` and set your hosts in `ALLOWED_HOSTS`
+in `settings.py` and run the project with `gunicorn` and `nginx`.
