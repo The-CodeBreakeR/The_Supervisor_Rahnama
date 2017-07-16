@@ -3,6 +3,6 @@ import { Header, Segment } from 'semantic-ui-react'
 
 export default function AppHeader() {
   return <Segment className='app__header'>
-    <Header>سامانه‌ی راهنما</Header>
+    <Header>سامانه‌ی رهنما</Header>
   </Segment>
 }
