@@ -2,8 +2,9 @@ import Tours
 from Tours.models import Tour, ReserveTour
 from django.http import JsonResponse, Http404
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def searchTour(request):
     if request.method == 'POST':
         print("hi")
