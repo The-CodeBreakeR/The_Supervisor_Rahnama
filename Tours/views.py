@@ -7,34 +7,34 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def searchTour(request):
     if request.method == 'POST':
-        print("hi")
-    bodyParams = request.body.decode('utf-8').split('&')
-    print("hi")
-    print(bodyParams)
-    """tour = Tour.objects.filter(name__contains=name)
-    if len(tour) == 0:
-        return JsonResponse({'status': "-1", 'message': "No Tour Found"})
-    if len(tour) >= 1:
-        response = {
-            "status": 0,
-            "tours": [{'id': str(tour[0].id), 'name': tour[0].name, 'start_time': str(tour[0].start_date),
-                       'end_time': str(tour[0].end_date), 'price': str(tour[0].price)}]
-        }
-        if len(tour) == 1:
+        bodyParams = request.body.decode('utf-8').split('=')
+        name = bodyParams[1]
+        tour = Tour.objects.filter(name__contains=name)
+        if len(tour) == 0:
+            return JsonResponse({'status': "-1", 'message': "No Tour Found"})
+        if len(tour) >= 1:
+            response = {
+                "status": 0,
+                "tours": [{'id': str(tour[0].id), 'name': tour[0].name, 'start_time': str(tour[0].start_date),
+                           'end_time': str(tour[0].end_date), 'price': str(tour[0].price)}]
+            }
+            if len(tour) == 1:
+                print(response)
+                return JsonResponse(response)
+            i = 1
+            while i < tour.count():
+                response['tours'] = response['tours'] + [{'id': str(tour[i].id), 'name': tour[0].name, 'start_time': str(tour[i].start_date),
+                           'end_time': str(tour[i].end_date), 'price': str(tour[i].price)}]
+                i = i + 1
             return JsonResponse(response)
-        i = 0
-        while i < tour.count():
-            response['tours'] = response['tours'] + [{'id': str(tour[0].id), 'name': tour[0].name, 'start_time': str(tour[0].start_date),
-                       'end_time': str(tour[0].end_date), 'price': str(tour[0].price)}]
-            i = i + 1
-        return JsonResponse(response)"""
 
     return JsonResponse({'status': "0", 'message': "No Tour Found"})
 
 
 def getTour(request, id):
     tour = Tour.objects.filter(id=id)
-    if tour.count() == 0:
+    print("hiop")
+    """if tour.count() == 0:
         return JsonResponse({'status': "-1", 'message': "No such post Found"})
 
     response = {
@@ -43,7 +43,8 @@ def getTour(request, id):
                        'end_time': str(tour[0].end_date), 'price': str(tour[0].price)}]
     }
     print(response)
-    return JsonResponse(response)
+    return JsonResponse(response)"""
+    return JsonResponse({'status': "0", 'message': "No Tour Found"})
 
 
 def reserveTour(request, id):
