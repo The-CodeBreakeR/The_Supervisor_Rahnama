@@ -1,6 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Button, Modal, Checkbox, Form} from 'semantic-ui-react'
+import { Button, Modal, Form, Message } from 'semantic-ui-react'
 
 class RegistrationModal extends React.Component {
   constructor(props) {
@@ -11,7 +11,9 @@ class RegistrationModal extends React.Component {
       confirmPassword: { value: '', error: false },
       rules: { value: false, error: true },
       open: false,
+      error: '',
     }
+    this.fields = ['studentId', 'password', 'confirmPassword', 'rules']
   }
 
   onStudentIdChanged(value) {
@@ -32,13 +34,35 @@ class RegistrationModal extends React.Component {
   }
 
   isOK() {
-    const fields = ['studentId', 'password', 'confirmPassword', 'rules']
-    for (const field of fields) {
+    for (const field of this.fields) {
       if (!this.state[field].value || this.state[field].error) {
         return false
       }
     }
     return true
+  }
+
+  validate() {
+    this.onStudentIdChanged(this.state.studentId.value)
+    this.onPasswordChanged(this.state.password.value)
+    this.onConfirmPasswordChanged(this.state.confirmPassword.value)
+  }
+
+  generateErrors() {
+    let errors = this.state.error
+    if (this.state.studentId.error) {
+      errors += '\u2219 شماره‌ی دانشجویی باید متشکل از ارقام باشد و حداقل ۸ کاراکتر باشد.\n'
+    }
+    if (this.state.password.error) {
+      errors += '\u2219 رمز عبور باید حداقل ۶ کاراکتر باشد.\n'
+    }
+    if (this.state.confirmPassword.error) {
+      errors += '\u2219 تکرار رمز عبور صحیح نیست.\n'
+    }
+    if (this.state.rules.error) {
+      errors += '\u2219 برای عضویت در سیستم شما باید قوانین را قبول کنید.\n'
+    }
+    return errors
   }
 
   register() {
@@ -56,16 +80,19 @@ class RegistrationModal extends React.Component {
       })
         .then(response => response.json())
         .then(result => this.handleResult(result))
-    }
+    } else this.validate()
   }
 
   handleResult(result) {
     if (result.id) {
       this.setState({ open: false })
+    } else if (result.username) {
+      this.setState({ error: '\u2219 کاربری با این شماره‌ی دانشجویی از قبل وجود دارد.\n' })
     }
   }
 
   render() {
+    const errors = this.generateErrors()
     return (
       <Modal
         trigger={<Button>ثبت نام</Button>}
@@ -106,6 +133,11 @@ class RegistrationModal extends React.Component {
               onClick={() => this.onRulesChanged()}
             />
           </Form>
+          {errors && <Message
+            error
+            content={errors}
+            />
+          }
         </Modal.Content>
         <Modal.Actions>
           <Button primary onClick={() => this.register()}>عضویت</Button>
