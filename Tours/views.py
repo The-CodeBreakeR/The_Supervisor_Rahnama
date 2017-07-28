@@ -23,7 +23,7 @@ def searchTour(request):
                 return JsonResponse(response)
             i = 1
             while i < tour.count():
-                response['tours'] = response['tours'] + [{'id': str(tour[i].id), 'name': tour[0].name, 'start_time': str(tour[i].start_date),
+                response['tours'] = response['tours'] + [{'id': str(tour[i].id), 'name': tour[i].name, 'start_time': str(tour[i].start_date),
                            'end_time': str(tour[i].end_date), 'price': str(tour[i].price)}]
                 i = i + 1
             return JsonResponse(response)
@@ -34,7 +34,7 @@ def searchTour(request):
 def getTour(request, id):
     tour = Tour.objects.filter(id=id)
     print("hiop")
-    """if tour.count() == 0:
+    if tour.count() == 0:
         return JsonResponse({'status': "-1", 'message': "No such post Found"})
 
     response = {
@@ -43,7 +43,7 @@ def getTour(request, id):
                        'end_time': str(tour[0].end_date), 'price': str(tour[0].price)}]
     }
     print(response)
-    return JsonResponse(response)"""
+    return JsonResponse(response)
     return JsonResponse({'status': "0", 'message': "No Tour Found"})
 
 
