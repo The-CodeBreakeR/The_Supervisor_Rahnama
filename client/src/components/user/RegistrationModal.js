@@ -11,6 +11,7 @@ class RegistrationModal extends React.Component {
       confirmPassword: { value: '', error: false },
       rules: { value: false, error: true },
       open: false,
+      done: false,
       error: '',
     }
     this.fields = ['studentId', 'password', 'confirmPassword', 'rules']
@@ -85,7 +86,7 @@ class RegistrationModal extends React.Component {
 
   handleResult(result) {
     if (result.id) {
-      this.setState({ open: false })
+      this.setState({ done: true })
     } else if (result.username) {
       this.setState({ error: '\u2219 کاربری با این شماره‌ی دانشجویی از قبل وجود دارد.\n' })
     }
@@ -101,48 +102,58 @@ class RegistrationModal extends React.Component {
         onClose={() => this.setState({ open: false })}
       >
         <Modal.Header>ثبت نام</Modal.Header>
-        <Modal.Content>
-          <Form>
-            <Form.Input
-              label='شماره‌ی دانشجویی'
-              value={this.state.studentId.value}
-              error={this.state.studentId.error}
-              onChange={event => this.onStudentIdChanged(event.target.value)}
-              placeholder='شماره‌ی دانشجویی'
+        {!this.state.done
+          ? <Modal.Content>
+            <Form>
+              <Form.Input
+                label='شماره‌ی دانشجویی'
+                value={this.state.studentId.value}
+                error={this.state.studentId.error}
+                onChange={event => this.onStudentIdChanged(event.target.value)}
+                placeholder='شماره‌ی دانشجویی'
+              />
+              <Form.Input
+                label='رمز عبور'
+                value={this.state.password.value}
+                error={this.state.password.error}
+                onChange={event => this.onPasswordChanged(event.target.value)}
+                placeholder='رمز عبور'
+                type='password'
+              />
+              <Form.Input
+                label='تکرار رمز عبور'
+                value={this.state.confirmPassword.value}
+                error={this.state.confirmPassword.error}
+                onChange={event => this.onConfirmPasswordChanged(event.target.value)}
+                placeholder='تکرار رمز عبور'
+                type='password'
+              />
+              <Form.Checkbox
+                label='با قوانین موافقم'
+                checked={this.state.rules.value}
+                error={this.state.rules.error}
+                onClick={() => this.onRulesChanged()}
+              />
+            </Form>
+            {errors && <Message
+              error
+              content={errors}
             />
-            <Form.Input
-              label='رمز عبور'
-              value={this.state.password.value}
-              error={this.state.password.error}
-              onChange={event => this.onPasswordChanged(event.target.value)}
-              placeholder='رمز عبور'
-              type='password'
-            />
-            <Form.Input
-              label='تکرار رمز عبور'
-              value={this.state.confirmPassword.value}
-              error={this.state.confirmPassword.error}
-              onChange={event => this.onConfirmPasswordChanged(event.target.value)}
-              placeholder='تکرار رمز عبور'
-              type='password'
-            />
-            <Form.Checkbox
-              label='با قوانین موافقم'
-              checked={this.state.rules.value}
-              error={this.state.rules.error}
-              onClick={() => this.onRulesChanged()}
-            />
-          </Form>
-          {errors && <Message
-            error
-            content={errors}
-            />
-          }
-        </Modal.Content>
-        <Modal.Actions>
-          <Button primary onClick={() => this.register()}>عضویت</Button>
-          <Button secondary onClick={() => this.setState({ open: false })}>انصراف</Button>
-        </Modal.Actions>
+            }
+          </Modal.Content>
+          : <Modal.Content>
+            ثبت نام شما با موفقیت انجام شد.
+          </Modal.Content>
+        }
+        {!this.state.done
+          ? <Modal.Actions>
+            <Button primary onClick={() => this.register()}>عضویت</Button>
+            <Button secondary onClick={() => this.setState({ open: false })}>انصراف</Button>
+          </Modal.Actions>
+          : <Modal.Actions>
+            <Button primary onClick={() => this.setState({ open: false })}>پایان</Button>
+          </Modal.Actions>
+        }
       </Modal>
     )
   }
