@@ -1,10 +1,17 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
+import Strings from '../../localization'
+import { formatError } from './utils'
 import { Button, Modal, Form, Message } from 'semantic-ui-react'
 
 class RegistrationModal extends React.Component {
   constructor(props) {
     super(props)
+    this.resetState()
+    this.fields = ['studentId', 'password', 'confirmPassword', 'rules']
+  }
+
+  resetState() {
     this.state = {
       studentId: { value: '', error: false },
       password: { value: '', error: false },
@@ -14,7 +21,11 @@ class RegistrationModal extends React.Component {
       done: false,
       error: '',
     }
-    this.fields = ['studentId', 'password', 'confirmPassword', 'rules']
+  }
+
+  close() {
+    this.setState({ open: false })
+    this.resetState()
   }
 
   onStudentIdChanged(value) {
@@ -52,16 +63,16 @@ class RegistrationModal extends React.Component {
   generateErrors() {
     let errors = this.state.error
     if (this.state.studentId.error) {
-      errors += '\u2219 شماره‌ی دانشجویی باید متشکل از ارقام باشد و حداقل ۸ کاراکتر باشد.\n'
+      errors += formatError(Strings.studentIdError)
     }
     if (this.state.password.error) {
-      errors += '\u2219 رمز عبور باید حداقل ۶ کاراکتر باشد.\n'
+      errors += formatError(Strings.passwordError)
     }
     if (this.state.confirmPassword.error) {
-      errors += '\u2219 تکرار رمز عبور صحیح نیست.\n'
+      errors += formatError(Strings.confirmPasswordError)
     }
     if (this.state.rules.error) {
-      errors += '\u2219 برای عضویت در سیستم شما باید قوانین را قبول کنید.\n'
+      errors += formatError(Strings.rulesError)
     }
     return errors
   }
@@ -88,7 +99,7 @@ class RegistrationModal extends React.Component {
     if (result.id) {
       this.setState({ done: true })
     } else if (result.username) {
-      this.setState({ error: '\u2219 کاربری با این شماره‌ی دانشجویی از قبل وجود دارد.\n' })
+      this.setState({ error: formatError(Strings.studentIdAlreadyExists) })
     }
   }
 
@@ -96,40 +107,40 @@ class RegistrationModal extends React.Component {
     const errors = this.generateErrors()
     return (
       <Modal
-        trigger={<Button>ثبت نام</Button>}
+        trigger={<Button>{Strings.registration}</Button>}
         open={this.state.open}
         onOpen={() => this.setState({ open: true })}
-        onClose={() => this.setState({ open: false })}
+        onClose={() => this.close()}
       >
-        <Modal.Header>ثبت نام</Modal.Header>
+        <Modal.Header>{Strings.registration}</Modal.Header>
         {!this.state.done
           ? <Modal.Content>
             <Form>
               <Form.Input
-                label='شماره‌ی دانشجویی'
+                label={Strings.studentId}
                 value={this.state.studentId.value}
                 error={this.state.studentId.error}
                 onChange={event => this.onStudentIdChanged(event.target.value)}
-                placeholder='شماره‌ی دانشجویی'
+                placeholder={Strings.studentId}
               />
               <Form.Input
-                label='رمز عبور'
+                label={Strings.password}
                 value={this.state.password.value}
                 error={this.state.password.error}
                 onChange={event => this.onPasswordChanged(event.target.value)}
-                placeholder='رمز عبور'
+                placeholder={Strings.password}
                 type='password'
               />
               <Form.Input
-                label='تکرار رمز عبور'
+                label={Strings.confirmPassword}
                 value={this.state.confirmPassword.value}
                 error={this.state.confirmPassword.error}
                 onChange={event => this.onConfirmPasswordChanged(event.target.value)}
-                placeholder='تکرار رمز عبور'
+                placeholder={Strings.confirmPassword}
                 type='password'
               />
               <Form.Checkbox
-                label='با قوانین موافقم'
+                label={Strings.iAgreeWithRules}
                 checked={this.state.rules.value}
                 error={this.state.rules.error}
                 onClick={() => this.onRulesChanged()}
@@ -142,16 +153,16 @@ class RegistrationModal extends React.Component {
             }
           </Modal.Content>
           : <Modal.Content>
-            ثبت نام شما با موفقیت انجام شد.
+            {Strings.successfullyRegistered}
           </Modal.Content>
         }
         {!this.state.done
           ? <Modal.Actions>
-            <Button primary onClick={() => this.register()}>عضویت</Button>
-            <Button secondary onClick={() => this.setState({ open: false })}>انصراف</Button>
+            <Button primary onClick={() => this.register()}>{Strings.registration}</Button>
+            <Button secondary onClick={() => this.close()}>{Strings.cancel}</Button>
           </Modal.Actions>
           : <Modal.Actions>
-            <Button primary onClick={() => this.setState({ open: false })}>پایان</Button>
+            <Button primary onClick={() => this.close()}>{Strings.finish}</Button>
           </Modal.Actions>
         }
       </Modal>

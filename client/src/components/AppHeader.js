@@ -1,11 +1,16 @@
 import React from 'react'
+
 import { Header, Segment } from 'semantic-ui-react'
 
-import RegistrationModal from './user/RegistrationModal'
+import AuthHeader from './user/AuthHeader'
 
-export default function AppHeader() {
-  return <Segment className='app__header'>
-    <Header>سامانه‌ی رهنما</Header>
-    <RegistrationModal/>
-  </Segment>
+class AppHeader extends React.Component {
+  render() {
+    return <Segment className='app__header'>
+      <Header>سامانه‌ی رهنما</Header>
+      <AuthHeader/>
+    </Segment>
+  }
 }
+
+export default AppHeader
