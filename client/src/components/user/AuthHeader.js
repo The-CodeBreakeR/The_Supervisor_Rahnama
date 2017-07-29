@@ -13,7 +13,8 @@ class AuthHeader extends React.Component {
 
   render() {
     const loggedIn = !!Cookie.get('token')
-    const user = loggedIn && localStorage.getItem('user')
+    const userData = loggedIn && localStorage.getItem('user')
+    const user = userData && JSON.parse(userData)
     const name = (user && user.name) ? user.name : Strings.user
     return <div className='app__header__auth'>
       {!loggedIn

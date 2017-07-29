@@ -8,7 +8,7 @@ class RegistrationModal extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
-    this.fields = ['studentId', 'password', 'confirmPassword', 'rules']
+    this.fields = ['studentId', 'password', 'confirmPassword', 'firstName', 'lastName', 'rules']
   }
 
   resetState() {
@@ -16,6 +16,8 @@ class RegistrationModal extends React.Component {
       studentId: { value: '', error: false },
       password: { value: '', error: false },
       confirmPassword: { value: '', error: false },
+      firstName: { value: '', error: false },
+      lastName: { value: '', error: false },
       rules: { value: false, error: true },
       open: false,
       done: false,
@@ -41,6 +43,14 @@ class RegistrationModal extends React.Component {
     this.setState({ confirmPassword: { value, error: value !== this.state.password.value } })
   }
 
+  onFirstNameChanged(value) {
+    this.setState({ firstName: { value, error: value.length < 3 } })
+  }
+
+  onLastNameChanged(value) {
+    this.setState({ lastName: { value, error: value.length < 3 } })
+  }
+
   onRulesChanged() {
     this.setState({ rules: { value: !this.state.rules.value, error: !this.state.rules.error } })
   }
@@ -58,6 +68,8 @@ class RegistrationModal extends React.Component {
     this.onStudentIdChanged(this.state.studentId.value)
     this.onPasswordChanged(this.state.password.value)
     this.onConfirmPasswordChanged(this.state.confirmPassword.value)
+    this.onFirstNameChanged(this.state.firstName.value)
+    this.onLastNameChanged(this.state.lastName.value)
   }
 
   generateErrors() {
@@ -70,6 +82,9 @@ class RegistrationModal extends React.Component {
     }
     if (this.state.confirmPassword.error) {
       errors += formatError(Strings.confirmPasswordError)
+    }
+    if (this.state.firstName.error || this.state.lastName.error) {
+      errors += formatError(Strings.nameError)
     }
     if (this.state.rules.error) {
       errors += formatError(Strings.rulesError)
@@ -88,6 +103,8 @@ class RegistrationModal extends React.Component {
         body: JSON.stringify({
           username: this.state.studentId.value,
           password: this.state.password.value,
+          first_name: this.state.firstName.value,
+          last_name: this.state.lastName.value,
         }),
       })
         .then(response => response.json())
@@ -124,22 +141,40 @@ class RegistrationModal extends React.Component {
                 onChange={event => this.onStudentIdChanged(event.target.value)}
                 placeholder={Strings.studentId}
               />
-              <Form.Input
-                label={Strings.password}
-                value={this.state.password.value}
-                error={this.state.password.error}
-                onChange={event => this.onPasswordChanged(event.target.value)}
-                placeholder={Strings.password}
-                type='password'
-              />
-              <Form.Input
-                label={Strings.confirmPassword}
-                value={this.state.confirmPassword.value}
-                error={this.state.confirmPassword.error}
-                onChange={event => this.onConfirmPasswordChanged(event.target.value)}
-                placeholder={Strings.confirmPassword}
-                type='password'
-              />
+              <Form.Group widths='equal'>
+                <Form.Input
+                  label={Strings.firstName}
+                  value={this.state.firstName.value}
+                  error={this.state.firstName.error}
+                  onChange={event => this.onFirstNameChanged(event.target.value)}
+                  placeholder={Strings.firstName}
+                />
+                <Form.Input
+                  label={Strings.lastName}
+                  value={this.state.lastName.value}
+                  error={this.state.lastName.error}
+                  onChange={event => this.onLastNameChanged(event.target.value)}
+                  placeholder={Strings.lastName}
+                />
+              </Form.Group>
+              <Form.Group widths='equal'>
+                <Form.Input
+                  label={Strings.password}
+                  value={this.state.password.value}
+                  error={this.state.password.error}
+                  onChange={event => this.onPasswordChanged(event.target.value)}
+                  placeholder={Strings.password}
+                  type='password'
+                />
+                <Form.Input
+                  label={Strings.confirmPassword}
+                  value={this.state.confirmPassword.value}
+                  error={this.state.confirmPassword.error}
+                  onChange={event => this.onConfirmPasswordChanged(event.target.value)}
+                  placeholder={Strings.confirmPassword}
+                  type='password'
+                />
+              </Form.Group>
               <Form.Checkbox
                 label={Strings.iAgreeWithRules}
                 checked={this.state.rules.value}

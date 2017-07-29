@@ -80,6 +80,7 @@ class LoginModal extends React.Component {
   handleResult(result) {
     if (result.token) {
       Cookie.set('token', result.token)
+      localStorage.setItem('user', JSON.stringify(result))
       this.close()
       this.props.onLogin && this.props.onLogin()
     } else {
