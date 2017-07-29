@@ -47,8 +47,11 @@
     "webpack-dev-server": "^2.5.1"
   },
   "dependencies": {
+    "browser-cookies": "^1.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-localization": "^0.1.1",
     "react-router-dom": "^4.1.2",
     "semantic-ui-less": "^2.2.11",
     "semantic-ui-react": "^0.71.0"
