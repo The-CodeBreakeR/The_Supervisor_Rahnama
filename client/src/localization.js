@@ -24,6 +24,14 @@ const Strings = new LocalizedStrings({
     welcomeDear: 'گرامی، خوش آمدید!',
     user: 'کاربر',
     logout: 'خروج',
+    search: 'جستجو',
+    tourName: 'نام تور',
+    noTourFound: 'توری پیدا نشد.',
+    error: 'خطا',
+    tourId: 'کد تور',
+    startDate: 'شروع تور',
+    endDate: 'پایان تور',
+    tourPrice: 'قیمت',
   },
 })
 
