@@ -18,6 +18,7 @@ class ToursSearch extends React.Component {
       this.setState({error: Strings.noTourFound})
       this.props.setToursList([])
     } else {
+      this.setState({error: ''})
       this.props.setToursList(result.tours)
     }
   }
