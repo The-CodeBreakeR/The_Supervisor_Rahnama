@@ -39,8 +39,9 @@ def getTour(request, id):
 
     response = {
         "status": 0,
-        "tours": [{'id': str(tour[0].id), 'name': tour[0].name, 'start_time': str(tour[0].start_date),
-                       'end_time': str(tour[0].end_date), 'price': str(tour[0].price)}]
+        "tour": {'id': str(tour[0].id), 'name': tour[0].name, 'start_time': str(tour[0].start_date),
+                  'end_time': str(tour[0].end_date), 'price': str(tour[0].price), 'spec': str(tour[0].spec),
+                  'capacity': str(tour[0].capacity)}
     }
     print(response)
     return JsonResponse(response)
