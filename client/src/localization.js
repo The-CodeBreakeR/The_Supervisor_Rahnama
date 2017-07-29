@@ -32,6 +32,12 @@ const Strings = new LocalizedStrings({
     startDate: 'شروع تور',
     endDate: 'پایان تور',
     tourPrice: 'قیمت',
+    requestForTour: 'درخواست برای تور',
+    requestForTourSpec: 'مشخصات تور پیشنهادی خود را بنویسید',
+    submit: 'ثبت',
+    requestSubmitAccept: 'درخواست شما با موفقیت ثبت شد.',
+    requestSubmitDecline: 'درخواست شما با موفقیت ثبت نشد.',
+
   },
 })
 
