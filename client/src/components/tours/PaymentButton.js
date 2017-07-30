@@ -11,6 +11,8 @@ class PaymentButton extends React.Component {
       open: false,
       status: 0,
       message: '',
+      messageStatus: 0,
+      input: '',
     }
   }
 
@@ -23,6 +25,8 @@ class PaymentButton extends React.Component {
     this.state = {
       message: '',
       status: 0,
+      messageStatus: 0,
+      input: '',
     }
   }
 
@@ -35,7 +39,14 @@ class PaymentButton extends React.Component {
   handleClose () {
     this.setState({close: false})
   }
-
+  handleButtonClick(tourId) {
+    if (this.state.input.match(/^\d+$/)) {
+      this.setState({messageStatus: 0})
+      this.ButtonClickHandle(tourId)
+    } else {
+      this.setState({messageStatus: 1})
+    }
+  }
   ButtonClickHandle (tourId) {
     if (Cookie.get('token')) {
       fetch('/tours/payment/', {
@@ -55,17 +66,23 @@ class PaymentButton extends React.Component {
       this.setState({message: Strings.haveNotRegister})
     }
   }
-
-  render () {
+  onInputChange(value) {
+    this.setState({input: value})
+  }
+  render() {
     return <Modal trigger={<Button
-      positive /*onClick={() => this.ButtonClickHandle(this.props.tourId)}*/ >{Strings.tourPayment}</Button>}
+      positive >{Strings.tourPayment}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
       <Modal.Header>{Strings.tourPayment}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
-          {this.state.status === 0 && <Input action={Strings.submit} placeholder={Strings.tourBankCode}/>}
+          {this.state.status === 0 && <Input value={this.state.input} placeholder={Strings.tourBankCode} onChange={event => this.onInputChange(event.target.value)}/>}
+          {this.state.status === 0 && <Button onClick={() => this.handleButtonClick(this.props.tourId)}>
+            {Strings.submit}</Button>}
+          {this.state.messageStatus === 1 && <p>{Strings.errorPayment}</p>
+          }
           {this.state.status === 1 && <p>{this.state.message}</p>}
         </Modal.Description>
       </Modal.Content>
