@@ -23,6 +23,7 @@ class ToursRequest extends React.Component {
       this.setState({error: Strings.requestSubmitDecline})
       this.setState({accept: ''})
     }
+    this.setState({request: ''})
     this.setState({ open: true })
   }
   sendRequest() {
@@ -34,6 +35,7 @@ class ToursRequest extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          token: JSON.parse(localStorage.getItem('user')).token,
           request: this.state.request,
         }),
       })
