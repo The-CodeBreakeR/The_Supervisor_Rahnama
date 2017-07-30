@@ -2,7 +2,7 @@ from datetime import datetime, date
 
 import Tours
 import pytz
-from Tours.models import Tour, ReserveTour
+from Tours.models import Tour, ReserveTour, RequestForTour, Comments
 from django.http import JsonResponse, Http404, response
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -46,12 +46,29 @@ def getTour(request):
     if tour.count() == 0:
         return JsonResponse({'status': -1})
 
-    response = {
-        "status": 0,
-        "tour": {'id': tour[0].id, 'name': tour[0].name, 'start_time': tour[0].start_date.timestamp(),
-                  'end_time': tour[0].end_date.timestamp(), 'price': tour[0].price, 'spec': tour[0].spec,
-                  'capacity': tour[0].capacity}
-    }
+    comments = Comments.objects.filter(tourId=tour[0].id)
+    if comments.count() == 0:
+        response = {
+            "status": 0,
+            "tour": {'id': tour[0].id, 'name': tour[0].name, 'start_time': tour[0].start_date.timestamp(),
+                     'end_time': tour[0].end_date.timestamp(), 'price': tour[0].price, 'spec': tour[0].spec,
+                     'capacity': tour[0].capacity},
+            "comments": [{}]}
+    else:
+        response = {
+            "status": 0,
+            "tour": {'id': tour[0].id, 'name': tour[0].name, 'start_time': tour[0].start_date.timestamp(),
+                     'end_time': tour[0].end_date.timestamp(), 'price': tour[0].price, 'spec': tour[0].spec,
+                     'capacity': tour[0].capacity},
+            "comments": [{'name': str(comments[0].studentId), 'text': str(comments[0].comment_text)}]}
+        if comments.count() == 1:
+            print(response)
+            return JsonResponse(response)
+        i = 1
+        while i < comments.count():
+            response['comments'] = response['comments'] + [
+                {'name': str(comments[0].user.username), 'text': str(comments[0].comment_text)}]
+            i = i + 1
     print(response)
     return JsonResponse(response)
 
@@ -121,6 +138,20 @@ def statusResult(request):
         return JsonResponse({'status': 1})
     if reserves[0].status == str(1):
         return JsonResponse({'status': 2})
+
+@csrf_exempt
+def requestTour(request):
+    bodyParams = json.loads(request.body)
+    requestText = bodyParams['request']
+    token = Token.objects.get(key=bodyParams['token'])
+    user = token.user
+    print('hhhosdsds')
+
+    request = RequestForTour.objects.create()
+    request.student_id = user
+    request.textRequest = requestText
+    request.save()
+    return JsonResponse({'status': 0})
 
 
 def reserveFinder(request):
