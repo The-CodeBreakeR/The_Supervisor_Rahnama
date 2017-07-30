@@ -21,7 +21,6 @@ def searchTour(request):
                            'end_time': tour[0].end_date.timestamp(), 'price': tour[0].price}]
             }
             if len(tour) == 1:
-                print(response)
                 return JsonResponse(response)
             i = 1
             while i < tour.count():
@@ -32,10 +31,11 @@ def searchTour(request):
 
     return JsonResponse({'status': -1 , 'message': "No Tour Found"})
 
-
-def getTour(request, id):
+@csrf_exempt
+def getTour(request):
+    bodyParams = json.loads(request.body)
+    id = bodyParams['id']
     tour = Tour.objects.filter(id=id)
-    print("hiop")
     if tour.count() == 0:
         return JsonResponse({'status': -1, 'message': "No such post Found"})
 
