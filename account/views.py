@@ -7,27 +7,27 @@ from django.http import JsonResponse
 def getIncome(request):
     stdid = 1 ###
     serializer = IncomeSerializer(Income.objects.filter(student_id=stdid), many=True)
-    return JsonResponse(serializer.data)
+    return JsonResponse(serializer.data, safe=False)
 
 def newIncome(request):
     data = JSONParser().parse(request)
     serializer = IncomeSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
-        return JsonResponse(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
     return JsonResponse(serializer.errors, status=400)
 
 def getExpense(request):
     stdid = 1 ###
     serializer = ExpenseSerializer(Expense.objects.filter(student_id=stdid), many=True)
-    return JsonResponse(serializer.data)
+    return JsonResponse(serializer.data, safe=False)
 
 def newExpense(request):
     data = JSONParser().parse(request)
     serializer = ExpenseSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
-        return JsonResponse(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
     return JsonResponse(serializer.errors, status=400)
 
 def newRequest(request):
@@ -35,11 +35,11 @@ def newRequest(request):
     serializer = LoanRequestSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
-        return JsonResponse(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
     return JsonResponse(serializer.errors, status=400)
 
 def getResponse(request, id):
     stdid = 1 ###
     serializer = LoanResponseSerializer(LoanResponse.objects.filter(student_id=stdid,
                                                                     request_id=id), many=True)
-    return JsonResponse(serializer.data)
+    return JsonResponse(serializer.data, safe=False)
