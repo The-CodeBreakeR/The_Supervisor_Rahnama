@@ -37,7 +37,10 @@ const Strings = new LocalizedStrings({
     submit: 'ثبت',
     requestSubmitAccept: 'درخواست شما با موفقیت ثبت شد.',
     requestSubmitDecline: 'درخواست شما با موفقیت ثبت نشد.',
-
+    moreInfo: 'برای اطلاعات بیشتر کلیک کنید.',
+    tourInfo: 'اطلاعات تور',
+    info: 'توضیحات',
+    tourCapacity: 'ظرفیت تور',
   },
 })
 
