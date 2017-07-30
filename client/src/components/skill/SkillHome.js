@@ -3,7 +3,7 @@ import CodingSkillButton from './CodingSkillButton'
 import PresentationButton from './PresentationButton'
 import FastReadButton from './FastReadButton'
 import TypeSkill from './TypeSkill'
-
+import SubmitQuestionButton from './SubmitQuestionButton'
 
 class SkillHome extends React.Component {
 
@@ -12,6 +12,7 @@ class SkillHome extends React.Component {
       <PresentationButton/>
       <FastReadButton/>
       <TypeSkill/>
+      <SubmitQuestionButton/>
     </div>
   }
 }
