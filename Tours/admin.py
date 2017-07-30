@@ -1,4 +1,4 @@
-from .models import Tour, ReserveTour
+from .models import Tour, ReserveTour, RequestForTour, Comments
 from django.contrib import admin
 
 
@@ -15,3 +15,17 @@ class ReserveAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ReserveTour, ReserveAdmin)
+
+
+class RequestAdmin(admin.ModelAdmin):
+    list_display = ['student_id', 'textRequest']
+
+
+admin.site.register(RequestForTour, RequestAdmin)
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['tourId', 'studentId', 'comment_text']
+
+
+admin.site.register(Comments, CommentAdmin)
