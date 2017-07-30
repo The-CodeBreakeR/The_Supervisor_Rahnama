@@ -48,6 +48,8 @@ const Strings = new LocalizedStrings({
     waitPlease: 'لطفا صبر کنید...',
     noCapacityTour: 'متاسفانه ظرفیت تور پر میباشد',
     haveNotRegister: 'برای انجام این فرآیند در سایت عضو شوید',
+    tourBankCode: 'لطفا کد فیش پرداخت خود را وارد نمایید..',
+    tourStop: 'بستن',
   },
 })
 
