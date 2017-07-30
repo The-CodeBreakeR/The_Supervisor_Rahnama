@@ -40,16 +40,15 @@ class ReserveTour(models.Model):
 
 class RequestForTour(models.Model):
     student_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    tour_id = models.ForeignKey(Tour, on_delete=models.CASCADE, default=1)
-    date = models.DateTimeField(default=datetime.now)
-    status = models.CharField(max_length=1000)
+    textRequest = models.CharField(max_length=1000)
 
     def __str__(self):
         return str(self.id)
 
 
 class Comments(models.Model):
-    tour_id = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    tourId = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    studentId = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     comment_text = models.TextField(max_length=1000)
 
     def __str__(self):
