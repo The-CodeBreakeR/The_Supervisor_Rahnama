@@ -49,6 +49,7 @@ const Strings = new LocalizedStrings({
     noCapacityTour: 'متاسفانه ظرفیت تور پر میباشد',
     haveNotRegister: 'برای انجام این فرآیند در سایت عضو شوید',
     tourBankCode: 'لطفا کد فیش پرداخت خود را وارد نمایید..',
+    errorPayment: 'فیش بانکی وارد شده غلط میباشد',
     tourStop: 'بستن',
   },
 })
