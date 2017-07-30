@@ -5,9 +5,9 @@ from .models import Accommodation, AccommPrinciple
 class AccommPrincipleSerializer(serializers.ModelSerializer):
     class Meta:
         model = AccommPrinciple
-        fields = '__all__'
+        fields = ('id', 'date', 'description')
 
 class AccommodationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Accommodation
-        fields = '__all__'
+        fields = ('id', 'size', 'type', 'location')

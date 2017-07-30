@@ -1,18 +1,19 @@
-from rest_framework import viewsets
-from .models import AccommPrinciple, Accommodation
-from .serializers import AccommodationSerializer, AccommPrincipleSerializer
+from rest_framework.parsers import JSONParser
+from accomm.models import AccommPrinciple, Accommodation
+from accomm.serializers import AccommodationSerializer, AccommPrincipleSerializer
+from django.http import JsonResponse
 
+def showRules(request):
+    serializer = AccommPrincipleSerializer(AccommPrinciple.objects.all(), many=True)
+    return JsonResponse(serializer.data, safe=False)
 
-class AccommodationViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Accommodation.objects.all().order_by('acc_id')
-    serializer_class = AccommodationSerializer
+def availablePlaces(request):
+    serializer = AccommodationSerializer(
+        Accommodation.objects.filter(reserved_by__isnull=True), many=True)
+    return JsonResponse(serializer.data, safe=False)
 
-class AccommPrincipleViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = AccommPrinciple.objects.all().order_by('rule_id')
-    serializer_class = AccommPrincipleSerializer
+def reserveAPlace(request, id):
+    stdid = 1 ###
+    serializer = AccommodationSerializer(
+        Accommodation.objects.filter(id=id).update(reserved_by=stdid), many=True)
+    return JsonResponse(serializer.data, safe=False)
