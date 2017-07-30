@@ -1,10 +1,16 @@
+from datetime import datetime
+
 import Tours
 from Tours.models import Tour, ReserveTour
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, response
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 import json
+
+from rest_framework.authtoken.models import Token
+from user.views import CustomObtainAuthToken
+
 
 @csrf_exempt
 def searchTour(request):
@@ -29,7 +35,7 @@ def searchTour(request):
                 i = i + 1
             return JsonResponse(response)
 
-    return JsonResponse({'status': -1 , 'message': "No Tour Found"})
+    return JsonResponse({'status': -1})
 
 @csrf_exempt
 def getTour(request):
@@ -37,7 +43,7 @@ def getTour(request):
     id = bodyParams['id']
     tour = Tour.objects.filter(id=id)
     if tour.count() == 0:
-        return JsonResponse({'status': -1, 'message': "No such post Found"})
+        return JsonResponse({'status': -1})
 
     response = {
         "status": 0,
@@ -47,27 +53,32 @@ def getTour(request):
     }
     print(response)
     return JsonResponse(response)
-    #return JsonResponse({'status': 0, 'message': "No Tour Found"})
 
-
-def reserveTour(request, id):
-    tour = Tour.objects.filter(id=id)
-    #to be complete
-    std_id = 1
+@csrf_exempt
+def reserveTour(request):
+    bodyParams = json.loads(request.body)
+    tour_id = bodyParams['tourId']
+    tour = Tour.objects.filter(id=tour_id)
+    token = Token.objects.get(key=bodyParams['token'])
+    user = token.user
+    print(user.id, tour_id)
     if len(tour) == 0:
-        return JsonResponse({'status': -1, 'message': "No Tour Found"})
-
+        return JsonResponse({'status': -1})
+    reserves = ReserveTour.objects.filter(student_id=user.id, tour_id=tour_id)
+    # if not len(reserves) == 0:
+    #     return JsonResponse({'status': -1})
     if not tour[0].capacity == 0:
         tour[0].capacity = tour[0].capacity - 1
         tour[0].save()
         reserve = ReserveTour.objects.create()
-        reserve.student_id = std_id
-        reserve.tour_id = id
+        reserve.student_id = user
+        reserve.tour_id = tour[0]
         reserve.status = 0
         reserve.save()
-        return JsonResponse({'status': 0, 'message': "tour reserved"})
+        print("hi")
+        return JsonResponse({'status': 0})
     else:
-        return JsonResponse({'status': 0, 'message': "No Capacity for this Tour Found"})
+        return JsonResponse({'status': -1})
 
 
 def cancelReserve(request, id):
@@ -76,13 +87,38 @@ def cancelReserve(request, id):
     tour = Tour.objects.filter(id=id)
     reserve = ReserveTour.objects.filter(student_id=std_id, tour_id=id)
     if len(tour) == 0:
-        return JsonResponse({'status': -1, 'message': "No Tour Found"})
+        return JsonResponse({'status': -1})
 
     if len(reserve) == 0:
-        return JsonResponse({'status': -1, 'message': "This reserve does not exist!"})
+        return JsonResponse({'status': -1})
     tour[0].capacity = tour[0].capacity + 1
     tour[0].save()
     reserve[0].delete()
-    return JsonResponse({'status': 0, 'message': "reserve canceled!"})
+    return JsonResponse({'status': 0})
 
 
+def payTour(request):
+    std_id = 1
+    tour_id = 1
+    reserve = ReserveTour.objects.filter(tour_id=tour_id, student_id=std_id)
+    if len(reserve) == 0:
+        return JsonResponse({'status': -1, 'message': "No Tour Found"})
+    reserve[0].status = 1
+    return JsonResponse({'status': 0, 'message': "tour reserve is complete"})
+
+@csrf_exempt
+def statusResult(request):
+    bodyParams = json.loads(request.body)
+    tour_id = bodyParams['tourId']
+    tour = Tour.objects.filter(id=tour_id)
+    token = Token.objects.get(key=bodyParams['token'])
+    user = token.user
+    reserves = ReserveTour.objects.filter(student_id=user.id, tour_id=tour_id)
+    if len(reserves) == 0:
+        return JsonResponse({'status': 0})
+    if datetime.now > tour.start_date:
+        return JsonResponse({'status': 3})
+    if reserves[0].status == 0:
+        return JsonResponse({'status': 1})
+    if reserves[0].status == 1:
+        return JsonResponse({'status': 2})
