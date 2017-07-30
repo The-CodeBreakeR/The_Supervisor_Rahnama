@@ -14,6 +14,6 @@ def availablePlaces(request):
 
 def reserveAPlace(request, id):
     stdid = 1 ###
-    serializer = AccommodationSerializer(
-        Accommodation.objects.filter(id=id).update(reserved_by=stdid), many=True)
+    Accommodation.objects.filter(id=id).update(reserved_by=stdid)
+    serializer = AccommodationSerializer(Accommodation.objects.filter(id=id), many=True)
     return JsonResponse(serializer.data, safe=False)
