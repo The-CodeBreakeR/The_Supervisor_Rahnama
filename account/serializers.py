@@ -5,19 +5,19 @@ from .models import Income, Expense, LoanRequest, LoanResponse
 class IncomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Income
-        fields = ('source', 'amount')
+        fields = ('id', 'student_id', 'amount', 'source')
 
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense
-        fields = ('destination', 'amount')
+        fields = ('id', 'student_id', 'amount', 'destination')
 
 class LoanRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = LoanRequest
-        fields = ('id', 'purpose', 'amount')
+        fields = ('id', 'student_id', 'amount', 'purpose')
 
 class LoanResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = LoanResponse
-        fields = ('request_id', 'answer', 'repayment_period', 'repayment_rate')
+        fields = ('id', 'request_id', 'student_id', 'answer', 'repayment_period', 'repayment_rate')

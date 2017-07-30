@@ -9,7 +9,7 @@ from django.db import models
 
 class Income(models.Model):
     student_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    amount = models.IntegerField()
+    amount = models.IntegerField(default=0)
     source = models.CharField(max_length=100)
 
     def __str__(self):
@@ -18,7 +18,7 @@ class Income(models.Model):
 
 class Expense(models.Model):
     student_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    amount = models.IntegerField()
+    amount = models.IntegerField(default=0)
     destination = models.CharField(max_length=100)
 
     def __str__(self):
@@ -27,7 +27,7 @@ class Expense(models.Model):
 
 class LoanRequest(models.Model):
     student_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    amount = models.IntegerField()
+    amount = models.IntegerField(default=0)
     purpose = models.CharField(max_length=100)
 
     def __str__(self):
@@ -38,8 +38,8 @@ class LoanResponse(models.Model):
     request_id = models.ForeignKey(LoanRequest, on_delete=models.CASCADE, default=1)
     student_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     answer = models.CharField(max_length=100)
-    repayment_period = models.IntegerField()
-    repayment_rate = models.IntegerField()
+    repayment_period = models.IntegerField(default=0)
+    repayment_rate = models.IntegerField(default=0)
 
     def __str__(self):
         return "id: " + str(self.id) + " - std: " + str(self.student_id) + \
