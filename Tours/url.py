@@ -5,5 +5,5 @@ urlpatterns = [
     url(r'^search/', Tours.views.searchTour, name='searchTour'),
     url(r'^getTour/', Tours.views.getTour, name='getTour'),
     url(r'^reserve/', Tours.views.reserveTour, name='reserve'),
-
+    url(r'^status/', Tours.views.statusResult, name='status'),
 ]
