@@ -1,6 +1,7 @@
-from datetime import datetime
+from datetime import datetime, date
 
 import Tours
+import pytz
 from Tours.models import Tour, ReserveTour
 from django.http import JsonResponse, Http404, response
 from django.shortcuts import render
@@ -75,7 +76,6 @@ def reserveTour(request):
         reserve.tour_id = tour[0]
         reserve.status = 0
         reserve.save()
-        print("hi")
         return JsonResponse({'status': 0})
     else:
         return JsonResponse({'status': -1})
@@ -116,9 +116,9 @@ def statusResult(request):
     reserves = ReserveTour.objects.filter(student_id=user.id, tour_id=tour_id)
     if len(reserves) == 0:
         return JsonResponse({'status': 0})
-    if datetime.now > tour.start_date:
-        return JsonResponse({'status': 3})
-    if reserves[0].status == 0:
+    #if datetime.utcnow().replace(tzinfo=pytz.UTC) > tour[0].start_date:
+    #    return JsonResponse({'status': 3})
+    if reserves[0].status == str(0):
         return JsonResponse({'status': 1})
-    if reserves[0].status == 1:
+    if reserves[0].status == str(1):
         return JsonResponse({'status': 2})
