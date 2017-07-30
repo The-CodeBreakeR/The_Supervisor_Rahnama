@@ -8,7 +8,7 @@ class ToursRequest extends React.Component {
     this.state = {
       request: '',
       error: '',
-      accept: 'ss',
+      accept: '',
     }
   }
 
@@ -64,6 +64,5 @@ class ToursRequest extends React.Component {
     </div>
   }
 }
-
 
 export default ToursRequest
