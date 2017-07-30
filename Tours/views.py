@@ -80,40 +80,39 @@ def reserveTour(request):
     else:
         return JsonResponse({'status': -1})
 
-
-def cancelReserve(request, id):
-    # to be complete
-    std_id = 1
-    tour = Tour.objects.filter(id=id)
-    reserve = ReserveTour.objects.filter(student_id=std_id, tour_id=id)
+@csrf_exempt
+def cancelReserve(request):
+    reserve = reserveFinder(request)
+    bodyParams = json.loads(request.body)
+    tour_id = bodyParams['tourId']
+    tour = Tour.objects.filter(id=tour_id)
     if len(tour) == 0:
         return JsonResponse({'status': -1})
 
     if len(reserve) == 0:
         return JsonResponse({'status': -1})
+    print(tour[0].capacity)
     tour[0].capacity = tour[0].capacity + 1
     tour[0].save()
+    print(tour[0].capacity)
     reserve[0].delete()
+    print("where")
     return JsonResponse({'status': 0})
 
-
+@csrf_exempt
 def payTour(request):
-    std_id = 1
-    tour_id = 1
-    reserve = ReserveTour.objects.filter(tour_id=tour_id, student_id=std_id)
+    reserve = reserveFinder(request)
     if len(reserve) == 0:
-        return JsonResponse({'status': -1, 'message': "No Tour Found"})
+        print("hi")
+        return JsonResponse({'status': -1})
     reserve[0].status = 1
-    return JsonResponse({'status': 0, 'message': "tour reserve is complete"})
+    print(reserve[0].status)
+    reserve[0].save()
+    return JsonResponse({'status': 0})
 
 @csrf_exempt
 def statusResult(request):
-    bodyParams = json.loads(request.body)
-    tour_id = bodyParams['tourId']
-    tour = Tour.objects.filter(id=tour_id)
-    token = Token.objects.get(key=bodyParams['token'])
-    user = token.user
-    reserves = ReserveTour.objects.filter(student_id=user.id, tour_id=tour_id)
+    reserves = reserveFinder(request)
     if len(reserves) == 0:
         return JsonResponse({'status': 0})
     #if datetime.utcnow().replace(tzinfo=pytz.UTC) > tour[0].start_date:
@@ -122,3 +121,12 @@ def statusResult(request):
         return JsonResponse({'status': 1})
     if reserves[0].status == str(1):
         return JsonResponse({'status': 2})
+
+
+def reserveFinder(request):
+    bodyParams = json.loads(request.body)
+    tour_id = bodyParams['tourId']
+    token = Token.objects.get(key=bodyParams['token'])
+    user = token.user
+    reserves = ReserveTour.objects.filter(student_id=user.id, tour_id=tour_id)
+    return reserves
