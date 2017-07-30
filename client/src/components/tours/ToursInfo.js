@@ -3,6 +3,9 @@ import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 import _ from 'lodash'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
+import ReserveButton from './ReserveButton'
+import PaymentButton from './PaymentButton'
+import CanselReserveButton from './CanselReserveButton'
 
 class ToursInfo extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class ToursInfo extends React.Component {
       tourspec: '',
       tourprice: '',
       tourcapacity: '',
+      status: 3,
     }
   }
   getInfo() {
@@ -61,9 +65,9 @@ class ToursInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button primary>
-          Proceed <Icon name='right chevron' />
-        </Button>
+        {(this.state.status === 1) && <ReserveButton/>}
+        {(this.state.status === 2) && <PaymentButton/>}
+        {(this.state.status === 3) && <CanselReserveButton/>}
       </Modal.Actions>
     </Modal>
   }
