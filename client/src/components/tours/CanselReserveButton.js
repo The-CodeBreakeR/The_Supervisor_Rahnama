@@ -38,7 +38,7 @@ class CanselReserveButton extends React.Component {
 
   ButtonClickHandle (tourId) {
     if (Cookie.get('token')) {
-      fetch('/tours/cansel/', {
+      fetch('/tours/decline/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -58,7 +58,7 @@ class CanselReserveButton extends React.Component {
 
   render () {
     return <Modal trigger={<Button
-      positive /*onClick={() => this.ButtonClickHandle(this.props.tourId)}*/ >{Strings.tourCansel}</Button>}
+      negative onClick={() => this.ButtonClickHandle(this.props.tourId)} >{Strings.tourCansel}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
