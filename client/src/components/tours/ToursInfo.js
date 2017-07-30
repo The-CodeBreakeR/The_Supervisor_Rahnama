@@ -11,13 +11,14 @@ class ToursInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      TourId: '',
       TourName: '',
       start: '',
       end: '',
       tourspec: '',
       tourprice: '',
       tourcapacity: '',
-      status: 3,
+      status: 1,
     }
   }
   getInfo() {
@@ -35,6 +36,7 @@ class ToursInfo extends React.Component {
       .then(result => {
         if (result.status === 0) {
           console.log(result.tour)
+          this.setState({TourID: result.tour.id})
           this.setState({TourName: result.tour.name})
           this.setState({start: MomentJ(result.tour.start_time * 1000).format('LLLL')})
           this.setState({end: MomentJ(result.tour.end_time * 1000).format('LLLL')})
@@ -45,6 +47,10 @@ class ToursInfo extends React.Component {
         }
       })
   }
+  setStatus(stat) {
+    this.setState({status: stat})
+  }
+
   render() {
     return <Modal trigger={<Button onClick={() => this.getInfo()}>{Strings.moreInfo}</Button>}>
       <Modal.Header>{Strings.tourInfo}</Modal.Header>
@@ -65,7 +71,8 @@ class ToursInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        {(this.state.status === 1) && <ReserveButton/>}
+        {(this.state.status === 1) && <ReserveButton setStatus={(stat) => this.setStatus(stat)} tourId={this.state.TourID}
+          getInfoRecall={() => this.getInfo()} />}
         {(this.state.status === 2) && <PaymentButton/>}
         {(this.state.status === 3) && <CanselReserveButton/>}
       </Modal.Actions>
