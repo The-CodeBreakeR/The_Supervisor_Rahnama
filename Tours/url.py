@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^status/', Tours.views.statusResult, name='status'),
     url(r'^payment/', Tours.views.payTour, name='payTour'),
     url(r'^decline/', Tours.views.cancelReserve, name='decline'),
+    url(r'^request/', Tours.views.requestTour, name='request'),
 ]
