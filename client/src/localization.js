@@ -41,6 +41,10 @@ const Strings = new LocalizedStrings({
     tourInfo: 'اطلاعات تور',
     info: 'توضیحات',
     tourCapacity: 'ظرفیت تور',
+    tourReserve: 'رزرو',
+    tourPayment: 'پرداخت هزینه',
+    tourCansel: 'لغو رزرو',
+    tourAccepted: 'تایید',
   },
 })
 
