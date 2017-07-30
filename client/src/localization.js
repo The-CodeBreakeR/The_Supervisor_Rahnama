@@ -56,6 +56,8 @@ const Strings = new LocalizedStrings({
     seePresentationSkill: 'مشاهده مهارت ارایه مطالب',
     seeFastReadSkill: 'مشاهده مهارت تند خوانی',
     seeTypeSkill: 'مشاهده مهارت تایپ',
+    askSkillQuestion: 'پرسش سوال',
+    askSkillQuestionSpec: 'متن سوال خود را بنویسید...',
   },
 })
 
