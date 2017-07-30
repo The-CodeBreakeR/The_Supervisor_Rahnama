@@ -26,7 +26,7 @@ class ToursRequest extends React.Component {
     this.setState({ open: true })
   }
   sendRequest() {
-    if (this.state.tourName) {
+    if (this.state.request) {
       fetch('/tours/request/', {
         method: 'POST',
         headers: {
@@ -47,7 +47,7 @@ class ToursRequest extends React.Component {
       <div>
         <Form>
           <Form.TextArea value={this.state.request} label={Strings.requestForTour} placeholder={Strings.requestForTourSpec} onChange={event => this.onRequestChange(event.target.value)} />
-          <Form.Button /*onClick={() => this.sendRequest()}*/ >{Strings.submit}</Form.Button>
+          <Form.Button onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>
         </Form>
       </div>
       {this.state.error &&
