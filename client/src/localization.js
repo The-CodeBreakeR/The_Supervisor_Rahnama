@@ -51,6 +51,11 @@ const Strings = new LocalizedStrings({
     tourBankCode: 'لطفا کد فیش پرداخت خود را وارد نمایید..',
     errorPayment: 'فیش بانکی وارد شده غلط میباشد',
     tourStop: 'بستن',
+    seeCodingSkill: 'مشاهده مهارت کد نویسی',
+    skill: ' توضیحات مهارت',
+    seePresentationSkill: 'مشاهده مهارت ارایه مطالب',
+    seeFastReadSkill: 'مشاهده مهارت تند خوانی',
+    seeTypeSkill: 'مشاهده مهارت تایپ',
   },
 })
 
