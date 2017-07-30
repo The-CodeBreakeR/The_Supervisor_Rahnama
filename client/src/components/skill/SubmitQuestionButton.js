@@ -1,39 +1,38 @@
 import React from 'react'
-import { Form, Message } from 'semantic-ui-react'
+import { Form, Message ,  Button, Header, Icon, Image, Modal, Input} from 'semantic-ui-react'
 import Strings from '../../localization'
 
 class SubmitQuestionButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      open: false,
       request: '',
-      state: 0,
+      status: 0,
     }
   }
-
+  close() {
+    this.setState({status: 0})
+    this.setState({request: ''})
+    this.setState({open: false})
+  }
   onRequestChange(value) {
     this.setState({request: value})
   }
   handleResult(result) {
-    if (result.status === 0) {
-      this.setState({error: ''})
-      this.setState({accept: Strings.requestSubmitAccept})
-    } else {
-      this.setState({error: Strings.requestSubmitDecline})
-      this.setState({accept: ''})
-    }
+    this.setState({status: 1})
     this.setState({ open: true })
   }
   sendRequest() {
     if (this.state.request) {
-      fetch('/tours/request/', {
+      fetch('/skill/question/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          request: this.state.request,
+          question: this.state.request,
         }),
       })
         .then(response => response.json())
@@ -42,25 +41,25 @@ class SubmitQuestionButton extends React.Component {
   }
 
   render() {
-    return <div>
-      <div>
-        <Form>
-          <Form.TextArea value={this.state.request} label={Strings.requestForTour} placeholder={Strings.requestForTourSpec} onChange={event => this.onRequestChange(event.target.value)} />
-          <Form.Button onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>
-        </Form>
-      </div>
-      {this.state.error &&
-        <Message negative>
-          <Message.Header>{Strings.error}</Message.Header>
-          <p>{Strings.requestSubmitDecline}</p>
-        </Message>}
-      {this.state.accept &&
-        <Message positive>
-          <Message.Header>{Strings.submit}</Message.Header>
-          <p>{Strings.requestSubmitAccept}</p>
-        </Message>}
+    return <Modal trigger={<Button
+      color='green' >{Strings.askSkillQuestion}</Button>}
+    open={this.state.open} onOpen={() => this.setState({open: true})}>
+      <Modal.Header>{Strings.askSkillQuestion}</Modal.Header>
+      <Modal.Content image scrolling>
+        <Modal.Description>
+          {this.state.status === 0 && <Form.TextArea value={this.state.request} placeholder={Strings.askSkillQuestionSpec} onChange={event => this.onRequestChange(event.target.value)} />}
+          {this.state.status === 1 && <Message positive><Message.Header>{Strings.submit}</Message.Header>
+            <p>{Strings.requestSubmitAccept}</p>
+          </Message>}
+        </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions>
+        {this.state.status === 0 && <Button onClick={() => this.sendRequest()} >{Strings.submit}</Button>}
+        {this.state.status === 0 && <Button onClick={() => this.close()} >{Strings.cancel}</Button>}
+        {this.state.status === 1 && <Button onClick={() => this.close()} >{Strings.tourStop}</Button>}
+      </Modal.Actions>
+    </Modal>
 
-    </div>
   }
 }
 
