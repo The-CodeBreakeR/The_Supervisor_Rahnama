@@ -45,6 +45,9 @@ const Strings = new LocalizedStrings({
     tourPayment: 'پرداخت هزینه',
     tourCansel: 'لغو رزرو',
     tourAccepted: 'تایید',
+    waitPlease: 'لطفا صبر کنید...',
+    noCapacityTour: 'متاسفانه ظرفیت تور پر میباشد',
+    haveNotRegister: 'برای انجام این فرآیند در سایت عضو شوید',
   },
 })
 
