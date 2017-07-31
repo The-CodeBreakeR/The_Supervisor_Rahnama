@@ -3,6 +3,7 @@
  */
 
 import React from 'react'
+import fetch from 'isomorphic-fetch'
 
 class AccommHome extends React.Component {
   constructor(props) {
@@ -24,9 +25,7 @@ class AccommHome extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.status === 0) {
-          this.setState({placesList: result.tours})
-        }
+        this.setState({placesList: result.tours})
       })
   }
 
