@@ -10,4 +10,4 @@ class AccommPrincipleSerializer(serializers.ModelSerializer):
 class AccommodationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Accommodation
-        fields = ('id', 'size', 'type', 'location')
+        fields = ('id', 'size', 'type', 'location', 'cost')
