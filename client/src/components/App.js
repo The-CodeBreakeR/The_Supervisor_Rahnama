@@ -11,6 +11,7 @@ class App extends React.Component {
     return <div className='app'>
       <AppHeader/>
       <Route path='/accommodation' component={AccommHome}/>
+      <Route path='/test' component={AppHeader}/>
     </div>
   }
 }

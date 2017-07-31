@@ -4,6 +4,7 @@ from accomm.serializers import AccommodationSerializer, AccommPrincipleSerialize
 from django.http import JsonResponse
 from rest_framework.authtoken.models import Token
 from user.views import CustomObtainAuthToken
+import json
 
 def showRules(request):
     serializer = AccommPrincipleSerializer(AccommPrinciple.objects.all(), many=True)
@@ -15,6 +16,7 @@ def availablePlaces(request):
     return JsonResponse(serializer.data, safe=False)
 
 def reserveAPlace(request):
+    bodyParams = json.loads(request.body)
     placeid = bodyParams['placeID']
     token = Token.objects.get(key=bodyParams['token'])
     stdid = token.user

@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from rest_framework import routers
 
-from user.views import UserViewSet
+from user.views import UserViewSet, CustomObtainAuthToken
 
 router = routers.DefaultRouter()
 router.register(r'user', UserViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api-token-auth/', CustomObtainAuthToken.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
     url(r'^accommodation/', include('accomm.urls')),
