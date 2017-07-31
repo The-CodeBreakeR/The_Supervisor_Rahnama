@@ -30,7 +30,7 @@ class SchedulingList extends React.Component {
             <Table.HeaderCell>{Strings.schedulingId}</Table.HeaderCell>
             <Table.HeaderCell>{Strings.schedulingName}</Table.HeaderCell>
             <Table.HeaderCell>{Strings.startDate}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.endDate}</Table.HeaderCell>
+            <Table.HeaderCell>{Strings.schedulingEndDate}</Table.HeaderCell>
             <Table.HeaderCell>{Strings.schedulingPrice}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

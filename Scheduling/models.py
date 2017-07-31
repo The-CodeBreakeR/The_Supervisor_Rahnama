@@ -48,7 +48,7 @@ class RequestForScheduling(models.Model):
 
 class Comments(models.Model):
     schedulingId = models.ForeignKey(Scheduling, on_delete=models.CASCADE)
-    studentId = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    studentId = models.ForeignKey(User, on_delete=models.CASCADE, default=1,related_name='+')
     comment_text = models.TextField(max_length=1000)
 
     def __str__(self):

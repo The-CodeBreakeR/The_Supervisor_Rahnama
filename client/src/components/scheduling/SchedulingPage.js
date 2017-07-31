@@ -5,7 +5,7 @@ import SchedulingRequest from './SchedulingRequest'
 import SchedulingSearch from './SchedulingSearch'
 
 
-class SchedulingHome extends React.Component {
+class SchedulingPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
