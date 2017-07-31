@@ -4,7 +4,7 @@ import MomentJ from 'moment-jalaali'
 
 import AppHeader from './AppHeader'
 import ToursHome from './tours/ToursHome'
-
+import SkillHome from './skill/SkillHome'
 MomentJ.loadPersian()
 
 class App extends React.Component {
@@ -12,6 +12,7 @@ class App extends React.Component {
     return <div className='app'>
       <AppHeader/>
       <Route path="/tours" component={ToursHome}/>
+      <Route path="/skill" component={SkillHome}/>
     </div>
   }
 }
