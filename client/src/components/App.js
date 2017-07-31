@@ -1,11 +1,18 @@
 import React from 'react'
-import {Route, Link} from 'react-router-dom'
+import Route from 'react-router-dom'
+import MomentJ from 'moment-jalaali'
 
 import AppHeader from './AppHeader'
+import AccommHome from './accomm/AccommHome'
+MomentJ.loadPersian()
 
-export default function App() {
-  return <div className='app'>
-    <AppHeader/>
-    <Route path="/test" component={AppHeader}/>
-  </div>
+class App extends React.Component {
+  render() {
+    return <div className='app'>
+      <AppHeader/>
+      <Route path='/accommodation' component={AccommHome}/>
+    </div>
+  }
 }
+
+export default App
