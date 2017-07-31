@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 import Tours.url
+import Skill.url
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
@@ -31,5 +32,6 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^tours/', include(Tours.url)),
     url(r'^.*$', TemplateView.as_view(template_name='index.html')),
+    url(r'^skill/', include(Skill.url)),
 
 ]
