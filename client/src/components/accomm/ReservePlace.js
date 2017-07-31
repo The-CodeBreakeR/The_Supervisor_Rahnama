@@ -2,9 +2,7 @@
  * Created by ali on 7/31/17.
  */
 
-import React from 'react'
-
-class AccommHome extends React.Component {
+class ReservePlace extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,7 +10,7 @@ class AccommHome extends React.Component {
     }
   }
 
-  componentWillMount() {
+  fetchPlacesList() {
     fetch('/accommodation/places/', {
       method: 'POST',
       headers: {
@@ -30,17 +28,12 @@ class AccommHome extends React.Component {
       })
   }
 
-  setPlacesList(placesList) {
-    this.setState({placesList: placesList})
-  }
-
   render() {
-    return <div className='accomm'>
-      <RulesList/>
-      <PlacesList placesList={this.state.placesList} />
-      <ReservePlace setPlacesList={(placesList) => this.setPlacesList(placesList)} />
+    return <div>
+      <Input value={this.state.tourName} placeholder={Strings.tourName} onChange={event => this.onTourNameChange(event.target.value)}/>
+      <Button onClick={() => this.search()}>{Strings.search}</Button>
     </div>
   }
 }
 
-export default AccommHome
+export default ReservePlace
