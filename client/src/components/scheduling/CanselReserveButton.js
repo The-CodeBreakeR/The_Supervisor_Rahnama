@@ -38,7 +38,7 @@ class CanselReserveButton extends React.Component {
 
   ButtonClickHandle (schedulingId) {
     if (Cookie.get('token')) {
-      fetch('/schedulings/decline/', {
+      fetch('/scheduling/decline/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

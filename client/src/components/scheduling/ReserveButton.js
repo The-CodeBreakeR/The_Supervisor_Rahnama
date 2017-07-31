@@ -38,7 +38,7 @@ class ReserveButton extends React.Component {
   }
   ButtonClickHandle(schedulingId) {
     if (Cookie.get('token')) {
-      fetch('/schedulings/reserve/', {
+      fetch('/scheduling/reserve/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

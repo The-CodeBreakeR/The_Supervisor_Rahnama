@@ -49,7 +49,7 @@ class PaymentButton extends React.Component {
   }
   ButtonClickHandle (schedulingId) {
     if (Cookie.get('token')) {
-      fetch('/schedulings/payment/', {
+      fetch('/scheduling/payment/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

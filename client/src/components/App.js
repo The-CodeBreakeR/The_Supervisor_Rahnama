@@ -5,6 +5,7 @@ import MomentJ from 'moment-jalaali'
 import AppHeader from './AppHeader'
 import ToursHome from './tours/ToursHome'
 import SkillHome from './skill/SkillHome'
+import SchedulingPage from './scheduling/schedulingPage'
 MomentJ.loadPersian()
 
 class App extends React.Component {

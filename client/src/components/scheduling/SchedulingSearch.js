@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 import { Input, Button, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
 
-class SchedulingsSearch extends React.Component {
+class SchedulingSearch extends React.Component {
 
   constructor(props) {
     super(props)
@@ -16,10 +16,10 @@ class SchedulingsSearch extends React.Component {
   handleResult(result) {
     if (result.status === -1) {
       this.setState({error: Strings.noSchedulingFound})
-      this.props.setSchedulingsList([])
+      this.props.setSchedulingList([])
     } else {
       this.setState({error: ''})
-      this.props.setSchedulingsList(result.schedulings)
+      this.props.setSchedulingList(result.scheduling)
     }
   }
 
@@ -29,7 +29,7 @@ class SchedulingsSearch extends React.Component {
 
   search() {
     if (this.state.schedulingName) {
-      fetch('/schedulings/search/', {
+      fetch('/scheduling/search/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -59,4 +59,4 @@ class SchedulingsSearch extends React.Component {
   }
 }
 
-export default SchedulingsSearch
+export default SchedulingSearch

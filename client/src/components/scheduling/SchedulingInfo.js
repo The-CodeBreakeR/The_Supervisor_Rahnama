@@ -8,7 +8,7 @@ import PaymentButton from './PaymentButton'
 import CanselReserveButton from './CanselReserveButton'
 import Cookie from 'browser-cookies'
 
-class SchedulingsInfo extends React.Component {
+class SchedulingInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -16,7 +16,7 @@ class SchedulingsInfo extends React.Component {
       SchedulingName: '',
       start: '',
       end: '',
-      schedulingspec: '',
+      schedulingpec: '',
       schedulingprice: '',
       schedulingcapacity: '',
       status: 4,
@@ -24,7 +24,7 @@ class SchedulingsInfo extends React.Component {
   }
   statusChecker(id) {
     if (Cookie.get('token')) {
-      fetch('/schedulings/status/', {
+      fetch('/scheduling/status/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -40,7 +40,7 @@ class SchedulingsInfo extends React.Component {
     }
   }
   getInfo() {
-    fetch('/schedulings/getScheduling/', {
+    fetch('/scheduling/getScheduling/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -59,7 +59,7 @@ class SchedulingsInfo extends React.Component {
           this.setState({start: MomentJ(result.scheduling.start_time * 1000).format('LLLL')})
           this.setState({end: MomentJ(result.scheduling.end_time * 1000).format('LLLL')})
           this.setState({schedulingprice: result.scheduling.price})
-          this.setState({schedulingspec: result.scheduling.spec})
+          this.setState({schedulingpec: result.scheduling.spec})
           this.setState({schedulingcapacity: result.scheduling.capacity})
           this.statusChecker(result.scheduling.id)
         }
@@ -83,7 +83,7 @@ class SchedulingsInfo extends React.Component {
           <p>{Strings.schedulingName} : {this.state.SchedulingName}</p>
           <p>{Strings.startDate} : {this.state.start}</p>
           <p>{Strings.endDate} : {this.state.end}</p>
-          <p>{Strings.info} : {this.state.schedulingspec}</p>
+          <p>{Strings.info} : {this.state.schedulingpec}</p>
           <p>{Strings.schedulingPrice} : {this.state.schedulingprice}</p>
           <p>{Strings.schedulingCapacity} : {this.state.schedulingcapacity}</p>
           <p>{this.state.status}</p>
@@ -101,4 +101,4 @@ class SchedulingsInfo extends React.Component {
   }
 }
 
-export default SchedulingsInfo
+export default SchedulingInfo

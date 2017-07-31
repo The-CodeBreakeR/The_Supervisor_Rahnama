@@ -2,9 +2,9 @@ import React from 'react'
 import { Table } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
-import SchedulingsInfo from './SchedulingsInfo'
+import SchedulingInfo from './SchedulingInfo'
 
-class SchedulingsList extends React.Component {
+class SchedulingList extends React.Component {
   // constructor(props) {
   //   super(props)
   //   this.state = {
@@ -18,11 +18,11 @@ class SchedulingsList extends React.Component {
       <Table.Cell>{MomentJ(scheduling.start_time * 1000).format('LLLL')}</Table.Cell>
       <Table.Cell>{MomentJ(scheduling.end_time * 1000).format('LLLL')}</Table.Cell>
       <Table.Cell>{scheduling.price}</Table.Cell>
-      <SchedulingsInfo schedulingId={scheduling.id} />
+      <SchedulingInfo schedulingId={scheduling.id} />
     </Table.Row>
   }
   render() {
-    const schedulings = this.props.schedulingsList.map((scheduling) => this.renderScheduling(scheduling))
+    const scheduling = this.props.schedulingList.map((scheduling) => this.renderScheduling(scheduling))
     return <div>
       <Table basic='very' celled selectable>
         <Table.Header>
@@ -35,11 +35,11 @@ class SchedulingsList extends React.Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {schedulings}
+          {scheduling}
         </Table.Body>
       </Table>
     </div>
   }
 }
 
-export default SchedulingsList
+export default SchedulingList

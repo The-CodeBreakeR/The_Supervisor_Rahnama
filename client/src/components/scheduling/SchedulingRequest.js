@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
 
-class SchedulingsRequest extends React.Component {
+class SchedulingRequest extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -28,7 +28,7 @@ class SchedulingsRequest extends React.Component {
   }
   sendRequest() {
     if (this.state.request) {
-      fetch('/schedulings/request/', {
+      fetch('/scheduling/request/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -67,4 +67,4 @@ class SchedulingsRequest extends React.Component {
   }
 }
 
-export default SchedulingsRequest
+export default SchedulingRequest

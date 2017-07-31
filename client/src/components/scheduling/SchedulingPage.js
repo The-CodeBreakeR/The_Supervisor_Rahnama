@@ -1,20 +1,20 @@
 import React from 'react'
 
-import SchedulingsList from './SchedulingsList'
-import SchedulingsRequest from './SchedulingsRequest'
-import SchedulingsSearch from './SchedulingsSearch'
+import SchedulingList from './SchedulingList'
+import SchedulingRequest from './SchedulingRequest'
+import SchedulingSearch from './SchedulingSearch'
 
 
-class SchedulingsHome extends React.Component {
+class SchedulingHome extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      schedulingsList: [],
+      schedulingList: [],
     }
   }
 
   componentWillMount() {
-    fetch('/schedulings/search/', {
+    fetch('/scheduling/search/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -27,22 +27,22 @@ class SchedulingsHome extends React.Component {
       .then(response => response.json())
       .then(result => {
         if (result.status === 0) {
-          this.setState({schedulingsList: result.schedulings})
+          this.setState({schedulingList: result.scheduling})
         }
       })
   }
 
-  setSchedulingsList(schedulingsList) {
-    this.setState({schedulingsList: schedulingsList})
+  setSchedulingList(schedulingList) {
+    this.setState({schedulingList: schedulingList})
   }
 
   render() {
-    return <div className='schedulings'>
-      <SchedulingsSearch setSchedulingsList={(schedulingsList) => this.setSchedulingsList(schedulingsList)} />
-      <SchedulingsList schedulingsList={this.state.schedulingsList} />
-      <SchedulingsRequest/>
+    return <div className='scheduling'>
+      <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
+      <SchedulingList schedulingList={this.state.schedulingList} />
+      <SchedulingRequest/>
     </div>
   }
 }
 
-export default SchedulingsHome
+export default SchedulingPage
