@@ -4,7 +4,7 @@ import Strings from '../../localization'
 import { formatError } from './utils'
 import { Button, Modal, Form, Message } from 'semantic-ui-react'
 
-class RegistrationModal extends React.Component {
+class SchedulingRegistration extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
@@ -13,12 +13,6 @@ class RegistrationModal extends React.Component {
 
   resetState() {
     this.state = {
-      // studentId: { value: '', error: false },
-      // password: { value: '', error: false },
-      // confirmPassword: { value: '', error: false },
-      // firstName: { value: '', error: false },
-      // lastName: { value: '', error: false },
-      // rules: { value: false, error: true },
       name: { value: '', error: false },
       startDate: { value: '', error: false },
       endDate: { value: '', error: false },
@@ -90,17 +84,17 @@ class RegistrationModal extends React.Component {
 
   register() {
     if (this.isOK()) {
-      fetch('/api/user/', {
+      fetch('/newScheduling/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: this.state.studentId.value,
-          password: this.state.password.value,
-          first_name: this.state.firstName.value,
-          last_name: this.state.lastName.value,
+          name: this.state.name.value,
+          type: this.state.type.value,
+          startDate: this.state.startDate.value,
+          endDate: this.state.endDate.value,
         }),
       })
         .then(response => response.json())
@@ -111,7 +105,7 @@ class RegistrationModal extends React.Component {
   handleResult(result) {
     if (result.id) {
       this.setState({ done: true })
-    } else if (result.username) {
+    } else if (result.name) {
       this.setState({ error: formatError(Strings.studentIdAlreadyExists) })
     }
   }
@@ -140,43 +134,19 @@ class RegistrationModal extends React.Component {
               <Form.Group widths='equal'>
                 <Form.Input
                   label={Strings.firstName}
-                  value={this.state.firstName.value}
-                  error={this.state.firstName.error}
-                  onChange={event => this.onFirstNameChanged(event.target.value)}
-                  placeholder={Strings.firstName}
+                  value={this.state.nameame.value}
+                  error={this.state.name.error}
+                  onChange={event => this.onNameChanged(event.target.value)}
+                  placeholder={Strings.name}
                 />
                 <Form.Input
-                  label={Strings.lastName}
-                  value={this.state.lastName.value}
-                  error={this.state.lastName.error}
-                  onChange={event => this.onLastNameChanged(event.target.value)}
+                  label={Strings.firstName}
+                  value={this.state.type.value}
+                  error={this.state.type.error}
+                  onChange={event => this.onTypeChanged(event.target.value)}
                   placeholder={Strings.lastName}
                 />
               </Form.Group>
-              <Form.Group widths='equal'>
-                <Form.Input
-                  label={Strings.password}
-                  value={this.state.password.value}
-                  error={this.state.password.error}
-                  onChange={event => this.onPasswordChanged(event.target.value)}
-                  placeholder={Strings.password}
-                  type='password'
-                />
-                <Form.Input
-                  label={Strings.confirmPassword}
-                  value={this.state.confirmPassword.value}
-                  error={this.state.confirmPassword.error}
-                  onChange={event => this.onConfirmPasswordChanged(event.target.value)}
-                  placeholder={Strings.confirmPassword}
-                  type='password'
-                />
-              </Form.Group>
-              <Form.Checkbox
-                label={Strings.iAgreeWithRules}
-                checked={this.state.rules.value}
-                error={this.state.rules.error}
-                onClick={() => this.onRulesChanged()}
-              />
             </Form>
             {errors && <Message
               error
@@ -201,5 +171,4 @@ class RegistrationModal extends React.Component {
     )
   }
 }
-
-export default RegistrationModal
+export default SchedulingRegistration
