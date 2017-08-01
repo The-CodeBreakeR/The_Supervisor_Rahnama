@@ -71,7 +71,9 @@ const Strings = new LocalizedStrings({
     schedulingWeekDisplay: 'نمایش برنامه هفتگی پیشنهادی',
     schedulingMonthDisplay: 'گزارش ماه اخیر ',
     schedulingNewItem: 'ثبت رخداد درسی جدید',
-    schedulingُType: 'نوع رخداد'
+    schedulingُType: 'نوع رخداد',
+    HardDay: 'نمایش روز های سخت ',
+    todayWorks: 'رخداد های امروز ',
   },
 })
 
