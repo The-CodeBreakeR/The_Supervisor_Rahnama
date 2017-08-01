@@ -8,7 +8,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 import json
-
+import datetime
 from rest_framework.authtoken.models import Token
 from user.views import CustomObtainAuthToken
 
@@ -16,7 +16,8 @@ from user.views import CustomObtainAuthToken
 @csrf_exempt
 def searchScheduling(request):
     if request.method == 'POST':
-        bodyParams = json.loads(request.body)
+        #bodyParams = json.loads(request.body)
+        bodyParams = json.loads(request.body.decode('utf-8'))
         name = bodyParams['name']
         scheduling = Scheduling.objects.filter(name__contains=name)
         if len(scheduling) == 0:
@@ -42,9 +43,43 @@ def searchScheduling(request):
 def weekScheduling(request):
     if request.method == 'POST':
         #bodyParams = json.loads(request.body)
-        bodyParams = json.loads(request.body.decode('utf-8'))
+        #bodyParams = json.loads(request.body.decode('utf-8'))
         #name = bodyParams['name']
-        scheduling = Scheduling.objects.filter(name__contains=name)
+        #scheduling = Scheduling.objects.filter(name__contains=name)
+        date = datetime.date.today()
+        start_week = date - datetime.timedelta(date.weekday())
+        end_week = start_week + datetime.timedelta(7)
+        scheduling =Scheduling.objects.filter(end_date=[start_week, end_week])
+        if len(scheduling) == 0:
+            return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
+        if len(scheduling) >= 1:
+            response = {
+                "status": 0,
+                "scheduling": [{'id': scheduling[0].id, 'name': scheduling[0].name, 'start_time': scheduling[0].start_date.timestamp(),
+                           'end_time': scheduling[0].end_date.timestamp(), 'price': scheduling[0].price}]
+            }
+            if len(scheduling) == 1:
+                return JsonResponse(response)
+            i = 1
+            while i < scheduling.count():
+                response['scheduling'] = response['scheduling'] + [{'id': scheduling[i].id, 'name': scheduling[i].name, 'start_time': scheduling[i].start_date.timestamp(),
+                           'end_time': scheduling[i].end_date.timestamp() , 'price': scheduling[i].price}]
+                i = i + 1
+            return JsonResponse(response)
+
+    return JsonResponse({'status': -1})
+
+@csrf_exempt
+def monthScheduling(request):
+    if request.method == 'POST':
+        #bodyParams = json.loads(request.body)
+        #bodyParams = json.loads(request.body.decode('utf-8'))
+        #name = bodyParams['name']
+        #scheduling = Scheduling.objects.filter(name__contains=name)
+        date = datetime.date.today()
+        start_week = date - datetime.timedelta(date.weekday())
+        end_week = start_week + datetime.timedelta(7)
+        scheduling =Scheduling.objects.filter(end_date=[start_week, end_week])
         if len(scheduling) == 0:
             return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
         if len(scheduling) >= 1:

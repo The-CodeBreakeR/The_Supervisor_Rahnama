@@ -4,6 +4,7 @@ from django.conf.urls import url
 urlpatterns = [
     url(r'^search/', Scheduling.views.searchScheduling, name='searchScheduling'),
     url(r'^week/', Scheduling.views.weekScheduling, name='weekScheduling'),
+    url(r'^month/', Scheduling.views.monthScheduling, name='monthScheduling'),
     url(r'^getScheduling/', Scheduling.views.getScheduling, name='getScheduling'),
     url(r'^reserve/', Scheduling.views.reserveScheduling, name='reserve'),
     url(r'^status/', Scheduling.views.statusResult, name='status'),

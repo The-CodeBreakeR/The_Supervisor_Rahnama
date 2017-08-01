@@ -4,6 +4,8 @@ import SchedulingList from './SchedulingList'
 import SchedulingRequest from './SchedulingRequest'
 import SchedulingSearch from './SchedulingSearch'
 import SchedulingWeek from './SchedulingWeek'
+import SchedulingMonth from './SchedulingMonth'
+import RegistrationModal from './RegistrationModal'
 
 class SchedulingPage extends React.Component {
   constructor(props) {
@@ -40,8 +42,10 @@ class SchedulingPage extends React.Component {
     return <div className='scheduling'>
       <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
+      <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingList schedulingList={this.state.schedulingList} />
       <SchedulingRequest/>
+      <RegistrationModal onLogin={() => this.forceUpdate()} />
     </div>
   }
 }

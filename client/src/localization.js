@@ -62,13 +62,16 @@ const Strings = new LocalizedStrings({
     noSchedulingFound: 'ماده درسی با ويژگی مورد نظر پیدا نشد.',
     schedulingId: 'شماره ',
     schedulingStartDate: 'شروع پیشنهادی انجام',
-    schedulingEndDate: 'پایان رخداد درسی',
+    schedulingEndDate: 'زمان سررسید',
     schedulingInfo: 'اطلاعات ماده درسی',
     schedulingCapacity: 'مدت زمان احتمالی ماده درسی',
     schedulingReserve: 'رزرو',
     schedulingCansel: 'لغو ماده درسی',
     schedulingAccepted: 'تایید',
     schedulingWeekDisplay: 'نمایش برنامه هفتگی پیشنهادی',
+    schedulingMonthDisplay: 'گزارش ماه اخیر ',
+    schedulingNewItem: 'ثبت رخداد درسی جدید',
+    schedulingُType: 'نوع رخداد'
   },
 })
 
