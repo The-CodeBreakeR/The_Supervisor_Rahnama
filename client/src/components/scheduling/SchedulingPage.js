@@ -46,6 +46,7 @@ class SchedulingPage extends React.Component {
       <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingList schedulingList={this.state.schedulingList} />
+      <SchedulingInfo schedulingId={scheduling.id} />
       <SchedulingRequest/>
       <RegistrationModal onLogin={() => this.forceUpdate()} />
     </div>

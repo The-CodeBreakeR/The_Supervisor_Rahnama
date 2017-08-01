@@ -1,10 +1,7 @@
 import React from 'react'
 import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
-import _ from 'lodash'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
-import ReserveButton from './ReserveButton'
-import PaymentButton from './PaymentButton'
 import CanselReserveButton from './CanselReserveButton'
 import Cookie from 'browser-cookies'
 
@@ -90,12 +87,6 @@ class SchedulingToday extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        {(this.state.status === 0 || this.state.status === 3) && <ReserveButton setStatus={(stat) => this.setStatus(stat)} schedulingId={this.state.SchedulingID}
-          getInfoRecall={() => this.getInfo()} />}
-        {(this.state.status === 1) && <PaymentButton setStatus={(stat) => this.setStatus(stat)} schedulingId={this.state.SchedulingID}
-          getInfoRecall={() => this.getInfo()} />}
-        {(this.state.status === 2) && <CanselReserveButton setStatus={(stat) => this.setStatus(stat)} schedulingId={this.state.SchedulingID}
-          getInfoRecall={() => this.getInfo()} />}
       </Modal.Actions>
     </Modal>
   }
