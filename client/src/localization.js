@@ -58,6 +58,9 @@ const Strings = new LocalizedStrings({
     seeTypeSkill: 'مشاهده مهارت تایپ',
     askSkillQuestion: 'پرسش سوال',
     askSkillQuestionSpec: 'متن سوال خود را بنویسید...',
+    forReserveRegister: 'برای انجام عملیات رزو در سایت عضو شوید',
+    toursComment: 'نظرات در مورد تور:',
+    writeYourCommentTour: 'نظر خود را در مورد تور بنویسید...',
   },
 })
 
