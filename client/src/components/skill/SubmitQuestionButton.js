@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Message ,  Button, Header, Icon, Image, Modal, Input} from 'semantic-ui-react'
 import Strings from '../../localization'
+import Cookie from 'browser-cookies'
 
 class SubmitQuestionButton extends React.Component {
   constructor(props) {
@@ -9,34 +10,44 @@ class SubmitQuestionButton extends React.Component {
       open: false,
       request: '',
       status: 0,
+      message: '',
     }
   }
   close() {
     this.setState({status: 0})
     this.setState({request: ''})
     this.setState({open: false})
+    this.setState({message: ''})
   }
   onRequestChange(value) {
     this.setState({request: value})
   }
   handleResult(result) {
+    this.setState({message: ''})
     this.setState({status: 1})
     this.setState({ open: true })
   }
   sendRequest() {
-    if (this.state.request) {
-      fetch('/skill/question/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question: this.state.request,
-        }),
-      })
-        .then(response => response.json())
-        .then(result => this.handleResult(result))
+    if (Cookie.get('token')) {
+      if (this.state.request) {
+        fetch('/skill/question/', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            token: JSON.parse(localStorage.getItem('user')).token,
+            question: this.state.request,
+          }),
+        })
+          .then(response => response.json())
+          .then(result => this.handleResult(result))
+      }
+    }
+    else
+    {
+      this.setState({message: Strings.haveNotRegister})
     }
   }
 
@@ -50,6 +61,8 @@ class SubmitQuestionButton extends React.Component {
           {this.state.status === 0 && <Form.TextArea value={this.state.request} placeholder={Strings.askSkillQuestionSpec} onChange={event => this.onRequestChange(event.target.value)} />}
           {this.state.status === 1 && <Message positive><Message.Header>{Strings.submit}</Message.Header>
             <p>{Strings.requestSubmitAccept}</p>
+          </Message>}
+          {this.state.message && <Message negative><Message.Header>{this.state.message}</Message.Header>
           </Message>}
         </Modal.Description>
       </Modal.Content>
