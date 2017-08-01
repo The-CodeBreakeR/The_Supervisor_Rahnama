@@ -3,7 +3,7 @@ import React from 'react'
 import SchedulingList from './SchedulingList'
 import SchedulingRequest from './SchedulingRequest'
 import SchedulingSearch from './SchedulingSearch'
-
+import SchedulingWeek from './SchedulingWeek'
 
 class SchedulingPage extends React.Component {
   constructor(props) {
@@ -39,6 +39,7 @@ class SchedulingPage extends React.Component {
   render() {
     return <div className='scheduling'>
       <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
+      <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingList schedulingList={this.state.schedulingList} />
       <SchedulingRequest/>
     </div>

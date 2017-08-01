@@ -60,14 +60,15 @@ const Strings = new LocalizedStrings({
     askSkillQuestionSpec: 'متن سوال خود را بنویسید...',
     schedulingName: 'نام رخداد درسی',
     noSchedulingFound: 'ماده درسی با ويژگی مورد نظر پیدا نشد.',
-    schedulingId: 'شماره رخداد درسی در سامانه',
-    schedulingStartDate: 'شروع پیشنهادی انجام رخداد درسی',
+    schedulingId: 'شماره ',
+    schedulingStartDate: 'شروع پیشنهادی انجام',
     schedulingEndDate: 'پایان رخداد درسی',
     schedulingInfo: 'اطلاعات ماده درسی',
     schedulingCapacity: 'مدت زمان احتمالی ماده درسی',
     schedulingReserve: 'رزرو',
     schedulingCansel: 'لغو ماده درسی',
     schedulingAccepted: 'تایید',
+    schedulingWeekDisplay: 'نمایش برنامه هفتگی پیشنهادی',
   },
 })
 

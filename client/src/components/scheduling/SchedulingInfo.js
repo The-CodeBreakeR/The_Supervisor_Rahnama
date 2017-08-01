@@ -81,7 +81,7 @@ class SchedulingInfo extends React.Component {
         <Modal.Description>
           <Header>{Strings.schedulingInfo}</Header>
           <p>{Strings.schedulingName} : {this.state.SchedulingName}</p>
-          <p>{Strings.startDate} : {this.state.start}</p>
+          <p>{Strings.schedulingStartDate} : {this.state.start}</p>
           <p>{Strings.schedulingEndDate} : {this.state.end}</p>
           <p>{Strings.info} : {this.state.schedulingpec}</p>
           <p>{Strings.schedulingPrice} : {this.state.schedulingprice}</p>
