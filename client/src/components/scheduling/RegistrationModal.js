@@ -8,7 +8,7 @@ class RegistrationModal extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
-    this.fields = ['studentId', 'password', 'confirmPassword', 'firstName', 'lastName', 'rules']
+    this.fields = ['name', 'startDate', 'endDate', 'type']
   }
 
   resetState() {
@@ -20,8 +20,8 @@ class RegistrationModal extends React.Component {
       // lastName: { value: '', error: false },
       // rules: { value: false, error: true },
       name:{ value: '', error: false },
-      startDate:
-      endDate:
+      startDate:{ value: '', error: false },
+      endDate:{ value: '', error: false },
       type: { value: '', error: false },
       open: false,
       done: false,
@@ -34,29 +34,20 @@ class RegistrationModal extends React.Component {
     this.resetState()
   }
 
-  onStudentIdChanged(value) {
-    this.setState({ studentId: { value, error: !/^[0-9]+$/.test(value) || value.length < 8 } })
+  onNameChanged(value) {
+    this.setState({ name: { value, error: value.length < 3 } })
   }
 
-  onPasswordChanged(value) {
-    this.setState({ password: { value, error: value.length < 6 } })
-    this.setState({ confirmPassword: { value: this.state.confirmPassword.value, error: value !== this.state.confirmPassword.value } })
-  }
-
-  onConfirmPasswordChanged(value) {
-    this.setState({ confirmPassword: { value, error: value !== this.state.password.value } })
-  }
-
-  onFirstNameChanged(value) {
-    this.setState({ firstName: { value, error: value.length < 3 } })
-  }
-
-  onLastNameChanged(value) {
+  onTypeChanged(value) {
     this.setState({ lastName: { value, error: value.length < 3 } })
   }
 
-  onRulesChanged() {
-    this.setState({ rules: { value: !this.state.rules.value, error: !this.state.rules.error } })
+  onStartDateChanged() {
+    //  this.setState({ rules: { value: !this.state.rules.value, error: !this.state.rules.error } })
+  }
+
+  onEndDateChanged() {
+    //  this.setState({ rules: { value: !this.state.rules.value, error: !this.state.rules.error } })
   }
 
   isOK() {
@@ -69,14 +60,15 @@ class RegistrationModal extends React.Component {
   }
 
   validate() {
-    this.onStudentIdChanged(this.state.studentId.value)
-    this.onPasswordChanged(this.state.password.value)
-    this.onConfirmPasswordChanged(this.state.confirmPassword.value)
-    this.onFirstNameChanged(this.state.firstName.value)
-    this.onLastNameChanged(this.state.lastName.value)
+    //  this.onConfirmPasswordChanged(this.state.confirmPassword.value)
+
+    this.onNameChanged(this.state.name.value)
+    this.onTypeChanged(this.state.type.value)
+    this.onStartDateChanged(this.state.startDate.value)
+    this.onEndDateChanged(this.state.endDate.value)
   }
 
-  generateErrors() {
+  generateErrors() {//todo
     let errors = this.state.error
     if (this.state.studentId.error) {
       errors += formatError(Strings.studentIdError)
