@@ -61,6 +61,7 @@ def getTour(request):
                      'end_time': tour[0].end_date.timestamp(), 'price': tour[0].price, 'spec': tour[0].spec,
                      'capacity': tour[0].capacity},
             "comments": [{'name': str(comments[0].studentId), 'text': str(comments[0].comment_text)}]}
+        print(response)
         if comments.count() == 1:
             print(response)
             return JsonResponse(response)
