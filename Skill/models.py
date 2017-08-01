@@ -12,14 +12,13 @@ from django.db import models
 # Create your models here.
 
 class Skill(models.Model):
-    student_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    typing_skill = models.IntegerField()
-    coding_skill = models.IntegerField()
-    presentation_skill = models.IntegerField()
-    reading_skill = models.IntegerField()
+    typing_skill = models.TextField(max_length=2000)
+    coding_skill = models.TextField(max_length=2000)
+    presentation_skill = models.TextField(max_length=2000)
+    reading_skill = models.TextField(max_length=2000)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.id)
 
 
 class QuestionAnswer(models.Model):
