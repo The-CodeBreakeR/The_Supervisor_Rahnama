@@ -19,9 +19,9 @@ class RegistrationModal extends React.Component {
       // firstName: { value: '', error: false },
       // lastName: { value: '', error: false },
       // rules: { value: false, error: true },
-      name:{ value: '', error: false },
-      startDate:{ value: '', error: false },
-      endDate:{ value: '', error: false },
+      name: { value: '', error: false },
+      startDate: { value: '', error: false },
+      endDate: { value: '', error: false },
       type: { value: '', error: false },
       open: false,
       done: false,
@@ -68,7 +68,7 @@ class RegistrationModal extends React.Component {
     this.onEndDateChanged(this.state.endDate.value)
   }
 
-  generateErrors() {//todo
+  generateErrors() {
     let errors = this.state.error
     if (this.state.studentId.error) {
       errors += formatError(Strings.studentIdError)

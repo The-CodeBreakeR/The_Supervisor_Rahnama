@@ -1,6 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Input, Button, Message } from 'semantic-ui-react'
+import { Button, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
 class SchedulingMonth extends React.Component {
   constructor(props) {

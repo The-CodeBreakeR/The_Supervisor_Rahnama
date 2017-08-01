@@ -1,8 +1,7 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
-import CanselReserveButton from './CanselReserveButton'
 import Cookie from 'browser-cookies'
 
 class SchedulingInfo extends React.Component {
