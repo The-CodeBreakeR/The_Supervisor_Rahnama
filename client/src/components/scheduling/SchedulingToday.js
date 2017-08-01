@@ -20,7 +20,7 @@ class SchedulingToday extends React.Component {
   }
   statusChecker(id) {
     if (Cookie.get('token')) {
-      fetch('/scheduling/status/', {
+      fetch('/scheduling/today/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

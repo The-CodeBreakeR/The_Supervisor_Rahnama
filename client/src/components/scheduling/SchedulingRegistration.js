@@ -37,11 +37,11 @@ class SchedulingRegistration extends React.Component {
   }
 
   onStartDateChanged() {
-    //  this.setState({ rules: { value: !this.state.rules.value, error: !this.state.rules.error } })
+    return true
   }
 
   onEndDateChanged() {
-    //  this.setState({ rules: { value: !this.state.rules.value, error: !this.state.rules.error } })
+    return true
   }
 
   isOK() {
@@ -124,13 +124,6 @@ class SchedulingRegistration extends React.Component {
         {!this.state.done
           ? <Modal.Content>
             <Form>
-              <Form.Input
-                label={Strings.studentId}
-                value={this.state.studentId.value}
-                error={this.state.studentId.error}
-                onChange={event => this.onStudentIdChanged(event.target.value)}
-                placeholder={Strings.studentId}
-              />
               <Form.Group widths='equal'>
                 <Form.Input
                   label={Strings.firstName}
