@@ -6,19 +6,20 @@ import React from 'react'
 import { Table } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
+import Cookie from 'browser-cookies'
 
 class PlacesList extends React.Component {
-  renderTour(tour) {
-    return <Table.Row key={tour.id} >
-      <Table.Cell>{tour.id} </Table.Cell>
-      <Table.Cell>{tour.name}</Table.Cell>
-      <Table.Cell>{MomentJ(tour.start_time * 1000).format('LLLL')}</Table.Cell>
-      <Table.Cell>{MomentJ(tour.end_time * 1000).format('LLLL')}</Table.Cell>
-      <Table.Cell>{tour.price}</Table.Cell>
+  renderPlace(place) {
+    return <Table.Row key={place.id} >
+      <Table.Cell>{place.id} </Table.Cell>
+      <Table.Cell>{place.size}</Table.Cell>
+      <Table.Cell>{place.type}</Table.Cell>
+      <Table.Cell>{place.location}</Table.Cell>
+      <Table.Cell>{place.cost}</Table.Cell>
     </Table.Row>
   }
   render() {
-    const places = this.props.toursList.map((tour) => this.renderTour(tour))
+    const places = this.props.placesList.map((place) => this.renderPlace(place))
     return <div>
       <Table basic='very' celled selectable>
         <Table.Header>

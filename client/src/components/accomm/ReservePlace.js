@@ -6,6 +6,7 @@ import React from 'react'
 import fetch from 'isomorphic-fetch'
 import { Input, Button } from 'semantic-ui-react'
 import Strings from '../../localization'
+import Cookie from 'browser-cookies'
 
 class ReservePlace extends React.Component {
   constructor(props) {
@@ -23,11 +24,16 @@ class ReservePlace extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        token: JSON.parse(localStorage.getItem('user')).token }),
+        name: '',
+      }),
     })
       .then(response => response.json())
       .then(result => {
-        this.setState({placesList: result.tours})
+        if (result.status === 0) {
+          this.props.setPlacesList(result.places)
+        } else {
+          this.props.setPlacesList([])
+        }
       })
   }
 
@@ -41,19 +47,21 @@ class ReservePlace extends React.Component {
   }
 
   reserve() {
-    fetch('/accommodation/reserve/', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: JSON.parse(localStorage.getItem('user')).token,
-        placeID: this.state.placeID,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => this.handleResult(result))
+    if (Cookie.get('token')) {
+      fetch('/accommodation/reserve/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: JSON.parse(localStorage.getItem('user')).token,
+          placeID: this.state.placeID,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => this.handleResult(result))
+    }
   }
 
   onPlaceIDChange(value) {

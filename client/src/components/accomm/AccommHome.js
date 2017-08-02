@@ -4,6 +4,11 @@
 
 import React from 'react'
 import fetch from 'isomorphic-fetch'
+import Cookie from 'browser-cookies'
+
+import ReservePlace from './ReservePlace'
+import RulesList from './RulesList'
+import PlacesList from './PlacesList'
 
 class AccommHome extends React.Component {
   constructor(props) {
@@ -21,11 +26,14 @@ class AccommHome extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        token: JSON.parse(localStorage.getItem('user')).token }),
+        name: '',
+      }),
     })
       .then(response => response.json())
       .then(result => {
-        this.setState({placesList: result.tours})
+        if (result.status === 0) {
+          this.setState({placesList: result.places})
+        }
       })
   }
 

@@ -6,6 +6,7 @@ import React from 'react'
 import { Table } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
+import Cookie from 'browser-cookies'
 
 class RulesList extends React.Component {
   constructor(props) {
@@ -23,24 +24,26 @@ class RulesList extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        token: JSON.parse(localStorage.getItem('user')).token }),
+        name: '',
+      }),
     })
       .then(response => response.json())
       .then(result => {
-        this.setState({rulesList: result.tours})
+        if (result.status === 0) {
+          this.setState({rulesList: result.rules})
+        }
       })
   }
 
-  renderTour(tour) {
-    return <Table.Row key={tour.id} >
-      <Table.Cell>{tour.id} </Table.Cell>
-      <Table.Cell>{MomentJ(tour.start_time * 1000).format('LLLL')}</Table.Cell>
-      <Table.Cell>{MomentJ(tour.end_time * 1000).format('LLLL')}</Table.Cell>
-      <Table.Cell>{tour.name}</Table.Cell>
+  renderRule(rule) {
+    return <Table.Row key={rule.id} >
+      <Table.Cell>{rule.id} </Table.Cell>
+      <Table.Cell>{MomentJ(rule.date).format('L')}</Table.Cell>
+      <Table.Cell>{rule.description}</Table.Cell>
     </Table.Row>
   }
   render() {
-    const rules = this.props.toursList.map((tour) => this.renderTour(tour))
+    const rules = this.state.rulesList.map((rule) => this.renderRule(rule))
     return <div>
       <Table basic='very' celled selectable>
         <Table.Header>
