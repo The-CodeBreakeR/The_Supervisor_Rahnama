@@ -88,7 +88,8 @@ class ToursInfo extends React.Component {
           <p>{Strings.info} : {this.state.tourspec}</p>
           <p>{Strings.tourPrice} : {this.state.tourprice}</p>
           <p>{Strings.tourCapacity} : {this.state.tourcapacity}</p>
-          <CommentShower commnetList={this.state.commentList} getInfoRecall={() => this.getInfo()} SubmitStatus={this.state.status}/>
+          <CommentShower commnetList={this.state.commentList} getInfoRecall={() => this.getInfo()}
+            SubmitStatus={this.state.status} tourId={this.state.TourID}/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
