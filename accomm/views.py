@@ -54,9 +54,7 @@ def availablePlaces(request):
 
 @csrf_exempt
 def reserveAPlace(request):
-#    return JsonResponse({'status': -1})
     bodyParams = json.loads(request.body)
-    return JsonResponse({'status': -1})
     placeid = bodyParams['placeID']
     token = Token.objects.get(key=bodyParams['token'])
     stdid = token.user
