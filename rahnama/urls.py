@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-from rest_framework import routersz
+from rest_framework import routers
 
 from user.views import UserViewSet, CustomObtainAuthToken
 
