@@ -1,5 +1,5 @@
 import React from 'react'
-import Route from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 import MomentJ from 'moment-jalaali'
 
 import AppHeader from './AppHeader'
