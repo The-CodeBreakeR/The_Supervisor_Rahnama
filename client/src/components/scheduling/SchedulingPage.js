@@ -45,6 +45,7 @@ class SchedulingPage extends React.Component {
       <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <HardDayModal onLogin={() => this.forceUpdate()} />
       <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
+      <SchedulingToday setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingList schedulingList={this.state.schedulingList} />
       <SchedulingToday />

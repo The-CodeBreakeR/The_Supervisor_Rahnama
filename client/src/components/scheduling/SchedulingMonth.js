@@ -22,7 +22,7 @@ class SchedulingMonth extends React.Component {
   }
 
   search() {
-    if (this.state.schedulingName) {
+    if (true) {
       fetch('/scheduling/month/', {
         method: 'POST',
         headers: {

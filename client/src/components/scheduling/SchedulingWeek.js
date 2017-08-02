@@ -22,7 +22,7 @@ class SchedulingWeek extends React.Component {
   }
 
   search() {
-    if (this.state.schedulingName) {
+    if (true) {
       fetch('/scheduling/week/', {
         method: 'POST',
         headers: {

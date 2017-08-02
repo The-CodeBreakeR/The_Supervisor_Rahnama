@@ -11,7 +11,7 @@ import json
 import datetime
 from rest_framework.authtoken.models import Token
 from user.views import CustomObtainAuthToken
-
+from datetime import datetime, timedelta
 
 @csrf_exempt
 def searchScheduling(request):
@@ -69,14 +69,8 @@ def newScheduling(request):
 @csrf_exempt
 def weekScheduling(request):
     if request.method == 'POST':
-        #bodyParams = json.loads(request.body)
-        #bodyParams = json.loads(request.body.decode('utf-8'))
-        #name = bodyParams['name']
-        #scheduling = Scheduling.objects.filter(name__contains=name)
-        date = datetime.date.today()
-        start_week = date - datetime.timedelta(date.weekday())
-        end_week = start_week + datetime.timedelta(7)
-        scheduling =Scheduling.objects.filter(end_date=[start_week, end_week])
+        next_week = datetime.today() + timedelta(days=7)
+        scheduling = Scheduling.objects.filter(end_date__gte=next_week)
         if len(scheduling) == 0:
             return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
         if len(scheduling) >= 1:
@@ -98,15 +92,11 @@ def weekScheduling(request):
 
 @csrf_exempt
 def monthScheduling(request):
+    print("here 1")
     if request.method == 'POST':
-        #bodyParams = json.loads(request.body)
-        #bodyParams = json.loads(request.body.decode('utf-8'))
-        #name = bodyParams['name']
-        #scheduling = Scheduling.objects.filter(name__contains=name)
-        date = datetime.date.today()
-        start_week = date - datetime.timedelta(date.weekday())
-        end_week = start_week + datetime.timedelta(7)
-        scheduling =Scheduling.objects.filter(end_date=[start_week, end_week])
+        last_month = datetime.today() - timedelta(days=30)
+        scheduling = Scheduling.objects.filter(end_date__gte=last_month)
+
         if len(scheduling) == 0:
             return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
         if len(scheduling) >= 1:
@@ -169,6 +159,10 @@ def hardDayScheduling(request):
         start_week = date - datetime.timedelta(date.weekday())
         end_week = start_week + datetime.timedelta(7)
         scheduling =Scheduling.objects.filter(end_date=[start_week, end_week])
+        i = 0
+        while i < 7 :
+            HardDays[i] = Scheduling.objects.filter(end_date=datetime.date.today()+datetime.timedelta(i))
+            i = i+1
         if len(scheduling) == 0:
             return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
         if len(scheduling) >= 1:
