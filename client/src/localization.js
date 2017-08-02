@@ -74,6 +74,12 @@ const Strings = new LocalizedStrings({
     schedulingُType: 'نوع رخداد',
     HardDay: 'نمایش روز های سخت ',
     todayWorks: 'رخداد های امروز ',
+    timingIntern: 'کارآموزی ',
+    timingProject: 'انجام پروژه کارشناسی',
+    timingEndDuration: 'زمان مجاز تحصیل',
+    timingStartTerm: 'آغاز ترم جدید',
+    timingProgram: 'برنامه ترم بعد',
+    timingReport: 'گزارش ترم های گذشته',
   },
 })
 

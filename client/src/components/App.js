@@ -5,6 +5,7 @@ import MomentJ from 'moment-jalaali'
 import AppHeader from './AppHeader'
 import ToursHome from './tours/ToursHome'
 import SkillHome from './skill/SkillHome'
+import TimingHome from './timing/TimingHome'
 import SchedulingPage from './scheduling/SchedulingPage'
 MomentJ.loadPersian()
 
@@ -15,7 +16,7 @@ class App extends React.Component {
       <Route path="/tours" component={ToursHome}/>
       <Route path="/skill" component={SkillHome}/>
       <Route path="/scheduling" component={SchedulingPage}/>
-      <Route path="/timing" component={ToursHome}/>
+      <Route path="/timing" component={TimingHome}/>
     </div>
   }
 }
