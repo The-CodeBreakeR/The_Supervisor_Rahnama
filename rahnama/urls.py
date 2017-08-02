@@ -15,6 +15,7 @@ Including another URLconf
 """
 import Tours.url
 import Skill.url
+import .urls
 import Scheduling.urls
 from django.conf.urls import url, include
 from django.contrib import admin

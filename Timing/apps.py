@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class TimingConfig(AppConfig):
-    name = 'timing'
+    name = 'Timing'
