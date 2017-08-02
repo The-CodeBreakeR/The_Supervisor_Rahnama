@@ -4,6 +4,7 @@ import PresentationButton from './PresentationButton'
 import FastReadButton from './FastReadButton'
 import TypeSkill from './TypeSkill'
 import SubmitQuestionButton from './SubmitQuestionButton'
+import AnswerQuestionShower from './AnswerQuestionShower'
 
 class SkillHome extends React.Component {
 
@@ -13,6 +14,7 @@ class SkillHome extends React.Component {
       <FastReadButton/>
       <TypeSkill/>
       <SubmitQuestionButton/>
+      <AnswerQuestionShower/>
     </div>
   }
 }
