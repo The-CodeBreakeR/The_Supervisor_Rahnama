@@ -163,10 +163,9 @@ def sendComment(request):
     user = token.user
     tour_id = bodyParams['tourId']
     tour = Tour.objects.filter(id=tour_id)
-    print (tour_id)
     comment = Comments.objects.create()
     comment.tourId = tour[0]
-    comment.student_id = user
+    comment.studentId = user
     comment.comment_text = commentText
     comment.save()
     return JsonResponse({'status': 0})
