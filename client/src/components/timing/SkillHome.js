@@ -1,20 +1,20 @@
 import React from 'react'
-import CodingSkillButton from './CodingSkillButton'
+import CodingTimingButton from './CodingTimingButton'
 import PresentationButton from './PresentationButton'
 import FastReadButton from './FastReadButton'
-import TypeSkill from './TypeSkill'
+import TypeTiming from './TypeTiming'
 import SubmitQuestionButton from './SubmitQuestionButton'
 
-class SkillHome extends React.Component {
+class TimingHome extends React.Component {
 
   render() {
-    return <div><CodingSkillButton/>
+    return <div><CodingTimingButton/>
       <PresentationButton/>
       <FastReadButton/>
-      <TypeSkill/>
+      <TypeTiming/>
       <SubmitQuestionButton/>
     </div>
   }
 }
 
-export default SkillHome
+export default TimingHome

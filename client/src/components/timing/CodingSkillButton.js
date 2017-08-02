@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
-class CodingSkillButton extends React.Component {
+class CodingTimingButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -16,14 +16,14 @@ class CodingSkillButton extends React.Component {
     this.setState({open: false})
   }
   ButtonClickHandle () {
-    fetch('/skill/getSkill/', {
+    fetch('/timing/getTiming/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        skillId: 1,
+        timingId: 1,
       }),
     })
       .then(response => response.json())
@@ -31,11 +31,11 @@ class CodingSkillButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeCodingSkill}</Button>}
+      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeCodingTiming}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
-      <Modal.Header>{Strings.skill}</Modal.Header>
+      <Modal.Header>{Strings.timing}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
           {this.state.message}
@@ -50,4 +50,4 @@ class CodingSkillButton extends React.Component {
   }
 }
 
-export default CodingSkillButton
+export default CodingTimingButton

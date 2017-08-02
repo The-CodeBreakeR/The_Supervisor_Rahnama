@@ -25,7 +25,7 @@ class SubmitQuestionButton extends React.Component {
   }
   sendRequest() {
     if (this.state.request) {
-      fetch('/skill/question/', {
+      fetch('/timing/question/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -42,12 +42,12 @@ class SubmitQuestionButton extends React.Component {
 
   render() {
     return <Modal trigger={<Button
-      color='green' >{Strings.askSkillQuestion}</Button>}
+      color='green' >{Strings.askTimingQuestion}</Button>}
     open={this.state.open} onOpen={() => this.setState({open: true})}>
-      <Modal.Header>{Strings.askSkillQuestion}</Modal.Header>
+      <Modal.Header>{Strings.askTimingQuestion}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
-          {this.state.status === 0 && <Form.TextArea value={this.state.request} placeholder={Strings.askSkillQuestionSpec} onChange={event => this.onRequestChange(event.target.value)} />}
+          {this.state.status === 0 && <Form.TextArea value={this.state.request} placeholder={Strings.askTimingQuestionSpec} onChange={event => this.onRequestChange(event.target.value)} />}
           {this.state.status === 1 && <Message positive><Message.Header>{Strings.submit}</Message.Header>
             <p>{Strings.requestSubmitAccept}</p>
           </Message>}

@@ -15,6 +15,7 @@ class App extends React.Component {
       <Route path="/tours" component={ToursHome}/>
       <Route path="/skill" component={SkillHome}/>
       <Route path="/scheduling" component={SchedulingPage}/>
+      <Route path="/timing" component={ToursHome}/>
     </div>
   }
 }

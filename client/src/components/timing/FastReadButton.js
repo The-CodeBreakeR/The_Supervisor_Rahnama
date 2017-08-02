@@ -16,14 +16,14 @@ class FastReadButton extends React.Component {
     this.setState({open: false})
   }
   ButtonClickHandle () {
-    fetch('/skill/getSkill/', {
+    fetch('/timing/getTiming/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        skillId: 3,
+        timingId: 3,
       }),
     })
       .then(response => response.json())
@@ -31,11 +31,11 @@ class FastReadButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeFastReadSkill}</Button>}
+      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeFastReadTiming}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
-      <Modal.Header>{Strings.skill}</Modal.Header>
+      <Modal.Header>{Strings.timing}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
           {this.state.message}
