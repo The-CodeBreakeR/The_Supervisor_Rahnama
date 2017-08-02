@@ -51,3 +51,32 @@ def question(request):
 
 
 
+@csrf_exempt
+def questionAnswer(request):
+    bodyParams = json.loads(request.body)
+    token = Token.objects.get(key=bodyParams['token'])
+    user = token.user
+    question = QuestionAnswer.objects.filter(student_id=user)
+    if question.count() == 0:
+        response = {
+            "status": 1,
+            "questions": [{}]}
+    else:
+        response = {
+            "status": 0,
+            "questions": [{'date': str(question[0].date),
+                          'question': str(question[0].question),
+                          'answer': str(question[0].answer)}]}
+        print(response)
+        if question.count() == 1:
+            print(response)
+            return JsonResponse(response)
+        i = 1
+        while i < question.count():
+            response['questions'] = response['questions'] + [
+                {'date': str(question[i].date),
+                 'question': str(question[i].question),
+                 'answer': str(question[i].answer)}]
+            i = i + 1
+    print(response)
+    return JsonResponse(response)
