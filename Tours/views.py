@@ -60,7 +60,7 @@ def getTour(request):
             "tour": {'id': tour[0].id, 'name': tour[0].name, 'start_time': tour[0].start_date.timestamp(),
                      'end_time': tour[0].end_date.timestamp(), 'price': tour[0].price, 'spec': tour[0].spec,
                      'capacity': tour[0].capacity},
-            "comments": [{'name': str(comments[0].studentId), 'text': str(comments[0].comment_text)}]}
+            "comments": [{'name': str(comments[0].studentId.first_name) +" "+ str(comments[0].studentId.last_name), 'text': str(comments[0].comment_text)}]}
         print(response)
         if comments.count() == 1:
             print(response)
@@ -68,7 +68,7 @@ def getTour(request):
         i = 1
         while i < comments.count():
             response['comments'] = response['comments'] + [
-                {'name': str(comments[0].user.username), 'text': str(comments[0].comment_text)}]
+                {'name': str(comments[i].studentId.first_name) +" " +str(comments[i].studentId.last_name), 'text': str(comments[i].comment_text)}]
             i = i + 1
     print(response)
     return JsonResponse(response)
@@ -154,6 +154,22 @@ def requestTour(request):
     request.save()
     return JsonResponse({'status': 0})
 
+
+@csrf_exempt
+def sendComment(request):
+    bodyParams = json.loads(request.body)
+    commentText = bodyParams['comment']
+    token = Token.objects.get(key=bodyParams['token'])
+    user = token.user
+    tour_id = bodyParams['tourId']
+    tour = Tour.objects.filter(id=tour_id)
+    print (tour_id)
+    comment = Comments.objects.create()
+    comment.tourId = tour[0]
+    comment.student_id = user
+    comment.comment_text = commentText
+    comment.save()
+    return JsonResponse({'status': 0})
 
 def reserveFinder(request):
     bodyParams = json.loads(request.body)
