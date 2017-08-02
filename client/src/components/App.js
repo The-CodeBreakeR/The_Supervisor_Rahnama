@@ -7,7 +7,7 @@ class App extends React.Component {
   render() {
     return <div className='app'>
       <AppHeader/>
-      <Route path="/test" component={AppHeader}/>
+      <Route path='/test' component={AppHeader}/>
     </div>
   }
 }
