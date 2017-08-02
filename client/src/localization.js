@@ -61,6 +61,10 @@ const Strings = new LocalizedStrings({
     forReserveRegister: 'برای انجام عملیات رزو در سایت عضو شوید',
     toursComment: 'نظرات در مورد تور:',
     writeYourCommentTour: 'نظر خود را در مورد تور بنویسید...',
+    answerAndQuestionArchive: 'آرشیو سوالات و جوابات',
+    questionShow: 'پرسش :',
+    answerShow: 'جواب :',
+    noQuestion: 'ارشیوی شما خالی میباشد',
   },
 })
 
