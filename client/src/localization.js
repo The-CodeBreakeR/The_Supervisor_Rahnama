@@ -80,6 +80,8 @@ const Strings = new LocalizedStrings({
     timingStartTerm: 'آغاز ترم جدید',
     timingProgram: 'برنامه ترم بعد',
     timingReport: 'گزارش ترم های گذشته',
+    alarm: 'هشدار',
+    proposal: 'پیشنهاد',
   },
 })
 

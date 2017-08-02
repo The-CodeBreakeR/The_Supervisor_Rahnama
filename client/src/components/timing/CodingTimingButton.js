@@ -31,11 +31,11 @@ class CodingTimingButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeCodingTiming}</Button>}
+      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingReport}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
-      <Modal.Header>{Strings.timing}</Modal.Header>
+      <Modal.Header>{Strings.timingReport}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
           {this.state.message}

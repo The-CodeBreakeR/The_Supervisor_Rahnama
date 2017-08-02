@@ -31,11 +31,11 @@ class FastReadButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeFastReadTiming}</Button>}
+      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingEndDuration}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
-      <Modal.Header>{Strings.timing}</Modal.Header>
+      <Modal.Header>{Strings.timingEndDuration}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
           {this.state.message}

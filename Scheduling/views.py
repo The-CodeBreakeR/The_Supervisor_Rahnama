@@ -145,10 +145,6 @@ def todayScheduling(request):
 @csrf_exempt
 def hardDayScheduling(request):
     if request.method == 'POST':
-        #bodyParams = json.loads(request.body)
-        #bodyParams = json.loads(request.body.decode('utf-8'))
-        #name = bodyParams['name']
-        #scheduling = Scheduling.objects.filter(name__contains=name)
         date = datetime.date.today()
         start_week = date - datetime.timedelta(date.weekday())
         end_week = start_week + datetime.timedelta(7)
