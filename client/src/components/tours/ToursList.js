@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Segment, Table } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import ToursInfo from './ToursInfo'
@@ -23,7 +23,7 @@ class ToursList extends React.Component {
   }
   render() {
     const tours = this.props.toursList.map((tour) => this.renderTour(tour))
-    return <div>
+    return <Segment className='tours__list'>
       <Table basic='very' celled selectable>
         <Table.Header>
           <Table.Row>
@@ -38,7 +38,7 @@ class ToursList extends React.Component {
           {tours}
         </Table.Body>
       </Table>
-    </div>
+    </Segment>
   }
 }
 
