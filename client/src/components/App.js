@@ -1,15 +1,16 @@
 import React from 'react'
-import {Route, Link} from 'react-router-dom'
+import MomentJ from 'moment-jalaali'
 
 import AppHeader from './AppHeader'
-import AccountHome from './account/AccountHome'
+import AppBody from './AppBody'
+
+MomentJ.loadPersian()
 
 class App extends React.Component {
   render() {
     return <div className='app'>
       <AppHeader/>
-      <Route path='/accounting' component={AccountHome}/>
-      <Route path='/test' component={AppHeader}/>
+      <AppBody/>
     </div>
   }
 }

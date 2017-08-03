@@ -8,6 +8,7 @@ import LoginModal from './LoginModal'
 class AuthHeader extends React.Component {
   logout() {
     Cookie.erase('token')
+    localStorage.removeItem('user')
     this.forceUpdate()
   }
 
@@ -24,7 +25,7 @@ class AuthHeader extends React.Component {
         </div>
         : <div className='app__header__auth--user'>
           {`${name} ${Strings.welcomeDear}`}&nbsp;
-          (<a className='link' onClick={() => this.logout()}>{Strings.logout}</a>)
+          (<a className='app__header__logout link' onClick={() => this.logout()}>{Strings.logout}</a>)
         </div>
       }
     </div>
