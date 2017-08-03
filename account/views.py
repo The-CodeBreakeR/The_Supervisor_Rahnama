@@ -13,7 +13,7 @@ import pytz
 
 @csrf_exempt
 def getIncome(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     token = Token.objects.get(key=bodyParams['token'])
     stdid = token.user
     incomes = Income.objects.filter(student_id=stdid)
@@ -37,7 +37,7 @@ def getIncome(request):
 
 @csrf_exempt
 def newIncome(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     amount = bodyParams['amount']
     source = bodyParams['source']
     token = Token.objects.get(key=bodyParams['token'])
@@ -51,7 +51,7 @@ def newIncome(request):
 
 @csrf_exempt
 def getExpense(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     token = Token.objects.get(key=bodyParams['token'])
     stdid = token.user
     expenses = Expense.objects.filter(student_id=stdid)
@@ -75,7 +75,7 @@ def getExpense(request):
 
 @csrf_exempt
 def newExpense(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     amount = bodyParams['amount']
     destination = bodyParams['destination']
     token = Token.objects.get(key=bodyParams['token'])
@@ -89,7 +89,7 @@ def newExpense(request):
 
 @csrf_exempt
 def newRequest(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     amount = bodyParams['amount']
     purpose = bodyParams['purpose']
     token = Token.objects.get(key=bodyParams['token'])
@@ -103,7 +103,7 @@ def newRequest(request):
 
 @csrf_exempt
 def getResponse(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     requestID = bodyParams['requestID']
     token = Token.objects.get(key=bodyParams['token'])
     stdid = token.user
@@ -112,9 +112,8 @@ def getResponse(request):
         return JsonResponse({'status': -1, 'message': "No response found"})
     else:
         response = {
-            "status": 0,
-            "incomes": [{'request_id': resp[0].request_id, 'answer': resp[0].answer,
-                       'repayment_period': resp[0].repayment_period,
-                         'repayment_rate': resp[0].repayment_rate}]
+            'status': 0, 'request_id': resp[0].request_id, 'answer': resp[0].answer,
+            'repayment_period': resp[0].repayment_period,
+            'repayment_rate': resp[0].repayment_rate
         }
     return JsonResponse(response)

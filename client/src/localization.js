@@ -2,6 +2,11 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    furtherTracking: 'کد رهگیری',
+    repPer: 'دوره بازپرداخت:',
+    repRate: 'نرخ بازپرداخت:',
+    requestCode: 'کد رهگیری',
+    viewResult: 'مشاهده نتیجه',
     requestOK: 'درخواست شما با موفقیت ثبت شد. برای پیگیری درخواست خود از کد رهگیری زیر استفاده کنید:\n',
     submitRequest: 'ثبت درخواست وام',
     requestPurpose: 'مورد استفاده ی وام',
