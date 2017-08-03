@@ -51,7 +51,7 @@ class AddExpense extends React.Component {
 
   submit() {
     if (Cookie.get('token')) {
-      fetch('/accommodation/newexpense/', {
+      fetch('/accounting/newexpense/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

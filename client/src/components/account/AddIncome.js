@@ -51,7 +51,7 @@ class AddIncome extends React.Component {
 
   submit() {
     if (Cookie.get('token')) {
-      fetch('/accommodation/newincome/', {
+      fetch('/accounting/newincome/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

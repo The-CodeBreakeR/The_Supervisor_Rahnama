@@ -27,7 +27,7 @@ class LoanRequest extends React.Component {
 
   submit() {
     if (Cookie.get('token')) {
-      fetch('/accommodation/loanrequest/', {
+      fetch('/accounting/loanrequest/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
