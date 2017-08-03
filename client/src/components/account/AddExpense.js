@@ -12,8 +12,8 @@ class AddExpense extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      incAmount: '',
-      incDestination: '',
+      expAmount: '',
+      expDestination: '',
     }
   }
 
@@ -59,8 +59,8 @@ class AddExpense extends React.Component {
         },
         body: JSON.stringify({
           token: JSON.parse(localStorage.getItem('user')).token,
-          amount: this.state.incAmount,
-          destination: this.state.incDestination,
+          amount: this.state.expAmount,
+          destination: this.state.expDestination,
         }),
       })
         .then(response => response.json())
@@ -70,18 +70,18 @@ class AddExpense extends React.Component {
     }
   }
 
-  onIncAmount(value) {
-    this.setState({incAmount: value})
+  onExpAmount(value) {
+    this.setState({expAmount: value})
   }
 
-  onIncDestination(value) {
-    this.setState({incDestination: value})
+  onExpDestination(value) {
+    this.setState({expDestination: value})
   }
 
   render() {
     return <div>
-      <Input value={this.state.incAmount} placeholder={Strings.expenseAmount} onChange={event => this.onIncAmount(event.target.value)}/>
-      <Input value={this.state.incDestination} placeholder={Strings.expenseDestination} onChange={event => this.onIncDestination(event.target.value)}/>
+      <Input value={this.state.expAmount} placeholder={Strings.expenseAmount} onChange={event => this.onExpAmount(event.target.value)}/>
+      <Input value={this.state.expDestination} placeholder={Strings.expenseDestination} onChange={event => this.onExpDestination(event.target.value)}/>
       <Button onClick={() => this.submit()}>{Strings.submitExpense}</Button>
     </div>
   }
