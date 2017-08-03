@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, PersonalProfile, EducationalProfile, SemesterInformation, CourseInformation
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -23,3 +23,23 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             instance.set_password(validated_data['password'])
             del validated_data['password']
         return super(UserSerializer, self).update(instance, validated_data)
+
+
+class PersonalProfileSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = PersonalProfile
+
+
+class EducationalProfileSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = EducationalProfile
+
+
+class SemesterInformationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = SemesterInformation
+
+
+class CourseInformationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = CourseInformation

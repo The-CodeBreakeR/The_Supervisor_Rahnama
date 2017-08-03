@@ -43,7 +43,6 @@ class PersonalProfile(models.Model):
     marital_status = models.CharField(max_length=1, choices=MARITAL_STATUS_CHOICES)
     land_line_number = models.CharField(max_length=14)
     address = models.TextField()
-    major = models.CharField(max_length=2, choices=MAJOR_CHOICES)
 
 
 class EducationalProfile(models.Model):

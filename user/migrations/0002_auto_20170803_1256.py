@@ -54,7 +54,6 @@ class Migration(migrations.Migration):
                 ('marital_status', models.CharField(choices=[('S', 'Single'), ('M', 'Married')], max_length=1)),
                 ('land_line_number', models.CharField(max_length=14)),
                 ('address', models.TextField()),
-                ('major', models.CharField(choices=[('CE', 'Computer Engineering'), ('CS', 'Computer Science'), ('IE', 'Industrial Engineering'), ('ME', 'Mechanical Engineering'), ('MA', 'Mathematics'), ('PH', 'Physics'), ('CH', 'Chemistry'), ('CI', 'Civil')], max_length=2)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
