@@ -2,6 +2,7 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    rahnamaSystem: 'سامانه‌ی راهنما',
     registration: 'ثبت نام',
     studentId: 'شماره‌ی دانشجویی',
     password: 'کلمه‌ی عبور',
