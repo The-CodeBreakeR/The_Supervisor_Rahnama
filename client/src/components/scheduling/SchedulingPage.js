@@ -47,7 +47,7 @@ class SchedulingPage extends React.Component {
       <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingList schedulingList={this.state.schedulingList} />
-      <SchedulingToday />
+      <SchedulingToday/>
       <SchedulingRequest/>
     </div>
   }

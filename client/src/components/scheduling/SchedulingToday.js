@@ -14,17 +14,6 @@ class SchedulingToday extends React.Component {
       error: '',
     }
   }
-
-  handleResult(result) {
-    if (result.status === -1) {
-      this.setState({error: Strings.noSchedulingFound})
-      this.props.setSchedulingList([])
-    } else {
-      this.setState({error: ''})
-      this.props.setSchedulingList(result.scheduling)
-    }
-  }
-
   search() {
     if (true) {
       fetch('/scheduling/week/', {
@@ -37,16 +26,16 @@ class SchedulingToday extends React.Component {
         }),
       })
         .then(response => response.json())
-        .then(result => this.handleResult(result))
         .then(result => {
-        if (result.status === 0) {
-          this.setState({schedulingList: result.scheduling})
-        }
-    })
-  }
+          if (result.status === 0) {
+            this.setState({schedulingList: result.scheduling})
+          }
+        })
+    }
   }
 
   render() {
+    console.log(this.state.schedulingList)
     return <Modal trigger={<Button onClick={() => this.search()}>{Strings.todayWorks}</Button>}>
       <Modal.Header>{Strings.todayWorks}</Modal.Header>
       <Modal.Content image scrolling>

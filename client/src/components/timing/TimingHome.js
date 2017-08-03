@@ -11,8 +11,8 @@ class TimingHome extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      alarms: [],
-      proposals: [],
+      alarms: { items: [] } ,
+      proposals: { items: [] },
     }
   }
 
@@ -29,10 +29,10 @@ class TimingHome extends React.Component {
       .then(response => response.json())
       .then(result => {
         if (result.alarms.status === 0) {
-          this.setState({alarms: result.alarms.items})
+          this.setState({alarms: result.alarms})
         }
         if (result.proposals.status === 0) {
-          this.setState({proposals: result.proposals.items})
+          this.setState({proposals: result.proposals})
         }
       })
   }
@@ -44,6 +44,7 @@ class TimingHome extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
     return <div><div><CodingTimingButton/>

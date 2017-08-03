@@ -10,11 +10,11 @@ class Alarm(models.Model):
     date = models.DateTimeField()
 
     def __str__(self):
-        return str(self.name)
+        return str(self.info)
 
 class Proposal(models.Model):
     info = models.CharField(max_length=100)
     date = models.DateTimeField()
 
     def __str__(self):
-        return str(self.name)
+        return str(self.info)
