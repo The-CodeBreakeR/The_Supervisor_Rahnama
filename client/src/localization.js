@@ -2,6 +2,7 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    loginFirst: ' لطفا ابتدا وارد حساب کاربری خود شوید.',
     reservePlace: 'رزرو',
     placeID: 'کد‌ محل اقامتی',
     placeSize: 'متراژ',

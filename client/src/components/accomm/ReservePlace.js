@@ -61,6 +61,8 @@ class ReservePlace extends React.Component {
       })
         .then(response => response.json())
         .then(result => this.handleResult(result))
+    } else {
+      alert(Strings.loginFirst)
     }
   }
 
