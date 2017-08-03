@@ -30,7 +30,7 @@ class PresentationButton extends React.Component {
       }),
     })
       .then(response => response.json())
-      .then(result => this.setState({message: result.message()}))
+      .then(result => this.setState({message: result.skill}))
   }
   render() {
     return <Modal trigger={<Button

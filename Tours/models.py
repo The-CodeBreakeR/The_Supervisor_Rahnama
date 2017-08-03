@@ -47,7 +47,7 @@ class RequestForTour(models.Model):
 
 
 class Comments(models.Model):
-    tourId = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    tourId = models.ForeignKey(Tour, on_delete=models.CASCADE, default=1)
     studentId = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     comment_text = models.TextField(max_length=1000)
 

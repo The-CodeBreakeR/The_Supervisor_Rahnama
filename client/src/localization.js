@@ -2,6 +2,7 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    rahnamaSystem: 'سامانه‌ی راهنما',
     registration: 'ثبت نام',
     studentId: 'شماره‌ی دانشجویی',
     password: 'کلمه‌ی عبور',
@@ -82,6 +83,13 @@ const Strings = new LocalizedStrings({
     timingReport: 'گزارش ترم های گذشته',
     alarm: 'هشدار',
     proposal: 'پیشنهاد',
+    forReserveRegister: 'برای انجام عملیات رزو در سایت عضو شوید',
+    toursComment: 'نظرات در مورد تور:',
+    writeYourCommentTour: 'نظر خود را در مورد تور بنویسید...',
+    answerAndQuestionArchive: 'آرشیو سوالات و جوابات',
+    questionShow: 'پرسش :',
+    answerShow: 'جواب :',
+    noQuestion: 'ارشیوی شما خالی میباشد',
   },
 })
 

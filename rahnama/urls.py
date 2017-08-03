@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^tours/', include(Tours.url)),
     url(r'^timing/', include(Timing.urls)),
     url(r'^scheduling/', include(Scheduling.urls)),
-    url(r'^.*$', TemplateView.as_view(template_name='index.html')),
     url(r'^skill/', include(Skill.url)),
+    url(r'^.*$', TemplateView.as_view(template_name='index.html')),
 
 ]
