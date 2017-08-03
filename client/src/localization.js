@@ -90,6 +90,7 @@ const Strings = new LocalizedStrings({
     questionShow: 'پرسش :',
     answerShow: 'جواب :',
     noQuestion: 'ارشیوی شما خالی میباشد',
+    schedulingAll: 'نمایش همه رخداد ها',
   },
 })
 

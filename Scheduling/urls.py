@@ -3,7 +3,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     url(r'^search/', Scheduling.views.searchScheduling, name='searchScheduling'),
-    url(r'^newScheduling/', Scheduling.views.newScheduling, name='newScheduling'),
     url(r'^week/', Scheduling.views.weekScheduling, name='weekScheduling'),
     url(r'^today/', Scheduling.views.todayScheduling, name='todayScheduling'),
     url(r'^hardDay/', Scheduling.views.hardDayScheduling, name='hardDayScheduling'),

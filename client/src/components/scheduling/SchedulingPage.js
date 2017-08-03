@@ -5,9 +5,10 @@ import SchedulingRequest from './SchedulingRequest'
 import SchedulingSearch from './SchedulingSearch'
 import SchedulingWeek from './SchedulingWeek'
 import SchedulingMonth from './SchedulingMonth'
-import SchedulingRegistration from './SchedulingRegistration'
 import HardDayModal from './HardDayModal'
 import SchedulingToday from './SchedulingToday'
+import Strings from '../../localization'
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 class SchedulingPage extends React.Component {
   constructor(props) {
@@ -41,12 +42,14 @@ class SchedulingPage extends React.Component {
   }
 
   render() {
+    console.log('salam')
     return <div className='scheduling'>
       <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <HardDayModal onLogin={() => this.forceUpdate()} />
       <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingList schedulingList={this.state.schedulingList} />
+      <Button onClick={() => this.componentWillMount()}>{Strings.schedulingAll}</Button>
       <SchedulingToday/>
       <SchedulingRequest/>
     </div>

@@ -12,12 +12,13 @@ class SchedulingList extends React.Component {
   //   }
   // }
   renderScheduling(scheduling) {
+    console.log(scheduling.capasity)
     return <Table.Row key={scheduling.id} >
       <Table.Cell>{scheduling.id} </Table.Cell>
       <Table.Cell>{scheduling.name}</Table.Cell>
       <Table.Cell>{MomentJ(scheduling.start_time * 1000).format('LLLL')}</Table.Cell>
       <Table.Cell>{MomentJ(scheduling.end_time * 1000).format('LLLL')}</Table.Cell>
-      <Table.Cell>{scheduling.price}</Table.Cell>
+      <Table.Cell>{scheduling.capasity}</Table.Cell>
       <SchedulingInfo schedulingId={scheduling.id} />
     </Table.Row>
   }

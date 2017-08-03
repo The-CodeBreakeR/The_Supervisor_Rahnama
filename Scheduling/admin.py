@@ -4,7 +4,7 @@ from django.contrib import admin
 
 # Register your models here.
 class SchedulingAdmin(admin.ModelAdmin):
-    list_display = ['name', 'start_date', 'end_date', 'price', 'capacity']
+    list_display = ['name', 'end_date', 'capasity']
 
 
 admin.site.register(Scheduling, SchedulingAdmin)

@@ -35,8 +35,10 @@ class SchedulingRequest extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          token: JSON.parse(localStorage.getItem('user')).token,
-          request: this.state.request,
+          name:
+          capasity:
+          end_date:
+          
         }),
       })
         .then(response => response.json())
@@ -49,7 +51,7 @@ class SchedulingRequest extends React.Component {
       <div>
         <Form>
           <Form.TextArea value={this.state.request} label={Strings.requestForScheduling} placeholder={Strings.requestForSchedulingSpec} onChange={event => this.onRequestChange(event.target.value)} />
-          <Form.Button onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>
+          <Form.Button onClick={() => this.sendRequest()} >{Strings.schedulingNewItem}</Form.Button>
         </Form>
       </div>
       {this.state.error &&

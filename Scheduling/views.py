@@ -21,73 +21,38 @@ def searchScheduling(request):
         bodyParams = json.loads(request.body.decode('utf-8'))
         name = bodyParams['name']
         scheduling = Scheduling.objects.filter(name__contains=name)
-        if len(scheduling) == 0:
-            return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
-        if len(scheduling) >= 1:
-            response = {
-                "status": 0,
-                "scheduling": [{'id': scheduling[0].id, 'name': scheduling[0].name, 'start_time': scheduling[0].start_date.timestamp(),
-                           'end_time': scheduling[0].end_date.timestamp(), 'price': scheduling[0].price}]
-            }
-            if len(scheduling) == 1:
-                return JsonResponse(response)
-            i = 1
-            while i < scheduling.count():
-                response['scheduling'] = response['scheduling'] + [{'id': scheduling[i].id, 'name': scheduling[i].name, 'start_time': scheduling[i].start_date.timestamp(),
-                           'end_time': scheduling[i].end_date.timestamp() , 'price': scheduling[i].price}]
-                i = i + 1
-            return JsonResponse(response)
+        return JsonResponse(responseMaker(scheduling))
 
     return JsonResponse({'status': -1})
 
+def responseMaker(scheduling):
+    if len(scheduling) == 0:
+        return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
+    if len(scheduling) >= 1:
+        response = {
+            "status": 0,
+            "scheduling": [
+                {'id': scheduling[0].id, 'name': scheduling[0].name, 'capasity': scheduling[0].capasity,
+                 'end_time': scheduling[0].end_date.timestamp(),'start_time': (scheduling[0].end_date-timedelta(days=scheduling[0].capasity)).timestamp()}]
+        }
+        if len(scheduling) == 1:
+            return response
+        i = 1
+        while i < scheduling.count():
+            response['scheduling'] = response['scheduling'] + [
+                {'id': scheduling[i].id, 'name': scheduling[i].name,'capasity': scheduling[i].capasity,
+                 'end_time': scheduling[i].end_date.timestamp(),'start_time': (scheduling[i].end_date-timedelta(days=scheduling[i].capasity)).timestamp()}]
+            i = i + 1
+        return response
+    return {'status': -1}
 
-@csrf_exempt
-def newScheduling(request):
-    if request.method == 'POST':
-        #bodyParams = json.loads(request.body)
-        bodyParams = json.loads(request.body.decode('utf-8'))
-        name = bodyParams['name']
-        scheduling = Scheduling.objects.filter(name__contains=name)
-        if len(scheduling) == 0:
-            return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
-        if len(scheduling) >= 1:
-            response = {
-                "status": 0,
-                "scheduling": [{'id': scheduling[0].id, 'name': scheduling[0].name, 'start_time': scheduling[0].start_date.timestamp(),
-                           'end_time': scheduling[0].end_date.timestamp(), 'price': scheduling[0].price}]
-            }
-            if len(scheduling) == 1:
-                return JsonResponse(response)
-            i = 1
-            while i < scheduling.count():
-                response['scheduling'] = response['scheduling'] + [{'id': scheduling[i].id, 'name': scheduling[i].name, 'start_time': scheduling[i].start_date.timestamp(),
-                           'end_time': scheduling[i].end_date.timestamp() , 'price': scheduling[i].price}]
-                i = i + 1
-            return JsonResponse(response)
-
-    return JsonResponse({'status': -1})
 
 @csrf_exempt
 def weekScheduling(request):
     if request.method == 'POST':
         next_week = timezone.now().date() + timedelta(days=7)
         scheduling = Scheduling.objects.filter(end_date__lte=next_week,end_date__gte=datetime.today())
-        if len(scheduling) == 0:
-            return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
-        if len(scheduling) >= 1:
-            response = {
-                "status": 0,
-                "scheduling": [{'id': scheduling[0].id, 'name': scheduling[0].name, 'start_time': scheduling[0].start_date.timestamp(),
-                           'end_time': scheduling[0].end_date.timestamp(), 'price': scheduling[0].price}]
-            }
-            if len(scheduling) == 1:
-                return JsonResponse(response)
-            i = 1
-            while i < scheduling.count():
-                response['scheduling'] = response['scheduling'] + [{'id': scheduling[i].id, 'name': scheduling[i].name, 'start_time': scheduling[i].start_date.timestamp(),
-                           'end_time': scheduling[i].end_date.timestamp() , 'price': scheduling[i].price}]
-                i = i + 1
-            return JsonResponse(response)
+        return JsonResponse(responseMaker(scheduling))
 
     return JsonResponse({'status': -1})
 
@@ -97,23 +62,7 @@ def monthScheduling(request):
     if request.method == 'POST':
         last_month = timezone.now().today() - timedelta(days=30)
         scheduling = Scheduling.objects.filter(end_date__lte=last_month,end_date__gte=datetime.today())
-
-        if len(scheduling) == 0:
-            return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
-        if len(scheduling) >= 1:
-            response = {
-                "status": 0,
-                "scheduling": [{'id': scheduling[0].id, 'name': scheduling[0].name, 'start_time': scheduling[0].start_date.timestamp(),
-                           'end_time': scheduling[0].end_date.timestamp(), 'price': scheduling[0].price}]
-            }
-            if len(scheduling) == 1:
-                return JsonResponse(response)
-            i = 1
-            while i < scheduling.count():
-                response['scheduling'] = response['scheduling'] + [{'id': scheduling[i].id, 'name': scheduling[i].name, 'start_time': scheduling[i].start_date.timestamp(),
-                           'end_time': scheduling[i].end_date.timestamp() , 'price': scheduling[i].price}]
-                i = i + 1
-            return JsonResponse(response)
+        return JsonResponse(responseMaker(scheduling))
 
     return JsonResponse({'status': -1})
 
@@ -123,22 +72,7 @@ def todayScheduling(request):
     if request.method == 'POST':
         date = timezone.now().today()
         scheduling =Scheduling.objects.filter(end_date__eq=date)
-        if len(scheduling) == 0:
-            return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
-        if len(scheduling) >= 1:
-            response = {
-                "status": 0,
-                "scheduling": [{'id': scheduling[0].id, 'name': scheduling[0].name, 'start_time': scheduling[0].start_date.timestamp(),
-                           'end_time': scheduling[0].end_date.timestamp()}]
-            }
-            if len(scheduling) == 1:
-                return JsonResponse(response)
-            i = 1
-            while i < scheduling.count():
-                response['scheduling'] = response['scheduling'] + [{'id': scheduling[i].id, 'name': scheduling[i].name, 'start_time': scheduling[i].start_date.timestamp(),
-                           'end_time': scheduling[i].end_date.timestamp()}]
-                i = i + 1
-            return JsonResponse(response)
+        return JsonResponse(responseMaker(scheduling))
 
     return JsonResponse({'status': -1})
 
@@ -148,22 +82,7 @@ def hardDayScheduling(request):
     if request.method == 'POST':
         next_week = timezone.now().date() + timedelta(days=7)
         scheduling = Scheduling.objects.filter(end_date__lte=next_week,end_date__gte=datetime.today())
-        if len(scheduling) == 0:
-            return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
-        if len(scheduling) >= 1:
-            response = {
-                "status": 0,
-                "scheduling": [{'id': scheduling[0].id, 'name': scheduling[0].name, 'start_time': scheduling[0].start_date.timestamp(),
-                           'end_time': scheduling[0].end_date.timestamp(), 'price': scheduling[0].price}]
-            }
-            if len(scheduling) == 1:
-                return JsonResponse(response)
-            i = 1
-            while i < scheduling.count():
-                response['scheduling'] = response['scheduling'] + [{'id': scheduling[i].id, 'name': scheduling[i].name, 'start_time': scheduling[i].start_date.timestamp(),
-                           'end_time': scheduling[i].end_date.timestamp() , 'price': scheduling[i].price}]
-                i = i + 1
-            return JsonResponse(response)
+        return JsonResponse(responseMaker(scheduling))
 
     return JsonResponse({'status': -1})
 
@@ -245,17 +164,6 @@ def cancelReserve(request):
     return JsonResponse({'status': 0})
 
 @csrf_exempt
-def payScheduling(request):
-    reserve = reserveFinder(request)
-    if len(reserve) == 0:
-        print("hi")
-        return JsonResponse({'status': -1})
-    reserve[0].status = 1
-    print(reserve[0].status)
-    reserve[0].save()
-    return JsonResponse({'status': 0})
-
-@csrf_exempt
 def statusResult(request):
     reserves = reserveFinder(request)
     if len(reserves) == 0:
@@ -269,16 +177,14 @@ def statusResult(request):
 
 @csrf_exempt
 def requestScheduling(request):
-    bodyParams = json.loads(request.body)
-    requestText = bodyParams['request']
-    token = Token.objects.get(key=bodyParams['token'])
-    user = token.user
-    print('hhhosdsds')
-
-    request = RequestForScheduling.objects.create()
-    request.student_id = user
-    request.textRequest = requestText
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    request = Scheduling.objects.create()
+    request.name = bodyParams['name']
+    request.end_date = bodyParams['end_date']
+    request.capasity = bodyParams['capasity']
+    request.info = bodyParams['info']
     request.save()
+    print('created!')
     return JsonResponse({'status': 0})
 
 

@@ -9,11 +9,9 @@ from django.db import models
 
 class Scheduling(models.Model):
     name = models.CharField(max_length=100)
-    start_date = models.DateTimeField(default=django.utils.timezone.now)
     end_date = models.DateTimeField(default=django.utils.timezone.now)
-    price = models.IntegerField()
-    spec = models.TextField(max_length=2000)
-    capacity = models.IntegerField()
+    capasity = models.IntegerField()
+    info = models.TextField(max_length=2000)
 
     def __str__(self):
         return str(self.name)
