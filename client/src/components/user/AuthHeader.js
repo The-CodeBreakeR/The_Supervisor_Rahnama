@@ -8,6 +8,7 @@ import LoginModal from './LoginModal'
 class AuthHeader extends React.Component {
   logout() {
     Cookie.erase('token')
+    localStorage.removeItem('user')
     this.forceUpdate()
   }
 
