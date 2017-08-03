@@ -4,6 +4,7 @@ const Strings = new LocalizedStrings({
   per: {
     registration: 'ثبت نام',
     studentId: 'شماره‌ی دانشجویی',
+    email: 'پست الکترونیکی',
     password: 'کلمه‌ی عبور',
     confirmPassword: 'تایید کلمه‌ی عبور',
     firstName: 'نام',
@@ -13,6 +14,7 @@ const Strings = new LocalizedStrings({
     cancel: 'لغو',
     finish: 'پایان',
     studentIdError: 'شماره‌ی دانشجویی باید متشکل از ارقام باشد و حداقل ۸ کاراکتر باشد.',
+    emailError: 'پست الکترونیکی وارد‌شده معتبر نیست.',
     passwordError: 'کلمه‌ی عبور باید حداقل ۶ کاراکتر باشد.',
     confirmPasswordError: 'تایید کلمه‌ی عبور صحیح نیست.',
     nameError: 'نام و نام خانوادگی باید حداقل ۳ کاراکتر باشد.',
