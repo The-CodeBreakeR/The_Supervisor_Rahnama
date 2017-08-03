@@ -53,7 +53,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg|gif)$/,
+        test: /\.(jpg|png|woff|woff2|eot|ttf|svg|gif)$/,
         use: {
           loader: 'url-loader',
           query: {
