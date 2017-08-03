@@ -10,6 +10,8 @@ import IncomeList from './IncomeList'
 import AddIncome from './AddIncome'
 import ExpenseList from './ExpenseList'
 import AddExpense from './AddExpense'
+import LoanRequest from './LoanRequest'
+import LoanResponse from './LoanResponse'
 
 class AccountHome extends React.Component {
   constructor(props) {

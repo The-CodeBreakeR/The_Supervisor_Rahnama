@@ -2,6 +2,12 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    expenseID: 'کد هزینه',
+    expenseDestionation: 'منبع هزینه',
+    expenseAmount: 'مقدار هزینه',
+    incomeID: 'کد درآمد',
+    incomeSource: 'منبع درآمد',
+    incomeAmount: 'مقدار درآمد',
     registration: 'ثبت نام',
     studentId: 'شماره‌ی دانشجویی',
     password: 'کلمه‌ی عبور',
