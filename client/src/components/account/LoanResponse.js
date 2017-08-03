@@ -18,7 +18,7 @@ class LoanResponse extends React.Component {
 
   handleResult(result) {
     if (result.status === -1) {
-      alert(Strings.submitionFailed)
+      alert(Strings.NoResponse)
     } else {
       alert(result.answer + '\n' + Strings.repPer + result.repayment_period + '\n' +
         Strings.repRate + result.repayment_rate)

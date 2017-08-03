@@ -2,6 +2,7 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    NoResponse: 'به این چنین درخواستی پاسخ داده نشده است.',
     furtherTracking: 'کد رهگیری',
     repPer: 'دوره بازپرداخت:',
     repRate: 'نرخ بازپرداخت:',
