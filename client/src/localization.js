@@ -2,8 +2,13 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    submitionOK: 'فرآیند با موفقیت به انجام رسید.',
+    submitionFailed: 'فرآیند با خطا مواجه شد. لطفا از درستی ورودی های خود اطمینان حاصل نمایید.',
+    loginFirst: ' لطفا ابتدا وارد حساب کاربری خود شوید.',
+    submitExpense: 'ثبت هزینه جدید',
+    submitIncome: 'ثبت درآمد جدید',
     expenseID: 'کد هزینه',
-    expenseDestionation: 'منبع هزینه',
+    expenseDestination: 'منبع هزینه',
     expenseAmount: 'مقدار هزینه',
     incomeID: 'کد درآمد',
     incomeSource: 'منبع درآمد',

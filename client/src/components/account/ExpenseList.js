@@ -11,7 +11,7 @@ class ExpenseList extends React.Component {
   renderExpense(expense) {
     return <Table.Row key={expense.id} >
       <Table.Cell>{expense.id} </Table.Cell>
-      <Table.Cell>{expense.destionation}</Table.Cell>
+      <Table.Cell>{expense.destination}</Table.Cell>
       <Table.Cell>{expense.amount}</Table.Cell>
     </Table.Row>
   }
@@ -22,7 +22,7 @@ class ExpenseList extends React.Component {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>{Strings.expenseID}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.expenseDestionation}</Table.HeaderCell>
+            <Table.HeaderCell>{Strings.expenseDestination}</Table.HeaderCell>
             <Table.HeaderCell>{Strings.expenseAmount}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
