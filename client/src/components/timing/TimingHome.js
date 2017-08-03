@@ -5,6 +5,7 @@ import FastReadButton from './FastReadButton'
 import TypeTiming from './TypeTiming'
 import Strings from '../../localization'
 import SubmitQuestionButton from './SubmitQuestionButton'
+import { Table } from 'semantic-ui-react'
 
 class TimingHome extends React.Component {
   constructor(props) {
@@ -31,19 +32,20 @@ class TimingHome extends React.Component {
           this.setState({alarms: result.alarms.items})
         }
         if (result.proposals.status === 0) {
-          this.setState({alarms: result.proposals.items})
+          this.setState({proposals: result.proposals.items})
         }
       })
   }
 
   renderItem(item) {
-    return <Table.Row key={item.id} >
+    return <Table.Row>
       <Table.Cell>{item.info}</Table.Cell>
     </Table.Row>
   }
+
   render() {
-    const alarms = this.state.alarms.toursList.map((tour) => this.renderItem(tour))
-    const proposals = this.state.proposals.map((tour) => this.renderItem(tour))
+    const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
+    const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
     return <div><div><CodingTimingButton/>
       <PresentationButton/>
       <FastReadButton/>
