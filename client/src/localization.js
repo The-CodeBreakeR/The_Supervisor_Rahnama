@@ -2,6 +2,14 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    toursub: 'سفر های سیاحتی و زیارتی',
+    skillsub: 'مهارت های دانشجویی',
+    accountingsub: 'حسابداری مالی دوران تحصیلی',
+    accommodationsub: 'اقامت دانشجویی',
+    profilesub: 'تکمیل پرونده ی کاربری',
+    internshipsub: 'کارآموزی تحصیلی‌',
+    timingsub: 'مدیریت زمانی تحصیلی',
+    schedulingsub: 'برنامه ریزی تحصیلی',
     incomeTable: 'جدول درآمد ها',
     incomeInput: 'ورود درآمد جدید',
     expenseTable: 'جدول هزینه ها',
