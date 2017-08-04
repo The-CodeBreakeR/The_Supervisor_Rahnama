@@ -65,7 +65,7 @@ const Strings = new LocalizedStrings({
     schedulingStartDate: 'شروع پیشنهادی انجام',
     schedulingEndDate: 'زمان سررسید',
     schedulingInfo: 'اطلاعات ماده درسی',
-    schedulingCapacity: 'مدت زمان احتمالی ماده درسی',
+    schedulingCapasity: 'مدت زمان احتمالی ماده درسی',
     schedulingReserve: 'رزرو',
     schedulingCansel: 'لغو ماده درسی',
     schedulingAccepted: 'تایید',

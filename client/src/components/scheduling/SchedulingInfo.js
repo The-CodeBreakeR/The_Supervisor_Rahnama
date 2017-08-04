@@ -12,10 +12,7 @@ class SchedulingInfo extends React.Component {
       SchedulingName: '',
       start: '',
       end: '',
-      schedulingpec: '',
-      schedulingprice: '',
-      schedulingcapacity: '',
-      status: 4,
+      schedulingcapasity: '',
     }
   }
   statusChecker(id) {
@@ -64,9 +61,17 @@ class SchedulingInfo extends React.Component {
   setStatus(stat) {
     this.setState({status: stat})
   }
+  settingState(scheduling) {
+    this.setState({SchedulingID: scheduling.id})
+    this.setState({SchedulingName: scheduling.name})
+    this.setState({start: MomentJ(scheduling.start_time * 1000).format('LLLL')})
+    this.setState({end: MomentJ(scheduling.end_time * 1000).format('LLLL')})
+    this.setState({schedulingCapasity:scheduling.capacity})
+    this.statusChecker(scheduling.id)
+  }
 
   render() {
-    return <Modal trigger={<Button onClick={() => this.getInfo()}>{Strings.moreInfo}</Button>}>
+    return <Modal trigger={<Button onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
       <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
       <Modal.Content image scrolling>
         <Image
@@ -80,9 +85,7 @@ class SchedulingInfo extends React.Component {
           <p>{Strings.schedulingStartDate} : {this.state.start}</p>
           <p>{Strings.schedulingEndDate} : {this.state.end}</p>
           <p>{Strings.info} : {this.state.schedulingpec}</p>
-          <p>{Strings.schedulingPrice} : {this.state.schedulingprice}</p>
-          <p>{Strings.schedulingCapacity} : {this.state.schedulingcapacity}</p>
-          <p>{this.state.status}</p>
+          <p>{Strings.schedulingCapasity} : {this.state.schedulingCapasity}</p>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

@@ -18,8 +18,7 @@ class SchedulingList extends React.Component {
       <Table.Cell>{scheduling.name}</Table.Cell>
       <Table.Cell>{MomentJ(scheduling.start_time * 1000).format('LLLL')}</Table.Cell>
       <Table.Cell>{MomentJ(scheduling.end_time * 1000).format('LLLL')}</Table.Cell>
-      <Table.Cell>{scheduling.capasity}</Table.Cell>
-      <SchedulingInfo schedulingId={scheduling.id} />
+      <SchedulingInfo scheduling={scheduling} />
     </Table.Row>
   }
   render() {
@@ -32,7 +31,6 @@ class SchedulingList extends React.Component {
             <Table.HeaderCell>{Strings.schedulingName}</Table.HeaderCell>
             <Table.HeaderCell>{Strings.schedulingStartDate}</Table.HeaderCell>
             <Table.HeaderCell>{Strings.schedulingEndDate}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.schedulingCapacity}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

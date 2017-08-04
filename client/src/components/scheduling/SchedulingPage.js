@@ -43,16 +43,18 @@ class SchedulingPage extends React.Component {
 
   render() {
     console.log('salam')
-    return <div className='scheduling'>
-      <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
+    return <div className='scheduling'><div>
       <HardDayModal onLogin={() => this.forceUpdate()} />
       <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
+      <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
+      </div>
       <SchedulingList schedulingList={this.state.schedulingList} />
+      <div>
       <Button onClick={() => this.componentWillMount()}>{Strings.schedulingAll}</Button>
       <SchedulingToday/>
       <SchedulingRequest/>
-    </div>
+      </div></div>
   }
 }
 

@@ -164,7 +164,7 @@ def cancelReserve(request):
     return JsonResponse({'status': 0})
 
 @csrf_exempt
-def statusResult(request):
+def statusResult(request):#todo
     reserves = reserveFinder(request)
     if len(reserves) == 0:
         return JsonResponse({'status': 0})

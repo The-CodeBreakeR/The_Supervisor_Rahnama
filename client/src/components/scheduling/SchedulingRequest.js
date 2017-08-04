@@ -73,9 +73,9 @@ class SchedulingRequest extends React.Component {
           <div>
             <div>
               <Form>
-                <Form.TextArea value={this.state.info} label={Strings.requestForScheduling} placeholder={Strings.requestForScheduling} onChange={event => this.onInfoChange(event.target.value)} />
-                <Form.Input value={this.state.name} label={Strings.requestForScheduling} placeholder={Strings.requestForScheduling} onChange={event => this.onNameChange(event.target.value)} />
-                <Form.Input value={this.state.capasity} label={Strings.requestForScheduling} placeholder={Strings.requestForScheduling} onChange={event => this.onCapasityChange(event.target.value)} />
+                <Form.Input value={this.state.name} label={Strings.schedulingName} placeholder={Strings.requestForScheduling} onChange={event => this.onNameChange(event.target.value)} />
+                <Form.Input value={this.state.capasity} label={Strings.schedulingCapasity} placeholder={Strings.requestForScheduling} onChange={event => this.onCapasityChange(event.target.value)} />
+                <Form.TextArea value={this.state.info} label={Strings.info} placeholder={Strings.requestForScheduling} onChange={event => this.onInfoChange(event.target.value)} />
                 <Form.Button onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>
               </Form>
             </div>
