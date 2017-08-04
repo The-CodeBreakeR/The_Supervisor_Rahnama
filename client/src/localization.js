@@ -122,6 +122,8 @@ const Strings = new LocalizedStrings({
     married: 'متاهل',
     maritalStatusError: 'وضعیت تاهل را مشخص کنید.',
     back: 'بازگشت',
+    personalProfileMessage: 'در این قسمت می‌توانید پرونده‌ی تحصیلی خود را مشاهده و تکمیل نمایید. لازم به ذکر است که برخی از امکانات سامانه تنها بعد از تکمیل پرونده‌ی کاربری‌تان قابل دسترسی خواهد بود.',
+    profileSuccessfullySubmitted: 'پرونده‌ی شما با موفقیت ارسال شد.',
   },
 })
 

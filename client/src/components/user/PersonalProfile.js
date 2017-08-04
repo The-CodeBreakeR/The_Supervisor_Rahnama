@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 import { Link } from 'react-router-dom'
 import Strings from '../../localization'
 import {formatError, getUser} from './utils'
-import {Button, Header, Form, Message} from 'semantic-ui-react'
+import {Button, Header, Form, Message, Modal} from 'semantic-ui-react'
 
 class PersonalProfile extends React.Component {
   constructor(props) {
@@ -170,7 +170,21 @@ class PersonalProfile extends React.Component {
     const errors = this.generateErrors()
     return (
       <div>
+        <Modal
+          open={this.state.done}
+          onOpen={() => this.setState({ done: true })}
+          onClose={() => this.setState({ done: true })}
+        >
+          <Modal.Header>{Strings.personalProfile}</Modal.Header>
+          <Modal.Content>
+            {Strings.profileSuccessfullySubmitted}
+          </Modal.Content>
+          <Modal.Actions>
+            <Button primary onClick={() => this.setState({ done: false })}>{Strings.finish}</Button>
+          </Modal.Actions>
+        </Modal>
         <Header>پرونده‌ی شخصی</Header>
+        <p>{Strings.personalProfileMessage}</p>
         <Form>
           <Form.Group widths='equal'>
             <Form.Input
