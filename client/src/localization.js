@@ -136,6 +136,10 @@ const Strings = new LocalizedStrings({
     personalProfile: 'پرونده‌ی شخصی',
     educationalProfile: 'پرونده‌ی تحصیلی',
     internLogin: 'ورود به سامانه کارآموزی',
+    firstYear:'سال اول پیشنهادی:',
+    secondYear: 'سال دوم پیشنهادی:',
+    summer: ' تابستان ',
+    firstTerm: 'ترم اول یا دوم سال تحصیلی ',
   },
 })
 

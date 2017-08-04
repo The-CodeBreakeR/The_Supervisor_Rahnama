@@ -8,6 +8,9 @@ class TimingEndDuration extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      user:{educational_profile:{entrance_year:0}},
+      firstYear:'',
+      secondYear:'',
       open: false,
       message: '',
     }
@@ -15,19 +18,21 @@ class TimingEndDuration extends React.Component {
   close() {
     this.setState({open: false})
   }
-  ButtonClickHandle () {
-    fetch('/timing/getTiming/', {
-      method: 'POST',
+  ButtonClickHandle() {
+    console.log('bb',JSON.parse(localStorage.getItem('user')).id)
+    fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
+      method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        timingId: 3,
-      }),
+      }
     })
       .then(response => response.json())
-      .then(result => this.setState({message: result.message()}))
+      .then(result => this.setUser(result))
+  }
+  setUser(result){
+    console.log(result)
+    this.setState({user: result})
   }
   render() {
     return <Modal trigger={<Button
@@ -39,7 +44,8 @@ class TimingEndDuration extends React.Component {
       <Modal.Content image scrolling>
         <Modal.Description>
           {Strings.infoDuration}
-          {this.state.message}
+          <br/>
+          {Strings.summer}:{this.state.user.educational_profile.entrance_year+4}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

@@ -8,7 +8,7 @@ class TimingIntern extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user:''
+      user:{educational_profile:{entrance_year:0}},
       firstYear:'',
       secondYear:'',
       open: false,
@@ -45,10 +45,11 @@ class TimingIntern extends React.Component {
         <Modal.Description>
           {Strings.infoIntern}
           <br/>
-          {this}
+          {Strings.firstYear}:{this.state.user.educational_profile.entrance_year+3}
+          <br/>
+          {Strings.secondYear}:{this.state.user.educational_profile.entrance_year+4}
           <br/>
           <Link to='/internship'><Button>{Strings.internLogin}</Button></Link>
-          {this.state.message}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
