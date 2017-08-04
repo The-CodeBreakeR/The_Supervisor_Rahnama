@@ -101,6 +101,8 @@ const Strings = new LocalizedStrings({
     questionShow: 'پرسش :',
     answerShow: 'جواب :',
     noQuestion: 'ارشیوی شما خالی میباشد',
+    personalProfile: 'پرونده‌ی شخصی',
+    educationalProfile: 'پرونده‌ی تحصیلی',
   },
 })
 

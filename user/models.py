@@ -44,6 +44,9 @@ class PersonalProfile(models.Model):
     land_line_number = models.CharField(max_length=14)
     address = models.TextField()
 
+    def __str__(self):
+        return str(self.user)
+
 
 class EducationalProfile(models.Model):
     MAJOR_CHOICES = (
@@ -70,6 +73,9 @@ class EducationalProfile(models.Model):
     entrance_year = models.IntegerField()
     degree = models.CharField(max_length=3, choices=DEGREE_CHOICES)
 
+    def __str__(self):
+        return str(self.user)
+
 
 class Course(models.Model):
     DEPARTMENT_CHOICES = (
@@ -93,14 +99,23 @@ class Course(models.Model):
     credits = models.IntegerField()
     name = models.CharField(max_length=64)
 
+    def __str__(self):
+        return '[' + self.department + '] ' + str(self.id) + ' - ' + self.name + ' (' + str(self.credits) + ')'
+
 
 class SemesterInformation(models.Model):
     education_profile = models.ForeignKey(EducationalProfile)
     year = models.IntegerField()
     semester = models.IntegerField()
 
+    def __str__(self):
+        return str(self.education_profile) + ' - ' + str(self.year) + ':' + str(self.semester)
+
 
 class CourseInformation(models.Model):
     semester = models.ForeignKey(SemesterInformation)
     course = models.ForeignKey(Course)
     grade = models.FloatField()
+
+    def __str__(self):
+        return str(self.semester) + ' - ' + str(self.course) + ' - ' + str(self.grade)
