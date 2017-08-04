@@ -11,7 +11,7 @@ class Scheduling(models.Model):
     name = models.CharField(max_length=100)
     end_date = models.DateTimeField(default=django.utils.timezone.now)
     capasity = models.IntegerField()
-    info = models.TextField(max_length=2000)
+    info = models.TextField(max_length=2000,default='')
 
     def __str__(self):
         return str(self.name)

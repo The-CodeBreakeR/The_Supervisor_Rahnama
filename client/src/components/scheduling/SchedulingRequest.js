@@ -1,19 +1,29 @@
 import React from 'react'
 import { Form, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 class SchedulingRequest extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      request: '',
+      name: '',
+      capasity: '',
+      end_date: '',
+      info: '',
       error: '',
       accept: '',
     }
   }
 
-  onRequestChange(value) {
-    this.setState({request: value})
+  onInfoChange(value) {
+    this.setState({info: value})
+  }
+  onNameChange(value) {
+    this.setState({name: value})
+  }
+  onCapasityChange(value) {
+    this.setState({capasity: value})
   }
   handleResult(result) {
     if (result.status === 0) {
@@ -27,7 +37,11 @@ class SchedulingRequest extends React.Component {
     this.setState({ open: true })
   }
   sendRequest() {
-    if (this.state.request) {
+    if (true) {
+      console.log(this.state.name)
+      console.log(this.state.end_date)
+      console.log(this.state.info)
+      console.log(this.state.capasity)
       fetch('/scheduling/request/', {
         method: 'POST',
         headers: {
@@ -35,10 +49,10 @@ class SchedulingRequest extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name:
-          capasity:
-          end_date:
-          
+          name: this.state.name,
+          end_date:this.state.end_date,
+          capasity:this.state.capasity,
+          info:this.state.info,
         }),
       })
         .then(response => response.json())
@@ -47,25 +61,40 @@ class SchedulingRequest extends React.Component {
   }
 
   render() {
-    return <div>
-      <div>
-        <Form>
-          <Form.TextArea value={this.state.request} label={Strings.requestForScheduling} placeholder={Strings.requestForSchedulingSpec} onChange={event => this.onRequestChange(event.target.value)} />
-          <Form.Button onClick={() => this.sendRequest()} >{Strings.schedulingNewItem}</Form.Button>
-        </Form>
-      </div>
-      {this.state.error &&
-        <Message negative>
-          <Message.Header>{Strings.error}</Message.Header>
-          <p>{Strings.requestSubmitDecline}</p>
-        </Message>}
-      {this.state.accept &&
-        <Message positive>
-          <Message.Header>{Strings.submit}</Message.Header>
-          <p>{Strings.requestSubmitAccept}</p>
-        </Message>}
-
-    </div>
+    return <Modal trigger={<Button>{Strings.schedulingNewItem}</Button>}>
+      <Modal.Header>{Strings.schedulingNewItem}</Modal.Header>
+      <Modal.Content image scrolling>
+        <Image
+          size='medium'
+          src='/assets/images/wireframe/image.png'
+          wrapped
+        />
+        <Modal.Description>
+          <div>
+            <div>
+              <Form>
+                <Form.TextArea value={this.state.info} label={Strings.requestForScheduling} placeholder={Strings.requestForScheduling} onChange={event => this.onInfoChange(event.target.value)} />
+                <Form.Input value={this.state.name} label={Strings.requestForScheduling} placeholder={Strings.requestForScheduling} onChange={event => this.onNameChange(event.target.value)} />
+                <Form.Input value={this.state.capasity} label={Strings.requestForScheduling} placeholder={Strings.requestForScheduling} onChange={event => this.onCapasityChange(event.target.value)} />
+                <Form.Button onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>
+              </Form>
+            </div>
+            {this.state.error &&
+              <Message negative>
+                <Message.Header>{Strings.error}</Message.Header>
+                <p>{Strings.requestSubmitDecline}</p>
+              </Message>}
+            {this.state.accept &&
+              <Message positive>
+                <Message.Header>{Strings.submit}</Message.Header>
+                <p>{Strings.requestSubmitAccept}</p>
+              </Message>}
+          </div>
+        </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions>
+      </Modal.Actions>
+    </Modal>
   }
 }
 
