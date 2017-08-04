@@ -44,6 +44,8 @@ class LoanRequest extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.onReqAmount('')
+    this.onReqPurpose('')
   }
 
   onReqAmount(value) {

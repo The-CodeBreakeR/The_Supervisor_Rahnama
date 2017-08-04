@@ -10,20 +10,20 @@ import Cookie from 'browser-cookies'
 class IncomeList extends React.Component {
   renderIncome(income) {
     return <Table.Row key={income.id} >
-      <Table.Cell>{income.id} </Table.Cell>
-      <Table.Cell>{income.source}</Table.Cell>
-      <Table.Cell>{income.amount}</Table.Cell>
+      <Table.Cell textAlign='center'>{income.id} </Table.Cell>
+      <Table.Cell textAlign='center'>{income.source}</Table.Cell>
+      <Table.Cell textAlign='center'>{income.amount}</Table.Cell>
     </Table.Row>
   }
   render() {
     const incomes = this.props.incomeList.map((income) => this.renderIncome(income))
-    return <Segment className='account__inclist'>
+    return <Segment className='account__incomelist'>
       <Table selectable>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>{Strings.incomeID}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.incomeSource}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.incomeAmount}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.incomeID}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.incomeSource}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.incomeAmount}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

@@ -68,6 +68,8 @@ class AddExpense extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.onExpDestination('')
+    this.onExpAmount('')
   }
 
   onExpAmount(value) {

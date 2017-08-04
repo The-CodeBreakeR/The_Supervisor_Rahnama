@@ -64,6 +64,7 @@ class ReservePlace extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.setState({placeID: ''})
   }
 
   onPlaceIDChange(value) {

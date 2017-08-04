@@ -68,6 +68,8 @@ class AddIncome extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.onIncSource('')
+    this.onIncAmount('')
   }
 
   onIncAmount(value) {

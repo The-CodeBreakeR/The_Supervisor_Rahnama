@@ -37,9 +37,9 @@ class RulesList extends React.Component {
 
   renderRule(rule) {
     return <Table.Row key={rule.id} >
-      <Table.Cell>{rule.id} </Table.Cell>
-      <Table.Cell>{MomentJ(rule.date).format('L')}</Table.Cell>
-      <Table.Cell>{rule.description}</Table.Cell>
+      <Table.Cell textAlign='center'>{rule.id} </Table.Cell>
+      <Table.Cell textAlign='center'>{MomentJ(rule.date).format('L')}</Table.Cell>
+      <Table.Cell textAlign='center'>{rule.description}</Table.Cell>
     </Table.Row>
   }
   render() {
@@ -48,9 +48,9 @@ class RulesList extends React.Component {
       <Table selectable>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>{Strings.ruleID}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.ruleDate}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.ruleDescription}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleID}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleDate}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleDescription}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

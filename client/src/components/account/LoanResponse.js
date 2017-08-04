@@ -43,6 +43,7 @@ class LoanResponse extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.onReqID('')
   }
 
   onReqID(value) {
