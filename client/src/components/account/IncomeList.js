@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 

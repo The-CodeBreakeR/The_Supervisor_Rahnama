@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import Cookie from 'browser-cookies'
@@ -20,8 +20,8 @@ class PlacesList extends React.Component {
   }
   render() {
     const places = this.props.placesList.map((place) => this.renderPlace(place))
-    return <div>
-      <Table basic='very' celled selectable>
+    return <Segment className='accomm__placeslist'>
+      <Table selectable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>{Strings.placeID}</Table.HeaderCell>
@@ -35,7 +35,7 @@ class PlacesList extends React.Component {
           {places}
         </Table.Body>
       </Table>
-    </div>
+    </Segment>
   }
 }
 

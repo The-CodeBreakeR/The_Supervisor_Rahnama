@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import Cookie from 'browser-cookies'
@@ -44,8 +44,8 @@ class RulesList extends React.Component {
   }
   render() {
     const rules = this.state.rulesList.map((rule) => this.renderRule(rule))
-    return <div>
-      <Table basic='very' celled selectable>
+    return <Segment className='accomm__ruleslist'>
+      <Table selectable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>{Strings.ruleID}</Table.HeaderCell>
@@ -57,7 +57,7 @@ class RulesList extends React.Component {
           {rules}
         </Table.Body>
       </Table>
-    </div>
+    </Segment>
   }
 }
 
