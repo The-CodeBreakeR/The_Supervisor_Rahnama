@@ -3,6 +3,7 @@ import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
 import _ from 'lodash'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
+import SubmitQuestionButton from './SubmitQuestionButton'
 
 class CodingSkillButton extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class CodingSkillButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeCodingSkill}</Button>}
+      className='skill__button' size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeCodingSkill}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
@@ -42,6 +43,7 @@ class CodingSkillButton extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
+        <SubmitQuestionButton/>
         <Button onClick={() => this.close()}>
           {Strings.tourStop}
         </Button>
