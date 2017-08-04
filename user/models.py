@@ -36,7 +36,7 @@ class PersonalProfile(models.Model):
     user = models.OneToOneField(User)
     photo = models.ImageField()
     father_name = models.CharField(max_length=64)
-    birth_date = models.DateTimeField(default=timezone.now)
+    birth_date = models.CharField(max_length=10)
     birth_place = models.CharField(max_length=64)
     national_id = models.CharField(max_length=10)
     mobile_number = models.CharField(max_length=14)

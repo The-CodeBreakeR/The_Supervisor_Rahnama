@@ -8,62 +8,31 @@ class RegistrationModal extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
-    this.fields = ['studentId', 'email', 'password', 'confirmPassword', 'firstName', 'lastName', 'rules']
+    this.fields = ['fatherName', 'birthDate', 'birthPlace', 'nationalId', 'mobileNumber', 'maritalStatus',
+      'landlineNumber', 'address']
   }
 
   resetState() {
     this.state = {
-      studentId: {value: '', error: false},
-      email: {value: '', error: false},
-      password: {value: '', error: false},
-      confirmPassword: {value: '', error: false},
-      firstName: {value: '', error: false},
-      lastName: {value: '', error: false},
-      rules: {value: false, error: true},
-      open: false,
-      done: false,
-      error: '',
+      fatherName: {value: '', error: false},
+      birthDate: {value: '', error: false},
+      birthPlace: {value: '', error: false},
+      nationalId: {value: '', error: false},
+      mobileNumber: {value: '', error: false},
+      maritalStatus: {value: false, error: false},
+      landlineNumber: {value: '', error: false},
+      address: {value: '', error: false},
     }
   }
 
-  close() {
-    this.setState({open: false})
-    this.resetState()
+  onFatherNameChanged(value) {
+    this.setState({fatherName: {value, error: value.length < 3}})
   }
 
-  onStudentIdChanged(value) {
-    this.setState({studentId: {value, error: !/^[0-9]+$/.test(value) || value.length < 8}})
+  onBirthDateChanged(value) {
+    this.setState({birthDate: {value, error: !/\d{4}\/\d{1,2}\/\d{1,2}/.test(value)}})
   }
 
-  onEmailChanged(value) {
-    this.setState({email: {value, error: !/^.+@.+\..+$/.test(value)}})
-  }
-
-  onPasswordChanged(value) {
-    this.setState({password: {value, error: value.length < 6}})
-    this.setState({
-      confirmPassword: {
-        value: this.state.confirmPassword.value,
-        error: value !== this.state.confirmPassword.value
-      }
-    })
-  }
-
-  onConfirmPasswordChanged(value) {
-    this.setState({confirmPassword: {value, error: value !== this.state.password.value}})
-  }
-
-  onFirstNameChanged(value) {
-    this.setState({firstName: {value, error: value.length < 3}})
-  }
-
-  onLastNameChanged(value) {
-    this.setState({lastName: {value, error: value.length < 3}})
-  }
-
-  onRulesChanged() {
-    this.setState({rules: {value: !this.state.rules.value, error: !this.state.rules.error}})
-  }
 
   isOK() {
     for (const field of this.fields) {
