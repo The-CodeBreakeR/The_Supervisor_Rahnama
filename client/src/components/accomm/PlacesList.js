@@ -20,7 +20,7 @@ class PlacesList extends React.Component {
   }
   render() {
     const places = this.props.placesList.map((place) => this.renderPlace(place))
-    return <Segment className='accomm__placeslist'>
+    return <Segment className='accomm__list' >
       <Table selectable>
         <Table.Header>
           <Table.Row>

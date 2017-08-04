@@ -44,7 +44,7 @@ class RulesList extends React.Component {
   }
   render() {
     const rules = this.state.rulesList.map((rule) => this.renderRule(rule))
-    return <Segment className='accomm__ruleslist'>
+    return <Segment className='accomm__list'>
       <Table selectable>
         <Table.Header>
           <Table.Row>

@@ -17,7 +17,7 @@ class ExpenseList extends React.Component {
   }
   render() {
     const expenses = this.props.expenseList.map((expense) => this.renderExpense(expense))
-    return <Segment className='account__expenselist'>
+    return <Segment className='account__list'>
       <Table selectable>
         <Table.Header>
           <Table.Row>

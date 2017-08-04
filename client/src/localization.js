@@ -2,6 +2,15 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    incomeTable: 'جدول درآمد ها',
+    incomeInput: 'ورود درآمد جدید',
+    expenseTable: 'جدول هزینه ها',
+    expenseInput: 'ورود هزینه جدید',
+    loanRequestInput: 'درخواست وام',
+    loanResponseInput: 'پیگیری درخواست وام',
+    rulesTable: 'جدول مقررات',
+    placesTable: 'جدول محل های اقامتی در دسترس',
+    reserveInput: 'رزرو محل اقامتی',
     NoResponse: 'به این چنین درخواستی پاسخ داده نشده است.',
     furtherTracking: 'کد رهگیری',
     repPer: 'دوره بازپرداخت:',

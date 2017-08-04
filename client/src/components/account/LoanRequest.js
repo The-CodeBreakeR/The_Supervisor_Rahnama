@@ -58,9 +58,9 @@ class LoanRequest extends React.Component {
 
   render() {
     return <div>
-      <Input value={this.state.reqAmount} placeholder={Strings.requestAmount} onChange={event => this.onReqAmount(event.target.value)}/>
-      <Input value={this.state.reqPurpose} placeholder={Strings.requestPurpose} onChange={event => this.onReqPurpose(event.target.value)}/>
-      <Button onClick={() => this.submit()}>{Strings.submitRequest}</Button>
+      <Input className='account__input' value={this.state.reqAmount} placeholder={Strings.requestAmount} onChange={event => this.onReqAmount(event.target.value)}/>
+      <Input className='account__input account__addr' value={this.state.reqPurpose} placeholder={Strings.requestPurpose} onChange={event => this.onReqPurpose(event.target.value)}/>
+      <Button primary onClick={() => this.submit()}>{Strings.submitRequest}</Button>
     </div>
   }
 }

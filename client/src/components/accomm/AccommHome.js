@@ -5,6 +5,8 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Cookie from 'browser-cookies'
+import { Header } from 'semantic-ui-react'
+import Strings from '../../localization'
 
 import ReservePlace from './ReservePlace'
 import RulesList from './RulesList'
@@ -43,8 +45,11 @@ class AccommHome extends React.Component {
 
   render() {
     return <div className='accomm'>
+      <Header>{Strings.rulesTable}</Header>
       <RulesList/>
+      <Header>{Strings.placesTable}</Header>
       <PlacesList placesList={this.state.placesList} />
+      <Header>{Strings.reserveInput}</Header>
       <ReservePlace setPlacesList={(placesList) => this.setPlacesList(placesList)} />
     </div>
   }
