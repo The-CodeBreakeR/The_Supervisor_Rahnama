@@ -6,5 +6,5 @@ export function formatError(error) {
 }
 
 export function getUser() {
-  return Cookie.get('token') && JSON.parse(localStorage.get('user'))
+  return Cookie.get('token') && JSON.parse(localStorage.getItem('user'))
 }

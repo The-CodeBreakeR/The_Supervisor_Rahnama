@@ -121,6 +121,7 @@ const Strings = new LocalizedStrings({
     single: 'مجرد',
     married: 'متاهل',
     maritalStatusError: 'وضعیت تاهل را مشخص کنید.',
+    back: 'بازگشت',
   },
 })
 

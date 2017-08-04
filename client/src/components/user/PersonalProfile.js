@@ -1,15 +1,41 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
+import { Link } from 'react-router-dom'
 import Strings from '../../localization'
 import {formatError, getUser} from './utils'
-import {Button, Modal, Form, Message} from 'semantic-ui-react'
+import {Button, Header, Form, Message} from 'semantic-ui-react'
 
-class RegistrationModal extends React.Component {
+class PersonalProfile extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
     this.fields = ['fatherName', 'birthDate', 'birthPlace', 'nationalId', 'mobileNumber', 'maritalStatus',
       'landlineNumber', 'address']
+  }
+
+  componentWillMount() {
+    fetch(`/api/user/${getUser().id}/`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(result => {
+        const personal = result.personal_profile
+        if (personal) {
+          this.onFatherNameChanged(personal.father_name)
+          this.onBirthDateChanged(personal.birth_date)
+          this.onBirthPlaceChanged(personal.birth_place)
+          this.onNationalIdChanged(personal.national_id)
+          this.onMobileNumberChanged(personal.mobile_number)
+          this.onLandlineNumberChanged(personal.land_line_number)
+          this.onMaritalStatusChanged(personal.marital_status)
+          this.onAddressChanged(personal.address)
+          this.setState({ url: personal.url })
+        }
+      })
   }
 
   resetState() {
@@ -23,6 +49,8 @@ class RegistrationModal extends React.Component {
       landlineNumber: {value: '', error: false},
       address: {value: '', error: false},
       error: '',
+      url: '',
+      done: false,
     }
   }
 
@@ -31,7 +59,7 @@ class RegistrationModal extends React.Component {
   }
 
   onBirthDateChanged(value) {
-    this.setState({birthDate: {value, error: !/\d{4}\/\d{1,2}\/\d{1,2}/.test(value)}})
+    this.setState({birthDate: {value, error: !/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(value)}})
   }
 
   onBirthPlaceChanged(value) {
@@ -39,7 +67,7 @@ class RegistrationModal extends React.Component {
   }
 
   onNationalIdChanged(value) {
-    this.setState({nationalId: {value, error: !/\d{10}/.test(value)}})
+    this.setState({nationalId: {value, error: !/^\d{10}$/.test(value)}})
   }
 
   onMobileNumberChanged(value) {
@@ -47,7 +75,7 @@ class RegistrationModal extends React.Component {
   }
 
   onLandlineNumberChanged(value) {
-    this.setState({landlineNumber: {value, error: !/^(\+|0|98|\+98|0098)?\d{10}$/.test(value)}})
+    this.setState({landlineNumber: {value, error: !/^(\+|0|98|\+98|0098)?\d{7,10}$/.test(value)}})
   }
 
   onMaritalStatusChanged(value) {
@@ -109,21 +137,21 @@ class RegistrationModal extends React.Component {
 
   submit() {
     if (this.isOK()) {
-      fetch('/api/personal_profile/', {
-        method: 'POST',
+      fetch(this.state.url || '/api/personal_profile/', {
+        method: this.state.url ? 'PATCH' : 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           user: `/api/user/${getUser().id}/`,
-          fatherName: this.state.fatherName.value,
-          birthDate: this.state.birthDate.value,
-          birthPlace: this.state.birthPlace.value,
-          nationalId: this.state.nationalId.value,
-          mobileNumber: this.state.mobileNumber.value,
-          landlineNumber: this.state.landlineNumber.value,
-          maritalStatus: this.state.maritalStatus.value,
+          father_name: this.state.fatherName.value,
+          birth_date: this.state.birthDate.value,
+          birth_place: this.state.birthPlace.value,
+          national_id: this.state.nationalId.value,
+          mobile_number: this.state.mobileNumber.value,
+          land_line_number: this.state.landlineNumber.value,
+          marital_status: this.state.maritalStatus.value,
           address: this.state.address.value,
         }),
       })
@@ -134,9 +162,7 @@ class RegistrationModal extends React.Component {
 
   handleResult(result) {
     if (result.url) {
-      this.setState({done: true})
-    } else if (result.username) {
-      this.setState({error: formatError(Strings.studentIdAlreadyExists)})
+      this.setState({ url: result.url, done: true })
     }
   }
 
@@ -144,6 +170,7 @@ class RegistrationModal extends React.Component {
     const errors = this.generateErrors()
     return (
       <div>
+        <Header>پرونده‌ی شخصی</Header>
         <Form>
           <Form.Group widths='equal'>
             <Form.Input
@@ -184,7 +211,6 @@ class RegistrationModal extends React.Component {
               error={this.state.mobileNumber.error}
               onChange={event => this.onMobileNumberChanged(event.target.value)}
               placeholder={Strings.mobileNumber}
-              type='password'
             />
             <Form.Input
               label={Strings.landlineNumber}
@@ -192,7 +218,6 @@ class RegistrationModal extends React.Component {
               error={this.state.landlineNumber.error}
               onChange={event => this.onLandlineNumberChanged(event.target.value)}
               placeholder={Strings.landlineNumber}
-              type='password'
             />
           </Form.Group>
           <Form.Select
@@ -217,6 +242,7 @@ class RegistrationModal extends React.Component {
           />
         }
         <div className="personal-profile__submit">
+          <Link to='/profile'><Button secondary>{Strings.back}</Button></Link>
           <Button primary onClick={() => this.submit()}>{Strings.submit}</Button>
         </div>
       </div>
@@ -224,4 +250,4 @@ class RegistrationModal extends React.Component {
   }
 }
 
-export default RegistrationModal
+export default PersonalProfile
