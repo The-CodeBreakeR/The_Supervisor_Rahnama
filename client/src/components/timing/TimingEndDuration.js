@@ -38,6 +38,7 @@ class TimingEndDuration extends React.Component {
       <Modal.Header>{Strings.timingEndDuration}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
+          {Strings.infoDuration}
           {this.state.message}
         </Modal.Description>
       </Modal.Content>

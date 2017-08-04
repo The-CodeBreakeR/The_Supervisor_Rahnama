@@ -41,6 +41,7 @@ class TimingProject extends React.Component {
       <Modal.Header>{Strings.timingProject}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
+          {Strings.infoProject}
           {this.state.message}
         </Modal.Description>
       </Modal.Content>

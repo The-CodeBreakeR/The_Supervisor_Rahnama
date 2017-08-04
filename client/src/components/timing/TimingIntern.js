@@ -15,7 +15,7 @@ class TimingIntern extends React.Component {
   close() {
     this.setState({open: false})
   }
-  ButtonClickHandle () {
+  ButtonClickHandle() {
     fetch('/timing/getTiming/', {
       method: 'POST',
       headers: {
@@ -38,6 +38,7 @@ class TimingIntern extends React.Component {
       <Modal.Header>{Strings.timingIntern}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
+          {Strings.infoIntern}
           {this.state.message}
         </Modal.Description>
       </Modal.Content>

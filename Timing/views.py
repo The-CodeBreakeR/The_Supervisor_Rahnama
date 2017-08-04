@@ -12,7 +12,7 @@ import json
 def responseMaker(items):
     response = {}
     if len(items) == 0:
-        response = {'status': -1, 'message': "No Item Found"}
+        response = {'status': -1, 'items': []}
     if len(items) >= 1:
         response = {
             "status": 0,
@@ -29,9 +29,11 @@ def responseMaker(items):
 @csrf_exempt
 def searchTiming(request):
     if request.method == 'POST':
-        last_month = timezone.now().date() + timedelta(days=30)
-        alarms = Alarm.objects.all()
-        proposals = Proposal.objects.all()
+        next_month = timezone.now().date() + timedelta(days=30)
+        bodyParams = json.loads(request.body.decode('utf-8'))
+        name = bodyParams['timingName']
+        alarms = Alarm.objects.filter(info__contains=name,date__gte=timezone.now().today(),date__lte=next_month)
+        proposals = Proposal.objects.filter(info__contains=name,date__gte=timezone.now().today(),date__lte=next_month)
         alarmsResponse = responseMaker(alarms)
         proposalsResponse = responseMaker(proposals)
         print("hoy  ", {'alarms': alarmsResponse,'proposals': proposalsResponse})

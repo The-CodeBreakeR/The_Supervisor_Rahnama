@@ -13,13 +13,9 @@ class TimingSearch extends React.Component {
   }
 
   handleResult(result) {
-    if (result.status === -1) {
-      this.setState({error: Strings.noTimingFound})
-      this.props.setTimingList([])
-    } else {
-      this.setState({error: ''})
-      this.props.setTimingList(result.timing)
-    }
+    console.log('avval3')
+    console.log(result.alarms === -1?[]:result.alarms,result.proposals === -1?[]:result.proposals)
+    this.props.setTimingList(result.alarms,result.proposals)
   }
 
   onTimingNameChange(value) {
@@ -28,6 +24,7 @@ class TimingSearch extends React.Component {
 
   search() {
     if (this.state.timingName) {
+      console.log('avval2')
       fetch('/timing/search/', {
         method: 'POST',
         headers: {
@@ -35,7 +32,7 @@ class TimingSearch extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: this.state.timingName,
+          timingName: this.state.timingName,
         }),
       })
         .then(response => response.json())
@@ -44,6 +41,7 @@ class TimingSearch extends React.Component {
   }
 
   render() {
+    console.log('avval')
     return <div>
       <div>
         <Input value={this.state.timingName} placeholder={Strings.timingName} onChange={event => this.onTimingNameChange(event.target.value)}/>
