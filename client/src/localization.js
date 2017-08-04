@@ -2,6 +2,18 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    loginFirst: ' لطفا ابتدا وارد حساب کاربری خود شوید.',
+    reservePlace: 'رزرو',
+    placeID: 'کد‌ محل اقامتی',
+    placeSize: 'متراژ',
+    placeType: 'نوع',
+    placeLocation: 'آدرس',
+    placeCost: 'هزینه سالیانه (‌تومان)',
+    placeReserveFailed: 'رزرو با خطا مواجه شد. لطفا کد معتبر محل اقامتی را وارد کنید.',
+    placeReserveOK: 'رزرو شما با موفقیت انجام شد.',
+    ruleID: 'شماره',
+    ruleDate: 'تاریخ تصویب',
+    ruleDescription: 'توضیحات',
     rahnamaSystem: 'سامانه‌ی راهنما',
     registration: 'ثبت نام',
     studentId: 'شماره‌ی دانشجویی',

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Tours',
     'corsheaders',
     'Skill',
+    'accomm',
 
 ]
 
