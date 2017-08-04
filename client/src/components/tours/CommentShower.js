@@ -54,7 +54,7 @@ class CommentShower extends React.Component {
   render() {
     const comments = this.props.commnetList.map((comment) => this.renderComment(comment))
     return <div>
-      <Comment.Group>
+      <Comment.Group className='tour__info__comments'>
         <Segment>{Strings.toursComment}
           {comments}
           <Form >

@@ -9,6 +9,8 @@ import CanselReserveButton from './CanselReserveButton'
 import Cookie from 'browser-cookies'
 import CommentShower from './CommentShower'
 
+import TourPhoto from '../../../asset/ToursInfoPhoto.jpg'
+
 class ToursInfo extends React.Component {
   constructor(props) {
     super(props)
@@ -76,8 +78,9 @@ class ToursInfo extends React.Component {
       <Modal.Header>{Strings.tourInfo}</Modal.Header>
       <Modal.Content image scrolling>
         <Image
+          className='tours__info__image'
           size='medium'
-          src='/assets/images/wireframe/image.png'
+          src='http://www.faranaz.com/wp-content/uploads/2015/02/Fantastic-nature-photographs-from-around-the-world3.jpg'
           wrapped
         />
         <Modal.Description>

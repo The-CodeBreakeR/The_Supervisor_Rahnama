@@ -48,7 +48,7 @@ class ToursSearch extends React.Component {
     return <div>
       <div>
         <Input value={this.state.tourName} placeholder={Strings.tourName} onChange={event => this.onTourNameChange(event.target.value)}/>
-        <Button onClick={() => this.search()}>{Strings.search}</Button>
+        <Button onClick={() => this.search()} primary>{Strings.search}</Button>
       </div>
       {this.state.error &&
         <Message negative>
