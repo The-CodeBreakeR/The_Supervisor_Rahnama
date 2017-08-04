@@ -32,41 +32,12 @@ class SchedulingInfo extends React.Component {
         .then(result => this.setState({status: result.status}))
     }
   }
-  getInfo() {
-    fetch('/scheduling/getScheduling/', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: this.props.schedulingId,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.status === 0) {
-          console.log(result.scheduling)
-          this.setState({SchedulingID: result.scheduling.id})
-          this.setState({SchedulingName: result.scheduling.name})
-          this.setState({start: MomentJ(result.scheduling.start_time * 1000).format('LLLL')})
-          this.setState({end: MomentJ(result.scheduling.end_time * 1000).format('LLLL')})
-          this.setState({schedulingprice: result.scheduling.price})
-          this.setState({schedulingpec: result.scheduling.spec})
-          this.setState({schedulingcapacity: result.scheduling.capacity})
-          this.statusChecker(result.scheduling.id)
-        }
-      })
-  }
-  setStatus(stat) {
-    this.setState({status: stat})
-  }
   settingState(scheduling) {
     this.setState({SchedulingID: scheduling.id})
     this.setState({SchedulingName: scheduling.name})
     this.setState({start: MomentJ(scheduling.start_time * 1000).format('LLLL')})
     this.setState({end: MomentJ(scheduling.end_time * 1000).format('LLLL')})
-    this.setState({schedulingCapasity:scheduling.capacity})
+    this.setState({schedulingCapasity:scheduling.capasity})
     this.statusChecker(scheduling.id)
   }
 

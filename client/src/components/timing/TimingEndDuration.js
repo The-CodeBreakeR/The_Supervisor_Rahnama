@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
-class CodingTimingButton extends React.Component {
+class TimingEndDuration extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,7 +23,7 @@ class CodingTimingButton extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        timingId: 1,
+        timingId: 3,
       }),
     })
       .then(response => response.json())
@@ -31,11 +31,11 @@ class CodingTimingButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingReport}</Button>}
+      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingEndDuration}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
-      <Modal.Header>{Strings.timingReport}</Modal.Header>
+      <Modal.Header>{Strings.timingEndDuration}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
           {this.state.message}
@@ -50,4 +50,4 @@ class CodingTimingButton extends React.Component {
   }
 }
 
-export default CodingTimingButton
+export default TimingEndDuration

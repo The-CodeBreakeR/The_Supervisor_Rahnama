@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
-class TypeTiming extends React.Component {
+class TimingIntern extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -50,4 +50,4 @@ class TypeTiming extends React.Component {
   }
 }
 
-export default TypeTiming
+export default TimingIntern

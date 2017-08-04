@@ -1,10 +1,13 @@
+/**
+ * Created by apple on 7/31/17.
+ */
 import React from 'react'
 import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
 import _ from 'lodash'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
-class FastReadButton extends React.Component {
+class TimingProject extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,7 +26,7 @@ class FastReadButton extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        timingId: 3,
+        timingId: 2,
       }),
     })
       .then(response => response.json())
@@ -31,11 +34,11 @@ class FastReadButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingEndDuration}</Button>}
+      color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingProject}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
-      <Modal.Header>{Strings.timingEndDuration}</Modal.Header>
+      <Modal.Header>{Strings.timingProject}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
           {this.state.message}
@@ -50,4 +53,4 @@ class FastReadButton extends React.Component {
   }
 }
 
-export default FastReadButton
+export default TimingProject

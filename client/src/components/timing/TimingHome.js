@@ -1,16 +1,17 @@
 import React from 'react'
-import CodingTimingButton from './CodingTimingButton'
-import PresentationButton from './PresentationButton'
-import FastReadButton from './FastReadButton'
-import TypeTiming from './TypeTiming'
+import TimingReport from './TimingReport'
+import TimingProject from './TimingProject'
+import TimingEndDuration from './TimingEndDuration'
+import TimingIntern from './TimingIntern'
+import TimingSearch from './TimingSearch'
 import Strings from '../../localization'
-import SubmitQuestionButton from './SubmitQuestionButton'
 import { Table } from 'semantic-ui-react'
 
 class TimingHome extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      timingList: [],
       alarms: { items: [] } ,
       proposals: { items: [] },
     }
@@ -42,16 +43,21 @@ class TimingHome extends React.Component {
       <Table.Cell>{item.info}</Table.Cell>
     </Table.Row>
   }
+  
+  setTimingList(timingList) {
+    this.setState({timingList: timingList})
+  }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.timingList)
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
-    return <div><div><CodingTimingButton/>
-      <PresentationButton/>
-      <FastReadButton/>
-      <TypeTiming/>
-      <SubmitQuestionButton/>
+    return <div><div>
+      <TimingSearch setTimingList={(timingList) => this.setTimingList(timingList)} />
+      <TimingReport/>
+      <TimingProject/>
+      <TimingEndDuration/>
+      <TimingIntern/>
     </div><div>
       <Table basic='very' celled selectable>
         <Table.Header>

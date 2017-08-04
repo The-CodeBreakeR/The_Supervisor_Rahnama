@@ -81,6 +81,7 @@ const Strings = new LocalizedStrings({
     timingStartTerm: 'آغاز ترم جدید',
     timingProgram: 'برنامه ترم بعد',
     timingReport: 'گزارش ترم های گذشته',
+    timingName: 'نام',
     alarm: 'هشدار',
     proposal: 'پیشنهاد',
     forReserveRegister: 'برای انجام عملیات رزو در سایت عضو شوید',
@@ -91,6 +92,7 @@ const Strings = new LocalizedStrings({
     answerShow: 'جواب :',
     noQuestion: 'ارشیوی شما خالی میباشد',
     schedulingAll: 'نمایش همه رخداد ها',
+    chooseTerm: 'سال و ترم مورد نظر را انتخاب کنید:'
   },
 })
 
