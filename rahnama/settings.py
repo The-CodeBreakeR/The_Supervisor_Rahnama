@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'Scheduling',
     'corsheaders',
     'Skill',
-
+    'account',
+    'accomm',
 ]
 
 MIDDLEWARE = [

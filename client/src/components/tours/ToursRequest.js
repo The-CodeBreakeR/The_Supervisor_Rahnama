@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
+import Cookie from 'browser-cookies'
 
 class ToursRequest extends React.Component {
   constructor(props) {
@@ -20,27 +21,31 @@ class ToursRequest extends React.Component {
       this.setState({error: ''})
       this.setState({accept: Strings.requestSubmitAccept})
     } else {
-      this.setState({error: Strings.requestSubmitDecline})
+      this.setState({error: Strings.haveNotRegister})
       this.setState({accept: ''})
     }
     this.setState({request: ''})
     this.setState({ open: true })
   }
   sendRequest() {
-    if (this.state.request) {
-      fetch('/tours/request/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: JSON.parse(localStorage.getItem('user')).token,
-          request: this.state.request,
-        }),
-      })
-        .then(response => response.json())
-        .then(result => this.handleResult(result))
+    if (Cookie.get('token')) {
+      if (this.state.request) {
+        fetch('/tours/request/', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            token: JSON.parse(localStorage.getItem('user')).token,
+            request: this.state.request,
+          }),
+        })
+          .then(response => response.json())
+          .then(result => this.handleResult(result))
+      }
+    } else {
+      this.setState({error: Strings.haveNotRegister})
     }
   }
 
@@ -55,7 +60,7 @@ class ToursRequest extends React.Component {
       {this.state.error &&
         <Message negative>
           <Message.Header>{Strings.error}</Message.Header>
-          <p>{Strings.requestSubmitDecline}</p>
+          <p>{Strings.haveNotRegister}</p>
         </Message>}
       {this.state.accept &&
         <Message positive>

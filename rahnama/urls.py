@@ -22,16 +22,24 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from rest_framework import routers
 
-from user.views import UserViewSet, CustomObtainAuthToken
+from user.views import UserViewSet, CustomObtainAuthToken, PersonalProfileViewSet, EducationalProfileViewSet,\
+    SemesterInformationViewSet, CourseInformationViewSet, CourseViewSet
 
 router = routers.DefaultRouter()
 router.register(r'user', UserViewSet)
+router.register(r'personal_profile', PersonalProfileViewSet)
+router.register(r'educational_profile', EducationalProfileViewSet)
+router.register(r'semester_info_profile', SemesterInformationViewSet)
+router.register(r'course_info_profile', CourseInformationViewSet)
+router.register(r'course', CourseViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-token-auth/', CustomObtainAuthToken.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
+    url(r'^accounting/', include('account.urls')),
+    url(r'^accommodation/', include('accomm.urls')),
     url(r'^tours/', include(Tours.url)),
     url(r'^timing/', include(Timing.urls)),
     url(r'^scheduling/', include(Scheduling.urls)),
