@@ -43,6 +43,7 @@ class LoanResponse extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.onReqID('')
   }
 
   onReqID(value) {
@@ -51,8 +52,8 @@ class LoanResponse extends React.Component {
 
   render() {
     return <div>
-      <Input value={this.state.reqID} placeholder={Strings.requestCode} onChange={event => this.onReqID(event.target.value)}/>
-      <Button onClick={() => this.submit()}>{Strings.viewResult}</Button>
+      <Input className='account__input' value={this.state.reqID} placeholder={Strings.requestCode} onChange={event => this.onReqID(event.target.value)}/>
+      <Button primary onClick={() => this.submit()}>{Strings.viewResult}</Button>
     </div>
   }
 }

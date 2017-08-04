@@ -68,6 +68,8 @@ class AddExpense extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.onExpDestination('')
+    this.onExpAmount('')
   }
 
   onExpAmount(value) {
@@ -80,9 +82,9 @@ class AddExpense extends React.Component {
 
   render() {
     return <div>
-      <Input value={this.state.expAmount} placeholder={Strings.expenseAmount} onChange={event => this.onExpAmount(event.target.value)}/>
-      <Input value={this.state.expDestination} placeholder={Strings.expenseDestination} onChange={event => this.onExpDestination(event.target.value)}/>
-      <Button onClick={() => this.submit()}>{Strings.submitExpense}</Button>
+      <Input className='account__input' value={this.state.expAmount} placeholder={Strings.expenseAmount} onChange={event => this.onExpAmount(event.target.value)}/>
+      <Input className='account__input account__addr' value={this.state.expDestination} placeholder={Strings.expenseDestination} onChange={event => this.onExpDestination(event.target.value)}/>
+      <Button primary onClick={() => this.submit()}>{Strings.submitExpense}</Button>
     </div>
   }
 }

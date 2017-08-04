@@ -68,6 +68,8 @@ class AddIncome extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.onIncSource('')
+    this.onIncAmount('')
   }
 
   onIncAmount(value) {
@@ -80,9 +82,9 @@ class AddIncome extends React.Component {
 
   render() {
     return <div>
-      <Input value={this.state.incAmount} placeholder={Strings.incomeAmount} onChange={event => this.onIncAmount(event.target.value)}/>
-      <Input value={this.state.incSource} placeholder={Strings.incomeSource} onChange={event => this.onIncSource(event.target.value)}/>
-      <Button onClick={() => this.submit()}>{Strings.submitIncome}</Button>
+      <Input className='account__input' value={this.state.incAmount} placeholder={Strings.incomeAmount} onChange={event => this.onIncAmount(event.target.value)}/>
+      <Input className='account__input account__addr' value={this.state.incSource} placeholder={Strings.incomeSource} onChange={event => this.onIncSource(event.target.value)}/>
+      <Button primary onClick={() => this.submit()}>{Strings.submitIncome}</Button>
     </div>
   }
 }
