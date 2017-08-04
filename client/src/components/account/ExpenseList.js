@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -17,8 +17,8 @@ class ExpenseList extends React.Component {
   }
   render() {
     const expenses = this.props.expenseList.map((expense) => this.renderExpense(expense))
-    return <div>
-      <Table basic='very' celled selectable>
+    return <Segment className='account__explist'>
+      <Table selectable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>{Strings.expenseID}</Table.HeaderCell>
@@ -30,7 +30,7 @@ class ExpenseList extends React.Component {
           {expenses}
         </Table.Body>
       </Table>
-    </div>
+    </Segment>
   }
 }
 

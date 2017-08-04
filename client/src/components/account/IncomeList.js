@@ -17,8 +17,8 @@ class IncomeList extends React.Component {
   }
   render() {
     const incomes = this.props.incomeList.map((income) => this.renderIncome(income))
-    return <div>
-      <Table basic='very' celled selectable>
+    return <Segment className='account__inclist'>
+      <Table selectable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>{Strings.incomeID}</Table.HeaderCell>
@@ -30,7 +30,7 @@ class IncomeList extends React.Component {
           {incomes}
         </Table.Body>
       </Table>
-    </div>
+    </Segment>
   }
 }
 
