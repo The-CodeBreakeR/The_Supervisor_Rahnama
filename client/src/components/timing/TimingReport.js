@@ -12,6 +12,7 @@ class TimingReport extends React.Component {
       user: {educational_profile: {semesters_info: []}},
       term: '',
       year: '',
+      courseInfo:[{course_info:{name:''},credit:'',grade:''}],
     }
   }
 
@@ -19,38 +20,43 @@ class TimingReport extends React.Component {
     this.setState({open: false})
   }
 
-  ButtonClickHandle () {
+  componentWillMount(){
+    console.log('bb',JSON.parse(localStorage.getItem('user')).id)
     fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        timingId: 1,
-      }),
+      }
     })
       .then(response => response.json())
-      .then(result => this.setState({user: result}))
+      .then(result => this.setUser(result))
   }
-
-  showTermInfo (year, term) {
+  setUser(result){
+    console.log(result)
+    this.setState({user: result})
+  }
+  showTermInfo(year, term, courseInfo) {
     this.setState({term: term})
     this.setState({year: year})
-    this
+    this.setState({open: true})
+    this.setState({ courseInfo })
   }
 
-  render () {
-    const termSelection = this.state.user.educational_profile.semesters_info.map(x => <Button
-      key={`${x.year}: ${x.semester}`} onClick={() => this.showTermInfo(x.year, x.semester)}>${x.year}:
-      ${x.semester}</Button>)
+  render() {
+    const termSelection = this.state.user.educational_profile.semesters_info.map(semester => <Button
+      key={`${semester.year}: ${semester.semester}`} onClick={() => this.showTermInfo(semester.year, semester.semester, semester.courses_info)}>{semester.year}:
+      {semester.semester}</Button>)
+    console.log('ddddddd',this.state.courseInfo.map(course => <p key={`${course.course_info.name} ${course.crredit} ${course.grade}`}>{course.course_info.name} {course.crredit} {course.grade}</p>))
     return <div>
       <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
              onClose={() => this.setState({open: false})}>
-        <Modal.Header>{Strings.termInfo}</Modal.Header>
+        <Modal.Header>{Strings.termInfo}:{this.state.year}-{this.state.term}</Modal.Header>
         <Modal.Content image scrolling>
           <Modal.Description>
-            {this.state.message}
+            <p>{Strings.termAvrage}:</p>
+            <p>{Strings.creditTermCount}:</p>
+            {this.state.courseInfo.map(course => <p key={`${course.course_info.name} ${course.crredit} ${course.grade}`}>{course.course_info.name} {course.crredit} {course.grade}</p>)}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
@@ -60,9 +66,7 @@ class TimingReport extends React.Component {
         </Modal.Actions>
       </Modal>
       <Header>{Strings.timingReport}</Header>
-      {this.state.user.url}
       <p>{Strings.chooseTerm}</p>
-      <p>{Strings.schedulingStartDate} : {this.state.start}</p>
       {termSelection}
     </div>
   }
