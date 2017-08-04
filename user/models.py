@@ -90,6 +90,7 @@ class Course(models.Model):
 
     id = models.IntegerField(primary_key=True)
     department = models.CharField(max_length=2, choices=DEPARTMENT_CHOICES)
+    credits = models.IntegerField()
     name = models.CharField(max_length=64)
 
 

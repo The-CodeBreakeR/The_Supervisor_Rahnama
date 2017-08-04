@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-from .models import User, PersonalProfile, EducationalProfile, SemesterInformation, CourseInformation
+from .models import User, PersonalProfile, EducationalProfile, SemesterInformation, CourseInformation, Course
 from .serializers import UserSerializer, PersonalProfileSerializer, EducationalProfileSerializer,\
-    SemesterInformationSerializer, CourseInformationSerializer
+    SemesterInformationSerializer, CourseInformationSerializer, CourseSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -36,6 +36,11 @@ class EducationalProfileViewSet(viewsets.ModelViewSet):
 class SemesterInformationViewSet(viewsets.ModelViewSet):
     queryset = SemesterInformation.objects.all()
     serializer_class = SemesterInformationSerializer
+
+
+class CourseViewSet(viewsets.ModelViewSet):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
 
 
 class CourseInformationViewSet(viewsets.ModelViewSet):
