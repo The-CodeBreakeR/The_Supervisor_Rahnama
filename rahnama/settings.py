@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'Tours',
     'corsheaders',
     'Skill',
-    'account'
-
+    'account',
+    'accomm',
 ]
 
 MIDDLEWARE = [

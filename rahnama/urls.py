@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
     url(r'^accounting/', include('account.urls')),
+    url(r'^accommodation/', include('accomm.urls')),
     url(r'^tours/', include(Tours.url)),
     url(r'^skill/', include(Skill.url)),
     url(r'^.*$', TemplateView.as_view(template_name='index.html')),
