@@ -157,6 +157,7 @@ const Strings = new LocalizedStrings({
     secondYear: 'سال دوم پیشنهادی:',
     summer: ' تابستان ',
     firstTerm: 'ترم اول یا دوم سال تحصیلی ',
+    bakToHome: 'بازگشت به صفحه اصلی',
   },
 })
 
