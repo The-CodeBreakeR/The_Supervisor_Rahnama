@@ -7,6 +7,7 @@ import TimingSearch from './TimingSearch'
 import Strings from '../../localization'
 import { Table,Header } from 'semantic-ui-react'
 
+import { Grid } from 'semantic-ui-react'
 class TimingHome extends React.Component {
   constructor(props) {
     super(props)
@@ -56,12 +57,14 @@ class TimingHome extends React.Component {
     console.log(this.state.timingList)
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
-    return <div><div>
-      <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)} />
+    return <Grid centered><Grid.Row>
       <TimingProject/>
       <TimingEndDuration/>
       <TimingIntern/>
-    </div><div>
+      <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)} />
+
+    </Grid.Row>
+      <Grid.Row>
       <Header>{Strings.lastAlarms}</Header>
       <Table basic='very' celled selectable>
         <Table.Header>
@@ -83,8 +86,11 @@ class TimingHome extends React.Component {
           {proposals}
         </Table.Body>
       </Table>
+      </Grid.Row>
+      <Grid.Row>
       <TimingReport/>
-    </div></div>
+      </Grid.Row>
+    </Grid>
   }
 }
 

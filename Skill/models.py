@@ -12,10 +12,10 @@ from django.db import models
 # Create your models here.
 
 class Skill(models.Model):
-    typing_skill = models.TextField(max_length=2000)
-    coding_skill = models.TextField(max_length=2000)
-    presentation_skill = models.TextField(max_length=2000)
-    reading_skill = models.TextField(max_length=2000)
+    typing_skill = models.TextField()
+    coding_skill = models.TextField()
+    presentation_skill = models.TextField()
+    reading_skill = models.TextField()
 
     def __str__(self):
         return str(self.id)
