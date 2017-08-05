@@ -54,10 +54,9 @@ class TimingHome extends React.Component {
   }
 
   render() {
-    console.log(this.state.timingList)
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
-    return <Grid centered><Grid.Row>
+    return <Grid centered className='timing'><Grid.Row>
       <TimingProject/>
       <TimingEndDuration/>
       <TimingIntern/>
