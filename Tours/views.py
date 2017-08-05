@@ -16,7 +16,7 @@ from user.views import CustomObtainAuthToken
 @csrf_exempt
 def searchTour(request):
     if request.method == 'POST':
-        bodyParams = json.loads(request.body)
+        bodyParams = json.loads(request.body.decode('utf-8'))
         name = bodyParams['name']
         tour = Tour.objects.filter(name__contains=name)
         if len(tour) == 0:
