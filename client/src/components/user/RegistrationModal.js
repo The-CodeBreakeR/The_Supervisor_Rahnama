@@ -123,7 +123,7 @@ class RegistrationModal extends React.Component {
   }
 
   handleResult(result) {
-    if (result.id) {
+    if (result.url) {
       this.setState({ done: true })
     } else if (result.username) {
       this.setState({ error: formatError(Strings.studentIdAlreadyExists) })
