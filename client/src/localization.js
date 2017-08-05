@@ -2,9 +2,14 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
-    scheduleListTitle: 'سفر های سیاحتی و زیارتی',
-    schDate: 'سفر های سیاحتی و زیارتی',
-    schEvent: 'سفر های سیاحتی و زیارتی',
+    compType: 'زمینه فعالیت شرکت',
+    compName: 'نام شرکت',
+    compDescription: 'توضیحات',
+    compContactInfo: 'اطلاعات تماس',
+    compField: 'رشته مرتبط با شرکت',
+    scheduleListTitle: 'زمانبندی رویداد های کارآموزی',
+    schDate: 'تاریخ',
+    schEvent: 'رویداد',
     internCompanies: 'شرکت های کارآموزی',
     internRules: 'قوانین کارآموزی',
     internRecommendations: 'راهنمایی کارآموزی',
