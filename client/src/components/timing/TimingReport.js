@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
 import _ from 'lodash'
 import Strings from '../../localization'
-import Cookie from 'browser-cookies'
-import moment from 'moment-jalaali'
+
+import { Grid } from 'semantic-ui-react'
 
 class TimingReport extends React.Component {
   constructor (props) {
@@ -49,7 +49,7 @@ class TimingReport extends React.Component {
     this.setState({notCurrentTerm: true})
   }
 
-  showCurrentTerm(semester) {
+  showCurrentTerm (semester) {
     this.showTermInfo(semester)
     this.setState({notCurrentTerm: false})
   }
@@ -85,7 +85,7 @@ class TimingReport extends React.Component {
               <p key={`${course.course_info.name} ${course.crredit} ${course.grade}`}>
                 {Strings.name}:{course.course_info.name}<br/> {Strings.credit}:{course.course_info.credits}
                 <br/>{this.state.notCurrentTerm && <p>{Strings.grade}{course.grade}<br/></p>}<br/></p>)}
-                </Modal.Description>
+          </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => this.close()}>
@@ -93,16 +93,20 @@ class TimingReport extends React.Component {
           </Button>
         </Modal.Actions>
       </Modal>
-      <div>
-        <Header>{Strings.currentTerm}</Header>
-        <p>{Strings.currentProgram}</p>
-        {termProgram}
-      </div>
-      <div>
-        <Header>{Strings.timingReport}</Header>
-        <p>{Strings.chooseTerm}</p>
-        {termSelection}
-      </div>
+      <Grid>
+        <Grid.Row>
+          <div className="column">
+          <Header>{Strings.currentTerm}</Header>
+          <p>{Strings.currentProgram}</p>
+          {termProgram}
+          </div>
+          <div className="column">
+          <Header>{Strings.timingReport}</Header>
+          <p>{Strings.chooseTerm}</p>
+          {termSelection}
+          </div>
+        </Grid.Row>
+      </Grid>
     </div>
   }
 }
