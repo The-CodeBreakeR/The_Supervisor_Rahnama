@@ -1,12 +1,7 @@
-/**
- * Created by ali on 7/31/17.
- */
-
 import React from 'react'
-import { Table, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Table, Segment, Button } from 'semantic-ui-react'
 import Strings from '../../localization'
-import MomentJ from 'moment-jalaali'
-import Cookie from 'browser-cookies'
 
 class CompanyList extends React.Component {
   constructor(props) {
@@ -41,22 +36,29 @@ class CompanyList extends React.Component {
   }
   render() {
     const comps = this.state.compList.map((comp) => this.renderComp(comp))
-    return <Segment className='internship__table'>
-      <Table selectable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell textAlign='center'>{Strings.compField}</Table.HeaderCell>
-            <Table.HeaderCell textAlign='center'>{Strings.compType}</Table.HeaderCell>
-            <Table.HeaderCell textAlign='center'>{Strings.compName}</Table.HeaderCell>
-            <Table.HeaderCell textAlign='center'>{Strings.compDescription}</Table.HeaderCell>
-            <Table.HeaderCell textAlign='center'>{Strings.compContactInfo}</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {comps}
-        </Table.Body>
-      </Table>
-    </Segment>
+    return <div>
+      <Segment className='internship__table'>
+        <Table selectable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell textAlign='center'>{Strings.compField}</Table.HeaderCell>
+              <Table.HeaderCell textAlign='center'>{Strings.compType}</Table.HeaderCell>
+              <Table.HeaderCell textAlign='center'>{Strings.compName}</Table.HeaderCell>
+              <Table.HeaderCell textAlign='center'>{Strings.compDescription}</Table.HeaderCell>
+              <Table.HeaderCell textAlign='center'>{Strings.compContactInfo}</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {comps}
+          </Table.Body>
+        </Table>
+      </Segment>
+      <div className='internship__companies__back'>
+        <Link to='/internship'>
+          <Button negative>{Strings.internCloseModal}</Button>
+        </Link>
+      </div>
+    </div>
   }
 }
 

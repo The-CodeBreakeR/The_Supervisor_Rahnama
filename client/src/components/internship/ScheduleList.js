@@ -1,7 +1,3 @@
-/**
- * Created by ali on 7/31/17.
- */
-
 import React from 'react'
 import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
