@@ -183,7 +183,7 @@ class PersonalProfile extends React.Component {
             <Button primary onClick={() => this.setState({ done: false })}>{Strings.finish}</Button>
           </Modal.Actions>
         </Modal>
-        <Header>پرونده‌ی شخصی</Header>
+        <Header>{Strings.personalProfile}</Header>
         <p>{Strings.personalProfileMessage}</p>
         <Form>
           <Form.Group widths='equal'>
@@ -255,7 +255,7 @@ class PersonalProfile extends React.Component {
             content={errors}
           />
         }
-        <div className="personal-profile__submit">
+        <div className="profile__submit">
           <Link to='/profile'><Button secondary>{Strings.back}</Button></Link>
           <Button primary onClick={() => this.submit()}>{Strings.submit}</Button>
         </div>
