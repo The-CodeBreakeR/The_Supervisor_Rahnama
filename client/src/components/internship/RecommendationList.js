@@ -36,7 +36,7 @@ class RecommendationList extends React.Component {
   }
 
   renderRecommendation(recommendation) {
-    return <List.Item key={recommendation.id} >
+    return <List.Item className='internship__newline' key={recommendation.id} >
       {recommendation.description}
     </List.Item>
   }
@@ -50,7 +50,7 @@ class RecommendationList extends React.Component {
     >
       <Modal.Header>{Strings.internRecommendations}</Modal.Header>
       <Modal.Content image scrolling>
-        <Modal.Description>
+        <Modal.Description className='internship__newline'>
           <List bulleted>
             {recommendations}
           </List>
