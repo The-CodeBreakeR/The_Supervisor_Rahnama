@@ -32,7 +32,7 @@ class RuleList extends React.Component {
   }
 
   renderRule(rule) {
-    return <List.Item key={rule.id} >
+    return <List.Item className='internship__newline' key={rule.id} >
       {rule.description}
     </List.Item>
   }
@@ -46,7 +46,7 @@ class RuleList extends React.Component {
     >
       <Modal.Header>{Strings.internRules}</Modal.Header>
       <Modal.Content image scrolling>
-        <Modal.Description>
+        <Modal.Description className='internship__newline'>
           <List bulleted>
             {rules}
           </List>
