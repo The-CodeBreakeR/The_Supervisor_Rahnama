@@ -25,6 +25,8 @@ from rest_framework import routers
 from user.views import UserViewSet, CustomObtainAuthToken, PersonalProfileViewSet, EducationalProfileViewSet,\
     SemesterInformationViewSet, CourseInformationViewSet, CourseViewSet
 
+from internship.views import ScheduleViewSet, RuleViewSet, RecommendationViewSet, CompanyViewSet
+
 router = routers.DefaultRouter()
 router.register(r'user', UserViewSet)
 router.register(r'personal_profile', PersonalProfileViewSet)
@@ -32,6 +34,12 @@ router.register(r'educational_profile', EducationalProfileViewSet)
 router.register(r'semester_info_profile', SemesterInformationViewSet)
 router.register(r'course_info_profile', CourseInformationViewSet)
 router.register(r'course', CourseViewSet)
+router.register(r'internship_schedule', ScheduleViewSet)
+router.register(r'internship_rule', RuleViewSet)
+router.register(r'internship_recommendation', RecommendationViewSet)
+router.register(r'internship_company', CompanyViewSet)
+
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
