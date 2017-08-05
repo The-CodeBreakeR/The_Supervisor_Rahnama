@@ -148,6 +148,7 @@ const Strings = new LocalizedStrings({
     courses: 'درس ها',
     currentProgram: 'برنامه درسی ترم',
     currentTerm: "ترم جاری",
+    timeFormat: 'YYYY/MM/DD',
   },
 })
 

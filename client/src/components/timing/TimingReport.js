@@ -3,6 +3,7 @@ import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
 import _ from 'lodash'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
+import moment from 'moment-jalaali'
 
 class TimingReport extends React.Component {
   constructor (props) {
@@ -11,6 +12,7 @@ class TimingReport extends React.Component {
       open: false,
       user: {educational_profile: {semesters_info: []}},
       term: -1,
+      value: '',
       year: '',
       notCurrentTerm: true,
       courseInfo: [{course_info: {name: ''}, credit: '', grade: ''}],
@@ -56,7 +58,7 @@ class TimingReport extends React.Component {
     const semesterInfo = this.state.user.educational_profile.semesters_info
     const termSelection = semesterInfo.map(semester => <Button
       key={`${semester.year}: ${semester.semester}`} onClick={() => this.showTermInfo(semester)}>{semester.year}:
-      {semester.semester}</Button>).slice(0,semesterInfo.length - 1                                                                                             )
+      {semester.semester}</Button>)
     const termProgram = semesterInfo.map((semester) => <Button
       key={`${semester.year}: ${semester.semester}`} onClick={() => this.showCurrentTerm(semester)}>{semester.year}:
       {semester.semester}</Button>)[semesterInfo.length - 1]
@@ -83,7 +85,7 @@ class TimingReport extends React.Component {
               <p key={`${course.course_info.name} ${course.crredit} ${course.grade}`}>
                 {Strings.name}:{course.course_info.name}<br/> {Strings.credit}:{course.course_info.credits}
                 <br/>{this.state.notCurrentTerm && <p>{Strings.grade}{course.grade}<br/></p>}<br/></p>)}
-          </Modal.Description>
+                </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => this.close()}>

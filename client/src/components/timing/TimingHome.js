@@ -6,6 +6,7 @@ import TimingIntern from './TimingIntern'
 import TimingSearch from './TimingSearch'
 import Strings from '../../localization'
 import { Table,Header } from 'semantic-ui-react'
+import { Calendar } from 'react-persian-datepicker'
 
 class TimingHome extends React.Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class TimingHome extends React.Component {
         </Table.Body>
       </Table>
       <TimingReport/>
+
     </div></div>
   }
 }

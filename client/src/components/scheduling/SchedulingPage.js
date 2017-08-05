@@ -10,6 +10,8 @@ import SchedulingToday from './SchedulingToday'
 import Strings from '../../localization'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
+import DatePicker from 'react-datepicker2';
+
 class SchedulingPage extends React.Component {
   constructor(props) {
     super(props)
@@ -45,6 +47,7 @@ class SchedulingPage extends React.Component {
     console.log('salam')
     return <div className='scheduling'><div>
       <HardDayModal onLogin={() => this.forceUpdate()} />
+
       <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
       <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
@@ -54,7 +57,10 @@ class SchedulingPage extends React.Component {
       <Button onClick={() => this.componentWillMount()}>{Strings.schedulingAll}</Button>
       <SchedulingToday/>
       <SchedulingRequest/>
-      </div></div>
+
+      </div>
+  </div>
+
   }
 }
 
