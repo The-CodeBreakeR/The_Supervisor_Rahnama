@@ -104,7 +104,7 @@ const Strings = new LocalizedStrings({
     schedulingReserve: 'رزرو',
     schedulingCansel: 'لغو ماده درسی',
     schedulingAccepted: 'تایید',
-    schedulingWeekDisplay: 'نمایش برنامه هفتگی پیشنهادی',
+    schedulingWeekDisplay: 'نمایش برنامه هفتگی',
     schedulingMonthDisplay: 'گزارش ماه اخیر ',
     schedulingNewItem: 'ثبت رخداد درسی جدید',
     schedulingُType: 'نوع رخداد',

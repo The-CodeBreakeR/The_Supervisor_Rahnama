@@ -29,18 +29,20 @@ def responseMaker(scheduling):
     if len(scheduling) == 0:
         return JsonResponse({'status': -1, 'message': "No Scheduling Found"})
     if len(scheduling) >= 1:
+        print(scheduling[0].info)
         response = {
             "status": 0,
             "scheduling": [
-                {'id': scheduling[0].id, 'name': scheduling[0].name, 'capasity': scheduling[0].capasity,
+                {'id': scheduling[0].id,'info' :  scheduling[0].info, 'name': scheduling[0].name, 'capasity': scheduling[0].capasity,
                  'end_time': scheduling[0].end_date.timestamp(),'start_time': (scheduling[0].end_date-timedelta(days=scheduling[0].capasity)).timestamp()}]
         }
         if len(scheduling) == 1:
             return response
         i = 1
         while i < scheduling.count():
+            print(scheduling[i].info)
             response['scheduling'] = response['scheduling'] + [
-                {'id': scheduling[i].id, 'name': scheduling[i].name,'capasity': scheduling[i].capasity,
+                {'id': scheduling[i].id,'info' :  scheduling[i].info, 'name': scheduling[i].name,'capasity': scheduling[i].capasity,
                  'end_time': scheduling[i].end_date.timestamp(),'start_time': (scheduling[i].end_date-timedelta(days=scheduling[i].capasity)).timestamp()}]
             i = i + 1
         return response
@@ -61,7 +63,7 @@ def monthScheduling(request):
     print("here 1")
     if request.method == 'POST':
         last_month = timezone.now().today() - timedelta(days=30)
-        scheduling = Scheduling.objects.filter(end_date__lte=last_month,end_date__gte=datetime.today())
+        scheduling = Scheduling.objects.filter(end_date__gte=last_month,end_date__lte=datetime.today())
         return JsonResponse(responseMaker(scheduling))
 
     return JsonResponse({'status': -1})
@@ -145,49 +147,18 @@ def reserveScheduling(request):
         return JsonResponse({'status': -1})
 
 @csrf_exempt
-def cancelReserve(request):
-    reserve = reserveFinder(request)
-    bodyParams = json.loads(request.body)
-    scheduling_id = bodyParams['schedulingId']
-    scheduling = Scheduling.objects.filter(id=scheduling_id)
-    if len(scheduling) == 0:
-        return JsonResponse({'status': -1})
-
-    if len(reserve) == 0:
-        return JsonResponse({'status': -1})
-    print(scheduling[0].capacity)
-    scheduling[0].capacity = scheduling[0].capacity + 1
-    scheduling[0].save()
-    print(scheduling[0].capacity)
-    reserve[0].delete()
-    print("where")
-    return JsonResponse({'status': 0})
-
-@csrf_exempt
-def statusResult(request):#todo
-    reserves = reserveFinder(request)
-    if len(reserves) == 0:
-        return JsonResponse({'status': 0})
-    #if datetime.utcnow().replace(tzinfo=pytz.UTC) > scheduling[0].start_date:
-    #    return JsonResponse({'status': 3})
-    if reserves[0].status == str(0):
-        return JsonResponse({'status': 1})
-    if reserves[0].status == str(1):
-        return JsonResponse({'status': 2})
-
-@csrf_exempt
 def requestScheduling(request):
     bodyParams = json.loads(request.body.decode('utf-8'))
     request = Scheduling.objects.create()
     request.name = bodyParams['name']
-    request.end_date = bodyParams['end_date']
+    request.end_date = datetime.fromtimestamp(bodyParams['end_date'])
     request.capasity = bodyParams['capasity']
     request.info = bodyParams['info']
     request.save()
     print('created!')
     return JsonResponse({'status': 0})
 
-
+@csrf_exempt
 def reserveFinder(request):
     bodyParams = json.loads(request.body)
     scheduling_id = bodyParams['schedulingId']

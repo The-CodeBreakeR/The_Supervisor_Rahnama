@@ -9,7 +9,7 @@ class SchedulingRequest extends React.Component {
     super(props)
     this.state = {
       name: '',
-      capasity: 0,
+      capasity: 1,
       end_date: '',
       info: '',
       error: '',
@@ -39,12 +39,11 @@ class SchedulingRequest extends React.Component {
       this.setState({accept: ''})
     }
     this.setState({request: ''})
-    this.setState({ open: true })
   }
   sendRequest() {
     console.log('here')
     if (true) {
-      this.setState({open :false})
+      this.setState({open: false})
       console.log(this.state.name)
       console.log(MomentJ(this.state.end_date, 'jYYYY/jMM/jDD').toDate().getTime()/1000)
       console.log(this.state.info)
@@ -68,7 +67,8 @@ class SchedulingRequest extends React.Component {
   }
 
   render() {
-    return <Modal open={this.state.open} trigger={<Button>{Strings.schedulingNewItem}</Button>}>
+    return <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
+                  trigger={<Button>{Strings.schedulingNewItem}</Button>}>
       <Modal.Header>{Strings.schedulingNewItem}</Modal.Header>
       <Modal.Content >
         <Modal.Description>
