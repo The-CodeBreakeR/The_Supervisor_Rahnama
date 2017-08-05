@@ -58,7 +58,7 @@ class SubmitQuestionButton extends React.Component {
       <Modal.Header>{Strings.askSkillQuestion}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
-          {this.state.status === 0 && <Form.TextArea value={this.state.request} placeholder={Strings.askSkillQuestionSpec} onChange={event => this.onRequestChange(event.target.value)} />}
+          {this.state.status === 0 && <Form.TextArea className='skill__question__text' value={this.state.request} placeholder={Strings.askSkillQuestionSpec} onChange={event => this.onRequestChange(event.target.value)} />}
           {this.state.status === 1 && <Message positive><Message.Header>{Strings.submit}</Message.Header>
             <p>{Strings.requestSubmitAccept}</p>
           </Message>}

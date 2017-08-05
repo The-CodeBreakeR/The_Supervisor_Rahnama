@@ -38,7 +38,7 @@ class TypeSkill extends React.Component {
     >
       <Modal.Header>{Strings.skill}</Modal.Header>
       <Modal.Content image scrolling>
-        <Modal.Description>
+        <Modal.Description className='skill__button__modal'>
           {this.state.message}
         </Modal.Description>
       </Modal.Content>

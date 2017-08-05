@@ -219,6 +219,7 @@ const Strings = new LocalizedStrings({
     firstYear:'سال اول پیشنهادی',
     secondYear: 'سال دوم پیشنهادی:',
     firstTerm: 'ترم اول یا دوم سال تحصیلی ',
+    bakToHome: 'بازگشت به صفحه اصلی',
     termAvrage: ' معدل ترم',
     creditTermCount: ' تعداد واحد اخذ شده',
     name: 'نام',
