@@ -12,7 +12,10 @@ class AppHeader extends React.Component {
       <Grid>
         <Grid.Row>
           <AuthHeader/>
-          {location.pathname !== '/' &&<div> <Link to='/'><Button color='green'>{Strings.bakToHome}</Button></Link></div>}
+          {location.pathname !== '/' && <div className='app__header__return'>
+            <Link to='/'><Button color='green'>{Strings.bakToHome}</Button></Link>
+          </div>
+          }
         </Grid.Row>
       </Grid>
     </Segment>
