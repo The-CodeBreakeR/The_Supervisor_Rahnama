@@ -10,7 +10,7 @@ from django.db import models
 class Scheduling(models.Model):
     name = models.CharField(max_length=100)
     end_date = models.DateTimeField(default=django.utils.timezone.now)
-    capasity = models.IntegerField()
+    capasity = models.IntegerField(default=1)
     info = models.TextField(max_length=2000,default='')
 
     def __str__(self):
