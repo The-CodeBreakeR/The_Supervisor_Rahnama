@@ -11,6 +11,7 @@ class SchedulingInfo extends React.Component {
       SchedulingId: '',
       SchedulingName: '',
       start: '',
+      info: '',
       end: '',
       schedulingcapasity: '',
     }
@@ -34,6 +35,7 @@ class SchedulingInfo extends React.Component {
   }
   settingState(scheduling) {
     this.setState({SchedulingID: scheduling.id})
+    this.setState({info: scheduling.info})
     this.setState({SchedulingName: scheduling.name})
     this.setState({start: MomentJ(scheduling.start_time * 1000).format('LLLL')})
     this.setState({end: MomentJ(scheduling.end_time * 1000).format('LLLL')})
@@ -55,7 +57,7 @@ class SchedulingInfo extends React.Component {
           <p>{Strings.schedulingName} : {this.state.SchedulingName}</p>
           <p>{Strings.schedulingStartDate} : {this.state.start}</p>
           <p>{Strings.schedulingEndDate} : {this.state.end}</p>
-          <p>{Strings.info} : {this.state.schedulingpec}</p>
+          <p>{Strings.info} : {this.state.info}</p>
           <p>{Strings.schedulingCapasity} : {this.state.schedulingCapasity}</p>
         </Modal.Description>
       </Modal.Content>
