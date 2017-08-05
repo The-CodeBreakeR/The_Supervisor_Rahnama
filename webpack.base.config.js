@@ -66,7 +66,7 @@ module.exports = {
           query: {
             publicPath: '/',
             limit: 1000,
-            name: 'static/[hash].[ext]',
+            name: '[hash].[ext]',
           },
         },
       },

@@ -1,7 +1,3 @@
-/**
- * Created by ali on 8/5/17.
- */
-
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Cookie from 'browser-cookies'

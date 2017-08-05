@@ -134,7 +134,7 @@ class RegistrationModal extends React.Component {
     const errors = this.generateErrors()
     return (
       <Modal
-        trigger={<Button>{Strings.registration}</Button>}
+        trigger={<Button positive>{Strings.registration}</Button>}
         open={this.state.open}
         onOpen={() => this.setState({ open: true })}
         onClose={() => this.close()}

@@ -222,7 +222,6 @@ const Strings = new LocalizedStrings({
     confirm: 'تایید',
     courseId: 'شماره‌ی درس',
     courseIdError: 'شماره‌ی درس را به‌درستی وارد کنید.',
-    grade: 'نمره',
     gradeError: 'نمره باید بین ۰ و ۲۰ باشد.',
     coursesInformation: 'درس‌های ترم',
     course: 'درس',

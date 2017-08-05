@@ -13,7 +13,7 @@ from rest_framework.authtoken.models import Token
 
 @csrf_exempt
 def getSkill(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     id = bodyParams['skillId']
     current_skill = Skill.objects.get(id="1")
     if id == 2:
@@ -38,7 +38,7 @@ def getSkill(request):
 
 @csrf_exempt
 def question(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     question_text = bodyParams['question']
     token = Token.objects.get(key=bodyParams['token'])
     user = token.user
@@ -53,7 +53,7 @@ def question(request):
 
 @csrf_exempt
 def questionAnswer(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     token = Token.objects.get(key=bodyParams['token'])
     user = token.user
     question = QuestionAnswer.objects.filter(student_id=user)
