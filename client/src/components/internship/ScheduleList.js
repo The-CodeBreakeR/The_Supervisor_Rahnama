@@ -37,7 +37,7 @@ class ScheduleList extends React.Component {
     </Table.Row>
   }
   render() {
-    const schs = this.state.schsList.map((sch) => this.renderSch(sch))
+    const schs = this.state.schList.map((sch) => this.renderSch(sch))
     return <Segment className='internship__table'>
       <Table selectable>
         <Table.Header>
