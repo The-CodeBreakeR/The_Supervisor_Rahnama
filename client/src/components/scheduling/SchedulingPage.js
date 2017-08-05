@@ -9,9 +9,8 @@ import SchedulingMonth from './SchedulingMonth'
 import HardDayModal from './HardDayModal'
 import SchedulingToday from './SchedulingToday'
 import Strings from '../../localization'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
-import DatePicker from 'react-datepicker2'
 
 class SchedulingPage extends React.Component {
   constructor (props) {
