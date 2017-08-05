@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Skill',
     'account',
     'accomm',
+    'internship',
 ]
 
 MIDDLEWARE = [
