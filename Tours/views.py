@@ -16,8 +16,6 @@ from user.views import CustomObtainAuthToken
 @csrf_exempt
 def searchTour(request):
     if request.method == 'POST':
-        #bodyParams = json.loads(request.body)
-        #bodyParams = json.loads(str(request.body))
         bodyParams = json.loads(request.body.decode('utf-8'))
         name = bodyParams['name']
         tour = Tour.objects.filter(name__contains=name)
@@ -42,7 +40,7 @@ def searchTour(request):
 
 @csrf_exempt
 def getTour(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     id = bodyParams['id']
     tour = Tour.objects.filter(id=id)
     if tour.count() == 0:
@@ -77,7 +75,7 @@ def getTour(request):
 
 @csrf_exempt
 def reserveTour(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     tour_id = bodyParams['tourId']
     tour = Tour.objects.filter(id=tour_id)
     token = Token.objects.get(key=bodyParams['token'])
@@ -103,7 +101,7 @@ def reserveTour(request):
 @csrf_exempt
 def cancelReserve(request):
     reserve = reserveFinder(request)
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     tour_id = bodyParams['tourId']
     tour = Tour.objects.filter(id=tour_id)
     if len(tour) == 0:
@@ -144,7 +142,7 @@ def statusResult(request):
 
 @csrf_exempt
 def requestTour(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     requestText = bodyParams['request']
     token = Token.objects.get(key=bodyParams['token'])
     user = token.user
@@ -159,7 +157,7 @@ def requestTour(request):
 
 @csrf_exempt
 def sendComment(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     commentText = bodyParams['comment']
     token = Token.objects.get(key=bodyParams['token'])
     user = token.user
@@ -173,7 +171,7 @@ def sendComment(request):
     return JsonResponse({'status': 0})
 
 def reserveFinder(request):
-    bodyParams = json.loads(request.body)
+    bodyParams = json.loads(request.body.decode('utf-8'))
     tour_id = bodyParams['tourId']
     token = Token.objects.get(key=bodyParams['token'])
     user = token.user
