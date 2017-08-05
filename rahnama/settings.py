@@ -135,7 +135,7 @@ AUTH_USER_MODEL = 'user.User'
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'client'),
+    os.path.join(BASE_DIR, 'client/dist'),
 )
 
 WEBPACK_LOADER = {
