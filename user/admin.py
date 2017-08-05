@@ -1,6 +1,7 @@
-from .models import PersonalProfile, EducationalProfile, Course, SemesterInformation, CourseInformation
+from .models import PersonalProfile, EducationalProfile, Course, SemesterInformation, CourseInformation, User
 from django.contrib import admin
 
+admin.site.register(User)
 admin.site.register(PersonalProfile)
 admin.site.register(EducationalProfile)
 admin.site.register(Course)

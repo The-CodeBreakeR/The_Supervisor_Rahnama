@@ -32,8 +32,8 @@ def searchTiming(request):
         next_month = timezone.now().date() + timedelta(days=30)
         bodyParams = json.loads(request.body.decode('utf-8'))
         name = bodyParams['timingName']
-        alarms = Alarm.objects.filter(info__contains=name,date__gte=timezone.now().today(),date__lte=next_month)
-        proposals = Proposal.objects.filter(info__contains=name,date__gte=timezone.now().today(),date__lte=next_month)
+        alarms = Alarm.objects.filter(info__contains=name)
+        proposals = Proposal.objects.filter(info__contains=name)
         alarmsResponse = responseMaker(alarms)
         proposalsResponse = responseMaker(proposals)
         print("hoy  ", {'alarms': alarmsResponse,'proposals': proposalsResponse})
