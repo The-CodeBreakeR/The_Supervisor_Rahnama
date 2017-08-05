@@ -52,9 +52,13 @@ class SubmitQuestionButton extends React.Component {
   }
 
   render() {
-    return <Modal trigger={<Button
+    return <Modal       closeIcon
+      open={this.state.open}
+      onOpen={() => this.setState({open: true})}
+      onClose={() => this.setState({open: false})}
+      trigger={<Button
       color='green' >{Strings.askSkillQuestion}</Button>}
-    open={this.state.open} onOpen={() => this.setState({open: true})}>
+    >
       <Modal.Header>{Strings.askSkillQuestion}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>

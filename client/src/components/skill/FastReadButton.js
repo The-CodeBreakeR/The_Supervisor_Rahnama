@@ -33,8 +33,10 @@ class FastReadButton extends React.Component {
   render() {
     return <Modal trigger={<Button
       size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeFastReadSkill}</Button>}
-    open={this.state.open}
-    onOpen={() => this.setState({open: true})}
+      closeIcon
+      open={this.state.open}
+      onOpen={() => this.setState({open: true})}
+      onClose={() => this.setState({open: false})}
     >
       <Modal.Header>{Strings.skill}</Modal.Header>
       <Modal.Content image scrolling>

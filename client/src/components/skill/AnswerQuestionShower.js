@@ -44,9 +44,13 @@ class AnswerQuestionShower extends React.Component {
   }
   render() {
     const Answer = this.state.QuestionAndAnswer.map((answer) => this.renderAnswer(answer))
-    return <Modal trigger={<Button onClick={() => this.sendRequest()}
+    return <Modal
+      closeIcon
+      open={this.state.open}
+      onOpen={() => this.setState({open: true})}
+      onClose={() => this.setState({open: false})} trigger={<Button onClick={() => this.sendRequest()}
       size='massive' color='green' >{Strings.answerAndQuestionArchive}</Button>}
-    open={this.state.open} onOpen={() => this.setState({open: true})}>
+    >
       <Modal.Header>{Strings.answerAndQuestionArchive}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
