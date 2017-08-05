@@ -112,7 +112,7 @@ def getResponse(request):
         return JsonResponse({'status': -1, 'message': "No response found"})
     else:
         response = {
-            'status': 0, 'request_id': resp[0].request_id, 'answer': resp[0].answer,
+            'status': 0, 'answer': resp[0].answer,
             'repayment_period': resp[0].repayment_period,
             'repayment_rate': resp[0].repayment_rate
         }

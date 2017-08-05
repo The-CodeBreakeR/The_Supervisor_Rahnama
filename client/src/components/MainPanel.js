@@ -23,12 +23,12 @@ class MainPanel extends React.Component {
 
   render() {
     return <div className='mainpanel'>
-      <Link to='/tours'><Button className='mainpanel__button' primary>{Strings.toursub}</Button></Link>
-      <Link to='/skill'><Button className='mainpanel__button' color='green'>{Strings.skillsub}</Button></Link>
-      <Link to='/accounting'><Button className='mainpanel__button' primary>{Strings.accountingsub}</Button></Link>
-      <Link to='/accommodation'><Button className='mainpanel__button' color='green'>{Strings.accommodationsub}</Button></Link>
       <Link to='/profile'><Button className='mainpanel__button' primary>{Strings.profilesub}</Button></Link>
       <Link to='/internship'><Button className='mainpanel__button' color='green'>{Strings.internshipsub}</Button></Link>
+      <Link to='/accounting'><Button className='mainpanel__button' primary>{Strings.accountingsub}</Button></Link>
+      <Link to='/accommodation'><Button className='mainpanel__button' color='green'>{Strings.accommodationsub}</Button></Link>
+      <Link to='/tours'><Button className='mainpanel__button' primary>{Strings.toursub}</Button></Link>
+      <Link to='/skill'><Button className='mainpanel__button' color='green'>{Strings.skillsub}</Button></Link>
       <Link to='/timing'><Button className='mainpanel__button' primary>{Strings.timingsub}</Button></Link>
       <Link to='/scheduling'><Button className='mainpanel__button' color='green'>{Strings.schedulingsub}</Button></Link>
     </div>
