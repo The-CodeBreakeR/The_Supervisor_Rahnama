@@ -37,7 +37,7 @@ class TimingIntern extends React.Component {
   render() {
     return <Modal trigger={<Button
       color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingIntern}</Button>}
-    open={this.state.open}
+    open={this.state.open} onClose={() => this.setState({open: false})}
     onOpen={() => this.setState({open: true})}
     >
       <Modal.Header>{Strings.timingIntern}</Modal.Header>
@@ -49,11 +49,11 @@ class TimingIntern extends React.Component {
           <br/>
           {Strings.secondYear}:{this.state.user.educational_profile.entrance_year+4}
           <br/>
-          <Link to='/internship'><Button>{Strings.internLogin}</Button></Link>
+          <Link to='/internship'><Button primary>{Strings.internLogin}</Button></Link>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button onClick={() => this.close()} negative>
           {Strings.tourStop}
         </Button>
       </Modal.Actions>

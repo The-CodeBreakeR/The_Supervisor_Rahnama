@@ -44,14 +44,9 @@ class SchedulingInfo extends React.Component {
   }
 
   render() {
-    return <Modal trigger={<Button onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
+    return <Modal closeIcon trigger={<Button onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
       <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
       <Modal.Content image scrolling>
-        <Image
-          size='medium'
-          src='/assets/images/wireframe/image.png'
-          wrapped
-        />
         <Modal.Description>
           <Header>{Strings.schedulingInfo}</Header>
           <p>{Strings.schedulingName} : {this.state.SchedulingName}</p>

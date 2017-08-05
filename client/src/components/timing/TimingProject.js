@@ -40,7 +40,7 @@ class TimingProject extends React.Component {
   render() {
     return <Modal trigger={<Button
       color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingProject}</Button>}
-    open={this.state.open}
+    open={this.state.open} onClose={() => this.setState({open: false})}
     onOpen={() => this.setState({open: true})}
     >
       <Modal.Header>{Strings.timingProject}</Modal.Header>
@@ -52,7 +52,7 @@ class TimingProject extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button onClick={() => this.close()} negative>
           {Strings.tourStop}
         </Button>
       </Modal.Actions>

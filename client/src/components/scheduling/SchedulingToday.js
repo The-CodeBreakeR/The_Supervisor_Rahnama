@@ -36,14 +36,9 @@ class SchedulingToday extends React.Component {
 
   render() {
     console.log(this.state.schedulingList)
-    return <Modal trigger={<Button onClick={() => this.search()}>{Strings.todayWorks}</Button>}>
+    return <Modal closeIcon trigger={<Button onClick={() => this.search()}>{Strings.todayWorks}</Button>}>
       <Modal.Header>{Strings.todayWorks}</Modal.Header>
       <Modal.Content image scrolling>
-        <Image
-          size='medium'
-          src='/assets/images/wireframe/image.png'
-          wrapped
-        />
         <Modal.Description>
           <Header>{Strings.todayWorks}</Header>
           <SchedulingList schedulingList={this.state.schedulingList} />

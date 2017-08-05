@@ -63,13 +63,10 @@ class TimingReport extends React.Component {
       key={`${semester.year}: ${semester.semester}`} onClick={() => this.showCurrentTerm(semester)}>{semester.year}:
       {semester.semester}</Button>)[semesterInfo.length - 1]
 
-    console.log('hi!!!!')
-    console.log(this.state.term, this.state.courseInfo)
     const semesterGrades = this.state.term > -1 && this.state.courseInfo.map(course => course.grade)
     const semesterAverage = this.state.term > -1 && semesterGrades.reduce((x, y) => x + y) / semesterGrades.length
     const semesterCreditsArray = this.state.term > -1 && this.state.courseInfo.map(course => course.course_info.credits)
     const semesterCredits = this.state.term > -1 && semesterCreditsArray.reduce((x, y) => x + y)
-    console.log(semesterGrades, semesterAverage)
     console.log('ddddddd', this.state.courseInfo.map(course => <p
       key={`${course.course_info.name} ${course.crredit} ${course.grade}`}>{course.course_info.name} {course.crredit} {course.grade}</p>))
     return <div>

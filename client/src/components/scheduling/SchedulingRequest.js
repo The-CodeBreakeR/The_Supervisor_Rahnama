@@ -67,13 +67,17 @@ class SchedulingRequest extends React.Component {
   }
 
   render() {
-    return <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
-                  trigger={<Button>{Strings.schedulingNewItem}</Button>}>
+    return <Modal
+      closeIcon
+      open={this.state.open}
+      onOpen={() => this.setState({open: true})}
+      onClose={() => this.setState({open: false})}
+      trigger={<Button>{Strings.schedulingNewItem}</Button>}
+    >
       <Modal.Header>{Strings.schedulingNewItem}</Modal.Header>
       <Modal.Content >
         <Modal.Description>
           <div>
-
             <div>
               <Form>
                 <Form.Input value={this.state.name} label={Strings.schedulingName} placeholder={Strings.requestForScheduling} onChange={event => this.onNameChange(event.target.value)} />

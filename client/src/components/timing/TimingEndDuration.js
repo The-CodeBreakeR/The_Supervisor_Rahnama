@@ -39,6 +39,7 @@ class TimingEndDuration extends React.Component {
       color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingEndDuration}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
+    onClose={() => this.setState({open: false})}
     >
       <Modal.Header>{Strings.timingEndDuration}</Modal.Header>
       <Modal.Content image scrolling>
@@ -49,7 +50,7 @@ class TimingEndDuration extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button onClick={() => this.close()} negative>
           {Strings.tourStop}
         </Button>
       </Modal.Actions>

@@ -42,7 +42,7 @@ class TimingHome extends React.Component {
   }
 
   renderItem(item) {
-    return <Table.Row>
+    return <Table.Row key={item.info}>
       <Table.Cell>{item.info}</Table.Cell>
     </Table.Row>
   }

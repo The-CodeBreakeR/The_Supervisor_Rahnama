@@ -13,8 +13,6 @@ class TimingSearch extends React.Component {
   }
 
   handleResult(result) {
-    console.log('avval3')
-    console.log(result.alarms === -1?[]:result.alarms,result.proposals === -1?[]:result.proposals)
     this.props.setTimingList(result.alarms,result.proposals)
   }
 
