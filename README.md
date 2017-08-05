@@ -41,11 +41,16 @@ to make and serve frontend bundles. Then run:
 ```
 to start Django server and open your browser at `http://localhost:8000`
 
+If you have problem with static files, run this:
+```bash
+./build.sh
+```
+
 Production Use
 -------------
 To run a production build first run:
 ```bash
-npm run build
+./build.sh
 ```
 to build frontend bundles. Then set `DEBUG` to `false` and set your hosts in `ALLOWED_HOSTS`
 in `settings.py` and run the project with `gunicorn` and `nginx`.
