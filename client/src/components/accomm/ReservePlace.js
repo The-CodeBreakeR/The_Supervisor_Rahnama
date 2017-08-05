@@ -64,6 +64,7 @@ class ReservePlace extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
+    this.setState({placeID: ''})
   }
 
   onPlaceIDChange(value) {
@@ -72,8 +73,8 @@ class ReservePlace extends React.Component {
 
   render() {
     return <div>
-      <Input value={this.state.placeID} placeholder={Strings.placeID} onChange={event => this.onPlaceIDChange(event.target.value)}/>
-      <Button onClick={() => this.reserve()}>{Strings.reservePlace}</Button>
+      <Input className='accomm__input' value={this.state.placeID} placeholder={Strings.placeID} onChange={event => this.onPlaceIDChange(event.target.value)}/>
+      <Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>
     </div>
   }
 }

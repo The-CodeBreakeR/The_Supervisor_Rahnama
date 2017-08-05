@@ -15,6 +15,8 @@ Including another URLconf
 """
 import Tours.url
 import Skill.url
+import Timing.urls
+import Scheduling.urls
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
@@ -39,6 +41,8 @@ urlpatterns = [
     url(r'^accounting/', include('account.urls')),
     url(r'^accommodation/', include('accomm.urls')),
     url(r'^tours/', include(Tours.url)),
+    url(r'^timing/', include(Timing.urls)),
+    url(r'^scheduling/', include(Scheduling.urls)),
     url(r'^skill/', include(Skill.url)),
     url(r'^.*$', TemplateView.as_view(template_name='index.html')),
 

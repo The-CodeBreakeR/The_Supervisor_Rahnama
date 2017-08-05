@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import Cookie from 'browser-cookies'
@@ -37,27 +37,27 @@ class RulesList extends React.Component {
 
   renderRule(rule) {
     return <Table.Row key={rule.id} >
-      <Table.Cell>{rule.id} </Table.Cell>
-      <Table.Cell>{MomentJ(rule.date).format('L')}</Table.Cell>
-      <Table.Cell>{rule.description}</Table.Cell>
+      <Table.Cell textAlign='center'>{rule.id} </Table.Cell>
+      <Table.Cell textAlign='center'>{MomentJ(rule.date).format('L')}</Table.Cell>
+      <Table.Cell textAlign='center'>{rule.description}</Table.Cell>
     </Table.Row>
   }
   render() {
     const rules = this.state.rulesList.map((rule) => this.renderRule(rule))
-    return <div>
-      <Table basic='very' celled selectable>
+    return <Segment className='accomm__list'>
+      <Table selectable>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>{Strings.ruleID}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.ruleDate}</Table.HeaderCell>
-            <Table.HeaderCell>{Strings.ruleDescription}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleID}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleDate}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleDescription}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
           {rules}
         </Table.Body>
       </Table>
-    </div>
+    </Segment>
   }
 }
 
