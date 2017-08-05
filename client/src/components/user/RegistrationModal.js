@@ -8,12 +8,13 @@ class RegistrationModal extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
-    this.fields = ['studentId', 'password', 'confirmPassword', 'firstName', 'lastName', 'rules']
+    this.fields = ['studentId', 'email', 'password', 'confirmPassword', 'firstName', 'lastName', 'rules']
   }
 
   resetState() {
     this.state = {
       studentId: { value: '', error: false },
+      email: { value: '', error: false },
       password: { value: '', error: false },
       confirmPassword: { value: '', error: false },
       firstName: { value: '', error: false },
@@ -32,6 +33,10 @@ class RegistrationModal extends React.Component {
 
   onStudentIdChanged(value) {
     this.setState({ studentId: { value, error: !/^[0-9]+$/.test(value) || value.length < 8 } })
+  }
+
+  onEmailChanged(value) {
+    this.setState({ email: { value, error: !/^.+@.+\..+$/.test(value) } })
   }
 
   onPasswordChanged(value) {
@@ -66,6 +71,7 @@ class RegistrationModal extends React.Component {
 
   validate() {
     this.onStudentIdChanged(this.state.studentId.value)
+    this.onEmailChanged(this.state.email.value)
     this.onPasswordChanged(this.state.password.value)
     this.onConfirmPasswordChanged(this.state.confirmPassword.value)
     this.onFirstNameChanged(this.state.firstName.value)
@@ -76,6 +82,9 @@ class RegistrationModal extends React.Component {
     let errors = this.state.error
     if (this.state.studentId.error) {
       errors += formatError(Strings.studentIdError)
+    }
+    if (this.state.email.error) {
+      errors += formatError(Strings.emailError)
     }
     if (this.state.password.error) {
       errors += formatError(Strings.passwordError)
@@ -102,6 +111,7 @@ class RegistrationModal extends React.Component {
         },
         body: JSON.stringify({
           username: this.state.studentId.value,
+          email: this.state.email.value,
           password: this.state.password.value,
           first_name: this.state.firstName.value,
           last_name: this.state.lastName.value,
@@ -124,7 +134,7 @@ class RegistrationModal extends React.Component {
     const errors = this.generateErrors()
     return (
       <Modal
-        trigger={<Button>{Strings.registration}</Button>}
+        trigger={<Button positive>{Strings.registration}</Button>}
         open={this.state.open}
         onOpen={() => this.setState({ open: true })}
         onClose={() => this.close()}
@@ -134,13 +144,22 @@ class RegistrationModal extends React.Component {
         {!this.state.done
           ? <Modal.Content>
             <Form>
-              <Form.Input
-                label={Strings.studentId}
-                value={this.state.studentId.value}
-                error={this.state.studentId.error}
-                onChange={event => this.onStudentIdChanged(event.target.value)}
-                placeholder={Strings.studentId}
-              />
+              <Form.Group widths='equal'>
+                <Form.Input
+                  label={Strings.studentId}
+                  value={this.state.studentId.value}
+                  error={this.state.studentId.error}
+                  onChange={event => this.onStudentIdChanged(event.target.value)}
+                  placeholder={Strings.studentId}
+                />
+                <Form.Input
+                  label={Strings.email}
+                  value={this.state.email.value}
+                  error={this.state.email.error}
+                  onChange={event => this.onEmailChanged(event.target.value)}
+                  placeholder={Strings.email}
+                />
+              </Form.Group>
               <Form.Group widths='equal'>
                 <Form.Input
                   label={Strings.firstName}
@@ -194,8 +213,8 @@ class RegistrationModal extends React.Component {
         }
         {!this.state.done
           ? <Modal.Actions>
-            <Button primary onClick={() => this.register()}>{Strings.registration}</Button>
             <Button secondary onClick={() => this.close()}>{Strings.cancel}</Button>
+            <Button primary onClick={() => this.register()}>{Strings.registration}</Button>
           </Modal.Actions>
           : <Modal.Actions>
             <Button primary onClick={() => this.close()}>{Strings.finish}</Button>

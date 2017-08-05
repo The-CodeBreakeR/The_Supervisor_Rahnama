@@ -92,7 +92,7 @@ class LoginModal extends React.Component {
     const errors = this.generateErrors()
     return (
       <Modal
-        trigger={<Button>{Strings.login}</Button>}
+        trigger={<Button primary>{Strings.login}</Button>}
         open={this.state.open}
         onOpen={() => this.setState({ open: true })}
         onClose={() => this.close()}
@@ -124,8 +124,8 @@ class LoginModal extends React.Component {
           }
         </Modal.Content>
         <Modal.Actions>
-          <Button primary onClick={() => this.login()}>{Strings.login}</Button>
           <Button secondary onClick={() => this.close()}>{Strings.cancel}</Button>
+          <Button primary onClick={() => this.login()}>{Strings.login}</Button>
         </Modal.Actions>
       </Modal>
     )

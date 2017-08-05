@@ -42,9 +42,13 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'user',
     'Tours',
+    'Timing',
+    'Scheduling',
     'corsheaders',
     'Skill',
-
+    'account',
+    'accomm',
+    'internship',
 ]
 
 MIDDLEWARE = [
