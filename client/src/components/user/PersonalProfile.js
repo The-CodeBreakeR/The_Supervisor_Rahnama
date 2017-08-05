@@ -173,11 +173,11 @@ class PersonalProfile extends React.Component {
         <Modal
           open={this.state.done}
           onOpen={() => this.setState({ done: true })}
-          onClose={() => this.setState({ done: true })}
+          onClose={() => this.setState({ done: false })}
         >
           <Modal.Header>{Strings.personalProfile}</Modal.Header>
           <Modal.Content>
-            {Strings.profileSuccessfullySubmitted}
+            {Strings.profileSuccessfullySubmitted}`
           </Modal.Content>
           <Modal.Actions>
             <Button primary onClick={() => this.setState({ done: false })}>{Strings.finish}</Button>

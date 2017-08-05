@@ -4,14 +4,15 @@ import fetch from 'isomorphic-fetch'
 import { Link } from 'react-router-dom'
 import Strings from '../../localization'
 import {formatError, getUser} from './utils'
-import {Button, Header, Form, Message, Modal} from 'semantic-ui-react'
+import {Button, Header, Form, Message, Modal, Segment} from 'semantic-ui-react'
 
+import SemesterInfo from './SemesterInfo'
 
 class EducationalProfile extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
-    this.fields = ['major', 'entrance_year', 'degree']
+    this.fields = ['major', 'entranceYear', 'degree']
     this.degreeOptions = [
       {key: 'BSC', value: 'BSC', text: Strings.bachelor},
       {key: 'MSC', value: 'MSC', text: Strings.master},
@@ -32,6 +33,10 @@ class EducationalProfile extends React.Component {
   }
 
   componentWillMount() {
+    this.update()
+  }
+
+  update() {
     fetch(`/api/user/${getUser().id}/`, {
       method: 'GET',
       headers: {
@@ -46,7 +51,7 @@ class EducationalProfile extends React.Component {
           this.onMajorChanged(educational.major)
           this.onDegreeChanged(educational.degree)
           this.onEntranceYearChanged(educational.entrance_year)
-          this.setState({ url: educational.url })
+          this.setState({ url: educational.url, semestersInfo: educational.semesters_info })
         }
       })
   }
@@ -56,6 +61,7 @@ class EducationalProfile extends React.Component {
       major: {value: '', error: false},
       entranceYear: {value: '', error: false},
       degree: {value: '', error: false},
+      semestersInfo: [],
       error: '',
       url: '',
       done: false,
@@ -68,8 +74,8 @@ class EducationalProfile extends React.Component {
 
   onEntranceYearChanged(value) {
     const thisYear = MomentJ().jYear()
-    const actualYear = parseInt(value)
-    const error = actualYear <= thisYear && actualYear >= thisYear - 10
+    const actualYear = parseInt(value) || 0
+    const error = actualYear > thisYear || actualYear < thisYear - 10
     this.setState({entranceYear: {value, error}})
   }
 
@@ -101,13 +107,15 @@ class EducationalProfile extends React.Component {
       errors += formatError(Strings.degreeError)
     }
     if (this.state.entranceYear.error) {
-      errors += formatError(Strings.entranceYear)
+      errors += formatError(Strings.entranceYearError)
     }
     return errors
   }
 
   submit() {
+    console.log('click')
     if (this.isOK()) {
+      console.log('after')
       fetch(this.state.url || '/api/educational_profile/', {
         method: this.state.url ? 'PATCH' : 'POST',
         headers: {
@@ -118,7 +126,7 @@ class EducationalProfile extends React.Component {
           user: `/api/user/${getUser().id}/`,
           major: this.state.major.value,
           degree: this.state.degree.value,
-          entranceYear: this.state.entranceYear.value,
+          entrance_year: this.state.entranceYear.value,
         }),
       })
         .then(response => response.json())
@@ -149,44 +157,53 @@ class EducationalProfile extends React.Component {
             <Button primary onClick={() => this.setState({ done: false })}>{Strings.finish}</Button>
           </Modal.Actions>
         </Modal>
-        <Header>{Strings.educationalProfile}</Header>
-        <p>{Strings.educationalProfileMessage}</p>
-        <Form>
-          <Form.Group widths='equal'>
+        <Segment>
+          <Header>{Strings.educationalProfile}</Header>
+          <p>{Strings.educationalProfileMessage}</p>
+          <Form>
+            <Form.Group widths='equal'>
+              <Form.Select
+                className='educational-profile__degree'
+                label={Strings.degree}
+                value={this.state.degree.value}
+                error={this.state.degree.error}
+                options={this.degreeOptions}
+                onChange={(_, obj) => this.onDegreeChanged(obj.value)}
+                placeholder={Strings.degree}
+              />
+              <Form.Input
+                label={Strings.entranceYear}
+                value={this.state.entranceYear.value}
+                error={this.state.entranceYear.error}
+                onChange={event => this.onEntranceYearChanged(event.target.value)}
+                placeholder={Strings.entranceYear}
+              />
+            </Form.Group>
             <Form.Select
-              label={Strings.degree}
-              value={this.state.degree.value}
-              error={this.state.degree.error}
-              options={this.degreeOptions}
-              onChange={(_, obj) => this.onDegreeChanged(obj.value)}
-              placeholder={Strings.degree}
+              className='educational-profile__major'
+              label={Strings.major}
+              placeholder={Strings.major}
+              options={this.majorOptions}
+              value={this.state.major.value}
+              error={this.state.major.error}
+              onChange={(_, obj) => this.onMajorChanged(obj.value)}
             />
-            <Form.Input
-              label={Strings.entranceYear}
-              value={this.state.entranceYear.value}
-              error={this.state.entranceYear.error}
-              onChange={event => this.onEntranceYearChanged(event.target.value)}
-              placeholder={Strings.entranceYear}
+          </Form>
+          {errors && <Message
+              error
+              content={errors}
             />
-          </Form.Group>
-          <Form.Select
-            label={Strings.major}
-            placeholder={Strings.major}
-            options={this.majorOptions}
-            value={this.state.major.value}
-            error={this.state.major.error}
-            onChange={(_, obj) => this.onMajorChanged(obj.value)}
-          />
-        </Form>
-        {errors && <Message
-            error
-            content={errors}
-          />
-        }
-        <div className="profile__submit">
-          <Link to='/profile'><Button secondary>{Strings.back}</Button></Link>
-          <Button primary onClick={() => this.submit()}>{Strings.submit}</Button>
-        </div>
+          }
+          <div className="profile__submit">
+            <Link to='/profile'><Button secondary>{Strings.back}</Button></Link>
+            <Button primary onClick={() => this.submit()}>{Strings.submit}</Button>
+          </div>
+        </Segment>
+        <SemesterInfo
+          educationalProfileUrl={this.state.url}
+          semesterInfo={this.state.semestersInfo}
+          update={() => this.update()}
+        />
       </div>
     )
   }
