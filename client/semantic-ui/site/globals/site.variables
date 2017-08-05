@@ -12,6 +12,6 @@
      Fonts
 --------------------*/
 
-@headerFont: 'b nazanin', Arial, Helvetica, sans-serif;
-@pageFont: 'b nazanin', Arial, Helvetica, sans-serif;
+@headerFont: 'b yekan', Arial, Helvetica, sans-serif;
+@pageFont: 'b yekan', Arial, Helvetica, sans-serif;
 @importGoogleFonts: false;
