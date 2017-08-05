@@ -2,6 +2,13 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    scheduleListTitle: 'سفر های سیاحتی و زیارتی',
+    schDate: 'سفر های سیاحتی و زیارتی',
+    schEvent: 'سفر های سیاحتی و زیارتی',
+    internCompanies: 'شرکت های کارآموزی',
+    internRules: 'قوانین کارآموزی',
+    internRecommendations: 'راهنمایی کارآموزی',
+    internCloseModal: 'بازگشت',
     toursub: 'سفر های سیاحتی و زیارتی',
     skillsub: 'مهارت های دانشجویی',
     accountingsub: 'حسابداری مالی دوران تحصیلی',

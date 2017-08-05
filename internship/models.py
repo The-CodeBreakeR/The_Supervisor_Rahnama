@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Schedule(models.Model):
-    date = models.TextField(max_length=2000)
+    date = models.DateField(default=datetime.now)
     event = models.TextField(max_length=2000)
 
     def __str__(self):
@@ -24,10 +24,10 @@ class Rule(models.Model):
 
 
 class Recommendation(models.Model):
-    recommendation = models.TextField(max_length=2000)
+    description = models.TextField(max_length=2000)
 
     def __str__(self):
-        return str(self.recommendation)
+        return str(self.description)
 
 
 class Company(models.Model):

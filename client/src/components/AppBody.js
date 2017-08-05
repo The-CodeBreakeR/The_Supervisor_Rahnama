@@ -9,6 +9,8 @@ import SkillHome from './skill/SkillHome'
 import TimingHome from './timing/TimingHome'
 import SchedulingPage from './scheduling/SchedulingPage'
 import AccountHome from './account/AccountHome'
+import InternshipHome from './internship/InternshipHome'
+import CompanyList from './internship/CompanyList'
 import MainPanel from './MainPanel'
 
 class AppBody extends React.Component {
@@ -22,6 +24,8 @@ class AppBody extends React.Component {
       <Route path='/timing' component={TimingHome}/>
       <Route path='/accounting' component={AccountHome}/>
       <Route path='/accommodation' component={AccommHome}/>
+      <Route exact path='/internship' component={InternshipHome}/>
+      <Route path='/internship/companies' component={CompanyList}/>
     </Segment>
   }
 }
