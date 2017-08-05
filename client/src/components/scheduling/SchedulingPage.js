@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Grid } from 'semantic-ui-react'
 import SchedulingList from './SchedulingList'
 import SchedulingRequest from './SchedulingRequest'
 import SchedulingSearch from './SchedulingSearch'
@@ -10,17 +11,17 @@ import SchedulingToday from './SchedulingToday'
 import Strings from '../../localization'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
-import DatePicker from 'react-datepicker2';
+import DatePicker from 'react-datepicker2'
 
 class SchedulingPage extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       schedulingList: [],
     }
   }
 
-  componentWillMount() {
+  componentWillMount () {
     fetch('/scheduling/search/', {
       method: 'POST',
       headers: {
@@ -39,28 +40,32 @@ class SchedulingPage extends React.Component {
       })
   }
 
-  setSchedulingList(schedulingList) {
+  setSchedulingList (schedulingList) {
     this.setState({schedulingList: schedulingList})
   }
 
-  render() {
-    console.log('salam')
-    return <div className='scheduling'><div>
-      <HardDayModal onLogin={() => this.forceUpdate()} />
+  render () {
 
-      <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
-      <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
-      <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)} />
-      </div>
-      <SchedulingList schedulingList={this.state.schedulingList} />
-      <div>
-      <Button onClick={() => this.componentWillMount()}>{Strings.schedulingAll}</Button>
-      <SchedulingToday/>
-      <SchedulingRequest/>
-
-      </div>
-  </div>
-
+    return <div className='scheduling'>
+      <Grid centered>
+        <Grid.Row columns={2}>
+          <SchedulingToday/>
+          <HardDayModal onLogin={() => this.forceUpdate()}/>
+        </Grid.Row>
+        <Grid.Row columns={3}>
+          <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>
+          <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>
+          <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>
+        </Grid.Row>
+        <Grid.Row centered>
+          <SchedulingList schedulingList={this.state.schedulingList}/>
+        </Grid.Row>
+        <Grid.Row columns={2}>
+          <Button onClick={() => this.componentWillMount()}>{Strings.schedulingAll}</Button>
+          <SchedulingRequest/>
+        </Grid.Row>
+      </Grid>
+    </div>
   }
 }
 
