@@ -2,6 +2,9 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    IncomeMan: 'مدیریت درآمد ها',
+    ExpenseMan: 'مدیریت هزینه ها',
+    LoanFac: 'تسهیلات وام',
     compType: 'زمینه فعالیت شرکت',
     compName: 'نام شرکت',
     compDescription: 'توضیحات',
