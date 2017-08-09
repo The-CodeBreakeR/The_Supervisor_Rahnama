@@ -88,6 +88,30 @@ def newExpense(request):
     return JsonResponse({'status': 0})
 
 @csrf_exempt
+def getRequest(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    requests = LoanRequest.objects.filter(student_id=stdid)
+    if len(requests) == 0:
+        return JsonResponse({'status': -1, 'message': "No request found"})
+    else:
+        response = {
+            "status": 0,
+            "requests": [{'id': requests[0].id, 'amount': requests[0].amount,
+                       'purpose': requests[0].purpose}]
+        }
+        if len(requests) == 1:
+            return JsonResponse(response)
+        i = 1
+        while i < requests.count():
+            response['requests'] = response['requests'] + [
+                {'id': requests[i].id, 'amount': requests[i].amount,
+                 'purpose': requests[i].purpose}]
+            i = i + 1
+        return JsonResponse(response)
+
+@csrf_exempt
 def newRequest(request):
     bodyParams = json.loads(request.body.decode('utf-8'))
     amount = bodyParams['amount']

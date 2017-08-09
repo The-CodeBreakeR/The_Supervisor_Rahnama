@@ -5,8 +5,9 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Cookie from 'browser-cookies'
-import { Header } from 'semantic-ui-react'
+import { Header, Button } from 'semantic-ui-react'
 import Strings from '../../localization'
+import { Link } from 'react-router-dom'
 
 import ExpenseList from './ExpenseList'
 import AddExpense from './AddExpense'
@@ -50,6 +51,11 @@ class ExpenseHome extends React.Component {
       <ExpenseList expenseList={this.state.expenseList} />
       <Header>{Strings.expenseInput}</Header>
       <AddExpense setExpenseList={(expenseList) => this.setExpenseList(expenseList)} />
+      <div className='account__back'>
+        <Link to='/accounting'>
+          <Button negative>{Strings.accountBack}</Button>
+        </Link>
+      </div>
     </div>
   }
 }

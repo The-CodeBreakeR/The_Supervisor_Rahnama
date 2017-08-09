@@ -5,8 +5,9 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Cookie from 'browser-cookies'
-import { Header } from 'semantic-ui-react'
+import { Header, Button } from 'semantic-ui-react'
 import Strings from '../../localization'
+import { Link } from 'react-router-dom'
 
 import IncomeList from './IncomeList'
 import AddIncome from './AddIncome'
@@ -50,6 +51,11 @@ class IncomeHome extends React.Component {
       <IncomeList incomeList={this.state.incomeList} />
       <Header>{Strings.incomeInput}</Header>
       <AddIncome setIncomeList={(incomeList) => this.setIncomeList(incomeList)} />
+      <div className='account__back'>
+        <Link to='/accounting'>
+          <Button negative>{Strings.accountBack}</Button>
+        </Link>
+      </div>
     </div>
   }
 }

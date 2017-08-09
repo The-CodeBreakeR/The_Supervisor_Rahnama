@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^newincome/', account.views.newIncome, name='newIncome'),
     url(r'^getexpense/', account.views.getExpense, name='getExpense'),
     url(r'^newexpense/', account.views.newExpense, name='newExpense'),
+    url(r'^getrequest/', account.views.getRequest, name='getRequest'),
     url(r'^loanrequest/', account.views.newRequest, name='newRequest'),
     url(r'^response', account.views.getResponse, name='getResponse'),
 ]
