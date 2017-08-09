@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 
 import RequestList from './RequestList'
 import LoanRequest from './LoanRequest'
-import LoanResponse from './LoanResponse'
 
 class LoanHome extends React.Component {
   constructor(props) {
@@ -52,8 +51,6 @@ class LoanHome extends React.Component {
       <RequestList requestList={this.state.requestList} />
       <Header>{Strings.loanRequestInput}</Header>
       <LoanRequest/>
-      <Header>{Strings.loanResponseInput}</Header>
-      <LoanResponse/>
       <div className='account__back'>
         <Link to='/accounting'>
           <Button negative>{Strings.accountBack}</Button>

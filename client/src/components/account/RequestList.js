@@ -6,6 +6,7 @@ import React from 'react'
 import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
+import RequestFollowUp from './RequestFollowUp'
 
 class RequestList extends React.Component {
   renderRequest(request) {
@@ -13,6 +14,7 @@ class RequestList extends React.Component {
       <Table.Cell textAlign='center'>{request.id} </Table.Cell>
       <Table.Cell textAlign='center'>{request.purpose}</Table.Cell>
       <Table.Cell textAlign='center'>{request.amount}</Table.Cell>
+      <Table.Cell textAlign='center'><RequestFollowUp reqID={request.id} /></Table.Cell>
     </Table.Row>
   }
   render() {
@@ -24,6 +26,7 @@ class RequestList extends React.Component {
             <Table.HeaderCell textAlign='center'>{Strings.requestID}</Table.HeaderCell>
             <Table.HeaderCell textAlign='center'>{Strings.requestPurpose}</Table.HeaderCell>
             <Table.HeaderCell textAlign='center'>{Strings.requestAmount}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.followUp}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

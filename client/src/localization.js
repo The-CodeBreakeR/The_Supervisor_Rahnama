@@ -2,6 +2,7 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    followUp: 'پیگیری درخواست',
     requestID: 'کد درخواست وام',
     requestTable: 'جدول وام های درخواستی',
     accountBack: 'بازگشت',
@@ -37,7 +38,7 @@ const Strings = new LocalizedStrings({
     rulesTable: 'جدول مقررات',
     placesTable: 'جدول محل های اقامتی در دسترس',
     reserveInput: 'رزرو محل اقامتی',
-    NoResponse: 'به این چنین درخواستی پاسخ داده نشده است.',
+    NoResponse: 'به این درخواست پاسخ داده نشده است.',
     furtherTracking: 'کد رهگیری',
     repPer: 'دوره بازپرداخت:',
     repRate: 'نرخ بازپرداخت:',
