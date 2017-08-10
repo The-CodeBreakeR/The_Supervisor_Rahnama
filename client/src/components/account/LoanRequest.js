@@ -21,7 +21,7 @@ class LoanRequest extends React.Component {
     if (result.status === -1) {
       alert(Strings.submitionFailed)
     } else {
-      alert(Strings.requestOK + result.id)
+      alert(Strings.submitionOK)
     }
   }
 
