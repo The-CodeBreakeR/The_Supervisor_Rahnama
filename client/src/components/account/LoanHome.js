@@ -46,7 +46,7 @@ class LoanHome extends React.Component {
   }
 
   render() {
-    return <div className='account'>
+    return <div>
       <Header>{Strings.requestTable}</Header>
       <RequestList requestList={this.state.requestList} />
       <Header>{Strings.loanRequestInput}</Header>

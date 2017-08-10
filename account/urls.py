@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^newexpense/', account.views.newExpense, name='newExpense'),
     url(r'^getrequest/', account.views.getRequest, name='getRequest'),
     url(r'^loanrequest/', account.views.newRequest, name='newRequest'),
-    url(r'^response', account.views.getResponse, name='getResponse'),
+    url(r'^response/', account.views.getResponse, name='getResponse'),
+    url(r'^getcondition/', account.views.getCondition, name='getCondition'),
 ]

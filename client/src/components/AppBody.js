@@ -12,6 +12,7 @@ import AccountHome from './account/AccountHome'
 import IncomeHome from './account/IncomeHome'
 import ExpenseHome from './account/ExpenseHome'
 import LoanHome from './account/LoanHome'
+import FinancialRecom from './account/FinancialRecom'
 import InternshipHome from './internship/InternshipHome'
 import CompanyList from './internship/CompanyList'
 import MainPanel from './MainPanel'
@@ -29,6 +30,7 @@ class AppBody extends React.Component {
       <Route path='/accounting/income' component={IncomeHome}/>
       <Route path='/accounting/expense' component={ExpenseHome}/>
       <Route path='/accounting/loan' component={LoanHome}/>
+      <Route path='/accounting/recom' component={FinancialRecom}/>
       <Route path='/accommodation' component={AccommHome}/>
       <Route exact path='/internship' component={InternshipHome}/>
       <Route path='/internship/companies' component={CompanyList}/>

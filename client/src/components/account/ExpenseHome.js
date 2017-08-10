@@ -46,7 +46,7 @@ class ExpenseHome extends React.Component {
   }
 
   render() {
-    return <div className='account'>
+    return <div>
       <Header>{Strings.expenseTable}</Header>
       <ExpenseList expenseList={this.state.expenseList} />
       <Header>{Strings.expenseInput}</Header>

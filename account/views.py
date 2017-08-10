@@ -141,3 +141,32 @@ def getResponse(request):
             'repayment_rate': resp[0].repayment_rate
         }
     return JsonResponse(response)
+
+@csrf_exempt
+def getCondition(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    condition = 3
+    balance = 0
+    incomes = Income.objects.filter(student_id=stdid)
+    i = 0
+    while i < incomes.count():
+        balance = balance + incomes[i].amount
+        i = i + 1
+    expenses = Expense.objects.filter(student_id=stdid)
+    i = 0
+    while i < expenses.count():
+        balance = balance - expenses[i].amount
+        i = i + 1
+    if balance < 2000000:
+        condition = 2
+    if balance < 0:
+        condition = 1
+    if balance < -2000000:
+        condition = 0
+    response = {
+        'status': 0, 'balance': balance,
+        'condition': condition
+    }
+    return JsonResponse(response)
