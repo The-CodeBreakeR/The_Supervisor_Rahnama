@@ -64,7 +64,7 @@ module.exports = {
         use: {
           loader: 'url-loader',
           query: {
-            publicPath: '/',
+            publicPath: '/static/',
             limit: 1000,
             name: '[hash].[ext]',
           },

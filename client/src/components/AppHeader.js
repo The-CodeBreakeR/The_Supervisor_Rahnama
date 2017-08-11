@@ -15,7 +15,7 @@ class AppHeader extends React.Component {
           <Image
             // mode='fit'
             src={rahLogo}
-            wrapped
+            // wrapped
             width={32}
             height={32}
             alt={"no Image load"}
