@@ -35,6 +35,7 @@ class TimingIntern extends React.Component {
     this.setState({user: result})
   }
   render() {
+    console.log('intern')
     return <Modal trigger={<Button
       color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingIntern}</Button>}
     open={this.state.open} onClose={() => this.setState({open: false})}
