@@ -240,6 +240,7 @@ const Strings = new LocalizedStrings({
     currentProgram: 'برنامه درسی ترم',
     currentTerm: "ترم جاری",
     timeFormat: 'YYYY/MM/DD',
+    training: 'در کار با سامانه مشکلی دارید؟‌ فیلم آموزشی کار با آن را ببینید.',
   },
 })
 

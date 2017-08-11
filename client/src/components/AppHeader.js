@@ -13,9 +13,14 @@ class AppHeader extends React.Component {
         <Grid.Row>
           <AuthHeader/>
           {location.pathname !== '/' && <div className='app__header__return'>
+
             <Link to='/'><Button color='green'>{Strings.bakToHome}</Button></Link>
+             {/*<img src="../../Images/RAH_logo.png" alt="Smiley face" height="42" width="42">*/}
           </div>
           }
+          {location.pathname === '/' && <div className='app__header__training' color="red">
+            <Link to='/'><Button color="red" >{Strings.training}</Button></Link>
+          </div>}
         </Grid.Row>
       </Grid>
     </Segment>
