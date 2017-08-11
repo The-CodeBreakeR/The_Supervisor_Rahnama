@@ -1,11 +1,8 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
+import { Button, Header, Modal, Grid } from 'semantic-ui-react'
 import Strings from '../../localization'
-
-import { Grid } from 'semantic-ui-react'
-
 class TimingReport extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       open: false,
@@ -18,29 +15,30 @@ class TimingReport extends React.Component {
     }
   }
 
-  close () {
+  close() {
     this.setState({open: false})
   }
 
-  componentWillMount () {
-    console.log('bb', JSON.parse(localStorage.getItem('user')).id)
+  componentWillMount() {
+    // console.log('h')
+    // console.log('bb', JSON.parse(localStorage.getItem('user')).id)
     fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      }
+      },
     })
       .then(response => response.json())
       .then(result => this.setUser(result))
   }
 
-  setUser (result) {
-    console.log(result)
+  setUser(result) {
+    // console.log(result)
     this.setState({user: result})
   }
 
-  showTermInfo (semester) {
+  showTermInfo(semester) {
     this.setState({term: semester.semester})
     this.setState({year: semester.year})
     this.setState({open: true})
@@ -48,13 +46,13 @@ class TimingReport extends React.Component {
     this.setState({notCurrentTerm: true})
   }
 
-  showCurrentTerm (semester) {
+  showCurrentTerm(semester) {
     this.showTermInfo(semester)
     this.setState({notCurrentTerm: false})
   }
 
-  render () {
-    console.log('report')
+  render() {
+    // console.log('report')
     const semesterInfo = this.state.user.educational_profile.semesters_info
     const termSelection = semesterInfo.map(semester => <Button
       key={`${semester.year}: ${semester.semester}`} onClick={() => this.showTermInfo(semester)}>{semester.year}:
@@ -71,7 +69,7 @@ class TimingReport extends React.Component {
       key={`${course.course_info.name} ${course.course_info.credit} ${course.grade}`}>{course.course_info.name} {course.course_info.credit} {course.grade}</p>))
     return <div>
       <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
-             onClose={() => this.setState({open: false})}>
+        onClose={() => this.setState({open: false})}>
         <Modal.Header>{Strings.termInfo}:{this.state.year}-{this.state.term}</Modal.Header>
         <Modal.Content image scrolling>
           <Modal.Description>
@@ -92,12 +90,12 @@ class TimingReport extends React.Component {
       </Modal>
       <Grid>
         <Grid.Row>
-          <div className="column">
+          <div className='column'>
             <Header>{Strings.currentTerm}</Header>
             <p>{Strings.currentProgram}</p>
             {termProgram}
           </div>
-          <div className="column">
+          <div className='column'>
             <Header>{Strings.timingReport}</Header>
             <p>{Strings.chooseTerm}</p>
             {termSelection}
