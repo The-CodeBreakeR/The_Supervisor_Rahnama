@@ -2,8 +2,8 @@ import React from 'react'
 import Strings from '../localization'
 import { Header, Segment, Button, Grid, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import rahLogo from '../../asset/RAH_logo.png'
 import AuthHeader from './user/AuthHeader'
+import LogoInfo from './LogoInfo.js'
 
 class AppHeader extends React.Component {
   render () {
@@ -11,13 +11,7 @@ class AppHeader extends React.Component {
     return <Segment className='app__header'>
       <Grid>
         <Grid.Column>
-          {/*<img src='../../asset/RAH_logo.png'  alt="Smiley face" />*/}
-          <Image className='app__header__column__logo'
-            // mode='fit'
-            src={rahLogo}
-            // wrapped
-            alt={"no Image load"}
-          />
+          <LogoInfo/>
         </Grid.Column>
         <Grid.Column className='app__header__column'>
           <Grid.Row>

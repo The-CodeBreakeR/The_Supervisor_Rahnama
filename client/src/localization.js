@@ -241,7 +241,10 @@ const Strings = new LocalizedStrings({
     currentTerm: "ترم جاری",
     timeFormat: 'YYYY/MM/DD',
     training: 'در کار با سامانه مشکلی دارید؟‌ فیلم آموزشی کار با آن را ببینید.',
+    rah: 'گروه رهپویان راه مهندسی',
+    powered: 'این سامانه طراحی شده است به دست:',
   },
+
 })
 
 export default Strings
