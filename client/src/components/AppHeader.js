@@ -10,14 +10,12 @@ class AppHeader extends React.Component {
     console.log()
     return <Segment className='app__header'>
       <Grid>
-        <Grid.Column className='app__header__column__logo'>
+        <Grid.Column>
           {/*<img src='../../asset/RAH_logo.png'  alt="Smiley face" />*/}
-          <Image
+          <Image className='app__header__column__logo'
             // mode='fit'
             src={rahLogo}
             // wrapped
-            width={32}
-            height={32}
             alt={"no Image load"}
           />
         </Grid.Column>
