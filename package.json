@@ -57,8 +57,10 @@
     "react-dom": "^15.6.1",
     "react-localization": "^0.1.1",
     "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2",
     "semantic-ui-less": "^2.2.11",
-    "semantic-ui-react": "^0.71.0"
+    "semantic-ui-react": "^0.71.0",
+    "video-react": "^0.8.6"
   },
   "browserslist": [
     "> 1%",
