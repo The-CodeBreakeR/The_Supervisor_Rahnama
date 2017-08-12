@@ -4,6 +4,7 @@ import { Header, Segment, Button, Grid, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import AuthHeader from './user/AuthHeader'
 import LogoInfo from './LogoInfo.js'
+import VideoTraining from './VideoTraining.js'
 
 class AppHeader extends React.Component {
   render () {
@@ -26,9 +27,7 @@ class AppHeader extends React.Component {
             <Link to='/'><Button color='green'>{Strings.bakToHome}</Button></Link>
           </div>
           }
-          {location.pathname === '/' && <div className='app__header__training' color="red">
-            <Link to='/'><Button color="red">{Strings.training}</Button></Link>
-          </div>}
+          {location.pathname === '/' && <VideoTraining/>}
         </Grid.Column>
       </Grid>
     </Segment>
