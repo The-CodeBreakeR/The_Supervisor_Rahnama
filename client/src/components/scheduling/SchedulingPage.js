@@ -1,13 +1,9 @@
 import React from 'react'
 
-import { Grid,Form } from 'semantic-ui-react'
+import { Grid,Form,Input } from 'semantic-ui-react'
 import SchedulingList from './SchedulingList'
 import SchedulingRequest from './SchedulingRequest'
 import SchedulingSearch from './SchedulingSearch'
-import SchedulingWeek from './SchedulingWeek'
-import SchedulingMonth from './SchedulingMonth'
-import HardDayModal from './HardDayModal'
-import SchedulingToday from './SchedulingToday'
 import Strings from '../../localization'
 import { Button } from 'semantic-ui-react'
 
@@ -20,19 +16,20 @@ class SchedulingPage extends React.Component {
     this.state = {
       schedulingList: [],
       list: '',
-      url:''
+      name: '',
+      url:'/scheduling/search/',
     }
   }
 
   componentWillMount () {
-    fetch('/scheduling/search/', {
+    fetch(this.state.url, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: '',
+        name: this.state.name,
       }),
     })
       .then(response => response.json())
@@ -43,56 +40,43 @@ class SchedulingPage extends React.Component {
       })
   }
 
-  search() {
-    if (true) {
-      fetch(this.state.url, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-        }),
-      })
-        .then(response => response.json())
-        .then(result => this.handleResult(result))
-    }
-  }
-  setSchedulingList (schedulingList) {
+  setSchedulingList(schedulingList) {
     this.setState({schedulingList: schedulingList})
   }
-   setGender(event) {
-    alert(event.target.value);
-    this.setState({url:event.target.value})
-  }
-  render () {
 
+   setUrl(event){
+    this.setState({name:''})
+    // alert(event.target.value)
+    this.setState({url:event.target.value})
+    this.componentWillMount ()
+  }
+  search(event){
+     this.setState({url:'/scheduling/search/'})
+     this.componentWillMount()
+  }
+  render(){
     return <div className='scheduling'>
       <Grid centered>
         <Grid.Row columns={2}>
-          <SchedulingToday/>
-          {/*<HardDayModal onLogin={() => this.forceUpdate()}/>*/}
         </Grid.Row>
         <Grid.Row columns={4}>
 
-      <div onChange={this.setGender.bind(this)}>
-        <input type="radio" value='/scheduling/today/' name="gender"/> w
-        <input type="radio" value='/scheduling/week/' name="gender"/>m
-        <input type="radio" value='/scheduling/month/' name="gender"/> Female
+      <div onChange={this.setUrl.bind(this)}>
+        <Input type="radio" value='/scheduling/search/' name="gender" /> all
+        <Input type="radio" value='/scheduling/today/' name="gender"/> w
+        <Input type="radio" value='/scheduling/week/' name="gender"/>m
+        <Input type="radio" value='/scheduling/month/' name="gender"/> Female
       </div>
-
-          {/*<DatePicker />*/}
-          {/*<Calendar />*/}
-          {/*<SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>*/}
-          {/*<SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>*/}
-          <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>
+       <div>
+        <Input value={this.state.name} placeholder={Strings.schedulingName} onChange={event =>this.setState({name:event.target.value})}/>
+        <Button onClick={() => this.search()}>{Strings.search}</Button>
+      </div>
         </Grid.Row>
         <Grid.Row centered>
           <SchedulingList schedulingList={this.state.schedulingList}/>
         </Grid.Row>
         <Grid.Row columns={2}>
-          <Button onClick={() => this.componentWillMount()}>{Strings.schedulingAll}</Button>
-          <SchedulingRequest/>
+           <SchedulingRequest/>
         </Grid.Row>
       </Grid>
     </div>
