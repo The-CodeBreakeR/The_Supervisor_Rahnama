@@ -3,7 +3,6 @@ import fetch from 'isomorphic-fetch'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 
-import SchedulingSearch from './SchedulingSearch'
 import SchedulingList from './SchedulingList'
 
 class HardDayModal extends React.Component {
