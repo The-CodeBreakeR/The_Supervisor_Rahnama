@@ -3,7 +3,7 @@ import { Link,Image, Modal, Button } from 'semantic-ui-react'
 import Strings from '../localization'
 // import 'node_modules/video-react/dist/video-react.css'
 // import movie from '../../asset/movie.mp4'
-import movie from '../../asset/movie.mp4'
+import movie from '../../asset/RAH_logo.png'
 // import { Player } from 'video-react';
 class VideoTraining extends React.Component {
   constructor (props) {

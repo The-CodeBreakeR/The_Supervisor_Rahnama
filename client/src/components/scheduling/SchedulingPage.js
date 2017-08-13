@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Grid } from 'semantic-ui-react'
+import { Grid,Form } from 'semantic-ui-react'
 import SchedulingList from './SchedulingList'
 import SchedulingRequest from './SchedulingRequest'
 import SchedulingSearch from './SchedulingSearch'
@@ -11,12 +11,16 @@ import SchedulingToday from './SchedulingToday'
 import Strings from '../../localization'
 import { Button } from 'semantic-ui-react'
 
+import { Calendar, DatePicker } from 'react-persian-datepicker'
 
+import MomentJ from 'moment-jalaali'
 class SchedulingPage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       schedulingList: [],
+      list: '',
+      url:''
     }
   }
 
@@ -39,21 +43,48 @@ class SchedulingPage extends React.Component {
       })
   }
 
+  search() {
+    if (true) {
+      fetch(this.state.url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        }),
+      })
+        .then(response => response.json())
+        .then(result => this.handleResult(result))
+    }
+  }
   setSchedulingList (schedulingList) {
     this.setState({schedulingList: schedulingList})
   }
-
+   setGender(event) {
+    alert(event.target.value);
+    this.setState({url:event.target.value})
+  }
   render () {
 
     return <div className='scheduling'>
       <Grid centered>
         <Grid.Row columns={2}>
           <SchedulingToday/>
-          <HardDayModal onLogin={() => this.forceUpdate()}/>
+          {/*<HardDayModal onLogin={() => this.forceUpdate()}/>*/}
         </Grid.Row>
-        <Grid.Row columns={3}>
-          <SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>
-          <SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>
+        <Grid.Row columns={4}>
+
+      <div onChange={this.setGender.bind(this)}>
+        <input type="radio" value='/scheduling/today/' name="gender"/> w
+        <input type="radio" value='/scheduling/week/' name="gender"/>m
+        <input type="radio" value='/scheduling/month/' name="gender"/> Female
+      </div>
+
+          {/*<DatePicker />*/}
+          {/*<Calendar />*/}
+          {/*<SchedulingWeek setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>*/}
+          {/*<SchedulingMonth setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>*/}
           <SchedulingSearch setSchedulingList={(schedulingList) => this.setSchedulingList(schedulingList)}/>
         </Grid.Row>
         <Grid.Row centered>
@@ -66,6 +97,6 @@ class SchedulingPage extends React.Component {
       </Grid>
     </div>
   }
-}
+  }
 
-export default SchedulingPage
+  export default SchedulingPage
