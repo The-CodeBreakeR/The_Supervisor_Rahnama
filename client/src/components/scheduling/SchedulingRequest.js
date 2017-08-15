@@ -3,7 +3,10 @@ import MomentJ from 'moment-jalaali'
 import { Form, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
-import { Calendar, DatePicker } from 'react-persian-datepicker';
+// import { Calendar, DatePicker } from 'react-persian-datepicker';
+import css from '../../../stylesheet/basics.css'
+import DatePicker from 'react-datepicker2';
+
 
 
 class SchedulingRequest extends React.Component {
@@ -69,6 +72,7 @@ class SchedulingRequest extends React.Component {
   }
 
   render() {
+    console.log("gd", css)
     return <Modal
       closeIcon
       open={this.state.open}
@@ -84,7 +88,8 @@ class SchedulingRequest extends React.Component {
               <Form>
                 <Form.Input value={this.state.name} label={Strings.schedulingName} placeholder={Strings.requestForScheduling} onChange={event => this.onNameChange(event.target.value)} />
                 <Form.Input value={this.state.capasity} label={Strings.schedulingCapasity} placeholder={Strings.requestForScheduling} onChange={event => this.onCapasityChange(event.target.value)} />
-                {/*<DatePicker styles={'client/stylesheet/scheduling.less'}/>*/}
+                <Form.Input value={this.state.capasity} label={Strings.schedulingCapasity} placeholder={Strings.requestForScheduling} onChange={event => this.onCapasityChange(event.target.value)} />
+                <DatePicker />
                 <Form.Input value={this.state.end_date} label={Strings.schedulingEndDate} placeholder={Strings.timeFormat} onChange={event => this.onTimeChange(event.target.value)} />
                 <Form.TextArea value={this.state.info} label={Strings.info} placeholder={Strings.requestForScheduling} onChange={event => this.onInfoChange(event.target.value)} />
                 <Form.Button onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>

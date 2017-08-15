@@ -58,6 +58,7 @@ module.exports = {
           }
         ]
       },
+
       {
         test: /\.(jpg|png|woff|woff2|eot|ttf|svg|gif)$/,
         use: {

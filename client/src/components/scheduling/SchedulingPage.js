@@ -6,8 +6,12 @@ import SchedulingRequest from './SchedulingRequest'
 import Strings from '../../localization'
 import { Button } from 'semantic-ui-react'
 import HardDayModal from './HardDayModal'
-import { Calendar, DatePicker } from 'react-persian-datepicker'
+// import { Calendar, DatePicker } from 'react-persian-datepicker'
 
+import moment from 'moment-jalaali'
+import DatePicker from 'react-datepicker2';
+
+import 'react-datepicker2/dist/react-datepicker2.min.css';
 import MomentJ from 'moment-jalaali'
 class SchedulingPage extends React.Component {
   constructor(props) {
@@ -15,6 +19,7 @@ class SchedulingPage extends React.Component {
     this.state = {
       schedulingList: [],
       list: '',
+      value:  moment(),
       name: '',
       url: '/scheduling/all/',
       checked: 'all',
@@ -56,7 +61,7 @@ class SchedulingPage extends React.Component {
   }
 
   search(event) {
-    console.log("tt",event.target.value)
+    // console.log("tt",event.target.value)
     this.setState({name: event.target.value,url: '/scheduling/search/',checked:'search'},function () {this.componentWillMount()})
     // this.setState({url: '/scheduling/search/'})
     // this.componentWillMount()
@@ -64,8 +69,13 @@ class SchedulingPage extends React.Component {
 
   render() {
     return <div className='scheduling'>
+ <DatePicker
+      onChange={value => this.setState({ value })}
+      value={this.state.value}
+    />
       <Grid centered>
         <Grid.Row columns={2}>
+
            <HardDayModal onLogin={() => this.forceUpdate()}/>
         </Grid.Row>
         <Grid.Row columns={4}>
