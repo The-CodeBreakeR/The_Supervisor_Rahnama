@@ -18,7 +18,7 @@ class SchedulingPage extends React.Component {
       name: '',
       url: '/scheduling/all/',
       checked: 'all',
-      search: false,
+      // search: false,
     }
   }
 
@@ -46,7 +46,8 @@ class SchedulingPage extends React.Component {
   }
 
   setUrl(event) {
-    this.setState(checked: 'value')
+    // alert(event.target.value)
+    this.setState({checked: event.target.value})
     this.setState({name: ''})
     this.setState({url: '/scheduling/'+event.target.value+'/'})
     this.componentWillMount()
@@ -54,7 +55,7 @@ class SchedulingPage extends React.Component {
 
   search(event) {
     this.setState({name: event.target.value})
-    this.setState({url: '/scheduling/search/'})
+    // this.setState({url: '/scheduling/search/'})
     this.componentWillMount()
   }
 
@@ -67,14 +68,14 @@ class SchedulingPage extends React.Component {
         <Grid.Row columns={4}>
 
           <div onChange={this.setUrl.bind(this)}>
-            <Input type='radio' value='search' name='list' checked={this.state.checked = 'all'}/> all
-            <Input type='radio' value='today' name='list' checked={this.state.checked = 'today'}/> w
-            <Input type='radio' value='week' name='list' checked={this.state.checked = 'week'}/>m
-            <Input type='radio' value='month' name='list' checked={this.state.checked = 'month'}/> Female
-            {/*<Input type='radio' value='all' name='list' onClick={this.setState({search:true})} /> search*/}
+            <Input type='radio' value='all' name='list'  checked={this.state.checked === 'all'}/> all<br/>
+            <Input type='radio' value='today' name='list' checked={this.state.checked === 'today'}/> w<br/>
+            <Input type='radio' value='week' name='list' checked={this.state.checked === 'week'}/>m<br/>
+            <Input type='radio' value='month' name='list' checked={this.state.checked === 'month'}/> Female<br/>
+            <Input type='radio' value='search' name='list' checked={this.state.checked === 'search'} /> search
           </div>
           <div>
-            {this.state.search && <Input value={this.state.name} placeholder={Strings.schedulingName}
+            {this.state.checked === 'search' && <Input value={this.state.name} placeholder={Strings.schedulingName}
                    onChange={event => this.search(event)}/>}
           </div>
         </Grid.Row>
