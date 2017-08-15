@@ -133,7 +133,7 @@ const Strings = new LocalizedStrings({
     schedulingReserve: 'رزرو',
     schedulingCansel: 'لغو ماده درسی',
     schedulingAccepted: 'تایید',
-    schedulingWeekDisplay: 'نمایش برنامه هفتگی',
+    schedulingWeekDisplay: 'نمایش برنامه هفته آینده',
     schedulingMonthDisplay: 'گزارش ماه اخیر ',
     schedulingNewItem: 'ثبت رخداد درسی جدید',
     schedulingُType: 'نوع رخداد',

@@ -23,6 +23,7 @@ class SchedulingPage extends React.Component {
   }
 
   componentWillMount() {
+    console.log("uu",this.state.name,this.state.url)
     fetch(this.state.url, {
       method: 'POST',
       headers: {
@@ -35,28 +36,30 @@ class SchedulingPage extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        if(result.status === 0) {
+        // if(result.status === 0) {
+          console.log("cmw",result.scheduling)
           this.setState({schedulingList: result.scheduling})
-        }
+        // }else{
+        //   alert("-1 status")
+        // }
       })
   }
 
-  setSchedulingList(schedulingList) {
-    this.setState({schedulingList: schedulingList})
-  }
+  // setSchedulingList(schedulingList) {
+  //   this.setState({schedulingList: schedulingList})
+  // }
 
   setUrl(event) {
-    // alert(event.target.value)
-    this.setState({checked: event.target.value})
-    this.setState({name: ''})
-    this.setState({url: '/scheduling/'+event.target.value+'/'})
-    this.componentWillMount()
+    // console.log("ddd",{checked: event.target.value,name: '',url: '/scheduling/'+event.target.value+'/'})
+    this.setState({url: '/scheduling/'+event.target.value+'/',checked: event.target.value,name: ''},function () {this.componentWillMount()})
+    // alert(this.state.url)
   }
 
   search(event) {
-    this.setState({name: event.target.value})
+    console.log("tt",event.target.value)
+    this.setState({name: event.target.value,url: '/scheduling/search/',checked:'search'},function () {this.componentWillMount()})
     // this.setState({url: '/scheduling/search/'})
-    this.componentWillMount()
+    // this.componentWillMount()
   }
 
   render() {
@@ -68,11 +71,11 @@ class SchedulingPage extends React.Component {
         <Grid.Row columns={4}>
 
           <div onChange={this.setUrl.bind(this)}>
-            <Input type='radio' value='all' name='list'  checked={this.state.checked === 'all'}/> all<br/>
-            <Input type='radio' value='today' name='list' checked={this.state.checked === 'today'}/> w<br/>
-            <Input type='radio' value='week' name='list' checked={this.state.checked === 'week'}/>m<br/>
-            <Input type='radio' value='month' name='list' checked={this.state.checked === 'month'}/> Female<br/>
-            <Input type='radio' value='search' name='list' checked={this.state.checked === 'search'} /> search
+            <Input type='radio' value='all' name='list' checked={this.state.checked === 'all'}/> {Strings.schedulingAll} &emsp;
+            <Input type='radio' value='today' name='list' checked={this.state.checked === 'today'}/> {Strings.todayWorks} &emsp;
+            <Input type='radio' value='week' name='list' checked={this.state.checked === 'week'}/>{Strings.schedulingWeekDisplay} &emsp;
+            <Input type='radio' value='month' name='list' checked={this.state.checked === 'month'}/> {Strings.schedulingMonthDisplay} &emsp;
+            <Input type='radio' value='search' name='list' checked={this.state.checked === 'search'} /> {Strings.search} &emsp;
           </div>
           <div>
             {this.state.checked === 'search' && <Input value={this.state.name} placeholder={Strings.schedulingName}
