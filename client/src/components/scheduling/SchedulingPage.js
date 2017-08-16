@@ -24,7 +24,6 @@ class SchedulingPage extends React.Component {
       url: '/scheduling/all/',
       checked: 'all',
       page: 'main',
-      // search: false,
     }
   }
 
@@ -42,18 +41,11 @@ class SchedulingPage extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        // if(result.status === 0) {
         console.log('cmw', result.scheduling)
         this.setState({schedulingList: result.scheduling})
-        // }else{
-        //   alert("-1 status")
-        // }
       })
   }
 
-  // setSchedulingList(schedulingList) {
-  //   this.setState({schedulingList: schedulingList})
-  // }
 
   setUrl (event) {
     // console.log("ddd",{checked: event.target.value,name: '',url: '/scheduling/'+event.target.value+'/'})
@@ -65,19 +57,18 @@ class SchedulingPage extends React.Component {
     // alert(this.state.url)
   }
 
-  search (event) {
-    // console.log("tt",event.target.value)
+  search(event) {
     this.setState({
       name: event.target.value,
       url: '/scheduling/search/',
       checked: 'search'
     }, function () {this.componentWillMount()})
-    // this.setState({url: '/scheduling/search/'})
-    // this.componentWillMount()
   }
-
+  setPage(page){
+    this.setState({page:page})
+  }
   render () {
-    alert(this.state.page)
+    console.log("av",this.state.page)
     return <div className='scheduling'>
       {this.state.page === 'main' && <Grid centered>
         <Grid.Row columns={2}>
@@ -106,11 +97,11 @@ class SchedulingPage extends React.Component {
           <SchedulingList schedulingList={this.state.schedulingList}/>
         </Grid.Row>
         <Grid.Row columns={2}>
-          <button onClick={this.setState({page: 'request'})}>سلام{Strings.schedulingNewItem}</button>
+          <Button onClick={() => this.setState({page:'request'})}>{Strings.schedulingNewItem}</Button>
         </Grid.Row>
       </Grid>
       }{this.state.page === 'request' &&
-    <SchedulingRequest page={this.state.page}/>
+    <SchedulingRequest setPage={page => this.setPage(page)}/>
     }</div>
   }
 }
