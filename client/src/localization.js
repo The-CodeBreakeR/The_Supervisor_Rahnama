@@ -239,7 +239,7 @@ const Strings = new LocalizedStrings({
     grade: 'نمره',
     courses: 'درس ها',
     currentProgram: 'برنامه درسی ترم',
-    currentTerm: "ترم جاری",
+    currentTerm: 'ترم جاری',
     timeFormat: 'YYYY/MM/DD',
     training: 'در کار با سامانه مشکلی دارید؟‌ فیلم آموزشی کار با آن را ببینید.',
     rah: 'گروه رهپویان راه مهندسی',
@@ -247,6 +247,11 @@ const Strings = new LocalizedStrings({
     titleTrain: 'فیلم آموزشی کار با سامانه',
     acceptScheduling: 'رخداد درسی با موفقیت ثبت شد.',
     choose: 'قصد انجام چه کاری را دارید؟',
+    returnToScheduling: 'بازگشت به صفحه اصلی سامانه مدیرت برنامه تحصیلی',
+    needDay: 'مثال: ۲ ',
+    needName: 'مثال:‌ امتحانک ریاضی ۲',
+    schedulingEndDatePick:'زمان سررسید (برای انتخاب روز بر روی مستطیل زیر کلیک کنید)',
+
   },
 
 })
