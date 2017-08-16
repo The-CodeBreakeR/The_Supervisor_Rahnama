@@ -49,7 +49,7 @@ class SchedulingRequest extends React.Component {
     this.setState({request: ''})
   }
 
-  sendRequest () {
+  sendRequest() {
     console.log('here')
     if (true) {
       // this.setState({open: false})
@@ -73,13 +73,27 @@ class SchedulingRequest extends React.Component {
         .then(response => response.json())
         .then(result => {
           this.handleResult(result)
-          this.props.setPage('main')
+          // this.props.setPage('main')
         })
     }
   }
 
   render() {
     console.log('gd', css)
+    const modal = <Modal closeIcon
+                  trigger={<Button onClick={() => this.sendRequest()}>{Strings.submit}</Button>}
+    >
+      <Modal.Header>{Strings.tourInfo}</Modal.Header>
+      <Modal.Content image scrolling>
+        <Modal.Description>
+          <Header>{Strings.tourInfo}</Header>
+            <Button onClick={() => this.props.setPage('main')}>{Strings.submit}</Button>
+            <Button onClick={() =>this.props.setPage('request')}>{Strings.submit}</Button>
+          </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions></Modal.Actions>
+    </Modal>
+
     return <div>
 
       <Header>{Strings.schedulingNewItem}</Header>
@@ -105,7 +119,11 @@ class SchedulingRequest extends React.Component {
             <Form.TextArea value={this.state.info} label={Strings.info} placeholder={Strings.requestForScheduling}
                            onChange={event => this.onInfoChange(event.target.value)}/>
             {/*<Form.Button onClick={() => this.sendRequest()}>{Strings.submit}</Form.Button>*/}
-            <chooseRequest page={}/>
+            {/*<chooseRequest*/}
+               {/*// sendRequest={() => this.sendRequest()}*/}
+              {/*// setPage={page => this.props.setPage(page)}*/}
+            {/*/>*/}
+            {modal}
             <Form.Button onClick={() => this.props.setPage('main')}>{Strings.cansel}</Form.Button>
           </Form>
         </div>
