@@ -251,6 +251,10 @@ const Strings = new LocalizedStrings({
     needDay: 'مثال: ۲ ',
     needName: 'مثال:‌ امتحانک ریاضی ۲',
     schedulingEndDatePick:'زمان سررسید (برای انتخاب روز بر روی مستطیل زیر کلیک کنید)',
+    eventNameError: 'نام رخداد درسی حداقل باید سه حرف باشد.',
+    capasityError: 'مدت زمان رخداد درسی باید عددی بین ۰ تا ۷ روز باشد.',
+    endDateError: 'تاریخ سررسید باید یکی از روزهای آینده باشد.',
+
 
   },
 
