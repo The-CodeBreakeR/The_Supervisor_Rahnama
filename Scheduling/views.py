@@ -22,6 +22,7 @@ def searchScheduling(request):
     bodyParams = json.loads(request.body.decode('utf-8'))
     name = bodyParams['name']
     scheduling = Scheduling.objects.filter(name__contains=name)
+    print('myhoy',responseMaker(scheduling))
     return JsonResponse(responseMaker(scheduling))
 
     # return JsonResponse({'status': -1})
@@ -99,6 +100,7 @@ def hardDayScheduling(request):
 
 def getScheduling(request):
     bodyParams = json.loads(request.body)
+
     id = bodyParams['id']
     scheduling = Scheduling.objects.filter(id=id)
     if scheduling.count() == 0:
@@ -124,14 +126,14 @@ def getScheduling(request):
                            'capacity': scheduling[0].capacity},
             "comments": [{'name': str(comments[0].studentId), 'text': str(comments[0].comment_text)}]}
         if comments.count() == 1:
-            print(response)
+            print('hoy4',response)
             return JsonResponse(response)
         i = 1
         while i < comments.count():
             response['comments'] = response['comments'] + [
                 {'name': str(comments[0].user.username), 'text': str(comments[0].comment_text)}]
             i = i + 1
-    print(response)
+    print('hoy3', response)
     return JsonResponse(response)
 
 
@@ -166,11 +168,17 @@ def requestScheduling(request):
     bodyParams = json.loads(request.body.decode('utf-8'))
     request = Scheduling.objects.create()
     request.name = bodyParams['name']
+    print('hoy2',request.name)
+    print('r',datetime.fromtimestamp(bodyParams['end_date']))
     request.end_date = datetime.fromtimestamp(bodyParams['end_date'])
+    print('hoy33', request.end_date)
     request.capasity = bodyParams['capasity']
     request.info = bodyParams['info']
     request.save()
+    scheduling = Scheduling.objects.filter(name__contains=request.name)
+    print("dd",responseMaker(scheduling))
     print('created!')
+
     return JsonResponse({'status': 0})
 
 

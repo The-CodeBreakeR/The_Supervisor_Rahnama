@@ -1,26 +1,25 @@
 import React from 'react'
 import MomentJ from 'moment-jalaali'
-import * as moment from 'jalali-moment';
 import Strings from '../../localization'
-import { Button, Header, Image, Modal, Label , Form, Message} from 'semantic-ui-react'
+import { Button, Header, Modal, Form, Message } from 'semantic-ui-react'
 import css from '../../../stylesheet/basics.css'
 import DatePicker from 'react-datepicker2'
 import { formatError, getUser } from './utils'
 
 class SchedulingRequest extends React.Component {
-  constructor(props){
+  constructor (props) {
 
     super(props)
     this.resetState()
-    this.fields = ['name','end_date','capasity']
+    this.fields = ['name', 'end_date', 'capasity']
 
   }
+  //
+  // validate () {
+  //   this.onNameChanged(this.state.name.value)
+  // }
 
-  validate(){
-    this.onNameChanged(this.state.name.value)
-  }
-
-  generateErrors() {
+  generateErrors () {
     let errors = this.state.error
     if (this.state.name.error) {
       errors += formatError(Strings.eventNameError)
@@ -34,7 +33,7 @@ class SchedulingRequest extends React.Component {
     return errors
   }
 
-  isOK() {
+  isOK () {
     for (const field of this.fields) {
       if (!this.state[field].value || this.state[field].error) {
         return false
@@ -43,27 +42,28 @@ class SchedulingRequest extends React.Component {
     return true
   }
 
-  onNameChanged(value) {
+  onNameChanged (value) {
     this.setState({name: {value, error: value.length < 3}})
   }
 
-  onInfoChange(value) {
+  onInfoChange (value) {
     this.setState({info: value})
   }
 
-  onCapasityChanged(value) {
-    // this.setState({capasity: {value, error: true ‌}})
-    this.setState({capasity: {value, error: !(value > 0 && value < 7) }})
+  onCapasityChanged (value) {
+    console.log('value0', value)
+    let englishValue = ('' + value).replace('۰', '0').replace('۱', '1')
+      .replace('۲', '2').replace('۳', '3').replace('۴', '4')
+      .replace('۵', '5').replace('۶', '6').replace('۷', '7')
+    console.log('value1', englishValue)
+    let finalValue = /^\d+$/.test(englishValue) ? parseInt(englishValue) : 10
+    console.log('value2', finalValue)
+    this.setState({capasity: {value, error: !(finalValue > -1 && finalValue < 8)}})
   }
 
-  onTimeChange(value) {
-    console.log('here1')
-    var moment = require('moment-jalaali')
-    let today =  MomentJ('jYYYY/jM/jD').toDate().getTime()
-    console.log("k",today)
-    let pickedDay =  MomentJ(this.state.end_date.value, 'jYYYY/jMM/jDD').toDate().getTime()
-     console.log(pickedDay)
-    this.setState({end_date: {value, error: Date.parse(today) > Date.parse(pickedDay)  }})
+  onTimeChange (value) {
+    let today = MomentJ()
+    this.setState({end_date: {value, error: today.isAfter(this.state.end_date.value)}})
   }
 
   handleResult (result) {
@@ -79,7 +79,6 @@ class SchedulingRequest extends React.Component {
 
   resetState () {
     this.state = {
-      // name: '',
       capasity: {value: null, error: false},
       end_date: {value: '', error: false},
       info: '',
@@ -97,39 +96,37 @@ class SchedulingRequest extends React.Component {
     console.log('here')
     if (true) {
       // is.setState({open: false})
-      console.log(this.state.name)
-      console.log(MomentJ(this.state.end_date.value, 'jYYYY/jMM/jDD').toDate().getTime() / 1000)
+      console.log(this.state.name.value)
+      console.log(this.state.end_date.value)
+      console.log(MomentJ(this.state.end_date.value, 'jYYYY/jMM/jDD'))
       console.log(this.state.info)
       console.log('ok?', this.isOK())
 
-      if (this.isOK()) {
-        fetch('/scheduling/request/', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: this.state.name.value,
-            end_date: MomentJ(this.state.end_date, 'jYYYY/jMM/jDD').toDate().getTime() / 1000,
-            capasity: this.state.capasity.value,
-            info: this.state.info,
-          }),
+      fetch('/scheduling/request/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: this.state.name.value,
+          // end_date: MomentJ(this.state.end_date, 'jYYYY/jMM/jDD').toDate().getTime() / 1000,
+          end_date: (this.state.end_date.value).toDate().getTime() /1000 ,//todo
+          capasity: this.state.capasity.value,
+          info: this.state.info,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          this.handleResult(result)
         })
-          .then(response => response.json())
-          .then(result => {
-            this.handleResult(result)
-            // this.props.setPage('main')
-          })
-      }
-      else this.validate()
+
     }
   }
 
   close () {
-    // this.setState({open: false})
+    this.setState({open: false}
     this.resetState()
-    // this.props.setPage('request')
   }
 
   render () {
@@ -169,7 +166,6 @@ class SchedulingRequest extends React.Component {
                         value={this.state.capasity.value}
                         error={this.state.capasity.error}
                         onChange={event => this.onCapasityChanged(event.target.value)}/>
-            {/*<Label content={Strings.schedulingEndDate}/>*/}
             <label>{Strings.schedulingEndDatePick}</label>
             <DatePicker value={this.state.end_date.value}
                         error={this.state.end_date.error}
@@ -177,7 +173,6 @@ class SchedulingRequest extends React.Component {
                         timePicker={false}
                         placeholder={Strings.timeFormat}
                         isGregorian={false}
-              // label={Strings.schedulingEndDate}
             />
             <Form.TextArea value={this.state.info} label={Strings.info}
                            placeholder={Strings.requestForScheduling}
