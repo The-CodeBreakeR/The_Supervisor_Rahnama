@@ -38,7 +38,7 @@ class AppBody extends React.Component {
       <Route exact path='/accommodation' component={AccommHome}/>
       <Route path='/accommodation/showrules' component={RulesList}/>
       <Route path='/accommodation/showplaces' component={PlacesList}/>
-      <Route path='/accommodation/showreserved' component={AccommHome}/>
+      <Route path='/accommodation/showreserved' component={ReservedList}/>
       <Route path='/accommodation/showcontracted' component={ContractedList}/>
       <Route exact path='/internship' component={InternshipHome}/>
       <Route path='/internship/companies' component={CompanyList}/>
