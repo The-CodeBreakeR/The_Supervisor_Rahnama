@@ -12,7 +12,6 @@ class ReservePlace extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      placeID: '',
     }
   }
 
@@ -56,7 +55,7 @@ class ReservePlace extends React.Component {
         },
         body: JSON.stringify({
           token: JSON.parse(localStorage.getItem('user')).token,
-          placeID: this.state.placeID,
+          placeID: this.props.placeID,
         }),
       })
         .then(response => response.json())
@@ -64,16 +63,10 @@ class ReservePlace extends React.Component {
     } else {
       alert(Strings.loginFirst)
     }
-    this.setState({placeID: ''})
-  }
-
-  onPlaceIDChange(value) {
-    this.setState({placeID: value})
   }
 
   render() {
     return <div>
-      <Input className='accomm__input' value={this.state.placeID} placeholder={Strings.placeID} onChange={event => this.onPlaceIDChange(event.target.value)}/>
       <Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>
     </div>
   }

@@ -48,9 +48,7 @@ class AccommHome extends React.Component {
       <Header>{Strings.rulesTable}</Header>
       <RulesList/>
       <Header>{Strings.placesTable}</Header>
-      <PlacesList placesList={this.state.placesList} />
-      <Header>{Strings.reserveInput}</Header>
-      <ReservePlace setPlacesList={(placesList) => this.setPlacesList(placesList)} />
+      <PlacesList placesList={this.state.placesList} setPlacesList={(placesList) => this.setPlacesList(placesList)}/>
     </div>
   }
 }

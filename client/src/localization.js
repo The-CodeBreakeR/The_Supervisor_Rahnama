@@ -2,6 +2,7 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    availableFrom: 'قابل استفاده از',
     delIncome: 'حذف درآمد',
     delExpense: 'حذف هزینه',
     cond0: 'تراز مالی سالانه شما بسیار نامناسب و شما در خطر ورشکستگی هستید. بدین منظور صرفه جویی بسیار در هزینه ها، تلاش برای پیدا کردن کار و منبع درآمد جدید، و همچنین مراجعه به یک مشاور مالی زبردست پیشنهاد می شود.',

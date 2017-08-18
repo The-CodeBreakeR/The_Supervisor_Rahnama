@@ -40,7 +40,8 @@ def availablePlaces(request):
         response = {
             "status": 0,
             "places": [{'id': places[0].id, 'size': places[0].size, 'type': places[0].type,
-                        'location': places[0].location, 'cost': places[0].cost}]
+                        'location': places[0].location, 'cost': places[0].cost,
+                        'end_date': places[0].end_date}]
         }
         if len(places) == 1:
             return JsonResponse(response)
@@ -48,7 +49,8 @@ def availablePlaces(request):
         while i < places.count():
             response['places'] = response['places'] + [
                 {'id': places[i].id, 'size': places[i].size, 'type': places[i].type,
-                 'location': places[i].location, 'cost': places[i].cost}]
+                 'location': places[i].location, 'cost': places[i].cost,
+                 'end_date': places[i].end_date}]
             i = i + 1
         return JsonResponse(response)
 
