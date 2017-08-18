@@ -170,3 +170,21 @@ def getCondition(request):
         'condition': condition
     }
     return JsonResponse(response)
+
+@csrf_exempt
+def delIncome(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    incomeID = bodyParams['incomeID']
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    Income.objects.filter(student_id=stdid, id=incomeID).delete()
+    return JsonResponse({'status': 0})
+
+@csrf_exempt
+def delExpense(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    expenseID = bodyParams['expenseID']
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    Expense.objects.filter(student_id=stdid, id=expenseID).delete()
+    return JsonResponse({'status': 0})
