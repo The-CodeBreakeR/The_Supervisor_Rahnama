@@ -86,10 +86,16 @@ def todayScheduling(request):
     return JsonResponse(responseMaker(scheduling))
 
     # return JsonResponse({'status': -1})
+
+@csrf_exempt
 def dayScheduling(request):
     bodyParams = json.loads(request.body.decode('utf-8'))
+
     date = bodyParams['date']
-    scheduling = Scheduling.objects.filter(end_date=date)
+
+    print('hooom1', date, timezone.now().today())
+    scheduling = Scheduling.objects.filter(end_date=datetime.fromtimestamp(date))
+    print('hooom',scheduling)
     return JsonResponse(responseMaker(scheduling))
 
 
@@ -104,6 +110,16 @@ def hardDayScheduling(request):
         for iter in scheduling:
             if (item.end_date - iter.end_date == timedelta(0)) and (item.name != iter.name) :
                 flag = False
+                print("hard2", item.name ,item.end_date.date(),iter.end_date.date, iter.name)
+        if flag == True :
+            print("hard1", item)
+            scheduling.remove(item)
+
+    for item in scheduling:
+        flag = False
+        for iter in scheduling:
+            if (item.end_date - iter.end_date == timedelta(0)) and (item.name != iter.name) :
+                flag = True
                 print("hard2", item.name ,item.end_date.date(),iter.end_date.date, iter.name)
         if flag == True :
             print("hard1", item)

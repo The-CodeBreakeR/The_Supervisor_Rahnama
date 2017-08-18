@@ -12,7 +12,7 @@ class HardDayModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      schedulingList: [],
+      schedulingList: [{id:0,end_time:''}],
       error: '',
     }
   }
@@ -36,11 +36,11 @@ class HardDayModal extends React.Component {
     }
   }
   renderScheduling(scheduling) {
-    console.log('jkl',scheduling)
+    console.log('jkl',scheduling.end_date)
     return <Table.Row key={scheduling.id} >
       <Table.Cell>
-        {MomentJ(scheduling.end_time * 1000).format('LL')}
-      {/*<HardDayInfo scheduling={scheduling} label={MomentJ(scheduling.end_time * 1000).format('LL')}/>*/}
+        {/*{MomentJ(scheduling.end_time * 1000).format('LL')}*/}
+      <HardDayInfo date={scheduling.end_time} label={MomentJ(scheduling.end_time * 1000).format('LL')}/>
     </Table.Cell>
     </Table.Row>
   }
@@ -64,7 +64,7 @@ class HardDayModal extends React.Component {
 
   render() {
      // this.search()
-    console.log(this.state.schedulingList)
+    console.log("sd",this.state.schedulingList)
     return <Segment>
       <Header>{Strings.HardDay}</Header>
       <p>{Strings.hardDayInfo}</p>

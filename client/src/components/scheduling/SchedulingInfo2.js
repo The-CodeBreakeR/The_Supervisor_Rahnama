@@ -14,7 +14,7 @@ class HardDayInfo extends React.Component {
     }
   }
   componentWillMount() {
-    console.log('uu', this.state.name, this.state.url)
+    console.log("hoomw",this.props.date)
     fetch('/scheduling/day/', {
       method: 'POST',
       headers: {
@@ -22,7 +22,7 @@ class HardDayInfo extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        date: this.props.end_date,
+        date: this.props.date,
       }),
     })
       .then(response => response.json())
@@ -33,7 +33,7 @@ class HardDayInfo extends React.Component {
   }
 
   render() {
-    return <Modal closeIcon trigger={<Button onClick={() => this.settingState(this.props.scheduling)}>{this.props.label}</Button>}>
+    return <Modal closeIcon trigger={<Button>{this.props.label}</Button>}>
       <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
