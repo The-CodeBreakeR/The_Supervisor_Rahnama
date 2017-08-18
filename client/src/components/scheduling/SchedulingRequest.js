@@ -79,7 +79,7 @@ class SchedulingRequest extends React.Component {
 
   resetState () {
     this.state = {
-      capasity: {value: null, error: false},
+      capasity: {value: '', error: false},
       end_date: {value: '', error: false},
       info: '',
       error: '',
@@ -125,7 +125,7 @@ class SchedulingRequest extends React.Component {
   }
 
   close () {
-    this.setState({open: false}
+    this.setState({open: false})
     this.resetState()
   }
 

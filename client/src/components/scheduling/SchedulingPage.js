@@ -66,6 +66,7 @@ class SchedulingPage extends React.Component {
   }
   setPage(page){
     this.setState({page:page})
+    this.componentWillMount()
   }
   render () {
     console.log("av",this.state.page)
