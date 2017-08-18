@@ -138,7 +138,7 @@ const Strings = new LocalizedStrings({
     schedulingMonthDisplay: 'گزارش ماه اخیر ',
     schedulingNewItem: 'ثبت رخداد درسی جدید',
     schedulingُType: 'نوع رخداد',
-    HardDay: 'نمایش روز های سخت ',
+    HardDay: 'روز های سخت ',
     todayWorks: 'رخداد های امروز ',
     timingIntern: 'کارآموزی ',
     timingProject: 'انجام پروژه کارشناسی',
@@ -250,10 +250,13 @@ const Strings = new LocalizedStrings({
     returnToScheduling: 'بازگشت به صفحه اصلی سامانه مدیرت برنامه تحصیلی',
     needDay: 'مثال: ۲ ',
     needName: 'مثال:‌ امتحانک ریاضی ۲',
-    schedulingEndDatePick:'زمان سررسید (برای انتخاب روز بر روی مستطیل زیر کلیک کنید)',
+    schedulingEndDatePick: 'زمان سررسید (برای انتخاب روز بر روی مستطیل زیر کلیک کنید)',
     eventNameError: 'نام رخداد درسی حداقل باید سه حرف باشد.',
     capasityError: 'مدت زمان رخداد درسی باید عددی بین ۰ تا ۷ روز باشد.',
     endDateError: 'تاریخ سررسید باید یکی از روزهای آینده باشد.',
+    hardDayInfo: 'روز هایی هستند که شما در آن رخداد های درسی سخت تر و بیشتری نسبت به بقیه دارید و می توانید زودتر آن ها را این جا ببینید تا با برنامه ریزی مناسب خود را برای آن ها آماده کنید. برای دیدن این روز ها بر روی دکمه زیر کلیک کنید.',
+    eventListInfo: 'برای دیدن رخداد های درسی گزینه مورد نظر را انتخاب کنید.',
+    event: 'رخداد های درسی',
 
 
   },

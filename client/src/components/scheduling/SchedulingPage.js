@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Grid, Form, Input } from 'semantic-ui-react'
+import { Grid, Form, Input,Header } from 'semantic-ui-react'
 import SchedulingList from './SchedulingList'
 import SchedulingRequest from './SchedulingRequest'
 import Strings from '../../localization'
@@ -76,7 +76,8 @@ class SchedulingPage extends React.Component {
           <HardDayModal onLogin={() => this.forceUpdate()}/>
         </Grid.Row>
         <Grid.Row columns={4}>
-
+          <Header>{Strings.event}</Header>
+          <p>{Strings.eventListInfo}</p>
           <div onChange={this.setUrl.bind(this)}>
             <Input type='radio' value='all' name='list'
                    checked={this.state.checked === 'all'}/> {Strings.schedulingAll} &emsp;

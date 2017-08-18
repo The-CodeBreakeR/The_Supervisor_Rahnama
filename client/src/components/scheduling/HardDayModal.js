@@ -35,7 +35,10 @@ class HardDayModal extends React.Component {
 
   render() {
     console.log(this.state.schedulingList)
-    return <Modal closeIcon trigger={<Button onClick={() => this.search()}>{Strings.HardDay}</Button>}>
+    return <div>
+      <Header>{Strings.HardDay}</Header>
+      <p>{Strings.hardDayInfo}</p>
+      <Modal closeIcon trigger={<Button onClick={() => this.search()}>{Strings.HardDay}</Button>}>
       <Modal.Header>{Strings.HardDay}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
@@ -46,7 +49,7 @@ class HardDayModal extends React.Component {
       </Modal.Content>
       <Modal.Actions>
       </Modal.Actions>
-    </Modal>
+    </Modal></div>
   }
 }
 
