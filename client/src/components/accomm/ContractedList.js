@@ -54,7 +54,7 @@ class ContractedList extends React.Component {
   render() {
     const places = this.state.placesList.map((place) => this.renderPlace(place))
     return <div>
-      <Header>{Strings.placesTable}</Header>
+      <Header>{Strings.contractedTable}</Header>
       <Segment className='accomm__list' >
         <Table selectable>
           <Table.Header>

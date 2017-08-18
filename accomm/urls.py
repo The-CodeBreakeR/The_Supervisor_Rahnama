@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^reserve/', accomm.views.reserveAPlace, name='reserveAPlace'),
     url(r'^resplaces/', accomm.views.reservedPlaces, name='reservedPlaces'),
     url(r'^conplaces/', accomm.views.contractedPlaces, name='contractedPlaces'),
+    url(r'^cancelreserve/', accomm.views.cancelReserve, name='cancelReserve'),
 ]

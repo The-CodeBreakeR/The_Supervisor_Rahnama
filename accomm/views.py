@@ -117,3 +117,12 @@ def contractedPlaces(request):
                  'end_date': places[i].end_date, 'start_date': places[0].start_date}]
             i = i + 1
         return JsonResponse(response)
+
+@csrf_exempt
+def cancelReserve(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    placeid = bodyParams['placeID']
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    Accommodation.objects.filter(id=placeid).update(reserved_by=None)
+    return JsonResponse({'status': 0})

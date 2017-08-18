@@ -2,6 +2,8 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    contractedTable: 'جدول قرارداد های کاربر',
+    reservedTable: 'جدول محل های اقامتی رزرو شده',
     startCon: 'شروع قرارداد',
     endCon: 'پایان قرارداد',
     accCancel: 'لغو رزرو',
