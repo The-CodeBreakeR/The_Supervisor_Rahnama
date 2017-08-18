@@ -1,9 +1,12 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Image, Modal,Segment,Table } from 'semantic-ui-react'
 import Strings from '../../localization'
 
-import SchedulingList from './SchedulingList'
+import SchedulingInfo from './SchedulingInfo'
+import MomentJ from 'moment-jalaali'
+
+// import SchedulingList from './SchedulingList'
 
 class HardDayModal extends React.Component {
   constructor(props) {
@@ -32,24 +35,40 @@ class HardDayModal extends React.Component {
         })
     }
   }
+  renderScheduling(scheduling) {
+    console.log(scheduling.capasity)
+    return <Table.Row key={scheduling.id} >
+      <Table.Cell>{MomentJ(scheduling.end_time * 1000).format('LLLL')}</Table.Cell>
+      <SchedulingInfo scheduling={scheduling} />
+    </Table.Row>
+  }
+
+
+  myrender() {
+    const scheduling = this.state.schedulingList.map((scheduling) => this.renderScheduling(scheduling))
+    return <div>
+      <Table basic='very' celled selectable>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>{Strings.schedulingEndDate}</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {scheduling}
+        </Table.Body>
+      </Table>
+    </div>
+  }
 
   render() {
+    // this.myrender()
     console.log(this.state.schedulingList)
-    return <div>
+    return <Segment>
       <Header>{Strings.HardDay}</Header>
       <p>{Strings.hardDayInfo}</p>
-      <Modal closeIcon trigger={<Button onClick={() => this.search()}>{Strings.HardDay}</Button>}>
-      <Modal.Header>{Strings.HardDay}</Modal.Header>
-      <Modal.Content image scrolling>
-        <Modal.Description>
-          <Header>{Strings.todayWorks}</Header>
-          <SchedulingList schedulingList={this.state.schedulingList} />
-          <p>{this.state.status}</p>
-        </Modal.Description>
-      </Modal.Content>
-      <Modal.Actions>
-      </Modal.Actions>
-    </Modal></div>
+          {/*<SchedulingList schedulingList={this.state.schedulingList} />*/}
+      {this.myrender()}
+      </Segment>
   }
 }
 

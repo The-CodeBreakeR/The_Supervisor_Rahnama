@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Grid, Form, Input,Header } from 'semantic-ui-react'
+import { Grid, Segment, Input,Header } from 'semantic-ui-react'
 import SchedulingList from './SchedulingList'
 import SchedulingRequest from './SchedulingRequest'
 import Strings from '../../localization'
@@ -14,7 +14,7 @@ import DatePicker from 'react-datepicker2'
 import 'react-datepicker2/dist/react-datepicker2.min.css'
 import MomentJ from 'moment-jalaali'
 class SchedulingPage extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       schedulingList: [],
@@ -70,13 +70,14 @@ class SchedulingPage extends React.Component {
   }
   render () {
     console.log("av",this.state.page)
-    return <div className='scheduling'>
+    return <Segment className='scheduling'>
       {this.state.page === 'main' && <Grid centered>
         <Grid.Row columns={2}>
           <HardDayModal onLogin={() => this.forceUpdate()}/>
         </Grid.Row>
         <Grid.Row columns={4}>
           <Header>{Strings.event}</Header>
+          <Button onClick={() => this.setState({page:'request'})}>{Strings.schedulingNewItem}</Button>
           <p>{Strings.eventListInfo}</p>
           <div onChange={this.setUrl.bind(this)}>
             <Input type='radio' value='all' name='list'
@@ -98,13 +99,10 @@ class SchedulingPage extends React.Component {
         <Grid.Row centered>
           <SchedulingList schedulingList={this.state.schedulingList}/>
         </Grid.Row>
-        <Grid.Row columns={2}>
-          <Button onClick={() => this.setState({page:'request'})}>{Strings.schedulingNewItem}</Button>
-        </Grid.Row>
       </Grid>
       }{this.state.page === 'request' &&
     <SchedulingRequest setPage={page => this.setPage(page)}/>
-    }</div>
+    }</Segment>
   }
 }
 
