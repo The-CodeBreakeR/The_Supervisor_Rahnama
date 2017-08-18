@@ -2,6 +2,9 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    startCon: 'شروع قرارداد',
+    endCon: 'پایان قرارداد',
+    accCancel: 'لغو رزرو',
     accommBack: 'بازگشت',
     accommShowPlaces: 'مشاهده و رزرو مکان ها',
     accommShowReserved: 'مشاهده رزرو ها',

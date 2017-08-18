@@ -6,6 +6,7 @@ import UserHome from './user/UserHome'
 import AccommHome from './accomm/AccommHome'
 import RulesList from './accomm/RulesList'
 import PlacesList from './accomm/PlacesList'
+import ContractedList from './accomm/ContractedList'
 import ToursHome from './tours/ToursHome'
 import SkillHome from './skill/SkillHome'
 import TimingHome from './timing/TimingHome'
@@ -37,7 +38,7 @@ class AppBody extends React.Component {
       <Route path='/accommodation/showrules' component={RulesList}/>
       <Route path='/accommodation/showplaces' component={PlacesList}/>
       <Route path='/accommodation/showreserved' component={AccommHome}/>
-      <Route path='/accommodation/showcontracted' component={AccommHome}/>
+      <Route path='/accommodation/showcontracted' component={ContractedList}/>
       <Route exact path='/internship' component={InternshipHome}/>
       <Route path='/internship/companies' component={CompanyList}/>
     </Segment>

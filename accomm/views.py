@@ -65,3 +65,55 @@ def reserveAPlace(request):
         return JsonResponse({'status': -1})
     Accommodation.objects.filter(id=placeid).update(reserved_by=stdid)
     return JsonResponse({'status': 0})
+
+@csrf_exempt
+def reservedPlaces(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    places = Accommodation.objects.filter(reserved_by=stdid)
+    if len(places) == 0:
+        return JsonResponse({'status': -1, 'message': "No place found"})
+    else:
+        response = {
+            "status": 0,
+            "places": [{'id': places[0].id, 'size': places[0].size, 'type': places[0].type,
+                        'location': places[0].location, 'cost': places[0].cost,
+                        'end_date': places[0].end_date}]
+        }
+        if len(places) == 1:
+            return JsonResponse(response)
+        i = 1
+        while i < places.count():
+            response['places'] = response['places'] + [
+                {'id': places[i].id, 'size': places[i].size, 'type': places[i].type,
+                 'location': places[i].location, 'cost': places[i].cost,
+                 'end_date': places[i].end_date}]
+            i = i + 1
+        return JsonResponse(response)
+
+@csrf_exempt
+def contractedPlaces(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    places = Accommodation.objects.filter(contracted_by=stdid)
+    if len(places) == 0:
+        return JsonResponse({'status': -1, 'message': "No place found"})
+    else:
+        response = {
+            "status": 0,
+            "places": [{'id': places[0].id, 'size': places[0].size, 'type': places[0].type,
+                        'location': places[0].location, 'cost': places[0].cost,
+                        'end_date': places[0].end_date, 'start_date': places[0].start_date}]
+        }
+        if len(places) == 1:
+            return JsonResponse(response)
+        i = 1
+        while i < places.count():
+            response['places'] = response['places'] + [
+                {'id': places[i].id, 'size': places[i].size, 'type': places[i].type,
+                 'location': places[i].location, 'cost': places[i].cost,
+                 'end_date': places[i].end_date, 'start_date': places[0].start_date}]
+            i = i + 1
+        return JsonResponse(response)
