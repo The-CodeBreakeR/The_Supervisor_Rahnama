@@ -4,7 +4,7 @@
 
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Input, Button } from 'semantic-ui-react'
+import { Input, Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -14,7 +14,13 @@ class AddExpense extends React.Component {
     this.state = {
       expAmount: '',
       expDestination: '',
+      pageResponse: Strings.loginFirst,
+      open: false,
     }
+  }
+
+  close() {
+    this.setState({open: false})
   }
 
   updateExpense() {
@@ -42,9 +48,9 @@ class AddExpense extends React.Component {
 
   handleResult(result) {
     if (result.status === -1) {
-      alert(Strings.submitionFailed)
+      this.setState({pageResponse: Strings.submitionFailed})
     } else {
-      alert(Strings.submitionOK)
+      this.setState({pageResponse: Strings.submitionOK})
     }
     this.updateExpense()
   }
@@ -66,7 +72,7 @@ class AddExpense extends React.Component {
         .then(response => response.json())
         .then(result => this.handleResult(result))
     } else {
-      alert(Strings.loginFirst)
+      this.setState({pageResponse: Strings.loginFirst})
     }
     this.onExpDestination('')
     this.onExpAmount('')
@@ -84,7 +90,21 @@ class AddExpense extends React.Component {
     return <div>
       <Input className='account__input' value={this.state.expAmount} placeholder={Strings.expenseAmount} onChange={event => this.onExpAmount(event.target.value)}/>
       <Input className='account__input account__addr' value={this.state.expDestination} placeholder={Strings.expenseDestination} onChange={event => this.onExpDestination(event.target.value)}/>
-      <Button primary onClick={() => this.submit()}>{Strings.submitExpense}</Button>
+      <Modal trigger={<Button primary onClick={() => this.submit()}>{Strings.submitExpense}</Button>}
+        open={this.state.open}
+        onOpen={() => this.setState({open: true})}
+      >
+        <Modal.Content image scrolling>
+          <Modal.Description className='account__newline'>
+            {this.state.pageResponse}
+          </Modal.Description>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button onClick={() => this.close()}>
+            {Strings.accountBack}
+          </Button>
+        </Modal.Actions>
+      </Modal>
     </div>
   }
 }
