@@ -3,10 +3,11 @@
  */
 
 import React from 'react'
-import { Table, Segment } from 'semantic-ui-react'
+import { Table, Segment, Button, Header } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import Cookie from 'browser-cookies'
+import { Link } from 'react-router-dom'
 
 class RulesList extends React.Component {
   constructor(props) {
@@ -44,20 +45,28 @@ class RulesList extends React.Component {
   }
   render() {
     const rules = this.state.rulesList.map((rule) => this.renderRule(rule))
-    return <Segment className='accomm__list'>
-      <Table selectable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell textAlign='center'>{Strings.ruleID}</Table.HeaderCell>
-            <Table.HeaderCell textAlign='center'>{Strings.ruleDate}</Table.HeaderCell>
-            <Table.HeaderCell textAlign='center'>{Strings.ruleDescription}</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {rules}
-        </Table.Body>
-      </Table>
-    </Segment>
+    return <div>
+      <Header>{Strings.rulesTable}</Header>
+      <Segment className='accomm__list'>
+        <Table selectable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell textAlign='center'>{Strings.ruleID}</Table.HeaderCell>
+              <Table.HeaderCell textAlign='center'>{Strings.ruleDate}</Table.HeaderCell>
+              <Table.HeaderCell textAlign='center'>{Strings.ruleDescription}</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {rules}
+          </Table.Body>
+        </Table>
+      </Segment>
+      <div className='accomm__back'>
+        <Link to='/accommodation'>
+          <Button negative>{Strings.accommBack}</Button>
+        </Link>
+      </div>
+    </div>
   }
 }
 

@@ -4,6 +4,8 @@ import { Segment } from 'semantic-ui-react'
 
 import UserHome from './user/UserHome'
 import AccommHome from './accomm/AccommHome'
+import RulesList from './accomm/RulesList'
+import PlacesList from './accomm/PlacesList'
 import ToursHome from './tours/ToursHome'
 import SkillHome from './skill/SkillHome'
 import TimingHome from './timing/TimingHome'
@@ -31,7 +33,11 @@ class AppBody extends React.Component {
       <Route path='/accounting/expense' component={ExpenseHome}/>
       <Route path='/accounting/loan' component={LoanHome}/>
       <Route path='/accounting/recom' component={FinancialRecom}/>
-      <Route path='/accommodation' component={AccommHome}/>
+      <Route exact path='/accommodation' component={AccommHome}/>
+      <Route path='/accommodation/showrules' component={RulesList}/>
+      <Route path='/accommodation/showplaces' component={PlacesList}/>
+      <Route path='/accommodation/showreserved' component={AccommHome}/>
+      <Route path='/accommodation/showcontracted' component={AccommHome}/>
       <Route exact path='/internship' component={InternshipHome}/>
       <Route path='/internship/companies' component={CompanyList}/>
     </Segment>
