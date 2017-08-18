@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 import { Button, Header, Image, Modal,Segment,Table } from 'semantic-ui-react'
 import Strings from '../../localization'
 
-import SchedulingInfo from './SchedulingInfo'
+import HardDayInfo from './SchedulingInfo2'
 import MomentJ from 'moment-jalaali'
 
 // import SchedulingList from './SchedulingList'
@@ -16,7 +16,7 @@ class HardDayModal extends React.Component {
       error: '',
     }
   }
-  search() {
+  componentWillMount() {
     if (true) {
       fetch('/scheduling/hardDay/', {
         method: 'POST',
@@ -36,10 +36,12 @@ class HardDayModal extends React.Component {
     }
   }
   renderScheduling(scheduling) {
-    console.log(scheduling.capasity)
+    console.log('jkl',scheduling)
     return <Table.Row key={scheduling.id} >
-      <Table.Cell>{MomentJ(scheduling.end_time * 1000).format('LLLL')}</Table.Cell>
-      <SchedulingInfo scheduling={scheduling} />
+      <Table.Cell>
+        {MomentJ(scheduling.end_time * 1000).format('LL')}
+      {/*<HardDayInfo scheduling={scheduling} label={MomentJ(scheduling.end_time * 1000).format('LL')}/>*/}
+    </Table.Cell>
     </Table.Row>
   }
 
@@ -50,7 +52,7 @@ class HardDayModal extends React.Component {
       <Table basic='very' celled selectable>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>{Strings.schedulingEndDate}</Table.HeaderCell>
+            <Table.HeaderCell>{Strings.HardDay}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -61,13 +63,12 @@ class HardDayModal extends React.Component {
   }
 
   render() {
-    // this.myrender()
+     // this.search()
     console.log(this.state.schedulingList)
     return <Segment>
       <Header>{Strings.HardDay}</Header>
       <p>{Strings.hardDayInfo}</p>
-          {/*<SchedulingList schedulingList={this.state.schedulingList} />*/}
-      {this.myrender()}
+            {this.myrender()}
       </Segment>
   }
 }

@@ -44,7 +44,7 @@ def responseMaker(scheduling):
         if len(scheduling) == 1:
             return response
         i = 1
-        while i < scheduling.count():
+        while i < len(scheduling):
             print(scheduling[i].info)
             response['scheduling'] = response['scheduling'] + [
                 {'id': scheduling[i].id, 'info': scheduling[i].info, 'name': scheduling[i].name,
@@ -86,13 +86,29 @@ def todayScheduling(request):
     return JsonResponse(responseMaker(scheduling))
 
     # return JsonResponse({'status': -1})
+def dayScheduling(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    date = bodyParams['date']
+    scheduling = Scheduling.objects.filter(end_date=date)
+    return JsonResponse(responseMaker(scheduling))
 
 
 @csrf_exempt
 def hardDayScheduling(request):
     # if request.method == 'POST':
     next_week = timezone.now().date() + timedelta(days=7)
-    scheduling = Scheduling.objects.filter(end_date__lte=next_week, end_date__gte=datetime.today())
+    scheduling = list(Scheduling.objects.filter(end_date__lte=next_week, end_date__gte=datetime.today()))
+
+    for item in scheduling:
+        flag = True
+        for iter in scheduling:
+            if (item.end_date - iter.end_date == timedelta(0)) and (item.name != iter.name) :
+                flag = False
+                print("hard2", item.name ,item.end_date.date(),iter.end_date.date, iter.name)
+        if flag == True :
+            print("hard1", item)
+            scheduling.remove(item)
+    print("hard",responseMaker(scheduling))
     return JsonResponse(responseMaker(scheduling))
 
     # return JsonResponse({'status': -1})
