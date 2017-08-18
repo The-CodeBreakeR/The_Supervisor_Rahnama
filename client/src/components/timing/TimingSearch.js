@@ -20,6 +20,7 @@ class TimingSearch extends React.Component {
   onTimingNameChange(value) {
     console.log("s2:",value)
     this.setState({timingName: value})
+    this.search()
   }
 
   search() {
@@ -46,7 +47,7 @@ class TimingSearch extends React.Component {
     return <div>
       <div>
         <Input value={this.state.timingName} placeholder={Strings.timingName} onChange={event => this.onTimingNameChange(event.target.value)}/>
-        <Button onClick={() => this.search()}>{Strings.search}</Button>
+        {/*<Button onClick={() => this.search()}>{Strings.search}</Button>*/}
       </div>
       {this.state.error &&
         <Message negative>
