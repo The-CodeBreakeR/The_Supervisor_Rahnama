@@ -13,15 +13,19 @@ class TimingSearch extends React.Component {
   }
 
   handleResult(result) {
+    console.log("s1:",result)
     this.props.setTimingList(result.alarms,result.proposals)
   }
 
   onTimingNameChange(value) {
+    console.log("s2:",value)
     this.setState({timingName: value})
+    this.search()
   }
 
   search() {
-    if (this.state.timingName) {
+     console.log('avval20')
+    if (true) {
       console.log('avval2')
       fetch('/timing/search/', {
         method: 'POST',
@@ -43,7 +47,7 @@ class TimingSearch extends React.Component {
     return <div>
       <div>
         <Input value={this.state.timingName} placeholder={Strings.timingName} onChange={event => this.onTimingNameChange(event.target.value)}/>
-        <Button onClick={() => this.search()}>{Strings.search}</Button>
+        {/*<Button onClick={() => this.search()}>{Strings.search}</Button>*/}
       </div>
       {this.state.error &&
         <Message negative>

@@ -35,6 +35,7 @@ class TimingEndDuration extends React.Component {
     this.setState({user: result})
   }
   render() {
+    console.log('end')
     return <Modal trigger={<Button
       color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingEndDuration}</Button>}
     open={this.state.open}

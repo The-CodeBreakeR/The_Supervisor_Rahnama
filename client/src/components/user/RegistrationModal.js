@@ -83,21 +83,6 @@ class RegistrationModal extends React.Component {
     if (this.state.studentId.error) {
       errors += formatError(Strings.studentIdError)
     }
-    if (this.state.email.error) {
-      errors += formatError(Strings.emailError)
-    }
-    if (this.state.password.error) {
-      errors += formatError(Strings.passwordError)
-    }
-    if (this.state.confirmPassword.error) {
-      errors += formatError(Strings.confirmPasswordError)
-    }
-    if (this.state.firstName.error || this.state.lastName.error) {
-      errors += formatError(Strings.nameError)
-    }
-    if (this.state.rules.error) {
-      errors += formatError(Strings.rulesError)
-    }
     return errors
   }
 

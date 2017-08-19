@@ -38,6 +38,7 @@ class TimingProject extends React.Component {
     this.setState({user: result})
   }
   render() {
+    console.log('project')
     return <Modal trigger={<Button
       color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingProject}</Button>}
     open={this.state.open} onClose={() => this.setState({open: false})}

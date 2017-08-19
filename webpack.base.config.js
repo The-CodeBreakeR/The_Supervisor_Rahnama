@@ -14,8 +14,7 @@ module.exports = {
   },
 
   plugins: [
-    new CopyPlugin([
-    ]),
+    new CopyPlugin([]),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -40,15 +39,15 @@ module.exports = {
       {
         test: /(\.css)$/,
         use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
         ]
       },
       {
         test: /(\.less)$/,
         use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' } ,
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
           {
             loader: 'less-loader',
             options: {
@@ -59,12 +58,13 @@ module.exports = {
           }
         ]
       },
+
       {
         test: /\.(jpg|png|woff|woff2|eot|ttf|svg|gif)$/,
         use: {
           loader: 'url-loader',
           query: {
-            publicPath: '/',
+            publicPath: '/static/',
             limit: 1000,
             name: '[hash].[ext]',
           },
