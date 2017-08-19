@@ -109,13 +109,16 @@ class SchedulingPage extends React.Component {
                 <Table.HeaderCell className='Header'>{Strings.schedulingNewItem1}</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body className="body">
+            <Table.Body>
               <div className="body">
               <p>{Strings.schedulingNewItem2}</p>
               {/*<Table.Row>*/}
+<div className="buttons">
                   <Button onClick={() => this.setState({page: 'request'})}>{Strings.schedulingNewItem}</Button>
+
                 {/*</Table.Row>*/}
-              </div>
+</div>
+                </div>
             </Table.Body>
           </Table>
           </div>

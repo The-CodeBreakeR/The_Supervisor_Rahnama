@@ -38,25 +38,28 @@ class HardDayModal extends React.Component {
 
   renderScheduling (scheduling) {
     console.log('jkl', scheduling.end_date)
-    return <Table.Row key={scheduling.id}>
-        {/*{MomentJ(scheduling.end_time * 1000).format('LL')}*/}
-        <HardDayInfo date={scheduling.end_time} label={MomentJ(scheduling.end_time * 1000).format('LL')}/>
-    </Table.Row>
+    return <HardDayInfo date={scheduling.end_time}
+                     label={MomentJ(scheduling.end_time * 1000).format('LL')}/>
   }
 
   render() {
     const scheduling = this.state.schedulingList.map((scheduling) => this.renderScheduling(scheduling))
-    return <div className="scheduling__box">
-    <Table basic='very' celled selectable scrolling>
+    return <div>
+    <Table basic='very' celled selectable scrolling className="scheduling__box">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell className='Header'>{Strings.HardDay}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
+          <div className="body">
           <p>{Strings.hardDayInfo}</p>
+          <div className="buttons">
           {scheduling}
+          </div>
+          </div>
         </Table.Body>
+
     </Table></div>
   }
 }
