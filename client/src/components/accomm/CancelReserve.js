@@ -1,5 +1,5 @@
 /**
- * Created by ali on 7/31/17.
+ * Created by ali on 8/18/17.
  */
 
 import React from 'react'
@@ -16,14 +16,14 @@ class ReservePlace extends React.Component {
   }
 
   updateAvailablePlaces() {
-    fetch('/accommodation/places/', {
+    fetch('/accommodation/resplaces/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: '',
+        token: JSON.parse(localStorage.getItem('user')).token,
       }),
     })
       .then(response => response.json())
@@ -37,17 +37,12 @@ class ReservePlace extends React.Component {
   }
 
   handleResult(result) {
-    if (result.status === -1) {
-      alert(Strings.placeReserveFailed)
-    } else {
-      alert(Strings.placeReserveOK)
-    }
     this.updateAvailablePlaces()
   }
 
-  reserve() {
+  cancelReserve() {
     if (Cookie.get('token')) {
-      fetch('/accommodation/reserve/', {
+      fetch('/accommodation/cancelreserve/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -65,7 +60,7 @@ class ReservePlace extends React.Component {
 
   render() {
     return <div>
-      <Button onClick={() => this.reserve()}>{Strings.reservePlace}</Button>
+      <Button onClick={() => this.cancelReserve()}>{Strings.accCancel}</Button>
     </div>
   }
 }

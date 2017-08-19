@@ -4,7 +4,7 @@
 
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Input, Button } from 'semantic-ui-react'
+import { Input, Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -14,7 +14,13 @@ class AddIncome extends React.Component {
     this.state = {
       incAmount: '',
       incSource: '',
+      pageResponse: Strings.loginFirst,
+      open: false,
     }
+  }
+
+  close() {
+    this.setState({open: false})
   }
 
   updateIncome() {
@@ -42,9 +48,9 @@ class AddIncome extends React.Component {
 
   handleResult(result) {
     if (result.status === -1) {
-      alert(Strings.submitionFailed)
+      this.setState({pageResponse: Strings.submitionFailed})
     } else {
-      alert(Strings.submitionOK)
+      this.setState({pageResponse: Strings.submitionOK})
     }
     this.updateIncome()
   }
@@ -66,7 +72,7 @@ class AddIncome extends React.Component {
         .then(response => response.json())
         .then(result => this.handleResult(result))
     } else {
-      alert(Strings.loginFirst)
+      this.setState({pageResponse: Strings.loginFirst})
     }
     this.onIncSource('')
     this.onIncAmount('')
@@ -84,7 +90,21 @@ class AddIncome extends React.Component {
     return <div>
       <Input className='account__input' value={this.state.incAmount} placeholder={Strings.incomeAmount} onChange={event => this.onIncAmount(event.target.value)}/>
       <Input className='account__input account__addr' value={this.state.incSource} placeholder={Strings.incomeSource} onChange={event => this.onIncSource(event.target.value)}/>
-      <Button primary onClick={() => this.submit()}>{Strings.submitIncome}</Button>
+      <Modal trigger={<Button primary onClick={() => this.submit()}>{Strings.submitIncome}</Button>}
+        open={this.state.open}
+        onOpen={() => this.setState({open: true})}
+      >
+        <Modal.Content image scrolling>
+          <Modal.Description className='account__newline'>
+            {this.state.pageResponse}
+          </Modal.Description>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button onClick={() => this.close()}>
+            {Strings.accountBack}
+          </Button>
+        </Modal.Actions>
+      </Modal>
     </div>
   }
 }

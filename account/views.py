@@ -88,6 +88,30 @@ def newExpense(request):
     return JsonResponse({'status': 0})
 
 @csrf_exempt
+def getRequest(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    requests = LoanRequest.objects.filter(student_id=stdid)
+    if len(requests) == 0:
+        return JsonResponse({'status': -1, 'message': "No request found"})
+    else:
+        response = {
+            "status": 0,
+            "requests": [{'id': requests[0].id, 'amount': requests[0].amount,
+                       'purpose': requests[0].purpose}]
+        }
+        if len(requests) == 1:
+            return JsonResponse(response)
+        i = 1
+        while i < requests.count():
+            response['requests'] = response['requests'] + [
+                {'id': requests[i].id, 'amount': requests[i].amount,
+                 'purpose': requests[i].purpose}]
+            i = i + 1
+        return JsonResponse(response)
+
+@csrf_exempt
 def newRequest(request):
     bodyParams = json.loads(request.body.decode('utf-8'))
     amount = bodyParams['amount']
@@ -117,3 +141,50 @@ def getResponse(request):
             'repayment_rate': resp[0].repayment_rate
         }
     return JsonResponse(response)
+
+@csrf_exempt
+def getCondition(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    condition = 3
+    balance = 0
+    incomes = Income.objects.filter(student_id=stdid)
+    i = 0
+    while i < incomes.count():
+        balance = balance + incomes[i].amount
+        i = i + 1
+    expenses = Expense.objects.filter(student_id=stdid)
+    i = 0
+    while i < expenses.count():
+        balance = balance - expenses[i].amount
+        i = i + 1
+    if balance < 2000000:
+        condition = 2
+    if balance < 0:
+        condition = 1
+    if balance < -2000000:
+        condition = 0
+    response = {
+        'status': 0, 'balance': balance,
+        'condition': condition
+    }
+    return JsonResponse(response)
+
+@csrf_exempt
+def delIncome(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    incomeID = bodyParams['incomeID']
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    Income.objects.filter(student_id=stdid, id=incomeID).delete()
+    return JsonResponse({'status': 0})
+
+@csrf_exempt
+def delExpense(request):
+    bodyParams = json.loads(request.body.decode('utf-8'))
+    expenseID = bodyParams['expenseID']
+    token = Token.objects.get(key=bodyParams['token'])
+    stdid = token.user
+    Expense.objects.filter(student_id=stdid, id=expenseID).delete()
+    return JsonResponse({'status': 0})
