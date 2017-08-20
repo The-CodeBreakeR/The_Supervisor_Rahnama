@@ -75,22 +75,22 @@ class SchedulingPage extends React.Component {
       {this.state.page === 'main' && <Grid centered>
         <Grid.Column className='column__1'>
           <Grid.Row>
-            <Header>{Strings.event}</Header>
+            <Header className="app__name">{Strings.event}</Header>
             <p>{Strings.eventListInfo}</p>
             <div className='select__menu'>
               <div onChange={this.setUrl.bind(this)}>
                 <Input type='radio' value='all' name='list'
-                       checked={this.state.checked === 'all'}/> {Strings.schedulingAll} &emsp;
+                       checked={this.state.checked === 'all'} />&nbsp;{Strings.schedulingAll} &emsp;
                 <Input type='radio' value='today' name='list'
-                       checked={this.state.checked === 'today'}/> {Strings.todayWorks} &emsp;
+                       checked={this.state.checked === 'today'}/> &nbsp;{Strings.todayWorks} &emsp;
                 <Input type='radio' value='week' name='list'
-                       checked={this.state.checked === 'week'}/>{Strings.schedulingWeekDisplay} &emsp;
+                       checked={this.state.checked === 'week'}/>&nbsp;{Strings.schedulingWeekDisplay} &emsp;
                 <Input type='radio' value='month' name='list'
-                       checked={this.state.checked === 'month'}/> {Strings.schedulingMonthDisplay} &emsp;
+                       checked={this.state.checked === 'month'}/>&nbsp; {Strings.schedulingMonthDisplay} &emsp;
                 <Input type='radio' value='search' name='list'
-                       checked={this.state.checked === 'search'}/> {Strings.search} &emsp;
+                       checked={this.state.checked === 'search'}/>&nbsp; {Strings.search} &emsp;
               </div>
-              {this.state.checked === 'search' && <Input value={this.state.name} placeholder={Strings.schedulingName}
+              {this.state.checked === 'search' && <Input value={this.state.name} className="searchInput" placeholder={Strings.schedulingName}
                                                          onChange={event => this.search(event)}/>}
             </div>
 
