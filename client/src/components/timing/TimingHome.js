@@ -33,17 +33,7 @@ class TimingHome extends React.Component {
       .then(response => response.json())
       .then(result => {
         this.setState({alarms: result.alarms, proposals: result.proposals})
-        // console.log('hey3', result.alarms, result.proposals)
-        // if (result.alarms.status === 0) {
-        //   console.log('hey320', result.alarms, this.alarms)
-        //   // this.setState({alarms: result.alarms,proposals: result.proposals})
-        //   console.log('hey3201', result.alarms)
-        //   console.log('hey32', this.state.alarms)
-        // }
-        // if (result.proposals.status === 0) {
-        //   this.setState({proposals: result.proposals})
-        //   console.log('hey32',result.proposals)
-        // }
+
       })
   }
 
@@ -65,14 +55,10 @@ class TimingHome extends React.Component {
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
     console.log('hey222', alarms, proposals)
-    return <Grid centered className='timing'><Grid.Row>
-      <TimingProject/>
-      <TimingEndDuration/>
-      <TimingIntern/>
-      <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)} />
-    </Grid.Row>
-    <Grid.Row>
-      <Header>{Strings.lastAlarms}</Header>
+    return <Grid centered className='timing'><Grid.Column>
+      <Grid.Row>
+        <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)} />
+        <Header>{Strings.lastAlarms}</Header>
       <Table basic='very' celled selectable>
         <Table.Header>
           <Table.Row>
@@ -93,10 +79,16 @@ class TimingHome extends React.Component {
           {proposals}
         </Table.Body>
       </Table>
-    </Grid.Row>
-    <Grid.Row>
+      </Grid.Row>
+      <Grid.Column>
+          <TimingProject/>
+          <TimingEndDuration/>
+          <TimingIntern/>
+      </Grid.Column>
+      </Grid.Column>
+      <Grid.Column>
       <TimingReport/>
-    </Grid.Row>
+      </Grid.Column>
     </Grid>
   }
 }
