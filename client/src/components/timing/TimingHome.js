@@ -1,8 +1,9 @@
 import React from 'react'
 import TimingReport from './TimingReport'
-import TimingProject from './TimingProject'
-import TimingEndDuration from './TimingEndDuration'
-import TimingIntern from './TimingIntern'
+// import TimingProject from './TimingProject'
+// import TimingEndDuration from './TimingEndDuration'
+
+import TimingLog from './TimingLog'
 import TimingSearch from './TimingSearch'
 import Strings from '../../localization'
 import { Table, Header } from 'semantic-ui-react'
@@ -79,9 +80,11 @@ class TimingHome extends React.Component {
           <br/>
           <Header className="app__name">{Strings.timingButton}</Header>
           <Grid.Column>
-            <TimingProject/>
-            <TimingEndDuration/>
-            <TimingIntern/>
+            <TimingLog type="intern"/>
+            <TimingLog type="project"/>
+            <TimingLog type="endDuration"/>
+            {/*<TimingProject/>*/}
+            {/*<TimingEndDuration/>*/}
           </Grid.Column>
         </Grid.Row>
       </Grid.Column>

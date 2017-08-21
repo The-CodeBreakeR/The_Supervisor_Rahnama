@@ -140,7 +140,7 @@ const Strings = new LocalizedStrings({
     schedulingُType: 'نوع رخداد',
     HardDay: 'روز های سخت ',
     todayWorks: 'رخداد های امروز ',
-    timingIntern: 'کارآموزی ',
+    timingIntern: 'زمان پیشنهادی برای انجام کارآموزی ',
     timingProject: 'انجام پروژه کارشناسی',
     timingEndDuration: 'زمان مجاز تحصیل',
     timingStartTerm: 'آغاز ترم جدید',
@@ -229,7 +229,7 @@ const Strings = new LocalizedStrings({
     close: 'بستن',
     internLogin: 'ورود به سامانه کارآموزی',
     firstYear:'سال اول پیشنهادی',
-    secondYear: 'سال دوم پیشنهادی:',
+    secondYear: 'سال دوم پیشنهادی',
     firstTerm: 'ترم اول یا دوم سال تحصیلی ',
     bakToHome: 'بازگشت به صفحه اصلی',
     termAvrage: ' معدل ترم',
@@ -262,6 +262,7 @@ const Strings = new LocalizedStrings({
     schedulingInfoHeader: 'اطلاعات تکمیلی',
     alarmsProposals: 'هشدار ها و پیشنهاد ها',
     timingButton: 'زمان های پیشنهادی و محاسبه شده رخدادهای تحصیلی',
+    stop: 'بستن',
   },
 })
 
