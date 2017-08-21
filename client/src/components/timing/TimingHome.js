@@ -49,39 +49,35 @@ class TimingHome extends React.Component {
     this.setState({alarms: alarms})
     this.setState({proposals: proposals})
   }
+  table_render(header,items){
+    return <Table basic='very' celled selectable>
+            <Table.Header className="table__header">
+              <Table.Row>
+                <Table.HeaderCell>{header}</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {items}
+            </Table.Body>
+          </Table>
+  }
 
-  render () {
-    console.log('hey221')
+  render() {
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
-    console.log('hey222', alarms, proposals)
     return <Grid centered className='timing'>
       <Grid.Column className="column1">
         <Grid.Row>
+          <Header className="app__name">{Strings.alarmsProposals}</Header>
           <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)}/>
           <Header>{Strings.lastAlarms}</Header>
-          <Table basic='very' celled selectable>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>{Strings.alarm}</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {alarms}
-            </Table.Body>
-          </Table>
-          <Table basic='very' celled selectable>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>{Strings.proposal}</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {proposals}
-            </Table.Body>
-          </Table>
-        </Grid.Row>
+          {this.table_render(Strings.alarm,alarms)}
+          {this.table_render(Strings.proposal,proposals)}
+          </Grid.Row>
         <Grid.Row>
+          <br/>
+          <br/>
+          <Header className="app__name">{Strings.timingButton}</Header>
           <Grid.Column>
             <TimingProject/>
             <TimingEndDuration/>
