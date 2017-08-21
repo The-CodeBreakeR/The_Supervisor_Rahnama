@@ -23,7 +23,7 @@ class TimingLog extends React.Component {
     this.setState({open: false})
   }
 
-  ButtonClickHandle () {
+  componentWillMount() {
     console.log('bb', JSON.parse(localStorage.getItem('user')).id)
     fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
       method: 'GET',
@@ -41,7 +41,7 @@ class TimingLog extends React.Component {
     this.setState({user: result})
   }
 
-  getButton (type) {
+  getButton(type) {
     if (type === 'intern') {
       return <Button
         color='blue'>
@@ -54,11 +54,19 @@ class TimingLog extends React.Component {
     }
     if (type === 'project') {
       return <Button
-        color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingProject}</Button>
+        color='blue'>
+        <h3>{Strings.timingProject}</h3>
+        <br/><br/>
+        {Strings.firstTerm}{this.state.user.educational_profile.entrance_year + 4}
+      </Button>
     }
      if (type === 'endDuration') {
       return <Button
-        color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.timingEndDuration}</Button>
+        color='blue' >
+        <h3>{Strings.timingEndDuration}</h3>
+        <br/><br/>
+        {Strings.summer}&nbsp;{this.state.user.educational_profile.entrance_year+4}
+        </Button>
     }
 
   }
@@ -105,7 +113,7 @@ class TimingLog extends React.Component {
 
   render() {
     console.log('intern')
-    this.ButtonClickHandle()
+    // this.ButtonClickHandle()
     return <Modal trigger={this.getButton(this.props.type)}
                   open={this.state.open} onClose={() => this.setState({open: false})}
                   onOpen={() => this.setState({open: true})}
