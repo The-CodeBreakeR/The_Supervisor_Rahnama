@@ -75,17 +75,23 @@ class TimingHome extends React.Component {
           {this.table_render(Strings.alarm,alarms)}
           {this.table_render(Strings.proposal,proposals)}
           </Grid.Row>
-        <Grid.Row>
+        <Grid.Row >
           <br/>
           <br/>
           <Header className="app__name">{Strings.timingButton}</Header>
-          <Grid.Column>
-            <TimingLog type="intern"/>
-            <TimingLog type="project"/>
-            <TimingLog type="endDuration"/>
-            {/*<TimingProject/>*/}
-            {/*<TimingEndDuration/>*/}
-          </Grid.Column>
+          <Grid>
+            <Grid.Column className='button__bar'>
+              <TimingLog type="intern"/>
+            </Grid.Column>
+              <Grid.Column className='button__bar'>
+              <TimingLog type="project"/>
+              </Grid.Column>
+            <Grid.Column className='button__bar'>
+              <TimingLog type="endDuration"/>
+              {/*<TimingProject/>*/}
+              {/*<TimingEndDuration/>*/}
+            </Grid.Column>
+          </Grid>
         </Grid.Row>
       </Grid.Column>
       <Grid.Column className="column2">
