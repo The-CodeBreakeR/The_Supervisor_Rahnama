@@ -77,8 +77,8 @@ class TimingHome extends React.Component {
           </Grid.Row>
         <Grid.Row >
           <br/>
-          <br/>
           <Header className="app__name">{Strings.timingButton}</Header>
+          {Strings.button_info}
           <Grid>
             <Grid.Column className='button__bar'>
               <TimingLog type="intern"/>

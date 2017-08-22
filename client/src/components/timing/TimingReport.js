@@ -11,7 +11,7 @@ class TimingReport extends React.Component {
       value: '',
       year: '',
       notCurrentTerm: true,
-      courseInfo: [{course_info: {name: '', credit: ''}, grade: ''}],
+      courseInfo: [{course_info: {name: '', credits: ''}, grade: ''}],
     }
   }
 
@@ -81,10 +81,10 @@ class TimingReport extends React.Component {
 
     const semesterGrades = this.state.term > -1 && this.state.courseInfo.map(course => course.grade)
     const semesterAverage = this.state.term > -1 && semesterGrades.reduce((x, y) => x + y) / semesterGrades.length
-    const semesterCreditsArray = this.state.term > -1 && this.state.courseInfo.map(course => course.course_info.credit)
+    const semesterCreditsArray = this.state.term > -1 && this.state.courseInfo.map(course => course.course_info.credits)
     const semesterCredits = this.state.term > -1 && semesterCreditsArray.reduce((x, y) => x + y)
     console.log('ddddddd', this.state.courseInfo.map(course => <p
-      key={`${course.course_info.name} ${course.course_info.credit} ${course.grade}`}>{course.course_info.name} {course.course_info.credit} {course.grade}</p>))
+      key={`${course.course_info.name} ${course.course_info.credits} ${course.grade}`}>{course.course_info.name} {course.course_info.credit} {course.grade}</p>))
     return <div>
       <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
              onClose={() => this.setState({open: false})}>
@@ -95,13 +95,13 @@ class TimingReport extends React.Component {
             <p>{Strings.creditTermCount}:{semesterCredits}</p>
             <Header>{Strings.courses}</Header>
             {this.state.courseInfo.map(course =>
-              <p key={`${course.course_info.name} ${course.course_info.credit} ${course.grade}`}>
-                {Strings.name}:{course.course_info.name}<br/> {Strings.credit}:{course.course_info.credit}
+              <p key={`${course.course_info.name} ${course.course_info.credits} ${course.grade}`}>
+                {Strings.name}:{course.course_info.name}<br/> {Strings.credit}:{course.course_info.credits}
                 <br/>{this.state.notCurrentTerm && <p>{Strings.grade}{course.grade}<br/></p>}<br/></p>)}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={() => this.close()}>
+          <Button onClick={() => this.close()}  negative>
             {Strings.tourStop}
           </Button>
         </Modal.Actions>

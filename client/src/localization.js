@@ -239,7 +239,7 @@ const Strings = new LocalizedStrings({
     grade: 'نمره',
     courses: 'درس ها',
     currentProgram: 'برنامه درسی ترم جاری خود را که شامل درس های اخذ شده و واخد های آن هاست را می توانید در این قسمت مشاهده نمایید.',
-    currentTerm: 'ترم جاری',
+    currentTerm: 'گزارش ترم جاری',
     timeFormat: 'YYYY/MM/DD',
     training: 'در کار با سامانه مشکلی دارید؟‌ فیلم آموزشی کار با آن را ببینید.',
     rah: 'گروه رهپویان راه مهندسی',
@@ -262,6 +262,7 @@ const Strings = new LocalizedStrings({
     schedulingInfoHeader: 'اطلاعات تکمیلی',
     alarmsProposals: 'هشدار ها و پیشنهاد ها',
     timingButton: 'زمان های پیشنهادی و محاسبه شده رخدادهای تحصیلی',
+    button_info: 'برای مشاهده اطلاعات بیشتر در مورد هر کدام از موارد زیر بر روی آن کلیک کنید.',
     stop: 'بستن',
   },
 })
