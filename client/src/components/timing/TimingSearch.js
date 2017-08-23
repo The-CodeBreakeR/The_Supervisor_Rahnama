@@ -46,7 +46,7 @@ class TimingSearch extends React.Component {
     console.log('avval')
     return <div>
       <div>
-        <Label>{Strings.search}</Label>
+        {Strings.search}: &nbsp;
         <Input value={this.state.timingName} placeholder={Strings.timingName} onChange={event => this.onTimingNameChange(event.target.value)}/>
       </div>
       {this.state.error &&

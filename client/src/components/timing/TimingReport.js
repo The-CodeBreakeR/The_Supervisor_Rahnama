@@ -97,7 +97,7 @@ class TimingReport extends React.Component {
             {this.state.courseInfo.map(course =>
               <p key={`${course.course_info.name} ${course.course_info.credits} ${course.grade}`}>
                 {Strings.name}:{course.course_info.name}<br/> {Strings.credit}:{course.course_info.credits}
-                <br/>{this.state.notCurrentTerm && <p>{Strings.grade}{course.grade}<br/></p>}<br/></p>)}
+                <br/>{this.state.notCurrentTerm && <p>{Strings.grade}:{course.grade}<br/></p>}<br/></p>)}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
