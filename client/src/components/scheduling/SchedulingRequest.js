@@ -143,9 +143,11 @@ class SchedulingRequest extends React.Component {
       <Modal.Content image scrolling>
         <Modal.Description>
           <Header>{Strings.choose}</Header>
+          <div style={{textAlign: 'center'}}>
           <Button onClick={() => this.props.setPage('main')}>
             {Strings.returnToScheduling}</Button>
           <Button onClick={() => this.close()}>{Strings.schedulingNewItem}</Button>
+          </div>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions></Modal.Actions>

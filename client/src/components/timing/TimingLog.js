@@ -88,9 +88,11 @@ class TimingLog extends React.Component {
       return <Modal.Description>
         {Strings.infoIntern}
         <br/>
+        <br/>
         {Strings.firstYear}:{this.state.user.educational_profile.entrance_year + 3}
         <br/>
         {Strings.secondYear}:{this.state.user.educational_profile.entrance_year + 4}
+        <br/>
         <br/>
         <Link to='/internship'><Button primary>{Strings.internLogin}</Button></Link>
       </Modal.Description>

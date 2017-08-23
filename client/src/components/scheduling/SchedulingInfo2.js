@@ -34,10 +34,9 @@ class HardDayInfo extends React.Component {
 
   render() {
     return <Modal closeIcon trigger={<Button key={Math.random()} >{this.props.label}</Button>}>
-      <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
+      <Modal.Header>{Strings.event}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
-          <Header>{Strings.schedulingInfo}</Header>
           <SchedulingList schedulingList={this.state.schedulingList}/>
         </Modal.Description>
       </Modal.Content>

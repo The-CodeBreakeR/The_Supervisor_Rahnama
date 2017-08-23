@@ -78,7 +78,7 @@ class SchedulingPage extends React.Component {
             <Header className="app__name">{Strings.event}</Header>
             <p>{Strings.eventListInfo}</p>
             <div className='select__menu'>
-              <div onChange={this.setUrl.bind(this)}>
+              <div className='select__menu2' onChange={this.setUrl.bind(this)}>
                 <Input type='radio' value='all' name='list'
                        checked={this.state.checked === 'all'} />&nbsp;{Strings.schedulingAll} &emsp;
                 <Input type='radio' value='today' name='list'
@@ -88,15 +88,14 @@ class SchedulingPage extends React.Component {
                 <Input type='radio' value='month' name='list'
                        checked={this.state.checked === 'month'}/>&nbsp; {Strings.schedulingMonthDisplay} &emsp;
                 <Input type='radio' value='search' name='list'
-                       checked={this.state.checked === 'search'}/>&nbsp; {Strings.search} &emsp;
+                       checked={this.state.checked === 'search'}/>&nbsp; {Strings.search}
               </div>
-              {this.state.checked === 'search' && <Input value={this.state.name} className="searchInput" placeholder={Strings.schedulingName}
-                                                         onChange={event => this.search(event)}/>}
+              {this.state.checked === 'search' && <div>:&nbsp;<Input value={this.state.name} className="searchInput" placeholder={Strings.schedulingName}
+                                                                     onChange={event => this.search(event)}/></div>}
             </div>
 
           </Grid.Row>
           <Grid.Row centered>
-            <br/>
             <SchedulingList schedulingList={this.state.schedulingList}/>
           </Grid.Row>
         </Grid.Column>

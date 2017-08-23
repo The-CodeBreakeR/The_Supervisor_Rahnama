@@ -247,7 +247,7 @@ const Strings = new LocalizedStrings({
     titleTrain: 'فیلم آموزشی کار با سامانه',
     acceptScheduling: 'رخداد درسی با موفقیت ثبت شد.',
     choose: 'قصد انجام چه کاری را دارید؟',
-    returnToScheduling: 'بازگشت به صفحه اصلی سامانه مدیرت برنامه تحصیلی',
+    returnToScheduling: 'بازگشت به صفحه اصلی ',
     needDay: 'مثال: ۲ ',
     needName: 'مثال:‌ امتحانک ریاضی ۲',
     schedulingEndDatePick: 'زمان سررسید (برای انتخاب روز بر روی مستطیل زیر کلیک کنید)',
