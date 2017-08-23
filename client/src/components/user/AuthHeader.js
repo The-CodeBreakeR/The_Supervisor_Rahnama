@@ -9,7 +9,8 @@ class AuthHeader extends React.Component {
   logout() {
     Cookie.erase('token')
     localStorage.removeItem('user')
-    this.forceUpdate()
+    this.props.setLogin(false)
+    // this.forceUpdate()
   }
 
   render() {

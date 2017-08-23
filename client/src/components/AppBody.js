@@ -19,24 +19,19 @@ import Strings from '../localization'
 import RegistrationModal from './user/RegistrationModal'
 import LoginModal from './user/LoginModal'
 class AppBody extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loggedIn: false,
-    }
-  }
+
 
   render() {
     const loggedIn = !!Cookie.get('token')
     console.log("gg1",loggedIn)
-    this.setState({'loggedIn' :loggedIn })
+    // this.props.setLogin(loggedIn)
     // $('app__body').css(' background-color', 'white')
     const segment_style = {
-      backgroundColor: (this.state.loggedIn ? "white" : "transparent")
+      backgroundColor: (loggedIn ? "white" : "transparent")
     };
     console.log("ggg",segment_style)
     return <Segment className='app__body' style={segment_style}>
-      {!this.state.loggedIn
+      {!loggedIn
         ? <div className='app__auth__guest'>
           <Grid>
             <Grid.Column>
@@ -45,8 +40,8 @@ class AppBody extends React.Component {
               <br/>
               <br/>
               <Grid.Row>
-                <RegistrationModal onLogin={() => this.forceUpdate()}/>
-                <LoginModal onLogin={() => this.forceUpdate()}/>
+                <RegistrationModal onLogin={() => this.props.setLogin(true)}/>
+                <LoginModal onLogin={() => this.props.setLogin(true)}/>
               </Grid.Row>
             </Grid.Column>
           </Grid>
