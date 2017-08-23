@@ -185,7 +185,7 @@ class SchedulingRequest extends React.Component {
               <Grid>
                 <Grid.Row>
                   {modal}
-                  <Form.Button onClick={() => this.props.setPage('main')} negative>
+                  <Form.Button id='stop' onClick={() => this.props.setPage('main')} negative>
                     {Strings.cansel}</Form.Button>
                 </Grid.Row>
               </Grid>

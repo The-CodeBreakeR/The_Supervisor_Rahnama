@@ -14,7 +14,7 @@ class HardDayInfo extends React.Component {
     }
   }
   componentWillMount() {
-    console.log("hoomw",this.props.date)
+    // console.log("hoomw",this.props.date)
     fetch('/scheduling/day/', {
       method: 'POST',
       headers: {
