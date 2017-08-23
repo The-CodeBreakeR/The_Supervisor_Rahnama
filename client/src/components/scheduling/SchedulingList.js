@@ -14,11 +14,11 @@ class SchedulingList extends React.Component {
   renderScheduling(scheduling) {
     console.log(scheduling.capasity)
     return <Table.Row key={scheduling.id} >
-      <Table.Cell>{scheduling.id} </Table.Cell>
-      <Table.Cell>{scheduling.name}</Table.Cell>
-      <Table.Cell>{MomentJ(scheduling.start_time * 1000).format('LL')}</Table.Cell>
-      <Table.Cell>{MomentJ(scheduling.end_time * 1000).format('LL')}</Table.Cell>
-        <Table.Cell><SchedulingInfo scheduling={scheduling} /> </Table.Cell>
+      <Table.Cell key={Math.random()} className="table__cell" >{scheduling.id} </Table.Cell>
+      <Table.Cell key={Math.random()} className="table__cell">{scheduling.name}</Table.Cell>
+      <Table.Cell key={Math.random()} className="table__cell">{MomentJ(scheduling.start_time * 1000).format('LL')}</Table.Cell>
+      <Table.Cell key={Math.random()} className="table__cell">{MomentJ(scheduling.end_time * 1000).format('LL')}</Table.Cell>
+        <Table.Cell key={Math.random()} className="table__cell" ><SchedulingInfo key={Math.random()} scheduling={scheduling} /> </Table.Cell>
     </Table.Row>
   }
   render() {

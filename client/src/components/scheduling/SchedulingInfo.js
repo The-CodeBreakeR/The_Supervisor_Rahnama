@@ -37,18 +37,17 @@ class SchedulingInfo extends React.Component {
     this.setState({SchedulingID: scheduling.id})
     this.setState({info: scheduling.info})
     this.setState({SchedulingName: scheduling.name})
-    this.setState({start: MomentJ(scheduling.start_time * 1000).format('LLLL')})
-    this.setState({end: MomentJ(scheduling.end_time * 1000).format('LLLL')})
+    this.setState({start: MomentJ(scheduling.start_time * 1000).format('LL')})
+    this.setState({end: MomentJ(scheduling.end_time * 1000).format('LL')})
     this.setState({schedulingCapasity:scheduling.capasity})
     this.statusChecker(scheduling.id)
   }
 
   render() {
-    return <Modal closeIcon trigger={<Button onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
+    return <Modal closeIcon trigger={<Button color='blue' key={Math.random()} onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
       <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
-          <Header>{Strings.schedulingInfo}</Header>
           <p>{Strings.schedulingName} : {this.state.SchedulingName}</p>
           <p>{Strings.schedulingStartDate} : {this.state.start}</p>
           <p>{Strings.schedulingEndDate} : {this.state.end}</p>

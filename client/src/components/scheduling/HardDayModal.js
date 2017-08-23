@@ -29,16 +29,15 @@ class HardDayModal extends React.Component {
       })
         .then(response => response.json())
         .then(result => {
-          if (result.status === 0) {
             this.setState({schedulingList: result.scheduling})
-          }
+            console.log('fd',this.state.schedulingList)
         })
     }
   }
 
   renderScheduling (scheduling) {
-    console.log('jkl', scheduling.end_date)
-    return <HardDayInfo date={scheduling.end_time}
+    console.log('jkl', scheduling.end_time)
+    return <HardDayInfo key={Math.random()} date={scheduling.end_time}
                      label={MomentJ(scheduling.end_time * 1000).format('LL')}/>
   }
 
