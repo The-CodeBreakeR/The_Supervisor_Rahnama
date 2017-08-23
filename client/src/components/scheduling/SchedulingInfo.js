@@ -56,6 +56,9 @@ class SchedulingInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
+         <Button onClick={() => this.close()} negative>
+          {Strings.stop}
+        </Button>
       </Modal.Actions>
     </Modal>
   }
