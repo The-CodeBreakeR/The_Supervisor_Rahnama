@@ -1,5 +1,5 @@
 /**
- * Created by ali on 7/31/17.
+ * Created by ali on 8/18/17.
  */
 
 import React from 'react'
@@ -7,10 +7,10 @@ import { Table, Segment, Button, Header } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import Cookie from 'browser-cookies'
-import ReservePlace from './ReservePlace'
 import { Link } from 'react-router-dom'
+import CancelReserve from './CancelReserve'
 
-class PlacesList extends React.Component {
+class ReservedList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,14 +19,14 @@ class PlacesList extends React.Component {
   }
 
   componentWillMount() {
-    fetch('/accommodation/places/', {
+    fetch('/accommodation/resplaces/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: '',
+        token: JSON.parse(localStorage.getItem('user')).token,
       }),
     })
       .then(response => response.json())
@@ -49,13 +49,13 @@ class PlacesList extends React.Component {
       <Table.Cell textAlign='center'>{place.location}</Table.Cell>
       <Table.Cell textAlign='center'>{place.cost}</Table.Cell>
       <Table.Cell textAlign='center'>{MomentJ(place.end_date).format('L')}</Table.Cell>
-      <Table.Cell textAlign='center'><ReservePlace placeID={place.id} setPlacesList={(placesList) => this.setPlacesList(placesList)} /></Table.Cell>
+      <Table.Cell textAlign='center'><CancelReserve placeID={place.id} setPlacesList={(placesList) => this.setPlacesList(placesList)} /></Table.Cell>
     </Table.Row>
   }
   render() {
     const places = this.state.placesList.map((place) => this.renderPlace(place))
     return <div>
-      <Header>{Strings.placesTable}</Header>
+      <Header>{Strings.reservedTable}</Header>
       <Segment className='accomm__list' >
         <Table selectable>
           <Table.Header>
@@ -66,7 +66,7 @@ class PlacesList extends React.Component {
               <Table.HeaderCell textAlign='center'>{Strings.placeLocation}</Table.HeaderCell>
               <Table.HeaderCell textAlign='center'>{Strings.placeCost}</Table.HeaderCell>
               <Table.HeaderCell textAlign='center'>{Strings.availableFrom}</Table.HeaderCell>
-              <Table.HeaderCell textAlign='center'>{Strings.reservePlace}</Table.HeaderCell>
+              <Table.HeaderCell textAlign='center'>{Strings.accCancel}</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -83,4 +83,4 @@ class PlacesList extends React.Component {
   }
 }
 
-export default PlacesList
+export default ReservedList

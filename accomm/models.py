@@ -20,8 +20,8 @@ class Accommodation(models.Model):
     cost = models.IntegerField(default=200)
     contracted_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,
                                       blank=True, related_name='contracted')
-    start_date = models.DateField(null=True, blank=True)
-    end_date = models.DateField(null=True, blank=True)
+    start_date = models.DateField(default=datetime.now)
+    end_date = models.DateField(default=datetime.now)
     reserved_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,
                                     blank=True, related_name='reserved')
 
