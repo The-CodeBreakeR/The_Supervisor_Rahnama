@@ -12,6 +12,7 @@ class SchedulingInfo extends React.Component {
       SchedulingName: '',
       start: '',
       info: '',
+      open: false,
       end: '',
       schedulingcapasity: '',
     }
@@ -44,7 +45,13 @@ class SchedulingInfo extends React.Component {
   }
 
   render() {
-    return <Modal closeIcon trigger={<Button color='blue' key={Math.random()} onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
+    return <Modal closeIcon
+                  open={this.state.open}
+                  onClose={() => this.setState({open: false})}
+                  onOpen={() => this.setState({open: true})}
+                  trigger={<Button color='blue' key={Math.random()}
+                                   onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
+
       <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
@@ -56,7 +63,7 @@ class SchedulingInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-         <Button onClick={() => this.close()} negative>
+         <Button onClick={() => this.setState({open: false})} negative>
           {Strings.stop}
         </Button>
       </Modal.Actions>

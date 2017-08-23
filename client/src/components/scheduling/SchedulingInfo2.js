@@ -10,6 +10,7 @@ class HardDayInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      open: false,
       schedulingList:[],
     }
   }
@@ -33,7 +34,11 @@ class HardDayInfo extends React.Component {
   }
 
   render() {
-    return <Modal closeIcon trigger={<Button key={Math.random()} >{this.props.label}</Button>}>
+    return <Modal closeIcon
+                  open={this.state.open}
+                  onClose={() => this.setState({open: false})}
+                  onOpen={() => this.setState({open: true})}
+                  trigger={<Button key={Math.random()} >{this.props.label}</Button>}>
       <Modal.Header>{Strings.event}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
@@ -41,7 +46,7 @@ class HardDayInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-         <Button onClick={() => this.close()} negative>
+         <Button onClick={() => this.setState({open: false})} negative>
           {Strings.stop}
         </Button>
       </Modal.Actions>
