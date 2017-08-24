@@ -9,7 +9,8 @@ class AuthHeader extends React.Component {
   logout() {
     Cookie.erase('token')
     localStorage.removeItem('user')
-    this.forceUpdate()
+    this.props.setLogin(false)
+    // this.forceUpdate()
   }
 
   render() {
@@ -18,12 +19,7 @@ class AuthHeader extends React.Component {
     const user = userData && JSON.parse(userData)
     const name = (user && user.name) ? user.name : Strings.user
     return <div className='app__header__auth'>
-      {!loggedIn
-        ? <div className='app__header__auth--guest'>
-          <RegistrationModal onLogin={() => this.forceUpdate()} />
-          <LoginModal onLogin={() => this.forceUpdate()} />
-        </div>
-        : <div className='app__header__auth--user'>
+      {loggedIn && <div className='app__header__auth--user'>
           {`${name} ${Strings.welcomeDear}`}&nbsp;
           (<a className='app__header__logout link' onClick={() => this.logout()}>{Strings.logout}</a>)
         </div>
