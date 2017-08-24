@@ -28,7 +28,6 @@ class SchedulingPage extends React.Component {
   }
 
   componentWillMount () {
-    console.log('uu', this.state.name, this.state.url)
     fetch(this.state.url, {
       method: 'POST',
       headers: {
@@ -41,19 +40,16 @@ class SchedulingPage extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log('cmw', result.scheduling)
         this.setState({schedulingList: result.scheduling})
       })
   }
 
   setUrl (event) {
-    // console.log("ddd",{checked: event.target.value,name: '',url: '/scheduling/'+event.target.value+'/'})
     this.setState({
       url: '/scheduling/' + event.target.value + '/',
       checked: event.target.value,
       name: ''
     }, function () {this.componentWillMount()})
-    // alert(this.state.url)
   }
 
   search (event) {
@@ -70,7 +66,6 @@ class SchedulingPage extends React.Component {
   }
 
   render () {
-    console.log('av', this.state.page)
     return <div className='scheduling'>
       {this.state.page === 'main' && <Grid centered>
         <Grid.Column className='column__1'>

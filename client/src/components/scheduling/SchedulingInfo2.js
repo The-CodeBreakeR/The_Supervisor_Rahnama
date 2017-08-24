@@ -15,7 +15,6 @@ class HardDayInfo extends React.Component {
     }
   }
   componentWillMount() {
-    console.log("hoomw",this.props.date)
     fetch('/scheduling/day/', {
       method: 'POST',
       headers: {
@@ -28,7 +27,6 @@ class HardDayInfo extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log('cmw', result.scheduling)
         this.setState({schedulingList: result.scheduling})
       })
   }

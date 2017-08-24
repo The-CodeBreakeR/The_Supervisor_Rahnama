@@ -8,7 +8,6 @@ import VideoTraining from './VideoTraining.js'
 
 class AppHeader extends React.Component {
   render () {
-    console.log()
     return <Segment className='app__header'>
       <Grid>
         <Grid.Column>

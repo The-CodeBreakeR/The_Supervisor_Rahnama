@@ -30,13 +30,9 @@ class AppBody extends React.Component {
 
   render () {
     const loggedIn = !!Cookie.get('token')
-    console.log('gg1', loggedIn)
-    // this.props.setLogin(loggedIn)
-    // $('app__body').css(' background-color', 'white')
     const segment_style = {
       backgroundColor: (loggedIn ? 'white' : 'transparent')
     }
-    console.log('ggg', segment_style)
     return <Segment className='app__body' style={segment_style}>
       {!loggedIn
         ? <div className='app__auth__guest'>

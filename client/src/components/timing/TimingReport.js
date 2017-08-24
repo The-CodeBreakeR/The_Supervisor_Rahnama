@@ -20,8 +20,6 @@ class TimingReport extends React.Component {
   }
 
   componentWillMount () {
-    // console.log('h')
-    // console.log('bb', JSON.parse(localStorage.getItem('user')).id)
     fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
       method: 'GET',
       headers: {
@@ -34,7 +32,6 @@ class TimingReport extends React.Component {
   }
 
   setUser (result) {
-    // console.log(result)
     this.setState({user: result})
   }
 
@@ -83,8 +80,6 @@ class TimingReport extends React.Component {
     const semesterAverage = this.state.term > -1 && semesterGrades.reduce((x, y) => x + y) / semesterGrades.length
     const semesterCreditsArray = this.state.term > -1 && this.state.courseInfo.map(course => course.course_info.credits)
     const semesterCredits = this.state.term > -1 && semesterCreditsArray.reduce((x, y) => x + y)
-    console.log('ddddddd', this.state.courseInfo.map(course => <p
-      key={`${course.course_info.name} ${course.course_info.credits} ${course.grade}`}>{course.course_info.name} {course.course_info.credit} {course.grade}</p>))
     return <div>
       <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
              onClose={() => this.setState({open: false})}>

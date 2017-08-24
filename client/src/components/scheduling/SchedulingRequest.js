@@ -52,13 +52,10 @@ class SchedulingRequest extends React.Component {
   }
 
   onCapasityChanged (value) {
-    console.log('value0', value)
     let englishValue = ('' + value).replace('۰', '0').replace('۱', '1')
       .replace('۲', '2').replace('۳', '3').replace('۴', '4')
       .replace('۵', '5').replace('۶', '6').replace('۷', '7')
-    console.log('value1', englishValue)
     let finalValue = /^\d+$/.test(englishValue) ? parseInt(englishValue) : 10
-    console.log('value2', finalValue)
     this.setState({capasity: {value, error: !(finalValue > -1 && finalValue < 8)}})
   }
 
@@ -93,16 +90,7 @@ class SchedulingRequest extends React.Component {
   }
 
   sendRequest () {
-
-    console.log('here')
     if (true) {
-      // is.setState({open: false})
-      console.log(this.state.name.value)
-      console.log(this.state.end_date.value)
-      console.log(MomentJ(this.state.end_date.value, 'jYYYY/jMM/jDD'))
-      console.log(this.state.info)
-      console.log('ok?', this.isOK())
-
       fetch('/scheduling/request/', {
         method: 'POST',
         headers: {
@@ -131,7 +119,6 @@ class SchedulingRequest extends React.Component {
   }
 
   render () {
-    console.log('gd', css)
     const errors = this.generateErrors()
     const modal = <Modal closeIcon
                          trigger={<Button color='blue' disabled={errors !== ''}

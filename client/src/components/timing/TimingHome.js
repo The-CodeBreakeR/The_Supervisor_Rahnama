@@ -20,7 +20,6 @@ class TimingHome extends React.Component {
   }
 
   componentWillMount () {
-    console.log('hey31')
     fetch('/timing/search/', {
       method: 'POST',
       headers: {
@@ -39,14 +38,12 @@ class TimingHome extends React.Component {
   }
 
   renderItem (item) {
-    console.log('hey2232', item)
     return <Table.Row key={Math.random()}>
       <Table.Cell>{item.info}</Table.Cell>
     </Table.Row>
   }
 
   setTimingList (alarms, proposals) {
-    console.log('hey2', alarms, proposals)
     this.setState({alarms: alarms})
     this.setState({proposals: proposals})
   }

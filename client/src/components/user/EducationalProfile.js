@@ -113,9 +113,7 @@ class EducationalProfile extends React.Component {
   }
 
   submit() {
-    console.log('click')
     if (this.isOK()) {
-      console.log('after')
       fetch(this.state.url || '/api/educational_profile/', {
         method: this.state.url ? 'PATCH' : 'POST',
         headers: {

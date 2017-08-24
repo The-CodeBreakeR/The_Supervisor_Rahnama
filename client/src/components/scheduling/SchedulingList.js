@@ -12,7 +12,6 @@ class SchedulingList extends React.Component {
   //   }
   // }
   renderScheduling(scheduling) {
-    console.log(scheduling.capasity)
     return <Table.Row key={scheduling.id} >
       <Table.Cell key={Math.random()} className="table__cell" >{scheduling.id} </Table.Cell>
       <Table.Cell key={Math.random()} className="table__cell">{scheduling.name}</Table.Cell>

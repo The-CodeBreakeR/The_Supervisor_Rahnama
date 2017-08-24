@@ -24,7 +24,6 @@ class TimingLog extends React.Component {
   }
 
   componentWillMount() {
-    console.log('bb', JSON.parse(localStorage.getItem('user')).id)
     fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
       method: 'GET',
       headers: {
@@ -37,7 +36,6 @@ class TimingLog extends React.Component {
   }
 
   setUser (result) {
-    console.log(result)
     this.setState({user: result})
   }
 
