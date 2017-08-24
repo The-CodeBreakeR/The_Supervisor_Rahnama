@@ -1,6 +1,9 @@
+from django.shortcuts import render
 
+import pytz
 from Timing.models import Alarm,Proposal
 from django.http import JsonResponse, Http404, response
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from datetime import timedelta
