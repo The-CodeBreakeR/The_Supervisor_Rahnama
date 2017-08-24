@@ -60,8 +60,16 @@ class AppBody extends React.Component {
           <Route path='/skill' component={SkillHome}/>
           <Route path='/scheduling' component={SchedulingPage}/>
           <Route path='/timing' component={TimingHome}/>
-          <Route path='/accounting' component={AccountHome}/>
-          <Route path='/accommodation' component={AccommHome}/>
+          <Route exact path='/accounting' component={AccountHome}/>
+          <Route path='/accounting/income' component={IncomeHome}/>
+          <Route path='/accounting/expense' component={ExpenseHome}/>
+          <Route path='/accounting/loan' component={LoanHome}/>
+          <Route path='/accounting/recom' component={FinancialRecom}/>
+          <Route exact path='/accommodation' component={AccommHome}/>
+          <Route path='/accommodation/showrules' component={RulesList}/>
+          <Route path='/accommodation/showplaces' component={PlacesList}/>
+          <Route path='/accommodation/showreserved' component={ReservedList}/>
+          <Route path='/accommodation/showcontracted' component={ContractedList}/>
           <Route exact path='/internship' component={InternshipHome}/>
           <Route path='/internship/companies' component={CompanyList}/>
         </div>
