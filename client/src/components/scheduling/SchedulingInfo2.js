@@ -10,7 +10,6 @@ class HardDayInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: false,
       schedulingList:[],
     }
   }
@@ -23,7 +22,7 @@ class HardDayInfo extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        date:this.props.date,
+        date: this.props.date,
       }),
     })
       .then(response => response.json())
@@ -34,21 +33,15 @@ class HardDayInfo extends React.Component {
   }
 
   render() {
-    return <Modal closeIcon
-                  open={this.state.open}
-                  onClose={() => this.setState({open: false})}
-                  onOpen={() => this.setState({open: true})}
-                  trigger={<Button key={Math.random()} >{this.props.label}</Button>}>
-      <Modal.Header>{Strings.event}</Modal.Header>
+    return <Modal closeIcon trigger={<Button>{this.props.label}</Button>}>
+      <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
+          <Header>{Strings.schedulingInfo}</Header>
           <SchedulingList schedulingList={this.state.schedulingList}/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-         <Button onClick={() => this.setState({open: false})} negative>
-          {Strings.stop}
-        </Button>
       </Modal.Actions>
     </Modal>
   }

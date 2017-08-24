@@ -1,7 +1,7 @@
 import React from 'react'
 import MomentJ from 'moment-jalaali'
 import Strings from '../../localization'
-import { Button, Header, Modal, Form, Message, Grid } from 'semantic-ui-react'
+import { Button, Header, Modal, Form, Message } from 'semantic-ui-react'
 import css from '../../../stylesheet/basics.css'
 import DatePicker from 'react-datepicker2'
 import { formatError, getUser } from './utils'
@@ -14,7 +14,6 @@ class SchedulingRequest extends React.Component {
     this.fields = ['name', 'end_date', 'capasity']
 
   }
-
   //
   // validate () {
   //   this.onNameChanged(this.state.name.value)
@@ -112,7 +111,7 @@ class SchedulingRequest extends React.Component {
         body: JSON.stringify({
           name: this.state.name.value,
           // end_date: MomentJ(this.state.end_date, 'jYYYY/jMM/jDD').toDate().getTime() / 1000,
-          end_date: (this.state.end_date.value).toDate().getTime() / 1000,//todo
+          end_date: (this.state.end_date.value).toDate().getTime() /1000 ,//todo
           capasity: this.state.capasity.value,
           info: this.state.info,
         }),
@@ -134,7 +133,7 @@ class SchedulingRequest extends React.Component {
     console.log('gd', css)
     const errors = this.generateErrors()
     const modal = <Modal closeIcon
-                         trigger={<Button color='blue' disabled={errors !== ''}
+                         trigger={<Button disabled={errors !== ''}
                                           onClick={() => this.sendRequest()}>{Strings.submit}</Button>}
                          open={this.state.open} onOpen={() => this.setState({open: true})}
                          onClose={() => this.setState({open: false})}
@@ -143,11 +142,9 @@ class SchedulingRequest extends React.Component {
       <Modal.Content image scrolling>
         <Modal.Description>
           <Header>{Strings.choose}</Header>
-          <div style={{textAlign: 'center'}}>
           <Button onClick={() => this.props.setPage('main')}>
             {Strings.returnToScheduling}</Button>
           <Button onClick={() => this.close()}>{Strings.schedulingNewItem}</Button>
-          </div>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions></Modal.Actions>
@@ -155,51 +152,42 @@ class SchedulingRequest extends React.Component {
 
     return <div>
 
+      <Header>{Strings.schedulingNewItem}</Header>
+      <div>
+        <div>
+          <Form>
+            <Form.Input value={this.state.name.value}
+                        error={this.state.name.error}
+                        label={Strings.schedulingName}
+                        placeholder={Strings.needName}
+                        onChange={event => this.onNameChanged(event.target.value)}/>
+            <Form.Input label={Strings.schedulingCapasity}
+                        placeholder={Strings.needDay}
+                        value={this.state.capasity.value}
+                        error={this.state.capasity.error}
+                        onChange={event => this.onCapasityChanged(event.target.value)}/>
+            <label>{Strings.schedulingEndDatePick}</label>
+            <DatePicker value={this.state.end_date.value}
+                        error={this.state.end_date.error}
+                        onChange={value => this.onTimeChange(value)}
+                        timePicker={false}
+                        placeholder={Strings.timeFormat}
+                        isGregorian={false}
+            />
+            <Form.TextArea value={this.state.info} label={Strings.info}
+                           placeholder={Strings.requestForScheduling}
+                           onChange={event => this.onInfoChange(event.target.value)}/>
 
-      <div className="request">
-
-        <Form>
-          <Grid className="grid__request">
-            <Grid.Column >
-              <Header>{Strings.schedulingNewItem}</Header>
-              <Form.Input value={this.state.name.value}
-                          error={this.state.name.error}
-                          label={Strings.schedulingName}
-                          placeholder={Strings.needName}
-                          onChange={event => this.onNameChanged(event.target.value)}/>
-              <label>{Strings.schedulingEndDatePick}</label>
-              <DatePicker value={this.state.end_date.value}
-                          error={this.state.end_date.error}
-                          onChange={value => this.onTimeChange(value)}
-                          timePicker={false}
-                          placeholder={Strings.timeFormat}
-                          isGregorian={false}
-              />
-              <Form.Input label={Strings.schedulingCapasity}
-                          placeholder={Strings.needDay}
-                          value={this.state.capasity.value}
-                          error={this.state.capasity.error}
-                          onChange={event => this.onCapasityChanged(event.target.value)}/>
-
-              <Form.TextArea value={this.state.info} label={Strings.info}
-                             placeholder={Strings.requestForScheduling}
-                             onChange={event => this.onInfoChange(event.target.value)}/>
-              <Grid>
-                <Grid.Row>
-                  {modal}
-                  <Form.Button id='stop' onClick={() => this.props.setPage('main')} negative>
-                    {Strings.cansel}</Form.Button>
-                </Grid.Row>
-              </Grid>
-            </Grid.Column>
-          </Grid>
-        </Form>
-        {errors && <Message
-          error
-          content={errors}
-        />
-        }
-
+            {modal}
+            <Form.Button onClick={() => this.props.setPage('main')}>
+              {Strings.cansel}</Form.Button>
+          </Form>
+          {errors && <Message
+            error
+            content={errors}
+          />
+          }
+        </div>
       </div>
     </div>
   }

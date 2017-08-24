@@ -19,7 +19,7 @@ class AppHeader extends React.Component {
             <Header className='app__header__title'>{Strings.rahnamaSystem}</Header>
           </Grid.Row>
           <Grid.Row>
-            <AuthHeader setLogin={state => this.props.setLogin(state) }/>
+            <AuthHeader/>
           </Grid.Row>
         </Grid.Column>
         <Grid.Column className='app__header__column__return'>
