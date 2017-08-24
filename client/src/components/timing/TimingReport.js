@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button, Header, Modal, Grid,Table } from 'semantic-ui-react'
+import { Button, Header, Modal, Grid, Table } from 'semantic-ui-react'
 import Strings from '../../localization'
+
 class TimingReport extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       open: false,
@@ -15,11 +16,11 @@ class TimingReport extends React.Component {
     }
   }
 
-  close () {
+  close() {
     this.setState({open: false})
   }
 
-  componentWillMount () {
+  componentWillMount() {
     fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
       method: 'GET',
       headers: {
@@ -31,11 +32,11 @@ class TimingReport extends React.Component {
       .then(result => this.setUser(result))
   }
 
-  setUser (result) {
+  setUser(result) {
     this.setState({user: result})
   }
 
-  showTermInfo (semester) {
+  showTermInfo(semester) {
     this.setState({term: semester.semester})
     this.setState({year: semester.year})
     this.setState({open: true})
@@ -43,28 +44,27 @@ class TimingReport extends React.Component {
     this.setState({notCurrentTerm: true})
   }
 
-  showCurrentTerm (semester) {
+  showCurrentTerm(semester) {
     this.showTermInfo(semester)
     this.setState({notCurrentTerm: false})
   }
 
-  table_maker (header, body, buttons) {
-    return  <Table basic='very' celled selectable className='timing__box'>
-          <Table.Header >
-            <Table.Row>
-              <Table.HeaderCell className='Header'>{header}</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <div className='body'>
-              <p>{body}</p>
-              <div className='buttons'>
-                {buttons}
-              </div>
-            </div>
-          </Table.Body>
-        </Table>
-
+  tableMaker(header, body, buttons) {
+    return <Table basic='very' celled selectable className='timing__box'>
+      <Table.Header >
+        <Table.Row>
+          <Table.HeaderCell className='Header'>{header}</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <div className='body'>
+          <p>{body}</p>
+          <div className='buttons'>
+            {buttons}
+          </div>
+        </div>
+      </Table.Body>
+    </Table>
   }
 
   render() {
@@ -82,7 +82,7 @@ class TimingReport extends React.Component {
     const semesterCredits = this.state.term > -1 && semesterCreditsArray.reduce((x, y) => x + y)
     return <div>
       <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
-             onClose={() => this.setState({open: false})}>
+        onClose={() => this.setState({open: false})}>
         <Modal.Header>{Strings.termInfo}:{this.state.year}-{this.state.term}</Modal.Header>
         <Modal.Content image scrolling>
           <Modal.Description>
@@ -96,7 +96,7 @@ class TimingReport extends React.Component {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={() => this.close()}  negative>
+          <Button onClick={() => this.close()} negative>
             {Strings.tourStop}
           </Button>
         </Modal.Actions>
@@ -104,8 +104,8 @@ class TimingReport extends React.Component {
       <Grid>
         <Grid.Row>
           <div className='timing__box1'>
-          {this.table_maker(Strings.currentTerm, Strings.currentProgram,termProgram)}
-          {this.table_maker(Strings.timingReport, Strings.chooseTerm,termSelection)}
+            {this.tableMaker(Strings.currentTerm, Strings.currentProgram, termProgram)}
+            {this.tableMaker(Strings.timingReport, Strings.chooseTerm, termSelection)}
           </div>
         </Grid.Row>
       </Grid>

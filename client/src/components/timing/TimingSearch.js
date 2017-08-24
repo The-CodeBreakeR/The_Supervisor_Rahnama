@@ -1,6 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Input, Button, Message,Label } from 'semantic-ui-react'
+import { Input, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
 
 class TimingSearch extends React.Component {
@@ -13,7 +13,7 @@ class TimingSearch extends React.Component {
   }
 
   handleResult(result) {
-    this.props.setTimingList(result.alarms,result.proposals)
+    this.props.setTimingList(result.alarms, result.proposals)
   }
 
   onTimingNameChange(value) {

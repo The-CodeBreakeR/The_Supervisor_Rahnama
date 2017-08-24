@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
-import _ from 'lodash'
+import { Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -14,12 +13,12 @@ class CanselReserveButton extends React.Component {
     }
   }
 
-  handleResault (status) {
+  handleResault(status) {
     this.setState({status: 1})
     this.setState({message: Strings.requestSubmitAccept})
   }
 
-  resetState () {
+  resetState() {
     this.state = {
       message: '',
       status: 0,
@@ -32,11 +31,11 @@ class CanselReserveButton extends React.Component {
     this.props.getInfoRecall()
   }
 
-  handleClose () {
+  handleClose() {
     this.setState({close: false})
   }
 
-  ButtonClickHandle (tourId) {
+  ButtonClickHandle(tourId) {
     if (Cookie.get('token')) {
       fetch('/tours/decline/', {
         method: 'POST',
@@ -56,7 +55,7 @@ class CanselReserveButton extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return <Modal trigger={<Button
       negative onClick={() => this.ButtonClickHandle(this.props.tourId)} >{Strings.tourCansel}</Button>}
     open={this.state.open}

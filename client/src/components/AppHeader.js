@@ -1,13 +1,13 @@
 import React from 'react'
 import Strings from '../localization'
-import { Header, Segment, Button, Grid, Image } from 'semantic-ui-react'
+import { Header, Segment, Button, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import AuthHeader from './user/AuthHeader'
 import LogoInfo from './LogoInfo.js'
 import VideoTraining from './VideoTraining.js'
 
 class AppHeader extends React.Component {
-  render () {
+  render() {
     return <Segment className='app__header'>
       <Grid>
         <Grid.Column>

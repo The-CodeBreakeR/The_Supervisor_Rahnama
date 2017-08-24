@@ -30,11 +30,11 @@ class SemesterInfo extends React.Component {
     const thisYear = MomentJ().jYear()
     const actualYear = parseInt(value) || 0
     const error = actualYear > thisYear || actualYear < thisYear - 10
-    this.setState({ year: { value, error }})
+    this.setState({ year: { value, error } })
   }
 
   onSemesterChanged(value) {
-    this.setState({ semester: { value, error: this.semesterOptions.map(o => o.key).indexOf(value) === -1 }})
+    this.setState({ semester: { value, error: this.semesterOptions.map(o => o.key).indexOf(value) === -1 } })
   }
 
   validate() {
@@ -119,7 +119,7 @@ class SemesterInfo extends React.Component {
         open={!!this.state.deletingUrl}
         header={this.state.deleteTitle}
         content={Strings.sureDeleteSemester}
-        onConfirm={() => {this.deleteSemester(this.state.deletingUrl); this.setState({deletingUrl: ''});}}
+        onConfirm={() => { this.deleteSemester(this.state.deletingUrl); this.setState({deletingUrl: ''}) }}
         onCancel={() => this.setState({ deletingUrl: '' })}
         cancelButton={Strings.cancel}
         confirmButton={Strings.confirm}
@@ -184,9 +184,9 @@ class SemesterInfo extends React.Component {
         </Table.Footer>
       </Table>
       {errors && <Message
-          error
-          content={errors}
-        />
+        error
+        content={errors}
+      />
       }
     </Dimmer.Dimmable>
   }

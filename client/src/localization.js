@@ -255,7 +255,7 @@ const Strings = new LocalizedStrings({
     course: 'درس',
     close: 'بستن',
     internLogin: 'ورود به سامانه کارآموزی',
-    firstYear:'سال اول پیشنهادی',
+    firstYear: 'سال اول پیشنهادی',
     secondYear: 'سال دوم پیشنهادی',
     firstTerm: 'ترم اول یا دوم سال تحصیلی ',
     bakToHome: 'بازگشت به صفحه اصلی',

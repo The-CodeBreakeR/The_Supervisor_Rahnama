@@ -1,11 +1,6 @@
-/**
- * Created by ali on 8/9/17.
- */
-
 import React from 'react'
 import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
-import Cookie from 'browser-cookies'
 import RequestFollowUp from './RequestFollowUp'
 
 class RequestList extends React.Component {

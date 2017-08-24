@@ -4,7 +4,6 @@ import ToursList from './ToursList'
 import ToursRequest from './ToursRequest'
 import ToursSearch from './ToursSearch'
 
-
 class ToursHome extends React.Component {
   constructor(props) {
     super(props)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import Cookie from 'browser-cookies'
@@ -40,17 +40,17 @@ class SchedulingInfo extends React.Component {
     this.setState({SchedulingName: scheduling.name})
     this.setState({start: MomentJ(scheduling.start_time * 1000).format('LL')})
     this.setState({end: MomentJ(scheduling.end_time * 1000).format('LL')})
-    this.setState({schedulingCapasity:scheduling.capasity})
+    this.setState({schedulingCapasity: scheduling.capasity})
     this.statusChecker(scheduling.id)
   }
 
   render() {
     return <Modal closeIcon
-                  open={this.state.open}
-                  onClose={() => this.setState({open: false})}
-                  onOpen={() => this.setState({open: true})}
-                  trigger={<Button color='blue' key={Math.random()}
-                                   onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
+      open={this.state.open}
+      onClose={() => this.setState({open: false})}
+      onOpen={() => this.setState({open: true})}
+      trigger={<Button color='blue' key={Math.random()}
+        onClick={() => this.settingState(this.props.scheduling)}>{Strings.moreInfo}</Button>}>
 
       <Modal.Header>{Strings.schedulingInfo}</Modal.Header>
       <Modal.Content image scrolling>
@@ -63,7 +63,7 @@ class SchedulingInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-         <Button onClick={() => this.setState({open: false})} negative>
+        <Button onClick={() => this.setState({open: false})} negative>
           {Strings.stop}
         </Button>
       </Modal.Actions>

@@ -1,17 +1,7 @@
-/**
- * Created by ali on 7/31/17.
- */
-
 import React from 'react'
-import fetch from 'isomorphic-fetch'
-import Cookie from 'browser-cookies'
-import { Header, Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import Strings from '../../localization'
 import { Link } from 'react-router-dom'
-
-import ReservePlace from './ReservePlace'
-import RulesList from './RulesList'
-import PlacesList from './PlacesList'
 
 class AccommHome extends React.Component {
   render() {

@@ -4,7 +4,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --host 0.0.0.0 --progress --color --port 3000 --config webpack.dev.config.js",
     "build": "NODE_ENV=production webpack -p --progress --color --config webpack.prod.config.js",
-    "lint": "eslint assets/js",
+    "lint": "eslint -c .eslintrc.js client/src",
     "test": "npm run lint"
   },
   "repository": {

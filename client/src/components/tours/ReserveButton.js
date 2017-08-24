@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
-import _ from 'lodash'
+import { Button, Header, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 

@@ -16,8 +16,8 @@ class App extends React.Component {
   }
   render() {
     return <div className='app'>
-      <AppHeader setLogin={state => this.setState({'loggedIn':state}) }/>
-      <AppBody setLogin={state => this.setState({'loggedIn':state}) }/>
+      <AppHeader setLogin={state => this.setState({'loggedIn': state}) }/>
+      <AppBody setLogin={state => this.setState({'loggedIn': state}) }/>
     </div>
   }
 }

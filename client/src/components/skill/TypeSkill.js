@@ -1,8 +1,6 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
-import _ from 'lodash'
+import { Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
-import Cookie from 'browser-cookies'
 import SubmitQuestionButton from './SubmitQuestionButton'
 
 class TypeSkill extends React.Component {
@@ -16,7 +14,7 @@ class TypeSkill extends React.Component {
   close() {
     this.setState({open: false})
   }
-  ButtonClickHandle () {
+  ButtonClickHandle() {
     fetch('/skill/getSkill/', {
       method: 'POST',
       headers: {
@@ -36,7 +34,7 @@ class TypeSkill extends React.Component {
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
       onClose={() => this.setState({open: false})} trigger={<Button
-      className='skill__button' size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeTypeSkill}</Button>}
+        className='skill__button' size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeTypeSkill}</Button>}
     >
       <Modal.Header>{Strings.skill}</Modal.Header>
       <Modal.Content image scrolling>

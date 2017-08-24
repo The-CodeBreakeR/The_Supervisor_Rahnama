@@ -27,13 +27,12 @@ import Strings from '../localization'
 import RegistrationModal from './user/RegistrationModal'
 import LoginModal from './user/LoginModal'
 class AppBody extends React.Component {
-
-  render () {
+  render() {
     const loggedIn = !!Cookie.get('token')
-    const segment_style = {
-      backgroundColor: (loggedIn ? 'white' : 'transparent')
+    const segmentStyle = {
+      backgroundColor: (loggedIn ? 'white' : 'transparent'),
     }
-    return <Segment className='app__body' style={segment_style}>
+    return <Segment className='app__body' style={segmentStyle}>
       {!loggedIn
         ? <div className='app__auth__guest'>
           <Grid>

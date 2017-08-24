@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal , Message } from 'semantic-ui-react'
-import _ from 'lodash'
+import { Button, Header, Image, Modal, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import ReserveButton from './ReserveButton'
@@ -80,7 +79,7 @@ class ToursInfo extends React.Component {
         <Image
           className='tours__info__image'
           size='medium'
-          src='http://www.faranaz.com/wp-content/uploads/2015/02/Fantastic-nature-photographs-from-around-the-world3.jpg'
+          src={TourPhoto}
           wrapped
         />
         <Modal.Description>

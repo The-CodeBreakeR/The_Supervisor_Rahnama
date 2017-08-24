@@ -1,12 +1,7 @@
-/**
- * Created by ali on 7/31/17.
- */
-
 import React from 'react'
 import { Table, Segment, Button, Header } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
-import Cookie from 'browser-cookies'
 import { Link } from 'react-router-dom'
 
 class RulesList extends React.Component {

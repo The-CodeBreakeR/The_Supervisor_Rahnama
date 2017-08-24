@@ -4,11 +4,10 @@ import TimingReport from './TimingReport'
 import TimingLog from './TimingLog'
 import TimingSearch from './TimingSearch'
 import Strings from '../../localization'
-import { Table, Header } from 'semantic-ui-react'
+import { Table, Header, Grid } from 'semantic-ui-react'
 
-import { Grid } from 'semantic-ui-react'
 class TimingHome extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       timingList: [],
@@ -17,7 +16,7 @@ class TimingHome extends React.Component {
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     fetch('/timing/search/', {
       method: 'POST',
       headers: {
@@ -31,65 +30,65 @@ class TimingHome extends React.Component {
       .then(response => response.json())
       .then(result => {
         this.setState({alarms: result.alarms, proposals: result.proposals})
-
       })
   }
 
-  renderItem (item) {
+  renderItem(item) {
     return <Table.Row key={Math.random()}>
       <Table.Cell>{item.info}</Table.Cell>
     </Table.Row>
   }
 
-  setTimingList (alarms, proposals) {
+  setTimingList(alarms, proposals) {
     this.setState({alarms: alarms})
     this.setState({proposals: proposals})
   }
-  table_render(header,items){
+
+  tableRender(header, items) {
     return <Table basic='very' celled selectable>
-            <Table.Header className="table__header">
-              <Table.Row>
-                <Table.HeaderCell>{header}</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {items}
-            </Table.Body>
-          </Table>
+      <Table.Header className='table__header'>
+        <Table.Row>
+          <Table.HeaderCell>{header}</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {items}
+      </Table.Body>
+    </Table>
   }
 
   render() {
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
     return <Grid centered className='timing'>
-      <Grid.Column className="column1">
+      <Grid.Column className='column1'>
         <Grid.Row>
-          <Header className="app__name">{Strings.alarmsProposals}</Header>
+          <Header className='app__name'>{Strings.alarmsProposals}</Header>
           <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)}/>
           <Header>{Strings.lastAlarms}</Header>
-          {this.table_render(Strings.alarm,alarms)}
-          {this.table_render(Strings.proposal,proposals)}
-          </Grid.Row>
+          {this.tableRender(Strings.alarm, alarms)}
+          {this.tableRender(Strings.proposal, proposals)}
+        </Grid.Row>
         <Grid.Row >
           <br/>
-          <Header className="app__name">{Strings.timingButton}</Header>
+          <Header className='app__name'>{Strings.timingButton}</Header>
           {Strings.button_info}
           <Grid>
             <Grid.Column className='button__bar'>
-              <TimingLog type="intern"/>
+              <TimingLog type='intern'/>
             </Grid.Column>
-              <Grid.Column className='button__bar'>
-              <TimingLog type="project"/>
-              </Grid.Column>
             <Grid.Column className='button__bar'>
-              <TimingLog type="endDuration"/>
-              {/*<TimingProject/>*/}
-              {/*<TimingEndDuration/>*/}
+              <TimingLog type='project'/>
+            </Grid.Column>
+            <Grid.Column className='button__bar'>
+              <TimingLog type='endDuration'/>
+              {/* <TimingProject/> */}
+              {/* <TimingEndDuration/> */}
             </Grid.Column>
           </Grid>
         </Grid.Row>
       </Grid.Column>
-      <Grid.Column className="column2">
+      <Grid.Column className='column2'>
         <TimingReport/>
       </Grid.Column>
     </Grid>

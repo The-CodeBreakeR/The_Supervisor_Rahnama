@@ -1,14 +1,10 @@
-/**
- * Created by root on 8/21/17.
- */
 import React from 'react'
-import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
-import _ from 'lodash'
+import { Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
-import Cookie from 'browser-cookies'
 import { Link } from 'react-router-dom'
+
 class TimingLog extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       user: {educational_profile: {entrance_year: 0}},
@@ -19,7 +15,7 @@ class TimingLog extends React.Component {
     }
   }
 
-  close () {
+  close() {
     this.setState({open: false})
   }
 
@@ -29,13 +25,13 @@ class TimingLog extends React.Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      }
+      },
     })
       .then(response => response.json())
       .then(result => this.setUser(result))
   }
 
-  setUser (result) {
+  setUser(result) {
     this.setState({user: result})
   }
 
@@ -58,30 +54,29 @@ class TimingLog extends React.Component {
         {Strings.firstTerm}{this.state.user.educational_profile.entrance_year + 4}
       </Button>
     }
-     if (type === 'endDuration') {
+    if (type === 'endDuration') {
       return <Button
         color='blue' className='buttonLog'>
         <h3>{Strings.timingEndDuration}</h3>
         <br/><br/>
-        {Strings.summer}&nbsp;{this.state.user.educational_profile.entrance_year+4}
-        </Button>
+        {Strings.summer}&nbsp;{this.state.user.educational_profile.entrance_year + 4}
+      </Button>
     }
-
   }
 
-  getHeader (type) {
+  getHeader(type) {
     if (type === 'intern') {
       return <Modal.Header>{Strings.timingIntern}</Modal.Header>
     }
     if (type === 'project') {
       return <Modal.Header>{Strings.timingProject}</Modal.Header>
     }
-     if (type === 'endDuration') {
+    if (type === 'endDuration') {
       return <Modal.Header>{Strings.timingEndDuration}</Modal.Header>
     }
   }
 
-  getDescription (type) {
+  getDescription(type) {
     if (type === 'intern') {
       return <Modal.Description>
         {Strings.infoIntern}
@@ -104,17 +99,17 @@ class TimingLog extends React.Component {
     }
     if (type === 'endDuration') {
       return <Modal.Description>
-          {Strings.infoDuration}
-          <br/>
-          {Strings.summer}:{this.state.user.educational_profile.entrance_year+4}
-        </Modal.Description>
+        {Strings.infoDuration}
+        <br/>
+        {Strings.summer}:{this.state.user.educational_profile.entrance_year + 4}
+      </Modal.Description>
     }
   }
 
   render() {
     return <Modal trigger={this.getButton(this.props.type)}
-                  open={this.state.open} onClose={() => this.setState({open: false})}
-                  onOpen={() => this.setState({open: true})}
+      open={this.state.open} onClose={() => this.setState({open: false})}
+      onOpen={() => this.setState({open: true})}
     >
       {this.getHeader(this.props.type)}
       <Modal.Content image scrolling>

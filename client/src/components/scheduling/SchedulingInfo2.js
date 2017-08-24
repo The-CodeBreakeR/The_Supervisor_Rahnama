@@ -1,8 +1,6 @@
 import React from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
-import MomentJ from 'moment-jalaali'
-import Cookie from 'browser-cookies'
 
 import SchedulingList from './SchedulingList'
 
@@ -11,7 +9,7 @@ class HardDayInfo extends React.Component {
     super(props)
     this.state = {
       open: false,
-      schedulingList:[],
+      schedulingList: [],
     }
   }
   componentWillMount() {
@@ -22,7 +20,7 @@ class HardDayInfo extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        date:this.props.date,
+        date: this.props.date,
       }),
     })
       .then(response => response.json())
@@ -33,10 +31,10 @@ class HardDayInfo extends React.Component {
 
   render() {
     return <Modal closeIcon
-                  open={this.state.open}
-                  onClose={() => this.setState({open: false})}
-                  onOpen={() => this.setState({open: true})}
-                  trigger={<Button key={Math.random()} >{this.props.label}</Button>}>
+      open={this.state.open}
+      onClose={() => this.setState({open: false})}
+      onOpen={() => this.setState({open: true})}
+      trigger={<Button key={Math.random()} >{this.props.label}</Button>}>
       <Modal.Header>{Strings.event}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
@@ -44,7 +42,7 @@ class HardDayInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-         <Button onClick={() => this.setState({open: false})} negative>
+        <Button onClick={() => this.setState({open: false})} negative>
           {Strings.stop}
         </Button>
       </Modal.Actions>
