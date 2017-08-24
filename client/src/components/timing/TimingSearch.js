@@ -1,6 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Input, Button, Message } from 'semantic-ui-react'
+import { Input, Button, Message,Label } from 'semantic-ui-react'
 import Strings from '../../localization'
 
 class TimingSearch extends React.Component {
@@ -46,8 +46,8 @@ class TimingSearch extends React.Component {
     console.log('avval')
     return <div>
       <div>
+        {Strings.search}: &nbsp;
         <Input value={this.state.timingName} placeholder={Strings.timingName} onChange={event => this.onTimingNameChange(event.target.value)}/>
-        {/*<Button onClick={() => this.search()}>{Strings.search}</Button>*/}
       </div>
       {this.state.error &&
         <Message negative>
