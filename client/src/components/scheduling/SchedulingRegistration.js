@@ -54,8 +54,6 @@ class SchedulingRegistration extends React.Component {
   }
 
   validate() {
-    //  this.onConfirmPasswordChanged(this.state.confirmPassword.value)
-
     this.onNameChanged(this.state.name.value)
     this.onTypeChanged(this.state.type.value)
     this.onStartDateChanged(this.state.startDate.value)

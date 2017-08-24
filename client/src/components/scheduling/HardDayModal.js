@@ -6,8 +6,6 @@ import Strings from '../../localization'
 import HardDayInfo from './SchedulingInfo2'
 import MomentJ from 'moment-jalaali'
 
-// import SchedulingList from './SchedulingList'
-
 class HardDayModal extends React.Component {
   constructor (props) {
     super(props)

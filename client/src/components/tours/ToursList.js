@@ -5,12 +5,6 @@ import MomentJ from 'moment-jalaali'
 import ToursInfo from './ToursInfo'
 
 class ToursList extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     TourName: '',
-  //   }
-  // }
   renderTour(tour) {
     return <Table.Row key={tour.id} >
       <Table.Cell textAlign='center'>{tour.id} </Table.Cell>

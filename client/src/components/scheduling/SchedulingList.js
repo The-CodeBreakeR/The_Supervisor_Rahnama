@@ -5,12 +5,6 @@ import MomentJ from 'moment-jalaali'
 import SchedulingInfo from './SchedulingInfo'
 
 class SchedulingList extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     SchedulingName: '',
-  //   }
-  // }
   renderScheduling(scheduling) {
     return <Table.Row key={scheduling.id} >
       <Table.Cell key={Math.random()} className="table__cell" >{scheduling.id} </Table.Cell>

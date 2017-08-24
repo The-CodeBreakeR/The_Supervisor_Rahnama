@@ -1,7 +1,5 @@
 import React from 'react'
 import TimingReport from './TimingReport'
-// import TimingProject from './TimingProject'
-// import TimingEndDuration from './TimingEndDuration'
 
 import TimingLog from './TimingLog'
 import TimingSearch from './TimingSearch'

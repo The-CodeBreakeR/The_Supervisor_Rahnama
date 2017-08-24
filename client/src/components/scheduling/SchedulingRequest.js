@@ -15,11 +15,6 @@ class SchedulingRequest extends React.Component {
 
   }
 
-  //
-  // validate () {
-  //   this.onNameChanged(this.state.name.value)
-  // }
-
   generateErrors () {
     let errors = this.state.error
     if (this.state.name.error) {
@@ -99,8 +94,7 @@ class SchedulingRequest extends React.Component {
         },
         body: JSON.stringify({
           name: this.state.name.value,
-          // end_date: MomentJ(this.state.end_date, 'jYYYY/jMM/jDD').toDate().getTime() / 1000,
-          end_date: (this.state.end_date.value).toDate().getTime() / 1000,//todo
+          end_date: (this.state.end_date.value).toDate().getTime() / 1000, // Todo
           capasity: this.state.capasity.value,
           info: this.state.info,
         }),

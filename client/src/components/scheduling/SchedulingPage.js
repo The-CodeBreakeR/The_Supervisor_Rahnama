@@ -6,7 +6,6 @@ import SchedulingRequest from './SchedulingRequest'
 import Strings from '../../localization'
 import { Button } from 'semantic-ui-react'
 import HardDayModal from './HardDayModal'
-// import { Calendar, DatePicker } from 'react-persian-datepicker'
 
 import moment from 'moment-jalaali'
 import DatePicker from 'react-datepicker2'
