@@ -50,7 +50,6 @@ class ReservedList extends React.Component {
   render() {
     const places = this.state.placesList.map((place) => this.renderPlace(place))
     return <div>
-      <Header>{Strings.reservedTable}</Header>
       <Segment className='accomm__list' >
         <Table selectable>
           <Table.Header>
