@@ -56,7 +56,7 @@ class ReservePlace extends React.Component {
 
   render() {
     return <div>
-      <Button onClick={() => this.cancelReserve()}>{Strings.accCancel}</Button>
+      <Button negative onClick={() => this.cancelReserve()}>{Strings.accCancel}</Button>
     </div>
   }
 }

@@ -30,7 +30,7 @@ class FastReadButton extends React.Component {
   }
   render() {
     return <Modal trigger={<Button
-      size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeFastReadSkill}</Button>}
+      className='skill__button_fast-read' size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeFastReadSkill}</Button>}
     closeIcon
     open={this.state.open}
     onOpen={() => this.setState({open: true})}

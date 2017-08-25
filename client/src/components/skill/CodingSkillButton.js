@@ -31,7 +31,7 @@ class CodingSkillButton extends React.Component {
   render() {
     return <Modal
       trigger={<Button
-        className='skill__button' size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeCodingSkill}</Button>}
+        className='skill__button_fast-read' size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seeCodingSkill}</Button>}
       closeIcon
       open={this.state.open}
       onOpen={() => this.setState({open: true})}

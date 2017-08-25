@@ -61,7 +61,7 @@ class ReservePlace extends React.Component {
 
   render() {
     return <div>
-      <Button onClick={() => this.reserve()}>{Strings.reservePlace}</Button>
+      <Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>
     </div>
   }
 }
