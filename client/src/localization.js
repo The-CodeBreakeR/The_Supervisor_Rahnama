@@ -2,6 +2,12 @@ import LocalizedStrings from 'react-localization'
 
 const Strings = new LocalizedStrings({
   per: {
+    footspace: '  ',
+    footRights: '\n تمام حقوق مادی و معنوی این سامانه متعلق به شرکت رهپویان راه مهندسی می باشد. \n',
+    footFollow: 'با ما در شبکه های اجتماعی همراه باشید: \n',
+    footMail: 'آدرس  پست الکترونیکی:‌ rahnama.rahpooyan@gmail.com \n',
+    footTel: 'شماره تماس مرکز پشتیبانی: ۸۸۳۵۷۴۲۳ \n',
+    footAdd: 'آدرس مرکز پشتیبانی:‌ تهران - خیابان مرزداران - برج نگین آسمان - واحد ۷ \n',
     contractedTable: 'جدول قرارداد های کاربر',
     reservedTable: 'جدول محل های اقامتی رزرو شده',
     startCon: 'شروع قرارداد',
