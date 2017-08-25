@@ -3,11 +3,11 @@
 }
 
 .app__body {
-  max-width: 95% !important;
+  max-width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   overflow-y: auto !important;
-  height: 70% !important;
+  height: 78% !important;
 }
 
 .app__header__return {
@@ -17,4 +17,17 @@
 
 .app__header__auth {
   margin-right: 16px;
+}
+.app__body .app__auth__guest {
+  margin: auto !important;
+  width: 30% !important;
+  background-color: rgb(232, 232, 232) !important;
+  padding: 5px !important;
+  text-align: center !important;
+  border-radius: 15px !important;
+}
+body {
+  @base-url: "../../client/asset";
+  background-image: url("@{base-url}/bg2.jpg");
+  background-size:100% 100% !important;
 }

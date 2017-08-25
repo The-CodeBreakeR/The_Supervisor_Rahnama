@@ -1,7 +1,3 @@
-/**
- * Created by ali on 7/31/17.
- */
-
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import { Input, Button, Modal } from 'semantic-ui-react'

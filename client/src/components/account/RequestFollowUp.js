@@ -1,11 +1,6 @@
-/**
- * Created by ali on 8/9/17.
- */
-
 import React from 'react'
-import { List, Modal, Button } from 'semantic-ui-react'
+import { Modal, Button } from 'semantic-ui-react'
 import Strings from '../../localization'
-import MomentJ from 'moment-jalaali'
 import Cookie from 'browser-cookies'
 
 class RequestFollowUp extends React.Component {

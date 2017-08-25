@@ -1,6 +1,4 @@
 import React from 'react'
-import fetch from 'isomorphic-fetch'
-import Cookie from 'browser-cookies'
 import { Header, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Strings from '../../localization'

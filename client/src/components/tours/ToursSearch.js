@@ -4,7 +4,6 @@ import { Input, Button, Message } from 'semantic-ui-react'
 import Strings from '../../localization'
 
 class ToursSearch extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = {

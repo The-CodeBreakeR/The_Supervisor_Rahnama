@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, Header, Modal, Grid } from 'semantic-ui-react'
+import { Button, Header, Modal, Grid, Table } from 'semantic-ui-react'
 import Strings from '../../localization'
+
 class TimingReport extends React.Component {
   constructor(props) {
     super(props)
@@ -11,7 +12,7 @@ class TimingReport extends React.Component {
       value: '',
       year: '',
       notCurrentTerm: true,
-      courseInfo: [{course_info: {name: '', credit: ''}, grade: ''}],
+      courseInfo: [{course_info: {name: '', credits: ''}, grade: ''}],
     }
   }
 
@@ -20,8 +21,6 @@ class TimingReport extends React.Component {
   }
 
   componentWillMount() {
-    // console.log('h')
-    // console.log('bb', JSON.parse(localStorage.getItem('user')).id)
     fetch('/api/user/' + JSON.parse(localStorage.getItem('user')).id + '/', {
       method: 'GET',
       headers: {
@@ -34,7 +33,6 @@ class TimingReport extends React.Component {
   }
 
   setUser(result) {
-    // console.log(result)
     this.setState({user: result})
   }
 
@@ -51,8 +49,25 @@ class TimingReport extends React.Component {
     this.setState({notCurrentTerm: false})
   }
 
+  tableMaker(header, body, buttons) {
+    return <Table basic='very' celled selectable className='timing__box'>
+      <Table.Header >
+        <Table.Row>
+          <Table.HeaderCell className='Header'>{header}</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <div className='body'>
+          <p>{body}</p>
+          <div className='buttons'>
+            {buttons}
+          </div>
+        </div>
+      </Table.Body>
+    </Table>
+  }
+
   render() {
-    // console.log('report')
     const semesterInfo = this.state.user.educational_profile.semesters_info
     const termSelection = semesterInfo.map(semester => <Button
       key={`${semester.year}: ${semester.semester}`} onClick={() => this.showTermInfo(semester)}>{semester.year}:
@@ -63,10 +78,8 @@ class TimingReport extends React.Component {
 
     const semesterGrades = this.state.term > -1 && this.state.courseInfo.map(course => course.grade)
     const semesterAverage = this.state.term > -1 && semesterGrades.reduce((x, y) => x + y) / semesterGrades.length
-    const semesterCreditsArray = this.state.term > -1 && this.state.courseInfo.map(course => course.course_info.credit)
+    const semesterCreditsArray = this.state.term > -1 && this.state.courseInfo.map(course => course.course_info.credits)
     const semesterCredits = this.state.term > -1 && semesterCreditsArray.reduce((x, y) => x + y)
-    console.log('ddddddd', this.state.courseInfo.map(course => <p
-      key={`${course.course_info.name} ${course.course_info.credit} ${course.grade}`}>{course.course_info.name} {course.course_info.credit} {course.grade}</p>))
     return <div>
       <Modal open={this.state.open} onOpen={() => this.setState({open: true})}
         onClose={() => this.setState({open: false})}>
@@ -77,28 +90,22 @@ class TimingReport extends React.Component {
             <p>{Strings.creditTermCount}:{semesterCredits}</p>
             <Header>{Strings.courses}</Header>
             {this.state.courseInfo.map(course =>
-              <p key={`${course.course_info.name} ${course.course_info.credit} ${course.grade}`}>
-                {Strings.name}:{course.course_info.name}<br/> {Strings.credit}:{course.course_info.credit}
-                <br/>{this.state.notCurrentTerm && <p>{Strings.grade}{course.grade}<br/></p>}<br/></p>)}
+              <p key={`${course.course_info.name} ${course.course_info.credits} ${course.grade}`}>
+                {Strings.name}:{course.course_info.name}<br/> {Strings.credit}:{course.course_info.credits}
+                <br/>{this.state.notCurrentTerm && <p>{Strings.grade}:{course.grade}<br/></p>}<br/></p>)}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={() => this.close()}>
+          <Button onClick={() => this.close()} negative>
             {Strings.tourStop}
           </Button>
         </Modal.Actions>
       </Modal>
       <Grid>
         <Grid.Row>
-          <div className='column'>
-            <Header>{Strings.currentTerm}</Header>
-            <p>{Strings.currentProgram}</p>
-            {termProgram}
-          </div>
-          <div className='column'>
-            <Header>{Strings.timingReport}</Header>
-            <p>{Strings.chooseTerm}</p>
-            {termSelection}
+          <div className='timing__box1'>
+            {this.tableMaker(Strings.currentTerm, Strings.currentProgram, termProgram)}
+            {this.tableMaker(Strings.timingReport, Strings.chooseTerm, termSelection)}
           </div>
         </Grid.Row>
       </Grid>

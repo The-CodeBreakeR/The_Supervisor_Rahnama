@@ -251,11 +251,11 @@ class PersonalProfile extends React.Component {
           />
         </Form>
         {errors && <Message
-            error
-            content={errors}
-          />
+          error
+          content={errors}
+        />
         }
-        <div className="profile__submit">
+        <div className='profile__submit'>
           <Link to='/profile'><Button secondary>{Strings.back}</Button></Link>
           <Button primary onClick={() => this.submit()}>{Strings.submit}</Button>
         </div>

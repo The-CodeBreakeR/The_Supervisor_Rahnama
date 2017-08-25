@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Segment, Table, Button, Input, Select, Message, Dropdown } from 'semantic-ui-react'
+import { Header, Segment, Table, Button, Input, Message, Dropdown } from 'semantic-ui-react'
 import { formatError } from './utils'
 import Strings from '../../localization'
 
@@ -16,7 +16,7 @@ class CourseInfo extends React.Component {
   }
 
   componentWillMount() {
-    fetch(`/api/course/`, {
+    fetch('/api/course/', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -35,12 +35,12 @@ class CourseInfo extends React.Component {
   }
 
   onCourseChanged(value) {
-    this.setState({ course: { value, error: this.state.courseOptions.map(o => o.key).indexOf(value) === -1 }})
+    this.setState({ course: { value, error: this.state.courseOptions.map(o => o.key).indexOf(value) === -1 } })
   }
 
   onGradeChanged(value) {
     const grade = parseFloat(value)
-    this.setState({ grade: { value, error: grade < 0 || grade > 20 }})
+    this.setState({ grade: { value, error: grade < 0 || grade > 20 } })
   }
 
   validate() {
@@ -151,9 +151,9 @@ class CourseInfo extends React.Component {
         </Table.Footer>
       </Table>
       {errors && <Message
-          error
-          content={errors}
-        />
+        error
+        content={errors}
+      />
       }
     </Segment>
   }

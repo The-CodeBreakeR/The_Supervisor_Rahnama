@@ -1,4 +1,3 @@
-import React from 'react'
 import Cookie from 'browser-cookies'
 
 export function formatError(error) {

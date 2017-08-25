@@ -1,11 +1,6 @@
-/**
- * Created by ali on 8/2/17.
- */
-
 import React from 'react'
 import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
-import Cookie from 'browser-cookies'
 import DelIncome from './DelIncome'
 
 class IncomeList extends React.Component {

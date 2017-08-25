@@ -1,5 +1,5 @@
 import React from 'react'
-import { Message ,  Button, Header, Icon, Image, Modal, Input , Segment} from 'semantic-ui-react'
+import { Message, Button, Modal, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -49,7 +49,7 @@ class AnswerQuestionShower extends React.Component {
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
       onClose={() => this.setState({open: false})} trigger={<Button onClick={() => this.sendRequest()}
-      size='massive' color='green' >{Strings.answerAndQuestionArchive}</Button>}
+        size='massive' color='green' >{Strings.answerAndQuestionArchive}</Button>}
     >
       <Modal.Header>{Strings.answerAndQuestionArchive}</Modal.Header>
       <Modal.Content image scrolling>
@@ -65,7 +65,6 @@ class AnswerQuestionShower extends React.Component {
         <Button onClick={() => this.close()} >{Strings.tourStop}</Button>
       </Modal.Actions>
     </Modal>
-
   }
 }
 

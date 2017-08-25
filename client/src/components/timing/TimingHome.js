@@ -1,25 +1,22 @@
 import React from 'react'
 import TimingReport from './TimingReport'
-import TimingProject from './TimingProject'
-import TimingEndDuration from './TimingEndDuration'
-import TimingIntern from './TimingIntern'
+
+import TimingLog from './TimingLog'
 import TimingSearch from './TimingSearch'
 import Strings from '../../localization'
-import { Table, Header } from 'semantic-ui-react'
+import { Table, Header, Grid } from 'semantic-ui-react'
 
-import { Grid } from 'semantic-ui-react'
 class TimingHome extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       timingList: [],
-      alarms: { items: [{info: '', date: 0}], status: 0 },
-      proposals: { items: [{info: '', date: 0}], status: 0 },
+      alarms: {items: [{info: '', date: 0}], status: 0},
+      proposals: {items: [{info: '', date: 0}], status: 0},
     }
   }
 
   componentWillMount() {
-    console.log('hey31')
     fetch('/timing/search/', {
       method: 'POST',
       headers: {
@@ -33,70 +30,67 @@ class TimingHome extends React.Component {
       .then(response => response.json())
       .then(result => {
         this.setState({alarms: result.alarms, proposals: result.proposals})
-        // console.log('hey3', result.alarms, result.proposals)
-        // if (result.alarms.status === 0) {
-        //   console.log('hey320', result.alarms, this.alarms)
-        //   // this.setState({alarms: result.alarms,proposals: result.proposals})
-        //   console.log('hey3201', result.alarms)
-        //   console.log('hey32', this.state.alarms)
-        // }
-        // if (result.proposals.status === 0) {
-        //   this.setState({proposals: result.proposals})
-        //   console.log('hey32',result.proposals)
-        // }
       })
   }
 
   renderItem(item) {
-    console.log('hey2232', item)
     return <Table.Row key={Math.random()}>
       <Table.Cell>{item.info}</Table.Cell>
     </Table.Row>
   }
 
   setTimingList(alarms, proposals) {
-    console.log('hey2', alarms, proposals)
     this.setState({alarms: alarms})
     this.setState({proposals: proposals})
   }
 
+  tableRender(header, items) {
+    return <Table basic='very' celled selectable>
+      <Table.Header className='table__header'>
+        <Table.Row>
+          <Table.HeaderCell>{header}</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {items}
+      </Table.Body>
+    </Table>
+  }
+
   render() {
-    console.log('hey221')
     const alarms = this.state.alarms.items.map((item) => this.renderItem(item))
     const proposals = this.state.proposals.items.map((item) => this.renderItem(item))
-    console.log('hey222', alarms, proposals)
-    return <Grid centered className='timing'><Grid.Row>
-      <TimingProject/>
-      <TimingEndDuration/>
-      <TimingIntern/>
-      <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)} />
-    </Grid.Row>
-    <Grid.Row>
-      <Header>{Strings.lastAlarms}</Header>
-      <Table basic='very' celled selectable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>{Strings.alarm}</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {alarms}
-        </Table.Body>
-      </Table>
-      <Table basic='very' celled selectable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>{Strings.proposal}</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {proposals}
-        </Table.Body>
-      </Table>
-    </Grid.Row>
-    <Grid.Row>
-      <TimingReport/>
-    </Grid.Row>
+    return <Grid centered className='timing'>
+      <Grid.Column className='column1'>
+        <Grid.Row>
+          <Header className='app__name'>{Strings.alarmsProposals}</Header>
+          <TimingSearch setTimingList={(alarms, proposals) => this.setTimingList(alarms, proposals)}/>
+          <Header>{Strings.lastAlarms}</Header>
+          {this.tableRender(Strings.alarm, alarms)}
+          {this.tableRender(Strings.proposal, proposals)}
+        </Grid.Row>
+        <Grid.Row >
+          <br/>
+          <Header className='app__name'>{Strings.timingButton}</Header>
+          {Strings.button_info}
+          <Grid>
+            <Grid.Column className='button__bar'>
+              <TimingLog type='intern'/>
+            </Grid.Column>
+            <Grid.Column className='button__bar'>
+              <TimingLog type='project'/>
+            </Grid.Column>
+            <Grid.Column className='button__bar'>
+              <TimingLog type='endDuration'/>
+              {/* <TimingProject/> */}
+              {/* <TimingEndDuration/> */}
+            </Grid.Column>
+          </Grid>
+        </Grid.Row>
+      </Grid.Column>
+      <Grid.Column className='column2'>
+        <TimingReport/>
+      </Grid.Column>
     </Grid>
   }
 }

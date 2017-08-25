@@ -1,13 +1,7 @@
-/**
- * Created by ali on 8/4/17.
- */
-
 import React from 'react'
 import Strings from '../localization'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
-import fetch from 'isomorphic-fetch'
-import Cookie from 'browser-cookies'
 
 class MainPanel extends React.Component {
   constructor(props) {

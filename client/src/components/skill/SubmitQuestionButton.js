@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Message ,  Button, Header, Icon, Image, Modal, Input} from 'semantic-ui-react'
+import { Form, Message, Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -44,20 +44,18 @@ class SubmitQuestionButton extends React.Component {
           .then(response => response.json())
           .then(result => this.handleResult(result))
       }
-    }
-    else
-    {
+    } else {
       this.setState({message: Strings.haveNotRegister})
     }
   }
 
   render() {
-    return <Modal       closeIcon
+    return <Modal closeIcon
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
       onClose={() => this.setState({open: false})}
       trigger={<Button
-      color='green' >{Strings.askSkillQuestion}</Button>}
+        color='green' >{Strings.askSkillQuestion}</Button>}
     >
       <Modal.Header>{Strings.askSkillQuestion}</Modal.Header>
       <Modal.Content image scrolling>
@@ -76,7 +74,6 @@ class SubmitQuestionButton extends React.Component {
         {this.state.status === 1 && <Button onClick={() => this.close()} >{Strings.tourStop}</Button>}
       </Modal.Actions>
     </Modal>
-
   }
 }
 

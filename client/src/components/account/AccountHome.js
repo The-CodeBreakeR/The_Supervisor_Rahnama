@@ -1,7 +1,3 @@
-/**
- * Created by ali on 8/2/17.
- */
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'

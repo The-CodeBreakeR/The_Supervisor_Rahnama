@@ -4,12 +4,11 @@ import PresentationButton from './PresentationButton'
 import FastReadButton from './FastReadButton'
 import { Grid } from 'semantic-ui-react'
 import TypeSkill from './TypeSkill'
-import SubmitQuestionButton from './SubmitQuestionButton'
 import SkillGuide from './SkillGuide'
+
 import AnswerQuestionShower from './AnswerQuestionShower'
 
 class SkillHome extends React.Component {
-
   render() {
     return <Grid centered>
       <SkillGuide/>

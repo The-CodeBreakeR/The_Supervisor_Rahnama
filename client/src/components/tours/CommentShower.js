@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { Button, Form, Icon, Image, Modal, Input, Comment,Segment } from 'semantic-ui-react'
-import _ from 'lodash'
+import { Button, Form, Comment, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
-
 
 class CommentShower extends React.Component {
   constructor(props) {
@@ -18,7 +16,6 @@ class CommentShower extends React.Component {
   renderComment(comment) {
     return <Segment>
       <Comment>
-        {/*<Comment.Avatar as='a' src='/assets/images/avatar/small/christian.jpg' />*/}
         <Comment.Content>
           <Comment.Author>{Strings.name}: {comment.name}</Comment.Author>
           <Comment.Text>{Strings.commentText}: {comment.text}</Comment.Text>
@@ -47,7 +44,7 @@ class CommentShower extends React.Component {
         .then(result => this.handleResult(result))
     }
   }
-  handleResult(result){
+  handleResult(result) {
     this.props.getInfoRecall()
     this.setState({userComment: ''})
   }
@@ -64,7 +61,6 @@ class CommentShower extends React.Component {
         </Segment>
       </Comment.Group>
     </div>
-
   }
 }
 

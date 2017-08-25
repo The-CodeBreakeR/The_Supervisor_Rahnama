@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal, Input } from 'semantic-ui-react'
-import _ from 'lodash'
+import { Button, Modal, Input } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -16,12 +15,12 @@ class PaymentButton extends React.Component {
     }
   }
 
-  handleResault (status) {
+  handleResault(status) {
     this.setState({status: 1})
     this.setState({message: Strings.requestSubmitAccept})
   }
 
-  resetState () {
+  resetState() {
     this.state = {
       message: '',
       status: 0,
@@ -36,7 +35,7 @@ class PaymentButton extends React.Component {
     this.props.getInfoRecall()
   }
 
-  handleClose () {
+  handleClose() {
     this.setState({close: false})
   }
   handleButtonClick(tourId) {
@@ -47,7 +46,7 @@ class PaymentButton extends React.Component {
       this.setState({messageStatus: 1})
     }
   }
-  ButtonClickHandle (tourId) {
+  ButtonClickHandle(tourId) {
     if (Cookie.get('token')) {
       fetch('/tours/payment/', {
         method: 'POST',

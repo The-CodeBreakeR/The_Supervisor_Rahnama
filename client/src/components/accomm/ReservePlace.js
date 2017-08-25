@@ -1,10 +1,6 @@
-/**
- * Created by ali on 7/31/17.
- */
-
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Input, Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 

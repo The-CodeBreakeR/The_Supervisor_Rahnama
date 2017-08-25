@@ -1,12 +1,7 @@
-/**
- * Created by ali on 8/18/17.
- */
-
 import React from 'react'
 import { Table, Segment, Button, Header } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
-import Cookie from 'browser-cookies'
 import { Link } from 'react-router-dom'
 import CancelReserve from './CancelReserve'
 
