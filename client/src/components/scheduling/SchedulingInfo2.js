@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 
+import MomentJ from 'moment-jalaali'
 import SchedulingList from './SchedulingList'
 
 class HardDayInfo extends React.Component {
@@ -35,7 +36,7 @@ class HardDayInfo extends React.Component {
       onClose={() => this.setState({open: false})}
       onOpen={() => this.setState({open: true})}
       trigger={<Button key={Math.random()} >{this.props.label}</Button>}>
-      <Modal.Header>{Strings.event}</Modal.Header>
+      <Modal.Header>{Strings.event}&nbsp;{MomentJ(this.props.date * 1000).format('LL')}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description>
           <SchedulingList schedulingList={this.state.schedulingList}/>

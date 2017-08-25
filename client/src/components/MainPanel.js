@@ -1,7 +1,9 @@
 import React from 'react'
 import Strings from '../localization'
 import { Link } from 'react-router-dom'
+
 import { Button, Grid, Icon } from 'semantic-ui-react'
+import Subsystem from './Subsystem'
 
 class MainPanel extends React.Component {
   render() {
@@ -18,21 +20,20 @@ class MainPanel extends React.Component {
           </div>
           <Grid className='mainpanel'>
             <Grid.Row>
-              <Link to='/profile'><Button className='mainpanel__button' primary>{Strings.profilesub}</Button></Link>
-              <Link to='/internship'><Button className='mainpanel__button' primary>{Strings.internshipsub}</Button></Link>
+              <Subsystem name='Doc'/>
+              <Subsystem name='Intern'/>
+           </Grid.Row>
+            <Grid.Row>
+              <Subsystem name='Bill'/>
+              <Subsystem name='Accom'/>
             </Grid.Row>
             <Grid.Row>
-              <Link to='/accounting'><Button className='mainpanel__button' primary>{Strings.accountingsub}</Button></Link>
-              <Link to='/accommodation'><Button className='mainpanel__button'
-                                                primary>{Strings.accommodationsub}</Button></Link>
+              <Subsystem name='Tour'/>
+              <Subsystem name='Skill'/>
             </Grid.Row>
             <Grid.Row>
-              <Link to='/tours'><Button className='mainpanel__button' primary>{Strings.toursub}</Button></Link>
-              <Link to='/skill'><Button className='mainpanel__button' primary>{Strings.skillsub}</Button></Link>
-            </Grid.Row>
-            <Grid.Row>
-              <Link to='/timing'><Button className='mainpanel__button' primary>{Strings.timingsub}</Button></Link>
-              <Link to='/scheduling'><Button className='mainpanel__button' primary>{Strings.schedulingsub}</Button></Link>
+              <Subsystem name='Timing'/>
+              <Subsystem name='Scheduling'/>
             </Grid.Row>
           </Grid>
         </div>

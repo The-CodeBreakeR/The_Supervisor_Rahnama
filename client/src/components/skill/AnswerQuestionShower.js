@@ -62,7 +62,7 @@ class AnswerQuestionShower extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()} >{Strings.tourStop}</Button>
+        <Button secondary onClick={() => this.close()} >{Strings.tourStop}</Button>
       </Modal.Actions>
     </Modal>
   }

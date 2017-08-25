@@ -10,12 +10,14 @@ class ReserveButton extends React.Component {
       open: false,
       status: 3,
       message: Strings.waitPlease,
+      message2: '',
     }
   }
   handleResault(status) {
     this.setState({status: status})
     if (this.state.status === 0) {
       this.setState({message: Strings.requestSubmitAccept})
+      this.setState({message2: Strings.doPayment})
     }
     if (this.state.status === -1) {
       this.setState({message: Strings.noCapacityTour})
@@ -64,10 +66,11 @@ class ReserveButton extends React.Component {
       <Modal.Content image scrolling>
         <Modal.Description>
           <Header>{this.state.message}</Header>
+          {this.state.message2}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        { (this.state.status !== 3) && <Button onClick={() => this.close()}>
+        { (this.state.status !== 3) && <Button secondary onClick={() => this.close()}>
           {Strings.tourAccepted}
         </Button>}
       </Modal.Actions>

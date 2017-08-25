@@ -44,9 +44,9 @@ class App extends React.Component {
           this.setState({'loggedIn': state})
           this.updateUser()
         }}/>
-        <div className='app__app-menu'>
+        {this.state.loggedIn && <div className='app__app-menu'>
           <AppMenu user={this.state.user} />
-        </div>
+        </div>}
         <AppBody
           setLogin={state => {
             this.setState({'loggedIn': state})

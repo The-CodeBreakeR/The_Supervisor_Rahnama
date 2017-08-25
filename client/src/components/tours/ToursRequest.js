@@ -54,7 +54,7 @@ class ToursRequest extends React.Component {
       <div>
         <Form>
           <Form.TextArea value={this.state.request} label={Strings.requestForTour} placeholder={Strings.requestForTourSpec} onChange={event => this.onRequestChange(event.target.value)} />
-          <Form.Button onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>
+          <Form.Button primary onClick={() => this.sendRequest()} >{Strings.submit}</Form.Button>
         </Form>
       </div>
       {this.state.error &&

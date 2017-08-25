@@ -28,7 +28,7 @@ class AppMenu extends React.Component {
     const enabled = user.personal_profile && user.educational_profile
     return (
       <Menu color='blue' inverted vertical>
-        <Link to='/'><Menu.Item name='home' active={activeItem === 'home'} onClick={(() => this.handleItemClick('home'))}/></Link>
+        <Link to='/'><Menu.Item name={Strings.home} active={activeItem === 'home'} onClick={(() => this.handleItemClick('home'))}/></Link>
         <Link to='/profile'><Menu.Item name={Strings.profilesub} active={activeItem === 'profile'} onClick={(() => this.handleItemClick('profile'))}/></Link>
         <MaybeMenuItem disabled={!enabled} linkTo='/internship' name={Strings.internshipsub} active={activeItem === 'internship'} onClick={(() => this.handleItemClick('internship'))} />
         <MaybeMenuItem disabled={!enabled} linkTo='/accommodation' name={Strings.accommodationsub} active={activeItem === 'accommodation'} onClick={(() => this.handleItemClick('accommodation'))} />
