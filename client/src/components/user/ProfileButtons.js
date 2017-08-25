@@ -6,6 +6,7 @@ import Strings from '../../localization'
 class ProfileButtons extends React.Component {
   render() {
     return <div className='profile-buttons'>
+      <p style={{ marginBottom: '24px' }}>{Strings.personalProfileMessage}</p>
       <Link to='/profile/personal'><Button className='profile-buttons__personal' size='massive' primary>{Strings.personalProfile}</Button></Link>
       <Link to='/profile/educational'><Button size='massive' primary>{Strings.educationalProfile}</Button></Link>
     </div>
