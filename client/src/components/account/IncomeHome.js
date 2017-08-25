@@ -44,7 +44,7 @@ class IncomeHome extends React.Component {
   render() {
     return <div>
       <IncomeList incomeList={this.state.incomeList} setIncomeList={(incomeList) => this.setIncomeList(incomeList)} />
-      <Header>{Strings.incomeInput}</Header>
+      <Header className='app__name'>{Strings.incomeInput}</Header>
       <AddIncome setIncomeList={(incomeList) => this.setIncomeList(incomeList)} />
     </div>
   }
