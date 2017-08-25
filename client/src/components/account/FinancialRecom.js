@@ -55,14 +55,8 @@ class FinancialRecom extends React.Component {
 
   render() {
     return <div>
-      <Header>{Strings.financialRecom}</Header>
       <div>
         {this.state.answer}
-      </div>
-      <div className='account__back'>
-        <Link to='/accounting'>
-          <Button negative>{Strings.accountBack}</Button>
-        </Link>
       </div>
     </div>
   }
