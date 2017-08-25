@@ -44,7 +44,7 @@ class RequestFollowUp extends React.Component {
   }
 
   render() {
-    return <Modal trigger={<Button onClick={() => this.ButtonClickHandle()}>{Strings.followUp}</Button>}
+    return <Modal trigger={<Button primary onClick={() => this.ButtonClickHandle()}>{Strings.followUp}</Button>}
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
     >
@@ -55,7 +55,7 @@ class RequestFollowUp extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button secondary onClick={() => this.close()}>
           {Strings.accountBack}
         </Button>
       </Modal.Actions>
