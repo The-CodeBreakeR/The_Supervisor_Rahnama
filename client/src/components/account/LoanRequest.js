@@ -29,20 +29,24 @@ class LoanRequest extends React.Component {
 
   submit() {
     if (Cookie.get('token')) {
-      fetch('/accounting/loanrequest/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: JSON.parse(localStorage.getItem('user')).token,
-          amount: this.state.reqAmount,
-          purpose: this.state.reqPurpose,
-        }),
-      })
-        .then(response => response.json())
-        .then(result => this.handleResult(result))
+      if (this.state.reqAmount.match(/^\d+$/)) {
+        fetch('/accounting/loanrequest/', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            token: JSON.parse(localStorage.getItem('user')).token,
+            amount: this.state.reqAmount,
+            purpose: this.state.reqPurpose,
+          }),
+        })
+          .then(response => response.json())
+          .then(result => this.handleResult(result))
+      } else {
+        this.setState({pageResponse: Strings.invalidMoney})
+      }
     } else {
       this.setState({pageResponse: Strings.loginFirst})
     }
