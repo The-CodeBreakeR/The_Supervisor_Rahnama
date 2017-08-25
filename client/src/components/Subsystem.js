@@ -6,12 +6,14 @@ import iconDoc from '../../asset/iconDoc.png'
 import iconIntern from '../../asset/iconIntern.png'
 import iconBill from '../../asset/iconBill.png'
 import iconAccom  from '../../asset/iconAccom.png'
-import iconTiming from '../../asset/iconScheduling.png'
+import iconTiming from '../../asset/iconTiming.png'
 import iconTour from '../../asset/iconTour.png'
 import iconSkill from '../../asset/iconSkill.png'
 import iconScheduling from '../../asset/iconScheduling.png'
 class Subsystem extends React.Component {
+
   get_header(name){
+
     if ( name === 'Doc') {
       return <Link to='/profile'>{Strings.profilesub}</Link>
     }
