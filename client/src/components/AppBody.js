@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { Segment, Grid, Header } from 'semantic-ui-react'
+import { Segment, Header } from 'semantic-ui-react'
 
 import UserHome from './user/UserHome'
 import AccommHome from './accomm/AccommHome'
@@ -26,9 +26,10 @@ import Cookie from 'browser-cookies'
 import Strings from '../localization'
 import RegistrationModal from './user/RegistrationModal'
 import LoginModal from './user/LoginModal'
+
 class AppBody extends React.Component {
   render() {
-    const loggedIn = !!Cookie.get('token')
+    const { user, loggedIn, updateProfile } = this.props
     const loginClass = loggedIn ? ' logged-in' : ' not-logged-in'
     return <Segment className={'app__body' + loginClass}>
       {!loggedIn
@@ -40,8 +41,8 @@ class AppBody extends React.Component {
           <LoginModal onLogin={() => this.props.setLogin(true)}/>
         </div>
         : <div>
-          <Route exact path='/' component={MainPanel}/>
-          <Route path='/profile' component={UserHome}/>
+          <Route exact path='/' render={() => <MainPanel user={user}/>}/>
+          <Route path='/profile' render={() => <UserHome updateProfile={updateProfile}/>}/>
           <Route path='/tours' component={ToursHome}/>
           <Route path='/skill' component={SkillHome}/>
           <Route path='/scheduling' component={SchedulingPage}/>
