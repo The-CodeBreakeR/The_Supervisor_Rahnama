@@ -57,7 +57,7 @@ class DelExpense extends React.Component {
   }
 
   render() {
-    return <Button onClick={() => this.ButtonClickHandle()}>{Strings.delExpense}</Button>
+    return <Button negative onClick={() => this.ButtonClickHandle()}>{Strings.delExpense}</Button>
   }
 }
 

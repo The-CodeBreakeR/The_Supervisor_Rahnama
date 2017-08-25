@@ -57,7 +57,7 @@ class DelIncome extends React.Component {
   }
 
   render() {
-    return <Button onClick={() => this.ButtonClickHandle()}>{Strings.delIncome}</Button>
+    return <Button negative onClick={() => this.ButtonClickHandle()}>{Strings.delIncome}</Button>
   }
 }
 

@@ -12,7 +12,7 @@ import AccountHome from './account/AccountHome'
 import InternshipHome from './internship/InternshipHome'
 import CompanyList from './internship/CompanyList'
 import MainPanel from './MainPanel'
-import LogoInfo from './LogoInfo.js'
+import RahInfo from './RahInfo.js'
 
 import Strings from '../localization'
 import RegistrationModal from './user/RegistrationModal'
@@ -56,10 +56,10 @@ class AppBody extends React.Component {
                 <Button className='app__social' as='a' href='https://www.facebook.com/rahnama.rahnama.98871' circular color='facebook' icon='facebook' />
                 <Button className='app__social' as='a' href='https://twitter.com/rahnama' circular color='twitter' icon='twitter' />
                 <Button className='app__social' as='a' href='https://www.instagram.com/rahnama.rahpooyan/' circular color='instagram' icon='instagram' />
-                <Button className='app__social' as='a' href='https://aboutme.google.com/u/0/?referer=gplus' circular color='google plus' icon='google plus' />
+                <Button className='app__social' as='a' href='https://plus.google.com/u/0/108553389512051818393' circular color='google plus' icon='google plus' />
               </div>
               <div className='app__footer__subpart2'>
-                <LogoInfo/>
+                <RahInfo/>
               </div>
             </div>
             <div className='app__footer__rights'>

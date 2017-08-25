@@ -34,7 +34,7 @@ class PresentationButton extends React.Component {
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
       onClose={() => this.setState({open: false})} trigger={<Button
-        size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seePresentationSkill}</Button>}
+      className='skill__button_fast-read' size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.seePresentationSkill}</Button>}
     >
       <Modal.Header>{Strings.skill}</Modal.Header>
       <Modal.Content image scrolling>

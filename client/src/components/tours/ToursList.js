@@ -18,8 +18,11 @@ class ToursList extends React.Component {
   render() {
     const tours = this.props.toursList.map((tour) => this.renderTour(tour))
     return <Segment className='tours__list'>
-      <Table selectable>
+      <Table basic='very' celled selectable scrolling className='accom__rules-list'>
         <Table.Header className='tours__list_header' >
+          <Table.Row >
+            <Table.HeaderCell colSpan={6} textAlign='center' className='Header'>{Strings.toursList}</Table.HeaderCell>
+          </Table.Row>
           <Table.Row>
             <Table.HeaderCell textAlign='center'>{Strings.tourId}</Table.HeaderCell>
             <Table.HeaderCell textAlign='center'>{Strings.tourName}</Table.HeaderCell>
