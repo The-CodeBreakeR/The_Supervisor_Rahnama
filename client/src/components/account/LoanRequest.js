@@ -19,12 +19,36 @@ class LoanRequest extends React.Component {
     this.setState({open: false})
   }
 
+  updateRequest() {
+    if (Cookie.get('token')) {
+      fetch('/accounting/getrequest/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: JSON.parse(localStorage.getItem('user')).token,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.status === 0) {
+            this.props.setRequestList(result.requests)
+          } else {
+            this.props.setRequestList([])
+          }
+        })
+    }
+  }
+
   handleResult(result) {
     if (result.status === -1) {
       this.setState({pageResponse: Strings.submitionFailed})
     } else {
       this.setState({pageResponse: Strings.submitionOK})
     }
+    this.updateRequest()
   }
 
   submit() {
