@@ -37,10 +37,9 @@ class RuleList extends React.Component {
 
   render() {
     const rules = this.state.rulesList.map((rule) => this.renderRule(rule))
-    return <Modal trigger={<Button className='internship__mainbutton'
-      size='massive' color='green' onClick={() => this.ButtonClickHandle()}>{Strings.internRules}</Button>}
-    open={this.state.open}
-    onOpen={() => this.setState({open: true})}
+    return <Modal trigger={<Button color='green' onClick={() => this.ButtonClickHandle()}>{Strings.internRules}</Button>}
+      open={this.state.open}
+      onOpen={() => this.setState({open: true})}
     >
       <Modal.Header>{Strings.internRules}</Modal.Header>
       <Modal.Content image scrolling>
@@ -51,7 +50,7 @@ class RuleList extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button secondary onClick={() => this.close()}>
           {Strings.internCloseModal}
         </Button>
       </Modal.Actions>

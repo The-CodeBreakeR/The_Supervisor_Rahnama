@@ -23,7 +23,11 @@ class ToursInfo extends React.Component {
       tourcapacity: '',
       status: 4,
       commentList: [],
+      open: false,
     }
+  }
+  close() {
+    this.setState({ open: false })
   }
   statusChecker(id) {
     if (Cookie.get('token')) {
@@ -73,7 +77,10 @@ class ToursInfo extends React.Component {
   }
 
   render() {
-    return <Modal trigger={<Button onClick={() => this.getInfo()}>{Strings.moreInfo}</Button>}>
+    return <Modal
+      open={this.state.open}
+      onOpen={() => this.setState({ open: true })}
+      trigger={<Button primary onClick={() => this.getInfo()}>{Strings.moreInfo}</Button>}>
       <Modal.Header>{Strings.tourInfo}</Modal.Header>
       <Modal.Content image scrolling>
         <Image
@@ -95,6 +102,9 @@ class ToursInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
+        <Button secondary onClick={() => this.close()}>
+          {Strings.tourStop}
+        </Button>
         {(this.state.status === 4) && <Message negative><Message.Header>{Strings.forReserveRegister}</Message.Header>
         </Message>}
         {(this.state.status === 0 || this.state.status === 3) && <ReserveButton setStatus={(stat) => this.setStatus(stat)} tourId={this.state.TourID}

@@ -78,7 +78,7 @@ class PaymentButton extends React.Component {
       <Modal.Content image scrolling>
         <Modal.Description>
           {this.state.status === 0 && <Input value={this.state.input} placeholder={Strings.tourBankCode} onChange={event => this.onInputChange(event.target.value)}/>}
-          {this.state.status === 0 && <Button onClick={() => this.handleButtonClick(this.props.tourId)}>
+          {this.state.status === 0 && <Button primary onClick={() => this.handleButtonClick(this.props.tourId)}>
             {Strings.submit}</Button>}
           {this.state.messageStatus === 1 && <p>{Strings.errorPayment}</p>
           }
@@ -86,7 +86,7 @@ class PaymentButton extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button secondary onClick={() => this.close()}>
           {Strings.tourStop}
         </Button>
       </Modal.Actions>

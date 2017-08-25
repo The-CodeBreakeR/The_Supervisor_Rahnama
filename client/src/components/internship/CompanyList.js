@@ -53,11 +53,6 @@ class CompanyList extends React.Component {
           </Table.Body>
         </Table>
       </Segment>
-      <div className='internship__companies__back'>
-        <Link to='/internship'>
-          <Button negative>{Strings.internCloseModal}</Button>
-        </Link>
-      </div>
     </div>
   }
 }
