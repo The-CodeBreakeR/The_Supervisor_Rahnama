@@ -91,7 +91,7 @@ class SchedulingPage extends React.Component {
         </Grid.Column>
         <Grid.Column className='column__2'>
           <div className='scheduling__box1'>
-            <div >
+
               <Table basic='very' celled selectable className='scheduling__box'>
                 <Table.Header >
                   <Table.Row>
@@ -110,7 +110,7 @@ class SchedulingPage extends React.Component {
                   </div>
                 </Table.Body>
               </Table>
-            </div>
+
             <HardDayModal onLogin={() => this.forceUpdate()}/>
           </div>
         </Grid.Column>
