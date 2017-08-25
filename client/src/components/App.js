@@ -4,7 +4,7 @@ import MomentJ from 'moment-jalaali'
 
 import AppHeader from './AppHeader'
 import AppBody from './AppBody'
-
+import AppMenu from './AppMenu'
 MomentJ.loadPersian()
 
 class App extends React.Component {
@@ -17,7 +17,11 @@ class App extends React.Component {
   render() {
     return <div className='app'>
       <AppHeader setLogin={state => this.setState({'loggedIn': state}) }/>
+      {this.state.loggedIn && <div className='app__app-menu'>
+        <AppMenu/>
+      </div>}
       <AppBody setLogin={state => this.setState({'loggedIn': state}) }/>
+
     </div>
   }
 }

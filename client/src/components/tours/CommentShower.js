@@ -17,8 +17,8 @@ class CommentShower extends React.Component {
     return <Segment>
       <Comment>
         <Comment.Content>
-          <Comment.Author>{comment.name}</Comment.Author>
-          <Comment.Text>{comment.text}</Comment.Text>
+          <Comment.Author>{Strings.name}: {comment.name}</Comment.Author>
+          <Comment.Text>{Strings.commentText}: {comment.text}</Comment.Text>
         </Comment.Content>
       </Comment>
     </Segment>
