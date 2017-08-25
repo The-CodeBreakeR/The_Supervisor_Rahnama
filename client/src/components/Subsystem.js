@@ -123,7 +123,6 @@ class Subsystem extends React.Component {
         <Item.Image className="subsystem__image" size='tiny' src={this.get_image(this.props.name)} />
         <Item.Content>
           <Item.Header as='a'>{this.get_header(this.props.name)}</Item.Header>
-          <Item.Meta>{Strings.info}</Item.Meta>
           <Item.Description>
             {this.get_description(this.props.name)}
           </Item.Description>
