@@ -25,6 +25,7 @@ class MainPanel extends React.Component {
               <div>{`${Strings.year} ${thisYear - user.educational_profile.entrance_year + 1}`}</div>
             </div>
           </div>
+          <p className='main-panel__welcome'>{Strings.welcomeMessage}</p>
           <Grid className='mainpanel'>
             <Grid.Row>
               <Subsystem name='Doc'/>
