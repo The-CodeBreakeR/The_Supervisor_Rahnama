@@ -4,6 +4,8 @@ import PresentationButton from './PresentationButton'
 import FastReadButton from './FastReadButton'
 import { Grid } from 'semantic-ui-react'
 import TypeSkill from './TypeSkill'
+import SkillGuide from './SkillGuide'
+
 import AnswerQuestionShower from './AnswerQuestionShower'
 
 class SkillHome extends React.Component {
@@ -19,6 +21,9 @@ class SkillHome extends React.Component {
       <Grid.Row columns={2}>
         <TypeSkill/>
         <FastReadButton/>
+      </Grid.Row>
+      <Grid.Row centered>
+        <SkillGuide/>
       </Grid.Row>
     </Grid>
   }
