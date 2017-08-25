@@ -134,6 +134,7 @@ class EducationalProfile extends React.Component {
 
   handleResult(result) {
     if (result.url) {
+      this.props.updateProfile()
       this.setState({ url: result.url, done: true })
     }
   }
@@ -152,7 +153,15 @@ class EducationalProfile extends React.Component {
             {Strings.profileSuccessfullySubmitted}
           </Modal.Content>
           <Modal.Actions>
-            <Button primary onClick={() => this.setState({ done: false })}>{Strings.finish}</Button>
+            <Button
+              primary
+              onClick={() => {
+                this.setState({ done: false })
+                this.props.history.push('/profile')
+              }}
+            >
+              {Strings.finish}
+              </Button>
           </Modal.Actions>
         </Modal>
         <Segment>

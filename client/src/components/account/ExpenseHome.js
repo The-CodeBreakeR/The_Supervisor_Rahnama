@@ -43,15 +43,9 @@ class ExpenseHome extends React.Component {
 
   render() {
     return <div>
-      <Header>{Strings.expenseTable}</Header>
       <ExpenseList expenseList={this.state.expenseList} setExpenseList={(expenseList) => this.setExpenseList(expenseList)} />
-      <Header>{Strings.expenseInput}</Header>
+      <Header className='app__name'>{Strings.expenseInput}</Header>
       <AddExpense setExpenseList={(expenseList) => this.setExpenseList(expenseList)} />
-      <div className='account__back'>
-        <Link to='/accounting'>
-          <Button negative>{Strings.accountBack}</Button>
-        </Link>
-      </div>
     </div>
   }
 }

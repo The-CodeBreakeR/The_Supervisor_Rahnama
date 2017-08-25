@@ -15,12 +15,12 @@ class SkillHome extends React.Component {
         <CodingSkillButton/>
         <PresentationButton/>
       </Grid.Row>
-      <Grid.Row centered>
-        <SkillGuide/>
-      </Grid.Row>
       <Grid.Row columns={2}>
         <TypeSkill/>
         <FastReadButton/>
+      </Grid.Row>
+      <Grid.Row centered>
+        <SkillGuide/>
       </Grid.Row>
       <Grid.Row centered>
         <AnswerQuestionShower/>

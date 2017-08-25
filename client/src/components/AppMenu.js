@@ -1,7 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Strings from '../localization'
+import Cookie from 'browser-cookies'
 import { Menu } from 'semantic-ui-react'
+
+const MaybeMenuItem = ({name, active, onClick, disabled, linkTo}) => {
+  const menuItem = <Menu.Item name={name} active={active} onClick={disabled ? null : onClick} disabled={disabled} />
+  return disabled
+    ? menuItem
+    : <Link to={linkTo}>{menuItem}</Link>
+}
 
 class AppMenu extends React.Component {
   constructor(props) {
@@ -11,28 +19,32 @@ class AppMenu extends React.Component {
     }
   }
 
-  setPlacesList(placesList) {
-    this.setState({placesList: placesList})
-  }
-
   handleItemClick(name) {
     this.setState({activeItem: name})
   }
 
+  logout() {
+    Cookie.erase('token')
+    localStorage.removeItem('user')
+    this.props.setLogin(false)
+  }
+
   render() {
     const { activeItem } = this.state
+    const { user } = this.props
+    const enabled = user.personal_profile && user.educational_profile
     return (
       <Menu color='blue' inverted vertical>
         <Link to='/'><Menu.Item name={Strings.home} active={activeItem === 'home'} onClick={(() => this.handleItemClick('home'))}/></Link>
         <Link to='/profile'><Menu.Item name={Strings.profilesub} active={activeItem === 'profile'} onClick={(() => this.handleItemClick('profile'))}/></Link>
-        <Link to='/internship'><Menu.Item name={Strings.internshipsub} active={activeItem === 'internship'} onClick={(() => this.handleItemClick('internship'))}/></Link>
-        <Link to='/accommodation'><Menu.Item name={Strings.accommodationsub} active={activeItem === 'accommodation'} onClick={(() => this.handleItemClick('accommodation'))}/></Link>
-        <Link to='/accounting'><Menu.Item name={Strings.accountingsub} active={activeItem === 'accounting'} onClick={(() => this.handleItemClick('accounting'))}/></Link>
-        <Link to='/tours'><Menu.Item name={Strings.toursub} active={activeItem === 'tours'} onClick={(() => this.handleItemClick('tours'))}/></Link>
-        <Link to='/skill'><Menu.Item name={Strings.skillsub} active={activeItem === 'skill'} onClick={(() => this.handleItemClick('skill'))}/></Link>
-        <Link to='/timing'><Menu.Item name={Strings.timingsub} active={activeItem === 'timing'} onClick={(() => this.handleItemClick('timing'))}/></Link>
-        <Link to='/scheduling'><Menu.Item name={Strings.schedulingsub} active={activeItem === 'scheduling'} onClick={(() => this.handleItemClick('scheduling'))}/></Link>
-
+        <MaybeMenuItem disabled={!enabled} linkTo='/internship' name={Strings.internshipsub} active={activeItem === 'internship'} onClick={(() => this.handleItemClick('internship'))} />
+        <MaybeMenuItem disabled={!enabled} linkTo='/accommodation' name={Strings.accommodationsub} active={activeItem === 'accommodation'} onClick={(() => this.handleItemClick('accommodation'))} />
+        <MaybeMenuItem disabled={!enabled} linkTo='/accounting' name={Strings.accountingsub} active={activeItem === 'accounting'} onClick={(() => this.handleItemClick('accounting'))} />
+        <MaybeMenuItem disabled={!enabled} linkTo='/tours' name={Strings.toursub} active={activeItem === 'tours'} onClick={(() => this.handleItemClick('tours'))} />
+        <MaybeMenuItem disabled={!enabled} linkTo='/skill' name={Strings.skillsub} active={activeItem === 'skill'} onClick={(() => this.handleItemClick('skill'))} />
+        <MaybeMenuItem disabled={!enabled} linkTo='/timing' name={Strings.timingsub} active={activeItem === 'timing'} onClick={(() => this.handleItemClick('timing'))} />
+        <MaybeMenuItem disabled={!enabled} linkTo='/scheduling' name={Strings.schedulingsub} active={activeItem === 'scheduling'} onClick={(() => this.handleItemClick('scheduling'))} />
+        <Menu.Item name={Strings.logout} onClick={() => this.logout()} />
       </Menu>
     )
   }

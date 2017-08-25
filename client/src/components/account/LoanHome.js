@@ -43,15 +43,9 @@ class LoanHome extends React.Component {
 
   render() {
     return <div>
-      <Header>{Strings.requestTable}</Header>
       <RequestList requestList={this.state.requestList} />
-      <Header>{Strings.loanRequestInput}</Header>
+      <Header className='app__name'>{Strings.loanRequestInput}</Header>
       <LoanRequest/>
-      <div className='account__back'>
-        <Link to='/accounting'>
-          <Button negative>{Strings.accountBack}</Button>
-        </Link>
-      </div>
     </div>
   }
 }

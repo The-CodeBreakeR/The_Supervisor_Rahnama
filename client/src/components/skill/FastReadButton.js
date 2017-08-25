@@ -44,7 +44,7 @@ class FastReadButton extends React.Component {
       </Modal.Content>
       <Modal.Actions>
         <SubmitQuestionButton/>
-        <Button onClick={() => this.close()}>
+        <Button secondary onClick={() => this.close()}>
           {Strings.tourStop}
         </Button>
       </Modal.Actions>

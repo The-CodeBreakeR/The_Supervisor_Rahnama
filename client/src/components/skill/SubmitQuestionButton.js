@@ -69,9 +69,9 @@ class SubmitQuestionButton extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        {this.state.status === 0 && <Button onClick={() => this.sendRequest()} >{Strings.submit}</Button>}
-        {this.state.status === 0 && <Button onClick={() => this.close()} >{Strings.cancel}</Button>}
-        {this.state.status === 1 && <Button onClick={() => this.close()} >{Strings.tourStop}</Button>}
+        {this.state.status === 0 && <Button primary onClick={() => this.sendRequest()} >{Strings.submit}</Button>}
+        {this.state.status === 0 && <Button secondary onClick={() => this.close()} >{Strings.cancel}</Button>}
+        {this.state.status === 1 && <Button secondary onClick={() => this.close()} >{Strings.tourStop}</Button>}
       </Modal.Actions>
     </Modal>
   }

@@ -37,8 +37,7 @@ class RecommendationList extends React.Component {
 
   render() {
     const recommendations = this.state.recommendationsList.map((recommendation) => this.renderRecommendation(recommendation))
-    return <Modal trigger={<Button className='internship__mainbutton'
-      size='massive' color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.internRecommendations}</Button>}
+    return <Modal trigger={<Button color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.internRecommendations}</Button>}
     open={this.state.open}
     onOpen={() => this.setState({open: true})}
     >
@@ -51,7 +50,7 @@ class RecommendationList extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button secondary onClick={() => this.close()}>
           {Strings.internCloseModal}
         </Button>
       </Modal.Actions>
