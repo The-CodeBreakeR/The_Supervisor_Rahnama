@@ -5,13 +5,15 @@ import MomentJ from 'moment-jalaali'
 import AppHeader from './AppHeader'
 import AppBody from './AppBody'
 import AppMenu from './AppMenu'
+import { getUser } from './user/utils'
+
 MomentJ.loadPersian()
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedIn: false,
+      loggedIn: !!getUser(),
     }
   }
   render() {

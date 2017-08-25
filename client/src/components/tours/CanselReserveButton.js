@@ -68,7 +68,7 @@ class CanselReserveButton extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.close()}>
+        <Button secondary onClick={() => this.close()}>
           {Strings.tourStop}
         </Button>
       </Modal.Actions>
