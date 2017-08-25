@@ -4,17 +4,6 @@ import { Link } from 'react-router-dom'
 import { Button, Grid } from 'semantic-ui-react'
 
 class MainPanel extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      placesList: [],
-    }
-  }
-
-  setPlacesList(placesList) {
-    this.setState({placesList: placesList})
-  }
-
   render() {
     return <Grid className='mainpanel'>
       <Grid.Row>
@@ -23,7 +12,8 @@ class MainPanel extends React.Component {
       </Grid.Row>
       <Grid.Row>
         <Link to='/accounting'><Button className='mainpanel__button' primary>{Strings.accountingsub}</Button></Link>
-        <Link to='/accommodation'><Button className='mainpanel__button' primary>{Strings.accommodationsub}</Button></Link>
+        <Link to='/accommodation'><Button className='mainpanel__button'
+                                          primary>{Strings.accommodationsub}</Button></Link>
       </Grid.Row>
       <Grid.Row>
         <Link to='/tours'><Button className='mainpanel__button' primary>{Strings.toursub}</Button></Link>
