@@ -128,7 +128,7 @@ const Strings = new LocalizedStrings({
     wrongStudentIdOrPassword: 'شماره‌ی دانشجویی یا کلمه‌ی عبور صحیح نیست.',
     welcomeDear: 'گرامی، خوش آمدید!',
     user: 'کاربر',
-    logout: 'خروج',
+    logout: 'خروج از سیستم',
     search: 'جستجو',
     tourName: 'نام تور',
     noTourFound: 'توری پیدا نشد.',

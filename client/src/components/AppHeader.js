@@ -1,8 +1,6 @@
 import React from 'react'
 import Strings from '../localization'
-import { Header, Segment, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import AuthHeader from './user/AuthHeader'
+import { Header, Segment } from 'semantic-ui-react'
 import LogoInfo from './LogoInfo.js'
 import VideoTraining from './VideoTraining.js'
 
@@ -12,7 +10,6 @@ class AppHeader extends React.Component {
       <LogoInfo/>
       <div style={ { marginLeft: '8px' } }>
         <Header className='app__header__title'>{Strings.rahnamaSystem}</Header>
-        <AuthHeader setLogin={state => this.props.setLogin(state) }/>
       </div>
       {location.pathname === '/' && <VideoTraining/>}
     </Segment>

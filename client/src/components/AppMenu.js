@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Strings from '../localization'
+import Cookie from 'browser-cookies'
 import { Menu } from 'semantic-ui-react'
 
 const MaybeMenuItem = ({name, active, onClick, disabled, linkTo}) => {
@@ -22,6 +23,12 @@ class AppMenu extends React.Component {
     this.setState({activeItem: name})
   }
 
+  logout() {
+    Cookie.erase('token')
+    localStorage.removeItem('user')
+    this.props.setLogin(false)
+  }
+
   render() {
     const { activeItem } = this.state
     const { user } = this.props
@@ -37,6 +44,7 @@ class AppMenu extends React.Component {
         <MaybeMenuItem disabled={!enabled} linkTo='/skill' name={Strings.skillsub} active={activeItem === 'skill'} onClick={(() => this.handleItemClick('skill'))} />
         <MaybeMenuItem disabled={!enabled} linkTo='/timing' name={Strings.timingsub} active={activeItem === 'timing'} onClick={(() => this.handleItemClick('timing'))} />
         <MaybeMenuItem disabled={!enabled} linkTo='/scheduling' name={Strings.schedulingsub} active={activeItem === 'scheduling'} onClick={(() => this.handleItemClick('scheduling'))} />
+        <Menu.Item name={Strings.logout} onClick={() => this.logout()} />
       </Menu>
     )
   }
