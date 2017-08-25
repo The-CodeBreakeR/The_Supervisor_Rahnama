@@ -14,10 +14,6 @@ class AppHeader extends React.Component {
         <Header className='app__header__title'>{Strings.rahnamaSystem}</Header>
         <AuthHeader setLogin={state => this.props.setLogin(state) }/>
       </div>
-      {location.pathname !== '/' && <div className='app__header__return'>
-        <Link to='/'><Button color='green'>{Strings.bakToHome}</Button></Link>
-      </div>
-      }
       {location.pathname === '/' && <VideoTraining/>}
     </Segment>
   }
