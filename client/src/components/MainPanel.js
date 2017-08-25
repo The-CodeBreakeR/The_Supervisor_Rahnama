@@ -16,8 +16,8 @@ class MainPanel extends React.Component {
 
     return (user.personal_profile && user.educational_profile)
       ? <div>
-          <div>
-            <Icon name='user' size='massive' />
+          <div className='main-panel__user-info'>
+            <Icon className='main-panel__user-icon' name='student' size='massive' />
             <div className='main-panel__user-data'>
               <div>{`${userPrefix} ${userName}`}</div>
               <div>{`${getDegree(user.educational_profile.degree)} ${getMajor(user.educational_profile.major)}`}</div>
