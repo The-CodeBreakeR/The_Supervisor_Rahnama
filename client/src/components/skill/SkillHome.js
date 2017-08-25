@@ -11,7 +11,6 @@ import AnswerQuestionShower from './AnswerQuestionShower'
 class SkillHome extends React.Component {
   render() {
     return <Grid centered>
-      <SkillGuide/>
       <Grid.Row columns={2}>
         <CodingSkillButton/>
         <PresentationButton/>
@@ -22,6 +21,9 @@ class SkillHome extends React.Component {
       <Grid.Row columns={2}>
         <TypeSkill/>
         <FastReadButton/>
+      </Grid.Row>
+      <Grid.Row centered>
+        <SkillGuide/>
       </Grid.Row>
     </Grid>
   }
