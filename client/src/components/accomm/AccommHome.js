@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Menu } from 'semantic-ui-react'
 import Strings from '../../localization'
-import { Link } from 'react-router-dom'
 import RulesList from './RulesList'
 import ContractedList from './ContractedList'
 import PlacesList from './PlacesList'
@@ -11,7 +10,7 @@ class AccommHome extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      activeItem: 'photos',
+      activeItem: 'plc',
     }
   }
 
@@ -19,23 +18,20 @@ class AccommHome extends React.Component {
     this.setState({activeItem: name})
   }
   render() {
-     const { activeItem } = this.state
+    const { activeItem } = this.state
     return <div className='accomm'>
       <RulesList/>
-      {/*<Link to='/accommodation/showrules'><Button className='mainpanel__button' size='massive' color='blue'>{Strings.accommShowRules}</Button></Link>*/}
+
       <Menu tabular>
-        <Menu.Item name={Strings.accommShowPlaces}  active={activeItem === 'photos'} onClick={(() => this.handleItemClick('photos'))} />
-        <Menu.Item name={Strings.accommShowReserved} active={activeItem === 'movie'} onClick={(() => this.handleItemClick('movie'))} />
-        <Menu.Item name={Strings.accommShowContracted}  active={activeItem === 'bio'} onClick={(() => this.handleItemClick('bio'))} />
+        <Menu.Item name={Strings.accommShowPlaces} active={activeItem === 'plc'} onClick={(() => this.handleItemClick('plc'))} />
+        <Menu.Item name={Strings.accommShowReserved} active={activeItem === 'rese'} onClick={(() => this.handleItemClick('rese'))} />
+        <Menu.Item name={Strings.accommShowContracted} active={activeItem === 'cont'} onClick={(() => this.handleItemClick('cont'))} />
 
       </Menu>
-      {this.state.activeItem === 'bio' && <ContractedList/>}
-      {this.state.activeItem === 'photos' && <PlacesList/>}
-      {this.state.activeItem === 'movie' && <ReservedList/>}
+      {this.state.activeItem === 'cont' && <ContractedList/>}
+      {this.state.activeItem === 'plc' && <PlacesList/>}
+      {this.state.activeItem === 'rese' && <ReservedList/>}
 
-      {/*<Link to='/accommodation/showplaces'><Button className='mainpanel__button' size='massive' color='blue'>{Strings.accommShowPlaces}</Button></Link>*/}
-      {/*<Link to='/accommodation/showreserved'><Button className='mainpanel__button' size='massive' color='blue'>{Strings.accommShowReserved}</Button></Link>*/}
-      {/*<Link to='/accommodation/showcontracted'><Button className='mainpanel__button' size='massive' color='blue'>{Strings.accommShowContracted}</Button></Link>*/}
     </div>
   }
 }

@@ -15,8 +15,11 @@ class RequestList extends React.Component {
   render() {
     const requests = this.props.requestList.map((request) => this.renderRequest(request))
     return <Segment className='account__list'>
-      <Table selectable>
+      <Table selectable className='account__tablelist'>
         <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell colSpan={4} textAlign='center' className='Header'>{Strings.requestTable}</Table.HeaderCell>
+          </Table.Row>
           <Table.Row>
             <Table.HeaderCell textAlign='center'>{Strings.requestID}</Table.HeaderCell>
             <Table.HeaderCell textAlign='center'>{Strings.requestPurpose}</Table.HeaderCell>

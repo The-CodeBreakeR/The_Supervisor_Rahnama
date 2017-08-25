@@ -21,8 +21,11 @@ class ExpenseList extends React.Component {
   render() {
     const expenses = this.props.expenseList.map((expense) => this.renderExpense(expense))
     return <Segment className='account__list'>
-      <Table selectable>
+      <Table selectable className='account__tablelist'>
         <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell colSpan={4} textAlign='center' className='Header'>{Strings.expenseTable}</Table.HeaderCell>
+          </Table.Row>
           <Table.Row>
             <Table.HeaderCell textAlign='center'>{Strings.expenseID}</Table.HeaderCell>
             <Table.HeaderCell textAlign='center'>{Strings.expenseDestination}</Table.HeaderCell>
