@@ -102,7 +102,7 @@ class PersonalProfile extends React.Component {
     this.onNationalIdChanged(this.state.nationalId.value)
     this.onMobileNumberChanged(this.state.mobileNumber.value)
     this.onLandlineNumberChanged(this.state.landlineNumber.value)
-    this.onGenderChanged(this.state.maritalStatus.value)
+    this.onGenderChanged(this.state.gender.value)
     this.onAddressChanged(this.state.address.value)
   }
 
@@ -162,6 +162,7 @@ class PersonalProfile extends React.Component {
 
   handleResult(result) {
     if (result.url) {
+      this.props.updateProfile()
       this.setState({ url: result.url, done: true })
     }
   }
@@ -180,7 +181,15 @@ class PersonalProfile extends React.Component {
             {Strings.profileSuccessfullySubmitted}`
           </Modal.Content>
           <Modal.Actions>
-            <Button primary onClick={() => this.setState({ done: false })}>{Strings.finish}</Button>
+            <Button
+              primary
+              onClick={() => {
+                this.setState({ done: false })
+                this.props.history.push('/profile')
+              }}
+            >
+              {Strings.finish}
+            </Button>
           </Modal.Actions>
         </Modal>
         <Header>{Strings.personalProfile}</Header>
@@ -239,7 +248,7 @@ class PersonalProfile extends React.Component {
             placeholder={Strings.gender}
             value={this.state.gender.value}
             error={this.state.gender.error}
-            options={[{key: 'S', value: 'S', text: Strings.single}, {key: 'M', value: 'M', text: Strings.married}]}
+            options={[{key: 'M', value: 'M', text: Strings.male}, {key: 'F', value: 'F', text: Strings.female}]}
             onChange={(_, obj) => this.onGenderChanged(obj.value)}
           />
           <Form.TextArea
