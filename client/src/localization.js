@@ -47,9 +47,9 @@ const Strings = new LocalizedStrings({
     internRules: 'قوانین کارآموزی',
     internRecommendations: 'راهنمایی کارآموزی',
     internCloseModal: 'بازگشت',
-    toursub: 'سفر های سیاحتی و زیارتی',
+    toursub: 'سفر های دانشجویی',
     skillsub: 'مهارت های دانشجویی',
-    accountingsub: 'حسابداری مالی دوران تحصیلی',
+    accountingsub: 'حسابداری دوران تحصیلی',
     accommodationsub: 'اقامت دانشجویی',
     profilesub: 'تکمیل پرونده‌ی کاربری',
     internshipsub: 'کارآموزی تحصیلی‌',
@@ -322,6 +322,7 @@ const Strings = new LocalizedStrings({
     forRuleClick: 'برای مشاهده قوانین کارآموزی بر روی دکمه زیر کلیک کنید',
     forGuideClick: 'برای مشاهده راهنمایی کارآموزی بر روی دکمه زیر کلیک کنید',
     doPayment: 'کاربر گرامی برای تکمیل فرایند رزرو شما تا یک ساعت آینده فرصت دارید مراحل پرداخت را انجام دهید. در صورت انجام ندادن این مرحله رزرو شما پس از یک ساعت حذف خواهد شد',
+    rahnamaInfo: 'سامانه راهنمای دانش آموخته ناب (راهنما) ساخته شده در تابستان ۹۶ به دسته گروه'
   },
 })
 

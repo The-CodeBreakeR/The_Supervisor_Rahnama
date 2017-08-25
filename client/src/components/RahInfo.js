@@ -1,9 +1,9 @@
 import React from 'react'
 import { Image, Modal } from 'semantic-ui-react'
 import Strings from '../localization'
-import rahLogo from '../../asset/logo.png'
+import rahLogo from '../../asset/RAH_logo.png'
 
-class LogoInfo extends React.Component {
+class RahInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,11 +15,11 @@ class LogoInfo extends React.Component {
     const logo = <Image className='app__header__column__logo' src={rahLogo} alt={'no Image load'} />
     const logoBig = <Image className='app__header__logo__big' src={rahLogo} alt={'no Image load'} />
     return <Modal closeIcon trigger={logo}>
-      <Modal.Header>{Strings.rahnamaSystem}</Modal.Header>
+      <Modal.Header>{Strings.rah}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description className='app__logo__modal'>
           {logoBig}
-          <p>{Strings.rahnamaInfo}</p>
+          <p>{Strings.powered}</p>
           <a href='http://www.rahemohandesi.persianblog.ir'>{Strings.rah}</a>
         </Modal.Description>
       </Modal.Content>
@@ -27,4 +27,4 @@ class LogoInfo extends React.Component {
   }
 }
 
-export default LogoInfo
+export default RahInfo
