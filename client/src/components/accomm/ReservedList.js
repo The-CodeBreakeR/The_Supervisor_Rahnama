@@ -69,11 +69,6 @@ class ReservedList extends React.Component {
           </Table.Body>
         </Table>
       </Segment>
-      <div className='accomm__back'>
-        <Link to='/accommodation'>
-          <Button negative>{Strings.accommBack}</Button>
-        </Link>
-      </div>
     </div>
   }
 }

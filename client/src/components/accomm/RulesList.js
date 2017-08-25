@@ -40,28 +40,46 @@ class RulesList extends React.Component {
   }
   render() {
     const rules = this.state.rulesList.map((rule) => this.renderRule(rule))
-    return <div>
-      <Header>{Strings.rulesTable}</Header>
-      <Segment className='accomm__list'>
-        <Table selectable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell textAlign='center'>{Strings.ruleID}</Table.HeaderCell>
-              <Table.HeaderCell textAlign='center'>{Strings.ruleDate}</Table.HeaderCell>
-              <Table.HeaderCell textAlign='center'>{Strings.ruleDescription}</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {rules}
-          </Table.Body>
-        </Table>
-      </Segment>
-      <div className='accomm__back'>
-        <Link to='/accommodation'>
-          <Button negative>{Strings.accommBack}</Button>
-        </Link>
-      </div>
-    </div>
+    // return <div>
+    //   <Header>{Strings.rulesTable}</Header>
+    //   <Segment className='accomm__list'>
+    //     <Table selectable>
+    //       <Table.Header>
+    //         <Table.Row>
+    //           <Table.HeaderCell textAlign='center'>{Strings.ruleID}</Table.HeaderCell>
+    //           <Table.HeaderCell textAlign='center'>{Strings.ruleDate}</Table.HeaderCell>
+    //           <Table.HeaderCell textAlign='center'>{Strings.ruleDescription}</Table.HeaderCell>
+    //         </Table.Row>
+    //       </Table.Header>
+    //       <Table.Body>
+    //         {rules}
+    //       </Table.Body>
+    //     </Table>
+    //   </Segment>
+    //   <div className='accomm__back'>
+    //     <Link to='/accommodation'>
+    //       <Button negative>{Strings.accommBack}</Button>
+    //     </Link>
+    //   </div>
+    // </div>
+
+     return <div>
+      <Table basic='very' celled selectable scrolling className='accom__rules-list'>
+        <Table.Header>
+          <Table.Row >
+            <Table.HeaderCell colSpan={3} textAlign='center' className='Header'>{Strings.rulesTable}</Table.HeaderCell>
+          </Table.Row>
+          <Table.Row>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleID}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleDate}</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>{Strings.ruleDescription}</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body className='accom__rules-list__body'>
+          {rules}
+        </Table.Body>
+
+      </Table></div>
   }
 }
 

@@ -20,10 +20,10 @@ class AppMenu extends React.Component {
   }
 
   render() {
-     const { activeItem } = this.state
+    const { activeItem } = this.state
     return (
       <Menu color='blue' inverted vertical>
-        <Link to='/'><Menu.Item name='home' active={activeItem === 'home'} onClick={(() => this.handleItemClick('home'))}/></Link>
+        <Link to='/'><Menu.Item name={Strings.home} active={activeItem === 'home'} onClick={(() => this.handleItemClick('home'))}/></Link>
         <Link to='/profile'><Menu.Item name={Strings.profilesub} active={activeItem === 'profile'} onClick={(() => this.handleItemClick('profile'))}/></Link>
         <Link to='/internship'><Menu.Item name={Strings.internshipsub} active={activeItem === 'internship'} onClick={(() => this.handleItemClick('internship'))}/></Link>
         <Link to='/accommodation'><Menu.Item name={Strings.accommodationsub} active={activeItem === 'accommodation'} onClick={(() => this.handleItemClick('accommodation'))}/></Link>
