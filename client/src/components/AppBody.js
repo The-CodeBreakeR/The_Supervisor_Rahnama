@@ -29,24 +29,15 @@ import LoginModal from './user/LoginModal'
 class AppBody extends React.Component {
   render() {
     const loggedIn = !!Cookie.get('token')
-    const segmentStyle = {
-      backgroundColor: (loggedIn ? 'white' : 'transparent'),
-    }
-    return <Segment className='app__body' style={segmentStyle}>
+    const loginClass = loggedIn ? ' logged-in' : ' not-logged-in'
+    return <Segment className={'app__body' + loginClass}>
       {!loggedIn
         ? <div className='app__auth__guest'>
-          <Grid>
-            <Grid.Column>
-              <Header>{Strings.loginWelcome}</Header>
-              <p>{Strings.loginInfo}</p>
-              <br/>
-              <br/>
-              <Grid.Row>
-                <RegistrationModal onLogin={() => this.props.setLogin(true)}/>
-                <LoginModal onLogin={() => this.props.setLogin(true)}/>
-              </Grid.Row>
-            </Grid.Column>
-          </Grid>
+          <Header>{Strings.loginWelcome}</Header>
+          <p>{Strings.loginInfo}</p>
+          <br/>
+          <RegistrationModal onLogin={() => this.props.setLogin(true)}/>
+          <LoginModal onLogin={() => this.props.setLogin(true)}/>
         </div>
         : <div>
           <Route exact path='/' component={MainPanel}/>

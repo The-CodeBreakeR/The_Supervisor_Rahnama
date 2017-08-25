@@ -9,7 +9,7 @@ class PersonalProfile extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
-    this.fields = ['fatherName', 'birthDate', 'birthPlace', 'nationalId', 'mobileNumber', 'maritalStatus',
+    this.fields = ['fatherName', 'birthDate', 'birthPlace', 'nationalId', 'mobileNumber', 'gender',
       'landlineNumber', 'address']
   }
 
@@ -31,7 +31,7 @@ class PersonalProfile extends React.Component {
           this.onNationalIdChanged(personal.national_id)
           this.onMobileNumberChanged(personal.mobile_number)
           this.onLandlineNumberChanged(personal.land_line_number)
-          this.onMaritalStatusChanged(personal.marital_status)
+          this.onGenderChanged(personal.gender)
           this.onAddressChanged(personal.address)
           this.setState({ url: personal.url })
         }
@@ -45,7 +45,7 @@ class PersonalProfile extends React.Component {
       birthPlace: {value: '', error: false},
       nationalId: {value: '', error: false},
       mobileNumber: {value: '', error: false},
-      maritalStatus: {value: '', error: false},
+      gender: {value: '', error: false},
       landlineNumber: {value: '', error: false},
       address: {value: '', error: false},
       error: '',
@@ -78,8 +78,8 @@ class PersonalProfile extends React.Component {
     this.setState({landlineNumber: {value, error: !/^(\+|0|98|\+98|0098)?\d{7,10}$/.test(value)}})
   }
 
-  onMaritalStatusChanged(value) {
-    this.setState({maritalStatus: {value, error: value !== 'S' && value !== 'M'}})
+  onGenderChanged(value) {
+    this.setState({gender: {value, error: value !== 'S' && value !== 'M'}})
   }
 
   onAddressChanged(value) {
@@ -102,7 +102,7 @@ class PersonalProfile extends React.Component {
     this.onNationalIdChanged(this.state.nationalId.value)
     this.onMobileNumberChanged(this.state.mobileNumber.value)
     this.onLandlineNumberChanged(this.state.landlineNumber.value)
-    this.onMaritalStatusChanged(this.state.maritalStatus.value)
+    this.onGenderChanged(this.state.maritalStatus.value)
     this.onAddressChanged(this.state.address.value)
   }
 
@@ -126,8 +126,8 @@ class PersonalProfile extends React.Component {
     if (this.state.landlineNumber.error) {
       errors += formatError(Strings.landlineNumberError)
     }
-    if (this.state.maritalStatus.error) {
-      errors += formatError(Strings.maritalStatusError)
+    if (this.state.gender.error) {
+      errors += formatError(Strings.genderError)
     }
     if (this.state.address.error) {
       errors += formatError(Strings.addressError)
@@ -151,7 +151,7 @@ class PersonalProfile extends React.Component {
           national_id: this.state.nationalId.value,
           mobile_number: this.state.mobileNumber.value,
           land_line_number: this.state.landlineNumber.value,
-          marital_status: this.state.maritalStatus.value,
+          gender: this.state.gender.value,
           address: this.state.address.value,
         }),
       })
@@ -235,12 +235,12 @@ class PersonalProfile extends React.Component {
             />
           </Form.Group>
           <Form.Select
-            label={Strings.maritalStatus}
-            placeholder={Strings.maritalStatus}
-            value={this.state.maritalStatus.value}
-            error={this.state.maritalStatus.error}
+            label={Strings.gender}
+            placeholder={Strings.gender}
+            value={this.state.gender.value}
+            error={this.state.gender.error}
             options={[{key: 'S', value: 'S', text: Strings.single}, {key: 'M', value: 'M', text: Strings.married}]}
-            onChange={(_, obj) => this.onMaritalStatusChanged(obj.value)}
+            onChange={(_, obj) => this.onGenderChanged(obj.value)}
           />
           <Form.TextArea
             label={Strings.address}

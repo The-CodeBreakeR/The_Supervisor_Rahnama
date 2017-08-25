@@ -16,20 +16,9 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class PersonalProfile(models.Model):
-    MARITAL_STATUS_CHOICES = (
-        ('S', 'Single'),
-        ('M', 'Married'),
-    )
-
-    MAJOR_CHOICES = (
-        ('CE', 'Computer Engineering'),
-        ('CS', 'Computer Science'),
-        ('IE', 'Industrial Engineering'),
-        ('ME', 'Mechanical Engineering'),
-        ('MA', 'Mathematics'),
-        ('PH', 'Physics'),
-        ('CH', 'Chemistry'),
-        ('CI', 'Civil'),
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
     )
 
     user = models.OneToOneField(User)
@@ -39,7 +28,7 @@ class PersonalProfile(models.Model):
     birth_place = models.CharField(max_length=64)
     national_id = models.CharField(max_length=10)
     mobile_number = models.CharField(max_length=14)
-    marital_status = models.CharField(max_length=1, choices=MARITAL_STATUS_CHOICES)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
     land_line_number = models.CharField(max_length=14)
     address = models.TextField()
 
