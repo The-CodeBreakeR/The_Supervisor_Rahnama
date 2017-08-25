@@ -20,6 +20,7 @@ import FinancialRecom from './account/FinancialRecom'
 import InternshipHome from './internship/InternshipHome'
 import CompanyList from './internship/CompanyList'
 import MainPanel from './MainPanel'
+import LogoInfo from './LogoInfo.js'
 
 import Cookie from 'browser-cookies'
 
@@ -71,20 +72,25 @@ class AppBody extends React.Component {
           </div>
           <div className='app__footer'>
             <div className='app__footer__part'>
-              <div className='app__footer__subpart'>
+              <div className='app__footer__subpart1'>
                 {Strings.footAdd}
                 {Strings.footTel}
                 {Strings.footMail}
               </div>
-              <div className='app__footer__subpart'>
+              <div className='app__footer__subpart1'>
                 {Strings.footFollow}
                 <Button className='app__social' as='a' href='https://www.facebook.com/rahnama.rahnama.98871' circular color='facebook' icon='facebook' />
                 <Button className='app__social' as='a' href='https://twitter.com/rahnama' circular color='twitter' icon='twitter' />
                 <Button className='app__social' as='a' href='https://www.instagram.com/rahnama.rahpooyan/' circular color='instagram' icon='instagram' />
                 <Button className='app__social' as='a' href='https://aboutme.google.com/u/0/?referer=gplus' circular color='google plus' icon='google plus' />
               </div>
+              <div className='app__footer__subpart2'>
+                <LogoInfo/>
+              </div>
             </div>
-            {Strings.footRights}
+            <div className='app__footer__rights'>
+              {Strings.footRights}
+            </div>
           </div>
         </div>
       }</Segment>
