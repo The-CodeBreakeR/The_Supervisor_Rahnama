@@ -12,12 +12,12 @@ class LogoInfo extends React.Component {
   }
 
   render() {
-    const logo = <Image className='app__header__column__logo' src={rahLogo} alt={'no Image load'} />
-    const logoBig = <Image className='app__header__logo__big' src={rahLogo} alt={'no Image load'} />
+    const logo = <Image className='app__footer__column__logo' src={rahLogo} alt={'no Image load'} />
+    const logoBig = <Image className='app__footer__logo__big' src={rahLogo} alt={'no Image load'} />
     return <Modal closeIcon trigger={logo}>
       <Modal.Header>{Strings.rahnamaSystem}</Modal.Header>
       <Modal.Content image scrolling>
-        <Modal.Description className='app__logo__modal'>
+        <Modal.Description className='app__footer__logo__modal'>
           {logoBig}
           <p>{Strings.rahnamaInfo}</p>
           <a href='http://www.rahemohandesi.persianblog.ir'>{Strings.rah}</a>

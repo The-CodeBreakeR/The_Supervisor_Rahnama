@@ -19,17 +19,9 @@ class LoanRequest extends React.Component {
     this.setState({open: false})
   }
 
-  handleResult(result) {
-    if (result.status === -1) {
-      this.setState({pageResponse: Strings.submitionFailed})
-    } else {
-      this.setState({pageResponse: Strings.submitionOK})
-    }
-  }
-
-  submit() {
+  updateRequest() {
     if (Cookie.get('token')) {
-      fetch('/accounting/loanrequest/', {
+      fetch('/accounting/getrequest/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -37,12 +29,48 @@ class LoanRequest extends React.Component {
         },
         body: JSON.stringify({
           token: JSON.parse(localStorage.getItem('user')).token,
-          amount: this.state.reqAmount,
-          purpose: this.state.reqPurpose,
         }),
       })
         .then(response => response.json())
-        .then(result => this.handleResult(result))
+        .then(result => {
+          if (result.status === 0) {
+            this.props.setRequestList(result.requests)
+          } else {
+            this.props.setRequestList([])
+          }
+        })
+    }
+  }
+
+  handleResult(result) {
+    if (result.status === -1) {
+      this.setState({pageResponse: Strings.submitionFailed})
+    } else {
+      this.setState({pageResponse: Strings.submitionOK})
+    }
+    this.updateRequest()
+  }
+
+  submit() {
+    if (Cookie.get('token')) {
+      if (this.state.reqAmount.match(/^\d+$/)) {
+        fetch('/accounting/loanrequest/', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            token: JSON.parse(localStorage.getItem('user')).token,
+            amount: this.state.reqAmount,
+            purpose: this.state.reqPurpose,
+          }),
+        })
+          .then(response => response.json())
+          .then(result => this.handleResult(result))
+      } else {
+        this.setState({pageResponse: Strings.invalidMoney})
+      }
     } else {
       this.setState({pageResponse: Strings.loginFirst})
     }
