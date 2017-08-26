@@ -52,7 +52,7 @@ class ReservePlace extends React.Component {
       open={this.state.open} onClose={() => this.setState({open: false})}
       onOpen={() => this.setState({open: true})}
     >
-      <Modal.Header></Modal.Header>
+      <Modal.Header>{Strings.resultAcc}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description className='internship__newline'>
             {Strings.placeReserveOK}
