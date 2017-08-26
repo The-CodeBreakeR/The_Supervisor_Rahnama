@@ -18,8 +18,8 @@ class AppHeader extends React.Component {
         <Grid.Row className='Row__header'>
           <div className='whole-header'>
             <div className='right-header'>
-              <div><LogoInfo/></div>
-              <div style={ {marginLeft: '8px'} }>
+              <div style={{ width: '160px' }}><LogoInfo/></div>
+              <div style={{ marginLeft: '8px' }}>
                 <Header className='app__header__title'>{Strings.rahnamaSystem}</Header>
               </div>
             </div>
