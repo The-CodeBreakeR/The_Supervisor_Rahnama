@@ -100,7 +100,7 @@ class LoginModal extends React.Component {
       >
         <Modal.Header>{Strings.loginToSystem}</Modal.Header>
         <Modal.Content>
-          <Form>
+          <Form className='profile-form'>
             <Form.Input
               label={Strings.studentId}
               value={this.state.studentId.value}

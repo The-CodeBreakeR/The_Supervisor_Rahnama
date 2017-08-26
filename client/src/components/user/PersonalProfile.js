@@ -194,7 +194,7 @@ class PersonalProfile extends React.Component {
         </Modal>
         <Header>{Strings.personalProfile}</Header>
         <p>{Strings.personalProfileMessage}</p>
-        <Form>
+        <Form className='profile-form'>
           <Form.Group widths='equal'>
             <Form.Input
               label={Strings.fatherName}

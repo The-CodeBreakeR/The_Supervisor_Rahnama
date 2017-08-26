@@ -167,7 +167,7 @@ class EducationalProfile extends React.Component {
         <Segment>
           <Header>{Strings.educationalProfile}</Header>
           <p>{Strings.educationalProfileMessage}</p>
-          <Form>
+          <Form className='profile-form'>
             <Form.Group widths='equal'>
               <Form.Select
                 className='educational-profile__degree'

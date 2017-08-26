@@ -128,7 +128,7 @@ class RegistrationModal extends React.Component {
         <Modal.Header>{Strings.registration}</Modal.Header>
         {!this.state.done
           ? <Modal.Content>
-            <Form>
+            <Form className='profile-form'>
               <Form.Group widths='equal'>
                 <Form.Input
                   label={Strings.studentId}
