@@ -9,6 +9,10 @@ class AppHeader extends React.Component {
     this.timerRef = setInterval(() => this.forceUpdate(), 1000)
   }
 
+  componentWillUnmount () {
+    clearInterval(this.timerRef)
+  }
+
   render () {
     return <div className='app__header'>
       <Grid>
