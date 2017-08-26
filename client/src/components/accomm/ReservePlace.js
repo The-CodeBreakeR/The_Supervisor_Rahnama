@@ -1,6 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Button,Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -8,8 +8,8 @@ class ReservePlace extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      massage : Strings.placeReserveOK,
-      open : false,
+      massage: Strings.placeReserveOK,
+      open: false,
     }
   }
 
@@ -31,7 +31,6 @@ class ReservePlace extends React.Component {
         } else {
           this.props.setPlacesList([])
         }
-
       })
   }
 
@@ -39,12 +38,11 @@ class ReservePlace extends React.Component {
     this.updateAvailablePlaces()
     if (result.status === -1) {
       // alert(Strings.placeReserveFailed)
-     this.setState({massage:Strings.placeReserveFailed})
+      this.setState({massage: Strings.placeReserveFailed})
     } else {
       // alert(Strings.placeReserveOK)
-      this.setState({massage:Strings.placeReserveOK})
+      this.setState({massage: Strings.placeReserveOK})
     }
-
   }
 
   myrender() {
@@ -55,7 +53,7 @@ class ReservePlace extends React.Component {
       <Modal.Header>{Strings.resultAcc}</Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description className='internship__newline'>
-            {Strings.placeReserveOK}
+          {Strings.placeReserveOK}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -92,7 +90,7 @@ class ReservePlace extends React.Component {
   render() {
     return <div>
       {this.myrender()}
-      {/*<Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>*/}
+      {/* <Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button> */}
     </div>
   }
 }

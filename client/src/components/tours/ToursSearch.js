@@ -27,21 +27,18 @@ class ToursSearch extends React.Component {
   }
 
   search() {
-    // if (this.state.tourName)
-    {
-      fetch('/tours/search/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: this.state.tourName,
-        }),
-      })
-        .then(response => response.json())
-        .then(result => this.handleResult(result))
-    }
+    fetch('/tours/search/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: this.state.tourName,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => this.handleResult(result))
   }
 
   render() {
