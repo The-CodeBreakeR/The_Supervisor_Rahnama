@@ -183,7 +183,7 @@ class EducationalProfile extends React.Component {
                 value={this.state.entranceYear.value}
                 error={this.state.entranceYear.error}
                 onChange={event => this.onEntranceYearChanged(event.target.value)}
-                placeholder={Strings.entranceYear}
+                placeholder='1393'
               />
             </Form.Group>
             <Form.Select

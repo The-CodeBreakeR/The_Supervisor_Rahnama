@@ -208,7 +208,7 @@ class PersonalProfile extends React.Component {
               value={this.state.nationalId.value}
               error={this.state.nationalId.error}
               onChange={event => this.onNationalIdChanged(event.target.value)}
-              placeholder={Strings.nationalId}
+              placeholder='0010000000'
             />
           </Form.Group>
           <Form.Group widths='equal'>
@@ -217,14 +217,14 @@ class PersonalProfile extends React.Component {
               value={this.state.birthDate.value}
               error={this.state.birthDate.error}
               onChange={event => this.onBirthDateChanged(event.target.value)}
-              placeholder={Strings.birthDate}
+              placeholder='1374/1/1'
             />
             <Form.Input
               label={Strings.birthPlace}
               value={this.state.birthPlace.value}
               error={this.state.birthPlace.error}
               onChange={event => this.onBirthPlaceChanged(event.target.value)}
-              placeholder={Strings.birthPlace}
+              placeholder='تهران'
             />
           </Form.Group>
           <Form.Group widths='equal'>
@@ -233,14 +233,14 @@ class PersonalProfile extends React.Component {
               value={this.state.mobileNumber.value}
               error={this.state.mobileNumber.error}
               onChange={event => this.onMobileNumberChanged(event.target.value)}
-              placeholder={Strings.mobileNumber}
+              placeholder='09120000000'
             />
             <Form.Input
               label={Strings.landlineNumber}
               value={this.state.landlineNumber.value}
               error={this.state.landlineNumber.error}
               onChange={event => this.onLandlineNumberChanged(event.target.value)}
-              placeholder={Strings.landlineNumber}
+              placeholder='02166000000'
             />
           </Form.Group>
           <Form.Select

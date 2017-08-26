@@ -135,14 +135,14 @@ class RegistrationModal extends React.Component {
                   value={this.state.studentId.value}
                   error={this.state.studentId.error}
                   onChange={event => this.onStudentIdChanged(event.target.value)}
-                  placeholder={Strings.studentId}
+                  placeholder='93000000'
                 />
                 <Form.Input
                   label={Strings.email}
                   value={this.state.email.value}
                   error={this.state.email.error}
                   onChange={event => this.onEmailChanged(event.target.value)}
-                  placeholder={Strings.email}
+                  placeholder='john@google.com'
                 />
               </Form.Group>
               <Form.Group widths='equal'>

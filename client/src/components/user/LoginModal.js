@@ -106,7 +106,7 @@ class LoginModal extends React.Component {
               value={this.state.studentId.value}
               error={this.state.studentId.error}
               onChange={event => this.onStudentIdChanged(event.target.value)}
-              placeholder={Strings.studentId}
+              placeholder='93000000'
             />
             <Form.Input
               label={Strings.password}
