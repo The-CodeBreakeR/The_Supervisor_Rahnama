@@ -1,16 +1,17 @@
 .app__header {
-  text-align: right;
-  height: 17% !important;
-  background-color: dodgerblue !important;
-  border-radius: 20px !important;
-  padding-top: 26px !important;
+  text-align: center !important;
+  padding: 20px !important;
   margin: 10px !important;
-  display: flex;
+  height: 17% !important;
+  @base-url: "../../client/asset";
+  background-image: url("@{base-url}/header.png");
+  background-size:100% 100% !important;
+  border-radius: 20px !important;
 }
 
 .app__header__title {
   color: white !important;
-  font-size: 2rem !important;
+  font-size: 3rem !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -22,12 +23,13 @@
 }
 
 .app__header__column__logo {
-  width: 100px !important;
+  width: 20% !important;
   border-radius: 10% !important;
-  height: 70px !important;
+  height: 100% !important;
   margin-top: -12px !important;
   margin-left: 16px !important;
 }
+
 .app__header__logo__big {
   width: 400px !important;
    border-radius: 10% !important;
@@ -40,7 +42,57 @@
   width: 600px !important;
   text-align: center !important;
 }
+
 .app__header__video {
   width: 500px !important;
   height: 400px !important;
+}
+
+.left__header{
+  width: 45% !important;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: -16px;
+}
+
+.right__header{
+  display: flex;
+  width: 50% !important;
+  margin-right: 20px;
+}
+
+.middle {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+}
+
+.time__box {
+  height: 100% !important;
+}
+
+.clock__box {
+  padding : 12px !important;
+  text-align: center !important;
+  background-color: #275aff !important;
+  color : white !important;
+  font-size: x-large !important;
+  border-radius: 3px !important;
+  border-color: #601fab !important;
+  border-width: thick !important;
+  height: 50% !important;
+  width: 100% !important;
+}
+
+.date__box {
+  padding : 12px !important;
+  height: 50% !important;
+  width: 100% !important;
+  text-align: center !important;
+  background-color: #1a389d !important;
+  color : white !important;
+  font-size: large !important;
+  border-radius: 3px !important;
+  border-color: #601fab !important;
+  border-width: thick !important;
 }
