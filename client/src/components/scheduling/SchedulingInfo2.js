@@ -31,7 +31,7 @@ class HardDayInfo extends React.Component {
   }
 
   render() {
-    return <Modal closeIcon
+    return <Modal
       open={this.state.open}
       onClose={() => this.setState({open: false})}
       onOpen={() => this.setState({open: true})}
@@ -43,7 +43,7 @@ class HardDayInfo extends React.Component {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.setState({open: false})} negative>
+        <Button onClick={() => this.setState({open: false})} secondary>
           {Strings.stop}
         </Button>
       </Modal.Actions>

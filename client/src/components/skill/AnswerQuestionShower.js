@@ -45,7 +45,7 @@ class AnswerQuestionShower extends React.Component {
   render() {
     const Answer = this.state.QuestionAndAnswer.map((answer) => this.renderAnswer(answer))
     return <Modal
-      closeIcon
+
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
       onClose={() => this.setState({open: false})} trigger={<Button onClick={() => this.sendRequest()}

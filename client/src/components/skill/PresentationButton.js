@@ -30,7 +30,7 @@ class PresentationButton extends React.Component {
   }
   render() {
     return <Modal
-      closeIcon
+
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
       onClose={() => this.setState({open: false})} trigger={<Button

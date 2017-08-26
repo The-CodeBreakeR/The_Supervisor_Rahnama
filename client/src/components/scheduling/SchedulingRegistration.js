@@ -116,7 +116,7 @@ class SchedulingRegistration extends React.Component {
         open={this.state.open}
         onOpen={() => this.setState({ open: true })}
         onClose={() => this.close()}
-        closeIcon
+
       >
         <Modal.Header>{Strings.registration}</Modal.Header>
         {!this.state.done

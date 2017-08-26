@@ -106,7 +106,7 @@ class CourseInfo extends React.Component {
       <Table.Cell textAlign='center'>{course.course_info.name}</Table.Cell>
       <Table.Cell textAlign='center'>{course.grade}</Table.Cell>
       <Table.Cell textAlign='center'>
-        <Button negative onClick={() => this.deleteCourse(course.url)}>{Strings.delete}</Button>
+        <Button secondary onClick={() => this.deleteCourse(course.url)}>{Strings.delete}</Button>
       </Table.Cell>
     </Table.Row>
   }

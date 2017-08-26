@@ -50,7 +50,7 @@ class SubmitQuestionButton extends React.Component {
   }
 
   render() {
-    return <Modal closeIcon
+    return <Modal
       open={this.state.open}
       onOpen={() => this.setState({open: true})}
       onClose={() => this.setState({open: false})}

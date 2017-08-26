@@ -198,7 +198,7 @@ class RegistrationModal extends React.Component {
         }
         {!this.state.done
           ? <Modal.Actions>
-            <Button secondary onClick={() => this.close()}>{Strings.cancel}</Button>
+            <Button secondary onClick={() => this.close()}>{Strings.back}</Button>
             <Button primary onClick={() => this.register()}>{Strings.registration}</Button>
           </Modal.Actions>
           : <Modal.Actions>
