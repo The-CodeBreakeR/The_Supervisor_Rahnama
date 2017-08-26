@@ -47,14 +47,15 @@ def getTour(request):
     if tour.count() == 0:
         return JsonResponse({'status': -1})
     reservedtours = ReserveTour.objects.filter(tour_id=id)
+
     print(reservedtours)
     i = 0
     print(reservedtours.count())
     while i < reservedtours.count():
-         if  reservedtours[i].status == str(0):
+        if  reservedtours[i].status == str(0):
             dateDiff = django.utils.timezone.now() - reservedtours[i].date
             print(dateDiff.seconds)
-            if dateDiff.seconds > 10:
+            if dateDiff.seconds > 15:
                 print("hi")
                 cur_tour = tour[0]
                 cur_tour.capacity = cur_tour.capacity+1
@@ -62,6 +63,8 @@ def getTour(request):
                 reservedtours[i].delete()
             else:
                 i = i + 1
+        else:
+            i = i + 1
 
     comments = Comments.objects.filter(tourId=tour[0].id)
     if comments.count() == 0:
