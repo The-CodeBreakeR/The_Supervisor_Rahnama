@@ -157,7 +157,6 @@ class EducationalProfile extends React.Component {
               primary
               onClick={() => {
                 this.setState({ done: false })
-                this.props.history.push('/profile')
               }}
             >
               {Strings.finish}
