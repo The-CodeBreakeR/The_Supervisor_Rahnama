@@ -161,7 +161,7 @@ class EducationalProfile extends React.Component {
               }}
             >
               {Strings.finish}
-              </Button>
+            </Button>
           </Modal.Actions>
         </Modal>
         <Segment>

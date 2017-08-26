@@ -11,7 +11,6 @@ import peresentIcon from '../../../asset/persentIcon.svg'
 import typingIcon from '../../../asset/typingIcon.png'
 import readingIcon from '../../../asset/readingIcon.svg'
 
-
 import AnswerQuestionShower from './AnswerQuestionShower'
 
 class SkillHome extends React.Component {
@@ -84,6 +83,5 @@ class SkillHome extends React.Component {
     </Grid>
   }
 }
-
 
 export default SkillHome

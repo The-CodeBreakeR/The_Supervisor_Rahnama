@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import Strings from '../../localization'
 import IncomeHome from './IncomeHome'
 import ExpenseHome from './ExpenseHome'

@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Table, Segment, Button } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 
 class CompanyList extends React.Component {

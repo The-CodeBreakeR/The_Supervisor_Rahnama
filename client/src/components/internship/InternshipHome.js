@@ -1,6 +1,5 @@
 import React from 'react'
-import { Header, Button, Grid, Table, Menu } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Grid, Table, Menu } from 'semantic-ui-react'
 import Strings from '../../localization'
 import ScheduleList from './ScheduleList'
 import RuleList from './RuleList'
@@ -62,8 +61,7 @@ class InternshipHome extends React.Component {
         </Table>
       </Grid.Column>
     </Grid>
-}
-
+  }
 }
 
 export default InternshipHome

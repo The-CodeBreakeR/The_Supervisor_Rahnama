@@ -38,8 +38,8 @@ class RecommendationList extends React.Component {
   render() {
     const recommendations = this.state.recommendationsList.map((recommendation) => this.renderRecommendation(recommendation))
     return <Modal trigger={<Button color='blue' onClick={() => this.ButtonClickHandle()}>{Strings.internRecommendations}</Button>}
-    open={this.state.open}
-    onOpen={() => this.setState({open: true})}
+      open={this.state.open}
+      onOpen={() => this.setState({open: true})}
     >
       <Modal.Header>{Strings.internRecommendations}</Modal.Header>
       <Modal.Content image scrolling>

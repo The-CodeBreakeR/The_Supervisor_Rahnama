@@ -2,7 +2,6 @@ import React from 'react'
 import { Table } from 'semantic-ui-react'
 import Strings from '../../localization'
 
-
 class SkillGuide extends React.Component {
   constructor(props) {
     super(props)
@@ -35,7 +34,6 @@ class SkillGuide extends React.Component {
 
       </Table></div>
   }
-
 }
 
 export default SkillGuide

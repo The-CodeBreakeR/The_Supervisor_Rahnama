@@ -1,9 +1,7 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Cookie from 'browser-cookies'
-import { Header, Button } from 'semantic-ui-react'
 import Strings from '../../localization'
-import { Link } from 'react-router-dom'
 
 class FinancialRecom extends React.Component {
   constructor(props) {

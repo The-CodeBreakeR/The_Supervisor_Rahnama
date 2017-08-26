@@ -23,7 +23,7 @@ class App extends React.Component {
   updateUser() {
     const user = getUser()
     if (!user) {
-      this.setState({ user: null})
+      this.setState({ user: null })
     } else {
       fetch(`/api/user/${user.id}/`, {
         method: 'GET',

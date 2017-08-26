@@ -1,7 +1,6 @@
 import Cookie from 'browser-cookies'
 import Strings from '../../localization'
 
-
 export function formatError(error) {
   return `\u2219 ${error} \n`
 }

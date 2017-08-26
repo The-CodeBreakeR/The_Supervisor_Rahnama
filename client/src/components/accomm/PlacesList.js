@@ -1,9 +1,8 @@
 import React from 'react'
-import { Table, Segment, Button, Header } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 import Strings from '../../localization'
 import MomentJ from 'moment-jalaali'
 import ReservePlace from './ReservePlace'
-import { Link } from 'react-router-dom'
 
 class PlacesList extends React.Component {
   constructor(props) {

@@ -92,24 +92,24 @@ class SchedulingPage extends React.Component {
         <Grid.Column className='column__2'>
           <div className='scheduling__box1'>
 
-              <Table basic='very' celled selectable className='scheduling__box'>
-                <Table.Header >
-                  <Table.Row>
-                    <Table.HeaderCell className='Header'>{Strings.schedulingNewItem1}</Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  <div className='body'>
-                    <p>{Strings.schedulingNewItem2}</p>
-                    {/* <Table.Row> */}
-                    <div className='buttons'>
-                      <Button onClick={() => this.setState({page: 'request'})}>{Strings.schedulingNewItem}</Button>
+            <Table basic='very' celled selectable className='scheduling__box'>
+              <Table.Header >
+                <Table.Row>
+                  <Table.HeaderCell className='Header'>{Strings.schedulingNewItem1}</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <div className='body'>
+                  <p>{Strings.schedulingNewItem2}</p>
+                  {/* <Table.Row> */}
+                  <div className='buttons'>
+                    <Button onClick={() => this.setState({page: 'request'})}>{Strings.schedulingNewItem}</Button>
 
-                      {/* </Table.Row> */}
-                    </div>
+                    {/* </Table.Row> */}
                   </div>
-                </Table.Body>
-              </Table>
+                </div>
+              </Table.Body>
+            </Table>
 
             <HardDayModal onLogin={() => this.forceUpdate()}/>
           </div>
