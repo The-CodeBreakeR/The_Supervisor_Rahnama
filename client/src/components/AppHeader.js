@@ -20,7 +20,7 @@ class AppHeader extends React.Component {
             </div>
           </div>
           <div className="left__header">
-            {location.pathname === '/' && <VideoTraining/>}
+            {/*{location.pathname === '/' && <VideoTraining/>}*/}
             <Timer/>
           </div>
         </Grid.Row>
