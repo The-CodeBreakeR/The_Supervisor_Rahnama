@@ -1,4 +1,5 @@
 from datetime import datetime, date
+import django
 
 import Tours
 import pytz
@@ -45,6 +46,22 @@ def getTour(request):
     tour = Tour.objects.filter(id=id)
     if tour.count() == 0:
         return JsonResponse({'status': -1})
+    reservedtours = ReserveTour.objects.filter(tour_id=id)
+    print(reservedtours)
+    i = 0
+    print(reservedtours.count())
+    while i < reservedtours.count():
+         if  reservedtours[i].status == str(0):
+            dateDiff = django.utils.timezone.now() - reservedtours[i].date
+            print(dateDiff.seconds)
+            if dateDiff.seconds > 10:
+                print("hi")
+                cur_tour = tour[0]
+                cur_tour.capacity = cur_tour.capacity+1
+                cur_tour.save()
+                reservedtours[i].delete()
+            else:
+                i = i + 1
 
     comments = Comments.objects.filter(tourId=tour[0].id)
     if comments.count() == 0:
@@ -93,6 +110,7 @@ def reserveTour(request):
         reserve.student_id = user
         reserve.tour_id = tour[0]
         reserve.status = 0
+        reserve.date = datetime.now()
         reserve.save()
         return JsonResponse({'status': 0})
     else:
