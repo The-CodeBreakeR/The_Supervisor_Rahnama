@@ -8,7 +8,7 @@ class ReservePlace extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      massage : '',
+      massage : Strings.placeReserveOK,
       open : false,
     }
   }
@@ -48,18 +48,21 @@ class ReservePlace extends React.Component {
   }
 
   myrender() {
-    return <Modal trigger={<Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>}
+    return <Modal trigger={<Button primary >{Strings.reservePlace}</Button>}
       open={this.state.open} onClose={() => this.setState({open: false})}
       onOpen={() => this.setState({open: true})}
     >
       <Modal.Header></Modal.Header>
       <Modal.Content image scrolling>
         <Modal.Description className='internship__newline'>
-            {this.state.massage}
+            {Strings.placeReserveOK}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button secondary onClick={() => this.setState({open: false})}>
+        <Button secondary onClick={() => {
+          this.reserve()
+          this.setState({open: false})
+        }}>
           {Strings.internCloseModal}
         </Button>
       </Modal.Actions>
@@ -82,10 +85,6 @@ class ReservePlace extends React.Component {
         .then(response => response.json())
         .then(result => {
           this.handleResult(result)
-          console.log('s',this.state.open)
-          // this.setState({open: false})
-          this.setState({open: true})
-          console.log('s2',this.state.open)
         })
     }
   }
