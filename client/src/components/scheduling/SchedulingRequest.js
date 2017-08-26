@@ -109,7 +109,7 @@ class SchedulingRequest extends React.Component {
 
   render() {
     const errors = this.generateErrors()
-    const modal = <Modal closeIcon
+    const modal = <Modal
       trigger={<Button color='blue' disabled={errors !== ''}
         onClick={() => this.sendRequest()}>{Strings.submit}</Button>}
       open={this.state.open} onOpen={() => this.setState({open: true})}
