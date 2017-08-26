@@ -1,6 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import { Button } from 'semantic-ui-react'
+import { Button,Modal } from 'semantic-ui-react'
 import Strings from '../../localization'
 import Cookie from 'browser-cookies'
 
@@ -8,6 +8,8 @@ class ReservePlace extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      massage : '',
+      open : false,
     }
   }
 
@@ -29,16 +31,39 @@ class ReservePlace extends React.Component {
         } else {
           this.props.setPlacesList([])
         }
+
       })
   }
 
   handleResult(result) {
-    if (result.status === -1) {
-      alert(Strings.placeReserveFailed)
-    } else {
-      alert(Strings.placeReserveOK)
-    }
     this.updateAvailablePlaces()
+    if (result.status === -1) {
+      // alert(Strings.placeReserveFailed)
+     this.setState({massage:Strings.placeReserveFailed})
+    } else {
+      // alert(Strings.placeReserveOK)
+      this.setState({massage:Strings.placeReserveOK})
+    }
+
+  }
+
+  myrender() {
+    return <Modal trigger={<Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>}
+      open={this.state.open} onClose={() => this.setState({open: false})}
+      onOpen={() => this.setState({open: true})}
+    >
+      <Modal.Header></Modal.Header>
+      <Modal.Content image scrolling>
+        <Modal.Description className='internship__newline'>
+            {this.state.massage}
+        </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button secondary onClick={() => this.setState({open: false})}>
+          {Strings.internCloseModal}
+        </Button>
+      </Modal.Actions>
+    </Modal>
   }
 
   reserve() {
@@ -55,13 +80,20 @@ class ReservePlace extends React.Component {
         }),
       })
         .then(response => response.json())
-        .then(result => this.handleResult(result))
+        .then(result => {
+          this.handleResult(result)
+          console.log('s',this.state.open)
+          // this.setState({open: false})
+          this.setState({open: true})
+          console.log('s2',this.state.open)
+        })
     }
   }
 
   render() {
     return <div>
-      <Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>
+      {this.myrender()}
+      {/*<Button primary onClick={() => this.reserve()}>{Strings.reservePlace}</Button>*/}
     </div>
   }
 }
