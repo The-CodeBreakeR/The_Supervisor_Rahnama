@@ -11,7 +11,7 @@ admin.site.register(Tour, TourAdmin)
 
 
 class ReserveAdmin(admin.ModelAdmin):
-    list_display = ['student_id', 'tour_id', 'status']
+    list_display = ['student_id', 'tour_id', 'date', 'status']
 
 
 admin.site.register(ReserveTour, ReserveAdmin)
