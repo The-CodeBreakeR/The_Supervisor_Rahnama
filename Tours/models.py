@@ -33,6 +33,7 @@ class ReserveTour(models.Model):
     student_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     tour_id = models.ForeignKey(Tour, on_delete=models.CASCADE, default=1)
     status = models.CharField(max_length=1000)
+    date = models.DateTimeField(default=django.utils.timezone.now)
 
     def __str__(self):
         return str(self.id)

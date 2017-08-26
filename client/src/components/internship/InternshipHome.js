@@ -22,7 +22,7 @@ class InternshipHome extends React.Component {
     return <Grid centered className='timing'>
       <Grid.Column className='column1'>
         <Menu tabular>
-          <Menu.Item name={Strings.rulesTable} active={activeItem === 'photos'} onClick={(() => this.handleItemClick('photos'))} />
+          <Menu.Item name={Strings.scheduleListTitle} active={activeItem === 'photos'} onClick={(() => this.handleItemClick('photos'))} />
           <Menu.Item name={Strings.internCompanies} active={activeItem === 'movie'} onClick={(() => this.handleItemClick('movie'))} />
         </Menu>
         {this.state.activeItem === 'movie' && <CompanyList/>}

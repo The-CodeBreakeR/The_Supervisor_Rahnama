@@ -41,7 +41,7 @@ const Strings = new LocalizedStrings({
     compDescription: 'توضیحات',
     compContactInfo: 'اطلاعات تماس',
     compField: 'رشته مرتبط با شرکت',
-    scheduleListTitle: 'زمانبندی رویداد های کارآموزی',
+    scheduleListTitle: 'زمان‌بندی دوره‌ی کارآموزی',
     schDate: 'تاریخ',
     schEvent: 'رویداد',
     internCompanies: 'شرکت های کارآموزی',
@@ -254,7 +254,7 @@ const Strings = new LocalizedStrings({
     semestersInformation: 'اطلاعات نیم‌سال‌های تحصیلی',
     semester: 'نیم‌سال',
     operations: 'عملیات',
-    details: 'جزییات',
+    details: 'جزئیات',
     delete: 'حذف',
     add: 'اضافه‌کردن',
     year: 'سال',
@@ -334,6 +334,7 @@ const Strings = new LocalizedStrings({
     resultAcc: 'نتیجه رزرو',
     skillTypeInfo: 'با پیشرفت روز افزون تکنولوژی, سرعت تایپ یکی از مهارت هایی میباشد که با افزایش آن میتوانید از وقت خود بهینه تر استفاده کرده و تمارین و پروژه های خود را سریع تر انجام دهید',
     skillReadInfo: 'مهارت تند خوانی در تمامی عرصه های زندگی میتواند شما را یاری کند. با فراگیری آن میتواند در امتحانات, کلاس های درسی و غیره از دیگران در سرعت انجام کار ها پیشی بگیرید',
+    completeUserProfile: 'تکمیل پرونده‌ی کاربری',
   },
 })
 

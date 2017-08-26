@@ -19,7 +19,7 @@ class SkillHome extends React.Component {
       <Grid.Row centered>
         <SkillGuide/>
       </Grid.Row>
-      <Grid.Row columns={2}>
+      <Grid.Row style={{ marginRight: '10%' }} columns={2}>
         <Segment className='subsystem'>
           <Item.Group>
             <Item>
@@ -47,7 +47,7 @@ class SkillHome extends React.Component {
               </Item.Content>
             </Item></Item.Group></Segment>
       </Grid.Row>
-      <Grid.Row columns={2}>
+      <Grid.Row style={{ marginRight: '10%' }} columns={2}>
         <Segment className='subsystem'>
           <Item.Group>
             <Item>

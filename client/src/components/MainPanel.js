@@ -51,7 +51,7 @@ class MainPanel extends React.Component {
         </p>
         <div className='main-panel__profile-button'>
           <Link to='/profile'>
-            <Button size='huge' primary>{Strings.profilesub}</Button>
+            <Button size='huge' primary>{Strings.completeUserProfile}</Button>
           </Link>
         </div>
       </div>

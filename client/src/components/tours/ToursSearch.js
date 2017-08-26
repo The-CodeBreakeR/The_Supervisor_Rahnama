@@ -27,7 +27,8 @@ class ToursSearch extends React.Component {
   }
 
   search() {
-    if (this.state.tourName) {
+    // if (this.state.tourName)
+    {
       fetch('/tours/search/', {
         method: 'POST',
         headers: {

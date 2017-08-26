@@ -96,7 +96,6 @@ class LoginModal extends React.Component {
         open={this.state.open}
         onOpen={() => this.setState({ open: true })}
         onClose={() => this.close()}
-
       >
         <Modal.Header>{Strings.loginToSystem}</Modal.Header>
         <Modal.Content>
