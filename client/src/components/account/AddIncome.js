@@ -94,13 +94,14 @@ class AddIncome extends React.Component {
         open={this.state.open}
         onOpen={() => this.setState({open: true})}
       >
+        <Modal.Header>{Strings.submitIncome}</Modal.Header>
         <Modal.Content image scrolling>
           <Modal.Description className='account__newline'>
             {this.state.pageResponse}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={() => this.close()}>
+          <Button secondary onClick={() => this.close()}>
             {Strings.accountBack}
           </Button>
         </Modal.Actions>

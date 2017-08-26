@@ -96,7 +96,7 @@ class TimingReport extends React.Component {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={() => this.close()} negative>
+          <Button onClick={() => this.close()} secondary>
             {Strings.tourStop}
           </Button>
         </Modal.Actions>

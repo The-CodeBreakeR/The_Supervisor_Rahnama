@@ -124,7 +124,7 @@ class LoginModal extends React.Component {
           }
         </Modal.Content>
         <Modal.Actions>
-          <Button secondary onClick={() => this.close()}>{Strings.cancel}</Button>
+          <Button negative onClick={() => this.close()}>{Strings.cancel}</Button>
           <Button primary onClick={() => this.login()}>{Strings.login}</Button>
         </Modal.Actions>
       </Modal>

@@ -116,7 +116,7 @@ class TimingLog extends React.Component {
         {this.getDescription(this.props.type)}
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => this.setState({open: false})} negative>
+        <Button onClick={() => this.setState({open: false})} secondary>
           {Strings.stop}
         </Button>
       </Modal.Actions>

@@ -100,7 +100,7 @@ class SemesterInfo extends React.Component {
       <Table.Cell textAlign='center'>{semester.year}-{semester.semester}</Table.Cell>
       <Table.Cell textAlign='center'>
         <Button positive onClick={() => this.setState({ detailOpen: true, detailSemester: semester })}>{Strings.details}</Button>
-        <Button negative onClick={() => this.setState({ deletingUrl: semester.url, deleteTitle: `${semester.year}-${semester.semester}` })}>{Strings.delete}</Button>
+        <Button secondary onClick={() => this.setState({ deletingUrl: semester.url, deleteTitle: `${semester.year}-${semester.semester}` })}>{Strings.delete}</Button>
       </Table.Cell>
     </Table.Row>
   }
