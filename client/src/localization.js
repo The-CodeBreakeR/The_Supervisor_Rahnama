@@ -41,7 +41,7 @@ const Strings = new LocalizedStrings({
     compDescription: 'توضیحات',
     compContactInfo: 'اطلاعات تماس',
     compField: 'رشته مرتبط با شرکت',
-    scheduleListTitle: 'زمانبندی رویداد های کارآموزی',
+    scheduleListTitle: 'زمان‌بندی دوره‌ی کارآموزی',
     schDate: 'تاریخ',
     schEvent: 'رویداد',
     internCompanies: 'شرکت های کارآموزی',
