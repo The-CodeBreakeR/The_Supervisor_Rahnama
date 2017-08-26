@@ -12,8 +12,8 @@ class RahInfo extends React.Component {
   }
 
   render() {
-    const logo = <Image className='app__header__column__logo' src={rahLogo} alt={'no Image load'} />
-    const logoBig = <Image className='app__header__logo__big' src={rahLogo} alt={'no Image load'} />
+    const logo = <Image className='app__footer__column__logo' src={rahLogo} alt={'no Image load'} />
+    const logoBig = <Image className='app__footer__logo__big' src={rahLogo} alt={'no Image load'} />
     return <Modal closeIcon trigger={logo}>
       <Modal.Header>{Strings.rah}</Modal.Header>
       <Modal.Content image scrolling>
