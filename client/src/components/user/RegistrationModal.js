@@ -8,7 +8,7 @@ class RegistrationModal extends React.Component {
   constructor(props) {
     super(props)
     this.resetState()
-    this.fields = ['studentId', 'email', 'password', 'confirmPassword', 'firstName', 'lastName', 'rules']
+    this.fields = ['studentId', 'email', 'password', 'confirmPassword', 'firstName', 'lastName']
   }
 
   resetState() {
@@ -19,7 +19,6 @@ class RegistrationModal extends React.Component {
       confirmPassword: { value: '', error: false },
       firstName: { value: '', error: false },
       lastName: { value: '', error: false },
-      rules: { value: false, error: true },
       open: false,
       done: false,
       error: '',
@@ -56,10 +55,6 @@ class RegistrationModal extends React.Component {
     this.setState({ lastName: { value, error: value.length < 3 } })
   }
 
-  onRulesChanged() {
-    this.setState({ rules: { value: !this.state.rules.value, error: !this.state.rules.error } })
-  }
-
   isOK() {
     for (const field of this.fields) {
       if (!this.state[field].value || this.state[field].error) {
@@ -82,6 +77,18 @@ class RegistrationModal extends React.Component {
     let errors = this.state.error
     if (this.state.studentId.error) {
       errors += formatError(Strings.studentIdError)
+    }
+    if (this.state.email.error) {
+      errors += formatError(Strings.emailError)
+    }
+    if (this.state.firstName.error || this.state.lastName.error) {
+      errors += formatError(Strings.nameError)
+    }
+    if (this.state.password.error) {
+      errors += formatError(Strings.passwordError)
+    }
+    if (this.state.confirmPassword.error) {
+      errors += formatError(Strings.confirmPasswordError)
     }
     return errors
   }
@@ -179,12 +186,6 @@ class RegistrationModal extends React.Component {
                   type='password'
                 />
               </Form.Group>
-              <Form.Checkbox
-                label={Strings.iAgreeWithRules}
-                checked={this.state.rules.value}
-                error={this.state.rules.error}
-                onClick={() => this.onRulesChanged()}
-              />
             </Form>
             {errors && <Message
               error
