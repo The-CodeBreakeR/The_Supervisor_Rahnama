@@ -254,7 +254,7 @@ const Strings = new LocalizedStrings({
     semestersInformation: 'اطلاعات نیم‌سال‌های تحصیلی',
     semester: 'نیم‌سال',
     operations: 'عملیات',
-    details: 'جزییات',
+    details: 'جزئیات',
     delete: 'حذف',
     add: 'اضافه‌کردن',
     year: 'سال',
