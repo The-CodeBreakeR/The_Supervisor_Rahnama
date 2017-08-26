@@ -6,7 +6,7 @@ import iconDoc from '../../asset/iconDoc.png'
 import iconIntern from '../../asset/iconIntern.png'
 import iconBill from '../../asset/iconBill.png'
 import iconAccom from '../../asset/iconAccom.png'
-import iconTiming from '../../asset/iconScheduling.png'
+import iconTiming from '../../asset/iconTiming.png'
 import iconTour from '../../asset/iconTour.png'
 import iconSkill from '../../asset/iconSkill.png'
 import iconScheduling from '../../asset/iconScheduling.png'
@@ -54,7 +54,7 @@ class AppMenu extends React.Component {
     return (
       <Menu color='blue' inverted vertical>
         <MaybeMenuItem imgSrc={iconhome} linkTo='/' name={Strings.home} active={activeItem === '/'} onClick={(() => this.handleItemClick('/'))} />
-        <MaybeMenuItem imgSrc={iconDoc} linkTo='/profile' name={Strings.profilesub} active={activeItem === '/profile'} onClick={(() => this.handleItemClick('/profile'))} />
+        <MaybeMenuItem imgSrc={iconDoc} linkTo='/profile' name={Strings.profilesub} active={activeItem === '/profile' || activeItem === '/profile/personal' || activeItem === '/profile/educational'} onClick={(() => this.handleItemClick('/profile'))} />
         <MaybeMenuItem disabled={!enabled} imgSrc={iconIntern} linkTo='/internship' name={Strings.internshipsub} active={activeItem === '/internship'} onClick={(() => this.handleItemClick('/internship'))} />
         <MaybeMenuItem disabled={!enabled} imgSrc={iconAccom} linkTo='/accommodation' name={Strings.accommodationsub} active={activeItem === '/accommodation'} onClick={(() => this.handleItemClick('/accommodation'))} />
         <MaybeMenuItem disabled={!enabled} imgSrc={iconBill} linkTo='/accounting' name={Strings.accountingsub} active={activeItem === '/accounting'} onClick={(() => this.handleItemClick('/accounting'))} />
