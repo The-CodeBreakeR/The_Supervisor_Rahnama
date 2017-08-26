@@ -16,14 +16,13 @@ class AppHeader extends React.Component {
     return <div className='app__header'>
       <Grid>
         <Grid.Row className='Row__header'>
-          <div className='right__header'>
-            <LogoInfo/>
-            <div style={ {marginLeft: '8px'} }>
-              <Header className='app__header__title'>{Strings.rahnamaSystem}</Header>
+          <div className='whole-header'>
+            <div className='right-header'>
+              <div><LogoInfo/></div>
+              <div style={ {marginLeft: '8px'} }>
+                <Header className='app__header__title'>{Strings.rahnamaSystem}</Header>
+              </div>
             </div>
-          </div>
-          <div className='left__header'>
-            {/* {location.pathname === '/' && <VideoTraining/>} */}
             <Timer/>
           </div>
         </Grid.Row>
